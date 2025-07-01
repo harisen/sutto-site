@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リッチプラン | LP制作サービス - GSAPアニメーション</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+            background: #000;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: "palt";
+        }
+
+        /* ローディング画面 */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 0.2em;
+        }
+        
+        /* ヘッダー */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.6rem;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            opacity: 0.7;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2.4rem;
+            cursor: pointer;
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            z-index: 999;
+        }
+        
+        .mobile-nav.active {
+            transform: translateY(0);
+        }
+        
+        .mobile-nav-list {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .mobile-nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8rem;
+            padding: 12px;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-container {
+                padding: 0 20px;
+            }
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero-bg img {
+            width: 120%;
+            height: 120%;
+            object-fit: cover;
+            opacity: 0.7;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 7vw, 7rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title span {
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 14px;
+            letter-spacing: 0.1em;
+            opacity: 0;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 50px;
+            background: #fff;
+            animation: scrollDown 1.5s ease-in-out infinite;
+        }
+
+        @keyframes scrollDown {
+            0% {
+                transform: translateX(-50%) scaleY(0);
+                transform-origin: top;
+            }
+            50% {
+                transform: translateX(-50%) scaleY(1);
+                transform-origin: top;
+            }
+            100% {
+                transform: translateX(-50%) scaleY(0);
+                transform-origin: bottom;
+            }
+        }
+
+        /* パララックスセクション */
+        .parallax-section {
+            position: relative;
+            min-height: 100vh;
+            background: #fff;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: -20%;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            z-index: 1;
+        }
+
+        .parallax-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .parallax-content {
+            position: relative;
+            z-index: 2;
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .section-title span {
+            display: inline-block;
+        }
+
+        .parallax-text {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* テキストアニメーションセクション */
+        .text-animation-section {
+            padding: 150px 20px;
+            background: #f8f8f8;
+        }
+
+        .text-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .animated-text {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            line-height: 1.8;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        .highlight {
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            background-image: linear-gradient(to right, transparent 0%, transparent 0%);
+            background-position: 0 100%;
+            background-size: 100% 3px;
+            background-repeat: no-repeat;
+            padding-bottom: 3px;
+        }
+
+        /* カードセクション */
+        .cards-section {
+            padding: 150px 20px;
+            background: #111;
+        }
+
+        .cards-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #222;
+            border-radius: 20px;
+            padding: 40px;
+            color: #fff;
+            transform: translateY(100px);
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #ff6b6b);
+            background-size: 400% 400%;
+            border-radius: 20px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+            animation: gradient 3s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* 横スクロールセクション */
+        .horizontal-section {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+            overflow: hidden;
+            padding: 120px 0;
+        }
+        
+        .horizontal-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .horizontal-container {
+            position: relative;
+            display: flex;
+            gap: 60px;
+            padding: 0 100px;
+            will-change: transform;
+            margin-top: 60px;
+        }
+
+        .horizontal-item {
+            flex-shrink: 0;
+            width: 480px;
+            height: 600px;
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            cursor: pointer;
+            transform: translateY(0);
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: block;
+        }
+        
+        .horizontal-item:hover {
+            transform: translateY(-20px);
+        }
+        
+        .horizontal-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                transparent 50%,
+                rgba(0, 0, 0, 0.3) 80%,
+                rgba(0, 0, 0, 0.8) 100%
+            );
+            z-index: 1;
+            transition: opacity 0.3s;
+        }
+        
+        .horizontal-item:hover::before {
+            opacity: 0.7;
+        }
+        
+        .horizontal-item::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #ff6b6b);
+            background-size: 400% 400%;
+            border-radius: 24px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s;
+            animation: gradient 3s ease infinite;
+        }
+        
+        .horizontal-item:hover::after {
+            opacity: 1;
+        }
+
+        .horizontal-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .horizontal-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .horizontal-item-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            z-index: 2;
+            transform: translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .horizontal-item:hover .horizontal-item-content {
+            transform: translateY(0);
+        }
+        
+        .horizontal-item-category {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        
+        .horizontal-item-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            line-height: 1.2;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .horizontal-item-desc {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            opacity: 0;
+            transition: opacity 0.4s 0.1s;
+        }
+        
+        .horizontal-item:hover .horizontal-item-desc {
+            opacity: 1;
+        }
+        
+        .horizontal-nav {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+        
+        .horizontal-nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .horizontal-nav-dot.active {
+            width: 32px;
+            border-radius: 4px;
+            background: #fff;
+        }
+
+        /* SVGアニメーションセクション */
+        .svg-section {
+            padding: 150px 20px;
+            background: #f8f8f8;
+            text-align: center;
+        }
+
+        .svg-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .svg-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .svg-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+        }
+        
+        .svg-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+        }
+        
+        .svg-card:nth-child(2)::before {
+            background: linear-gradient(90deg, #4ecdc4, #45b7d1);
+        }
+        
+        .svg-card:nth-child(3)::before {
+            background: linear-gradient(90deg, #45b7d1, #ff6b6b);
+        }
+        
+        .svg-number {
+            font-size: 4.8rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8787);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            display: inline-block;
+        }
+        
+        .svg-card:nth-child(2) .svg-number {
+            background: linear-gradient(135deg, #4ecdc4, #6eddd6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .svg-card:nth-child(3) .svg-number {
+            background: linear-gradient(135deg, #45b7d1, #67c3e3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .svg-label {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        
+        .svg-note {
+            font-size: 1.4rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* CTAセクション & フッター */
+        .footer {
+            color: #fff;
+        }
+        
+        .footer-link:hover {
+            color: #fff !important;
+        }
+
+        .footer-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .footer p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .footer-cta {
+            display: inline-block;
+            padding: 15px 50px;
+            background: #ff6b6b;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+
+        .footer-cta:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+
+        /* プログレスバー */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .loader-text {
+                font-size: 2.5rem;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 10vw, 3.5rem);
+                line-height: 1.2;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: clamp(0.9rem, 3vw, 1.2rem);
+            }
+
+            .section-title {
+                font-size: clamp(2rem, 6vw, 3rem);
+            }
+
+            .parallax-content {
+                padding: 60px 20px;
+            }
+
+            .parallax-text {
+                font-size: 1.4rem !important;
+            }
+
+            .parallax-text span {
+                font-size: 1.2rem !important;
+            }
+
+            .animated-text {
+                font-size: clamp(1.2rem, 4vw, 1.8rem);
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .horizontal-container {
+                padding: 0 20px;
+                gap: 30px;
+            }
+            
+            .horizontal-item {
+                width: 320px;
+                height: 450px;
+            }
+            
+            .horizontal-item-content {
+                padding: 30px;
+            }
+            
+            .horizontal-item-title {
+                font-size: 2.2rem;
+            }
+            
+            .horizontal-item-desc {
+                font-size: 1.2rem;
+            }
+            
+            .horizontal-nav {
+                bottom: 30px;
+            }
+
+            .svg-container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .svg-card {
+                padding: 32px 24px;
+            }
+            
+            .svg-number {
+                font-size: 3.6rem;
+            }
+            
+            .svg-label {
+                font-size: 1.8rem;
+            }
+            
+            .svg-note {
+                font-size: 1.3rem;
+            }
+
+            .footer-title {
+                font-size: clamp(1.5rem, 5vw, 2.5rem);
+            }
+
+            .footer p {
+                font-size: 1rem;
+            }
+
+            .text-animation-section,
+            .cards-section,
+            .svg-section {
+                padding: 80px 20px;
+            }
+            
+            .horizontal-section {
+                min-height: auto;
+                padding: 80px 0;
+            }
+            
+            .horizontal-section .section-title {
+                font-size: clamp(2rem, 6vw, 3rem);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">LP制作サービス</a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">サンプルサイト</a>
+                <a href="deployment-guide.html" class="nav-link">公開ガイド</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">サンプルサイト</a>
+            <a href="deployment-guide.html" class="mobile-nav-link">公開ガイド</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+    
+    <!-- ローディング画面 -->
+    <div class="loader">
+        <div class="loader-text">LOADING</div>
+    </div>
+
+    <!-- プログレスバー -->
+    <div class="progress-bar">
+        <div class="progress-bar-fill"></div>
+    </div>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&h=1080&fit=crop" alt="">
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span>NEXT</span> <span>LEVEL</span><br>
+                <span>WEB</span> <span>DESIGN</span>
+            </h1>
+            <p class="hero-subtitle">リッチプランのご紹介<br>AIとクリエイティビティが融合する新時代のLP制作</p>
+        </div>
+        <div class="scroll-indicator">SCROLL</div>
+    </section>
+
+    <!-- パララックスセクション -->
+    <section class="parallax-section">
+        <div class="parallax-bg">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop" alt="">
+        </div>
+        <div class="parallax-content">
+            <h2 class="section-title">
+                <span>最速即日で、</span><br>
+                <span>想像を超える体験を。</span>
+            </h2>
+            <p class="parallax-text" style="font-size: 1.8rem; margin-top: 30px; line-height: 1.8;">
+                GSAPの力で、訪問者の心を動かすインタラクティブなWebサイトを創造します。<br>
+                <span style="font-size: 1.4rem; color: #666; margin-top: 20px; display: inline-block;">
+                    AI技術により<strong style="color: #ff6b6b;">コストパフォーマンスに優れた価格</strong>を実現
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <!-- テキストアニメーションセクション -->
+    <section class="text-animation-section">
+        <div class="text-container">
+            <p class="animated-text">
+                私たちは<span class="highlight">AI技術</span>と
+                <span class="highlight">人間の創造性</span>を組み合わせ、
+                <span class="highlight">革新的なWebデザイン</span>を
+                実現します。スクロールするたびに
+                <span class="highlight">新しい発見</span>がある、
+                そんなWebサイトを作りませんか？
+            </p>
+        </div>
+    </section>
+
+    <!-- カードセクション -->
+    <section class="cards-section">
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon">💰</div>
+                <h3 class="card-title">圧倒的な低価格</h3>
+                <p>GSAPアニメーションを使用した高品質なサイトを5万円で実現。AI技術による効率化。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3 class="card-title">最速即日納品</h3>
+                <p>通常1〜2ヶ月かかる制作期間を大幅短縮。ビジネスチャンスを逃しません。</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">✨</div>
+                <h3 class="card-title">プロ級のアニメーション</h3>
+                <p>GSAPを活用した滑らかで印象的なアニメーションで、競合との差別化を実現。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 横スクロールセクション -->
+    <section class="horizontal-section">
+        <h2 class="section-title" style="position: relative; text-align: center; color: #fff; margin-bottom: 20px;">
+            <span>制作事例</span>
+        </h2>
+        <p style="text-align: center; color: rgba(255, 255, 255, 0.8); font-size: 1.8rem; margin-bottom: 40px;">
+            様々な業界で、ブランドの世界観を最大限に表現
+        </p>
+        <div class="horizontal-container">
+            <a href="samples/beauty-salon/index-rich.html" class="horizontal-item" style="text-decoration: none; color: inherit;">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=800&fit=crop" alt="美容院リッチ版">
+                <div class="horizontal-item-content">
+                    <span class="horizontal-item-category">BEAUTY</span>
+                    <h3 class="horizontal-item-title">Hair Salon LUXE - Rich</h3>
+                    <p class="horizontal-item-desc">GSAPアニメーションで魅せる高級美容院のLP</p>
+                </div>
+            </a>
+            <a href="samples/restaurant/index-rich.html" class="horizontal-item" style="text-decoration: none; color: inherit;">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=800&fit=crop" alt="レストランリッチ版">
+                <div class="horizontal-item-content">
+                    <span class="horizontal-item-category">RESTAURANT</span>
+                    <h3 class="horizontal-item-title">Italian Restaurant Dolce - Rich</h3>
+                    <p class="horizontal-item-desc">料理写真が動き出すような演出で食欲をそそるLP</p>
+                </div>
+            </a>
+            <a href="samples/ec-shop/index-rich.html" class="horizontal-item" style="text-decoration: none; color: inherit;">
+                <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&h=800&fit=crop" alt="ECサイトリッチ版">
+                <div class="horizontal-item-content">
+                    <span class="horizontal-item-category">E-COMMERCE</span>
+                    <h3 class="horizontal-item-title">健康サプリメント販売 - Rich</h3>
+                    <p class="horizontal-item-desc">商品の効果を視覚的に表現するアニメーションLP</p>
+                </div>
+            </a>
+            <a href="portfolio.html" class="horizontal-item" style="text-decoration: none; color: inherit;">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=800&fit=crop" alt="その他のサンプル">
+                <div class="horizontal-item-content">
+                    <span class="horizontal-item-category">MORE</span>
+                    <h3 class="horizontal-item-title">その他のサンプル</h3>
+                    <p class="horizontal-item-desc">さらに多くのリッチ版サンプルをご覧ください</p>
+                </div>
+            </a>
+            <a href="portfolio.html#rich" class="horizontal-item" style="text-decoration: none; color: inherit;">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=800&fit=crop" alt="すべてのサンプル">
+                <div class="horizontal-item-content">
+                    <span class="horizontal-item-category">ALL SAMPLES</span>
+                    <h3 class="horizontal-item-title">サンプル一覧</h3>
+                    <p class="horizontal-item-desc">リッチ版を含むすべての制作事例をご覧ください</p>
+                </div>
+            </a>
+        </div>
+        <div class="horizontal-nav">
+            <span class="horizontal-nav-dot active"></span>
+            <span class="horizontal-nav-dot"></span>
+            <span class="horizontal-nav-dot"></span>
+            <span class="horizontal-nav-dot"></span>
+            <span class="horizontal-nav-dot"></span>
+        </div>
+    </section>
+
+    <!-- SVGアニメーションセクション -->
+    <section class="svg-section">
+        <h2 class="section-title" style="text-align: center;">
+            <span>圧倒的なコストパフォーマンス</span>
+        </h2>
+        <div class="svg-container">
+            <div class="svg-card">
+                <div class="svg-number">¥50,000</div>
+                <div class="svg-label">初期費用</div>
+                <div class="svg-note">通常の制作費<br>30〜50万円から<br>大幅コストダウン</div>
+            </div>
+            <div class="svg-card">
+                <div class="svg-number">即日</div>
+                <div class="svg-label">最速納期</div>
+                <div class="svg-note">AI技術による<br>超高速制作で<br>ビジネスを加速</div>
+            </div>
+            <div class="svg-card">
+                <div class="svg-number">低価格</div>
+                <div class="svg-label">コストパフォーマンス</div>
+                <div class="svg-note">AI技術を活用し<br>高品質を<br>手頃な価格で</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTAセクション -->
+    <section class="footer" style="background: #000; padding: 100px 20px; text-align: center;">
+        <h2 class="footer-title">準備はいいですか？</h2>
+        <p style="font-size: 1.6rem; margin: 24px auto; opacity: 0.9; max-width: 600px; line-height: 1.8; color: #fff;">
+            リッチプラン初期費用 ¥50,000（税込）で、<br>
+            プロ級のGSAPアニメーションサイトを最速即日で
+        </p>
+        <a href="contact.html" class="footer-cta">お問い合わせはこちら</a>
+    </section>
+    
+    <!-- フッター -->
+    <footer class="footer" style="background: #111; padding: 60px 20px 40px;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <div class="footer-content" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 40px;">
+                <div class="footer-section">
+                    <h4 style="font-size: 2rem; margin-bottom: 16px; color: #fff;">LP制作サービス</h4>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.8;">AI技術を活用した高速・高品質な<br>ランディングページ制作サービス</p>
+                    <p style="margin-top: 12px; font-size: 1.2rem; opacity: 0.8; color: rgba(255,255,255,0.6);">🤖 AI Powered Development</p>
+                </div>
+                <div class="footer-section">
+                    <h4 style="font-size: 1.6rem; margin-bottom: 16px; color: #fff;">サービス</h4>
+                    <div class="footer-links" style="display: flex; flex-direction: column; gap: 12px;">
+                        <a href="service.html" class="footer-link" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">サービス詳細</a>
+                        <a href="pricing.html" class="footer-link" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">料金プラン</a>
+                        <a href="portfolio.html" class="footer-link" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">サンプルサイト</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 style="font-size: 1.6rem; margin-bottom: 16px; color: #fff;">お問い合わせ</h4>
+                    <div class="footer-links" style="display: flex; flex-direction: column; gap: 12px;">
+                        <a href="contact.html" class="footer-link" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">お問い合わせフォーム</a>
+                        <a href="faq.html" class="footer-link" style="color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s;">よくある質問</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" style="text-align: center; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="color: rgba(255,255,255,0.6);">&copy; 2025 LP制作サービス. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+    <script>
+        // GSAPプラグインを登録
+        gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
+
+        // ローディングアニメーション
+        window.addEventListener('load', () => {
+            const tl = gsap.timeline();
+            
+            tl.to('.loader-text', {
+                scale: 1.2,
+                duration: 0.5,
+                ease: 'power2.inOut',
+                repeat: 2,
+                yoyo: true
+            })
+            .to('.loader', {
+                yPercent: -100,
+                duration: 1,
+                ease: 'power4.inOut'
+            })
+            .from('.hero-title span', {
+                y: 100,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.1,
+                ease: 'power4.out'
+            }, '-=0.5')
+            .to('.hero-subtitle', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power2.out'
+            }, '-=0.5')
+            .to('.scroll-indicator', {
+                opacity: 1,
+                duration: 1
+            });
+        });
+
+        // プログレスバー
+        gsap.to('.progress-bar-fill', {
+            width: '100%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: 'body',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: true
+            }
+        });
+
+        // パララックス効果
+        gsap.to('.parallax-bg', {
+            yPercent: 30,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.parallax-section',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+
+        // セクションタイトルアニメーション
+        gsap.utils.toArray('.section-title span').forEach(span => {
+            gsap.from(span, {
+                y: 100,
+                opacity: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: span,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // パララックステキストアニメーション
+        gsap.to('.parallax-text', {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            scrollTrigger: {
+                trigger: '.parallax-text',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+
+        // テキストハイライトアニメーション
+        gsap.utils.toArray('.highlight').forEach(highlight => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: highlight,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+            
+            tl.fromTo(highlight, 
+                { backgroundImage: 'linear-gradient(to right, #ff6b6b 0%, #ff6b6b 0%, transparent 0%)' },
+                { 
+                    backgroundImage: 'linear-gradient(to right, #ff6b6b 0%, #ff6b6b 100%, transparent 100%)',
+                    duration: 1
+                }
+            );
+        });
+
+        // カードアニメーション
+        gsap.utils.toArray('.card').forEach((card, i) => {
+            gsap.to(card, {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                delay: i * 0.2,
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // 横スクロール
+        const horizontalSection = document.querySelector('.horizontal-section');
+        const horizontalContainer = document.querySelector('.horizontal-container');
+        const items = gsap.utils.toArray('.horizontal-item');
+        const navDots = gsap.utils.toArray('.horizontal-nav-dot');
+
+        let mm = gsap.matchMedia();
+        
+        mm.add("(min-width: 769px)", () => {
+            const scrollTween = gsap.to(items, {
+                xPercent: -100 * (items.length - 1),
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: horizontalSection,
+                    pin: true,
+                    scrub: 1,
+                    snap: 1 / (items.length - 1),
+                    end: () => '+=' + horizontalContainer.offsetWidth,
+                    onUpdate: self => {
+                        const progress = self.progress;
+                        const currentIndex = Math.round(progress * (items.length - 1));
+                        navDots.forEach((dot, i) => {
+                            dot.classList.toggle('active', i === currentIndex);
+                        });
+                    }
+                }
+            });
+            
+            // ナビゲーションドットのクリックイベント
+            navDots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    const progress = i / (items.length - 1);
+                    gsap.to(window, {
+                        scrollTo: {
+                            y: scrollTween.scrollTrigger.start + (scrollTween.scrollTrigger.end - scrollTween.scrollTrigger.start) * progress
+                        },
+                        duration: 1,
+                        ease: 'power2.inOut'
+                    });
+                });
+            });
+        });
+
+        // SVGカードアニメーション
+        gsap.utils.toArray('.svg-card').forEach((card, i) => {
+            gsap.from(card, {
+                y: 60,
+                opacity: 0,
+                duration: 1,
+                delay: i * 0.2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+            
+            // 数字のアニメーション
+            const number = card.querySelector('.svg-number');
+            gsap.from(number, {
+                scale: 0.5,
+                opacity: 0,
+                duration: 0.8,
+                delay: 0.3 + i * 0.2,
+                ease: 'back.out(1.7)',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // フッターアニメーション
+        gsap.to('.footer-title', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            scrollTrigger: {
+                trigger: '.footer',
+                start: 'top 80%'
+            }
+        });
+
+        gsap.to('.footer p', {
+            opacity: 0.8,
+            y: 0,
+            duration: 1,
+            delay: 0.2,
+            scrollTrigger: {
+                trigger: '.footer',
+                start: 'top 80%'
+            }
+        });
+
+        gsap.to('.footer-cta', {
+            scale: 1,
+            duration: 1,
+            delay: 0.4,
+            ease: 'elastic.out(1, 0.3)',
+            scrollTrigger: {
+                trigger: '.footer',
+                start: 'top 70%'
+            }
+        });
+
+        // マウス追従エフェクト
+        let mouseX = 0;
+        let mouseY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX / window.innerWidth - 0.5;
+            mouseY = e.clientY / window.innerHeight - 0.5;
+        });
+
+        gsap.ticker.add(() => {
+            gsap.to('.hero-bg img', {
+                x: mouseX * 30,
+                y: mouseY * 30,
+                duration: 1,
+                ease: 'power2.out'
+            });
+        });
+
+        // スクロールインジケーターアニメーション
+        gsap.to('.scroll-indicator', {
+            y: 10,
+            duration: 1,
+            repeat: -1,
+            yoyo: true,
+            ease: 'power1.inOut'
+        });
+        
+        // モバイルメニューのトグル
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        if (mobileMenuBtn && mobileNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileNav.classList.toggle('active');
+            });
+            
+            // モバイルメニューのリンクをクリックしたら閉じる
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>

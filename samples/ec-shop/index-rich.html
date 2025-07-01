@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURORA - 自然派オーガニックコスメ</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #7B9E87;
+            --secondary-color: #F4E4D4;
+            --accent-color: #E8B4B8;
+            --text-dark: #2C3E35;
+            --text-light: #6B7B71;
+            --bg-light: #FDFBF7;
+            --gold: #D4A574;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--bg-light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: "palt";
+        }
+
+        /* ローディング画面 */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--bg-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-flower {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .petal {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: var(--accent-color);
+            border-radius: 50% 0;
+            left: 50%;
+            top: 50%;
+            transform-origin: 0 0;
+            opacity: 0.8;
+        }
+
+        .petal:nth-child(1) { transform: rotate(0deg) translateX(20px); }
+        .petal:nth-child(2) { transform: rotate(60deg) translateX(20px); }
+        .petal:nth-child(3) { transform: rotate(120deg) translateX(20px); }
+        .petal:nth-child(4) { transform: rotate(180deg) translateX(20px); }
+        .petal:nth-child(5) { transform: rotate(240deg) translateX(20px); }
+        .petal:nth-child(6) { transform: rotate(300deg) translateX(20px); }
+
+        .loader-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 28px;
+            color: var(--primary-color);
+            letter-spacing: 8px;
+        }
+
+        /* ナビゲーション */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(253, 251, 247, 0);
+            backdrop-filter: blur(0);
+            z-index: 1000;
+            transition: all 0.3s;
+            padding: 30px 0;
+        }
+
+        .nav.scrolled {
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            padding: 20px 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Text', serif;
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--primary-color);
+            letter-spacing: 3px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 50px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--bg-light) 100%);
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 20% 50%, var(--primary-color) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--accent-color) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, var(--gold) 0%, transparent 50%);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-title {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+        }
+
+        .hero-title-accent {
+            color: var(--primary-color);
+            display: block;
+            margin-top: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+
+        .hero-feature-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .hero-cta {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 50px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(123, 158, 135, 0.3);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-product {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .hero-product-main {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+        }
+
+        .floating-leaf {
+            position: absolute;
+            opacity: 0.8;
+        }
+
+        .floating-leaf-1 {
+            top: -50px;
+            right: -30px;
+            width: 100px;
+            transform: rotate(-15deg);
+        }
+
+        .floating-leaf-2 {
+            bottom: -40px;
+            left: -40px;
+            width: 80px;
+            transform: rotate(45deg);
+        }
+
+        /* 哲学セクション */
+        .philosophy {
+            padding: 150px 0;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 400;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--primary-color);
+            letter-spacing: 3px;
+            margin-bottom: 60px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        .philosophy-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-top: 80px;
+        }
+
+        .philosophy-item {
+            text-align: center;
+            padding: 40px;
+            background: var(--bg-light);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .philosophy-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 20px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s;
+        }
+
+        .philosophy-item:hover::before {
+            opacity: 0.1;
+        }
+
+        .philosophy-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .philosophy-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .philosophy-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        /* 商品紹介セクション */
+        .products {
+            padding: 150px 0;
+            background: var(--secondary-color);
+            position: relative;
+        }
+
+        .products-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .products-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .product-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+            margin-bottom: 150px;
+        }
+
+        .product-showcase:nth-child(even) {
+            direction: rtl;
+        }
+
+        .product-showcase:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .product-image-wrapper {
+            position: relative;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            display: block;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+            transform: scale(1);
+            transition: transform 0.8s;
+        }
+
+        .product-number {
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            font-family: 'Crimson Text', serif;
+            font-size: 180px;
+            color: var(--primary-color);
+            opacity: 0.1;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .product-info {
+            padding: 40px;
+        }
+
+        .product-category {
+            font-size: 14px;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+
+        .product-name {
+            font-family: 'Crimson Text', serif;
+            font-size: 36px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .product-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .product-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .product-feature-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: white;
+            color: var(--primary-color);
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .product-price {
+            font-size: 32px;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .product-price-sub {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 400;
+            margin-left: 10px;
+        }
+
+        /* 使用方法セクション */
+        .how-to-use {
+            padding: 150px 0;
+            background: white;
+            position: relative;
+        }
+
+        .how-to-use-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .how-to-use-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            position: relative;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: var(--bg-light);
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 auto 30px;
+        }
+
+        .step-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .step-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+
+        .step-line {
+            position: absolute;
+            top: 60px;
+            left: 100%;
+            width: calc(100% - 80px);
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) 50%, transparent 50%);
+            background-size: 20px 2px;
+            z-index: -1;
+        }
+
+        .step-card:last-child .step-line {
+            display: none;
+        }
+
+        /* お客様の声セクション */
+        .testimonials {
+            padding: 150px 0;
+            background: var(--bg-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s;
+            border: 1px solid rgba(123, 158, 135, 0.1);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-quote {
+            font-size: 60px;
+            color: var(--accent-color);
+            line-height: 1;
+            margin-bottom: 20px;
+            font-family: 'Crimson Text', serif;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .testimonial-age {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .testimonial-rating {
+            margin-left: auto;
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        /* CTAセクション */
+        .cta {
+            padding: 150px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #5A7A66 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20c-11.046 0-20 8.954-20 20s8.954 20 20 20 20-8.954 20-20c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20c11.046 0 20-8.954 20-20s-8.954-20-20-20-20 8.954-20 20z' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 100px 100px;
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 60px;
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .cta-title {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 30px;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .cta-description {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* アニメーション要素 */
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .rotate-animation {
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* スクロールアニメーション用 */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                text-align: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .philosophy-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .product-showcase {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .product-showcase:nth-child(even) {
+                direction: ltr;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .step-line {
+                display: none;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ローディング画面 -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-flower rotate-animation">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+            </div>
+            <p class="loader-text">AURORA</p>
+        </div>
+    </div>
+
+    <!-- ナビゲーション -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">AURORA</div>
+            <ul class="nav-menu">
+                <li><a href="#philosophy">PHILOSOPHY</a></li>
+                <li><a href="#products">PRODUCTS</a></li>
+                <li><a href="#how-to-use">HOW TO USE</a></li>
+                <li><a href="#testimonials">VOICE</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">100% ORGANIC COSMETICS</span>
+                <h1 class="hero-title">
+                    植物の力で、<br>
+                    <span class="hero-title-accent">本来の美しさへ</span>
+                </h1>
+                <p class="hero-subtitle">
+                    北欧の大自然から生まれた、<br>
+                    肌にも地球にもやさしいオーガニックコスメ
+                </p>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">✓</div>
+                        <span>100%天然由来</span>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">✓</div>
+                        <span>動物実験なし</span>
+                    </div>
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">✓</div>
+                        <span>サステナブル</span>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#products" class="btn btn-primary">商品を見る</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-product float-animation">
+                    <img src="https://images.unsplash.com/photo-1556228852-80b6e5eeff06?w=800&h=800&fit=crop" alt="AURORA製品" class="hero-product-main">
+                    <img src="https://images.unsplash.com/photo-1556228841-a5c1784ae6f1?w=200&h=200&fit=crop" alt="葉" class="floating-leaf floating-leaf-1">
+                    <img src="https://images.unsplash.com/photo-1556228841-fde1b8f489ab?w=200&h=200&fit=crop" alt="葉" class="floating-leaf floating-leaf-2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 哲学セクション -->
+    <section class="philosophy" id="philosophy">
+        <div class="philosophy-container">
+            <h2 class="section-title fade-up">AURORAの哲学</h2>
+            <p class="section-subtitle fade-up">OUR PHILOSOPHY</p>
+            <div class="philosophy-content">
+                <div class="philosophy-item fade-up">
+                    <div class="philosophy-icon">🌿</div>
+                    <h3 class="philosophy-title">自然との調和</h3>
+                    <p class="philosophy-text">
+                        北欧の手つかずの大自然から<br>
+                        厳選した植物成分のみを使用。<br>
+                        肌本来の力を引き出します。
+                    </p>
+                </div>
+                <div class="philosophy-item fade-up">
+                    <div class="philosophy-icon">🌍</div>
+                    <h3 class="philosophy-title">地球への責任</h3>
+                    <p class="philosophy-text">
+                        サステナブルな原料調達と<br>
+                        環境に配慮したパッケージで<br>
+                        美しい地球を次世代へ。
+                    </p>
+                </div>
+                <div class="philosophy-item fade-up">
+                    <div class="philosophy-icon">✨</div>
+                    <h3 class="philosophy-title">透明性の約束</h3>
+                    <p class="philosophy-text">
+                        全成分を公開し、<br>
+                        製造過程も透明化。<br>
+                        安心してお使いいただけます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 商品紹介セクション -->
+    <section class="products" id="products">
+        <div class="products-container">
+            <div class="products-header">
+                <h2 class="section-title fade-up">製品ラインナップ</h2>
+                <p class="section-subtitle fade-up">PRODUCT LINEUP</p>
+            </div>
+            
+            <div class="product-showcase fade-up">
+                <div class="product-image-wrapper">
+                    <span class="product-number">01</span>
+                    <img src="https://images.unsplash.com/photo-1556228720-da4c5f67c101?w=800&h=800&fit=crop" alt="クレンジングオイル" class="product-image">
+                </div>
+                <div class="product-info">
+                    <p class="product-category">CLEANSING OIL</p>
+                    <h3 class="product-name">ピュア クレンジングオイル</h3>
+                    <p class="product-description">
+                        オーガニックアルガンオイルとホホバオイルをベースに、
+                        メイクや毛穴の汚れをやさしく落とします。
+                        洗い上がりはしっとりと潤い、つっぱり感ゼロ。
+                    </p>
+                    <div class="product-features">
+                        <span class="product-feature-tag">アルガンオイル配合</span>
+                        <span class="product-feature-tag">W洗顔不要</span>
+                        <span class="product-feature-tag">敏感肌OK</span>
+                    </div>
+                    <p class="product-price">
+                        ¥4,800
+                        <span class="product-price-sub">税込 / 150ml</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="product-showcase fade-up">
+                <div class="product-image-wrapper">
+                    <span class="product-number">02</span>
+                    <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800&h=800&fit=crop" alt="化粧水" class="product-image">
+                </div>
+                <div class="product-info">
+                    <p class="product-category">TONER</p>
+                    <h3 class="product-name">バランシング トナー</h3>
+                    <p class="product-description">
+                        ローズウォーターとアロエベラエキスが
+                        肌のpHバランスを整え、次のスキンケアの浸透を高めます。
+                        みずみずしい使用感で、肌に透明感を与えます。
+                    </p>
+                    <div class="product-features">
+                        <span class="product-feature-tag">ローズウォーター</span>
+                        <span class="product-feature-tag">アルコールフリー</span>
+                        <span class="product-feature-tag">弱酸性</span>
+                    </div>
+                    <p class="product-price">
+                        ¥3,800
+                        <span class="product-price-sub">税込 / 200ml</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="product-showcase fade-up">
+                <div class="product-image-wrapper">
+                    <span class="product-number">03</span>
+                    <img src="https://images.unsplash.com/photo-1556228841-fd248a4f4b60?w=800&h=800&fit=crop" alt="美容液" class="product-image">
+                </div>
+                <div class="product-info">
+                    <p class="product-category">SERUM</p>
+                    <h3 class="product-name">リジェネレーティング セラム</h3>
+                    <p class="product-description">
+                        植物幹細胞エキスと天然ペプチドが
+                        肌の再生力を高め、ハリと弾力をもたらします。
+                        年齢肌のお悩みに、確かな手応えを。
+                    </p>
+                    <div class="product-features">
+                        <span class="product-feature-tag">植物幹細胞</span>
+                        <span class="product-feature-tag">エイジングケア</span>
+                        <span class="product-feature-tag">高濃度美容液</span>
+                    </div>
+                    <p class="product-price">
+                        ¥8,800
+                        <span class="product-price-sub">税込 / 30ml</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用方法セクション -->
+    <section class="how-to-use" id="how-to-use">
+        <div class="how-to-use-container">
+            <div class="how-to-use-header">
+                <h2 class="section-title fade-up">ご使用方法</h2>
+                <p class="section-subtitle fade-up">HOW TO USE</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-card fade-up">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">🧴</div>
+                    <h3 class="step-title">クレンジング</h3>
+                    <p class="step-description">
+                        適量を手に取り、顔全体に優しくなじませてメイクを落とします
+                    </p>
+                    <div class="step-line"></div>
+                </div>
+                <div class="step-card fade-up">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">💧</div>
+                    <h3 class="step-title">トーニング</h3>
+                    <p class="step-description">
+                        コットンまたは手のひらに取り、肌全体になじませます
+                    </p>
+                    <div class="step-line"></div>
+                </div>
+                <div class="step-card fade-up">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">✨</div>
+                    <h3 class="step-title">セラム</h3>
+                    <p class="step-description">
+                        2〜3滴を手に取り、顔と首に優しくプレスするようになじませます
+                    </p>
+                    <div class="step-line"></div>
+                </div>
+                <div class="step-card fade-up">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">🌙</div>
+                    <h3 class="step-title">保湿</h3>
+                    <p class="step-description">
+                        最後にクリームで潤いを閉じ込めて完了です
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声セクション -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-container">
+            <div class="testimonials-header">
+                <h2 class="section-title fade-up">お客様の声</h2>
+                <p class="section-subtitle fade-up">CUSTOMER VOICE</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-up">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">
+                        敏感肌の私でも安心して使えます。
+                        使い始めて3ヶ月、肌の調子が本当に良くなりました。
+                        自然な香りにも癒されています。
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop" alt="お客様">
+                        </div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">田中 美咲 様</p>
+                            <p class="testimonial-age">32歳 / 敏感肌</p>
+                        </div>
+                        <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-up">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">
+                        オーガニックコスメは効果が薄いと思っていましたが、
+                        AURORAは違いました。肌にハリが出て、
+                        くすみも改善されました。
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&h=100&fit=crop" alt="お客様">
+                        </div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">佐藤 由美子 様</p>
+                            <p class="testimonial-age">45歳 / 混合肌</p>
+                        </div>
+                        <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-up">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">
+                        環境に配慮した製品を探していて出会いました。
+                        品質も素晴らしく、罪悪感なく美容を楽しめます。
+                        友人にもすすめています。
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop" alt="お客様">
+                        </div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">鈴木 恵理 様</p>
+                            <p class="testimonial-age">28歳 / 普通肌</p>
+                        </div>
+                        <div class="testimonial-rating">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTAセクション -->
+    <section class="cta">
+        <div class="cta-bg-pattern"></div>
+        <div class="cta-container">
+            <span class="cta-badge">SPECIAL OFFER</span>
+            <h2 class="cta-title">
+                今なら初回限定<br>
+                トライアルセットが30%OFF
+            </h2>
+            <p class="cta-description">
+                AURORAの基本3点セット（クレンジング・トナー・セラム）を
+                特別価格でお試しいただけます。
+                この機会に、本物のオーガニックコスメをご体験ください。
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-white">トライアルセットを購入</a>
+                <a href="#" class="btn btn-outline">カタログをダウンロード</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        // GSAPプラグインを登録
+        gsap.registerPlugin(ScrollTrigger);
+
+        // ローディングアニメーション
+        window.addEventListener('load', () => {
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    document.querySelector('.loader').style.display = 'none';
+                }
+            });
+            
+            tl.to('.petal', {
+                scale: 1.2,
+                opacity: 1,
+                duration: 0.6,
+                stagger: 0.1,
+                ease: 'power2.out'
+            })
+            .to('.loader-text', {
+                opacity: 1,
+                y: -10,
+                duration: 0.8
+            }, '-=0.4')
+            .to('.loader', {
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power2.inOut'
+            }, '+=0.5')
+            .from('.nav', {
+                y: -100,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out'
+            }, '-=0.5')
+            .to('.hero-badge', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8
+            }, '-=0.8')
+            .from('.hero-title', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: 'power3.out'
+            }, '-=0.6')
+            .to('.hero-subtitle', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8
+            }, '-=0.6')
+            .to('.hero-features', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8
+            }, '-=0.5')
+            .to('.hero-cta', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8
+            }, '-=0.5')
+            .from('.hero-product-main', {
+                scale: 0.8,
+                opacity: 0,
+                duration: 1.2,
+                ease: 'power2.out'
+            }, '-=1')
+            .from('.floating-leaf', {
+                scale: 0,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: 'back.out(1.7)'
+            }, '-=0.6');
+
+            // フローティングアニメーション
+            gsap.to('.floating-leaf-1', {
+                y: -30,
+                rotation: 20,
+                duration: 4,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut'
+            });
+
+            gsap.to('.floating-leaf-2', {
+                y: 20,
+                rotation: -15,
+                duration: 5,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut'
+            });
+        });
+
+        // ナビゲーションスクロール
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // スクロールアニメーション
+        gsap.utils.toArray('.fade-up').forEach(element => {
+            gsap.to(element, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // 哲学アイテムのホバーアニメーション
+        document.querySelectorAll('.philosophy-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                gsap.to(item.querySelector('.philosophy-icon'), {
+                    scale: 1.1,
+                    rotation: 10,
+                    duration: 0.3
+                });
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                gsap.to(item.querySelector('.philosophy-icon'), {
+                    scale: 1,
+                    rotation: 0,
+                    duration: 0.3
+                });
+            });
+        });
+
+        // 商品画像のパララックス効果
+        gsap.utils.toArray('.product-image').forEach(image => {
+            gsap.to(image, {
+                yPercent: -20,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: image,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+        });
+
+        // ステップカードの順番アニメーション
+        gsap.utils.toArray('.step-card').forEach((card, i) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                delay: i * 0.2,
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%'
+                }
+            });
+        });
+
+        // お客様の声カードのアニメーション
+        gsap.utils.toArray('.testimonial-card').forEach((card, i) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 50,
+                rotation: i % 2 === 0 ? -5 : 5,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%'
+                }
+            });
+        });
+
+        // CTAセクションのアニメーション
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.cta',
+                start: 'top 80%'
+            }
+        })
+        .to('.cta-badge', {
+            opacity: 1,
+            y: 0,
+            duration: 0.6
+        })
+        .to('.cta-title', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8
+        }, '-=0.4')
+        .to('.cta-description', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8
+        }, '-=0.6')
+        .to('.cta-buttons', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8
+        }, '-=0.6');
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, {
+                        duration: 1,
+                        scrollTo: {
+                            y: target,
+                            offsetY: 80
+                        },
+                        ease: 'power3.inOut'
+                    });
+                }
+            });
+        });
+
+        // 背景パターンのアニメーション
+        gsap.to('.hero-bg-pattern', {
+            backgroundPosition: '100px 100px',
+            duration: 20,
+            repeat: -1,
+            ease: 'none'
+        });
+
+        gsap.to('.cta-bg-pattern', {
+            backgroundPosition: '-100px -100px',
+            duration: 30,
+            repeat: -1,
+            ease: 'none'
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>納品後のサイト公開ガイド | LP制作サービス</title>
+    <meta name="description" content="納品されたファイルを使ってWebサイトを公開する方法を詳しく解説します。ドメイン取得からサーバー設定まで、初心者でも分かりやすくご案内。">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .guide-hero {
+            background: linear-gradient(135deg, #F0F9FF 0%, #EBF4FF 100%);
+            padding: 120px 0 80px;
+            margin-top: var(--header-height);
+        }
+        
+        .guide-intro {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+        
+        .guide-steps {
+            display: grid;
+            gap: 60px;
+            margin: 60px 0;
+        }
+        
+        .guide-step {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step-title {
+            flex: 1;
+        }
+        
+        .option-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+        
+        .option-card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 24px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .option-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .option-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-left: auto;
+        }
+        
+        .difficulty-easy {
+            background: #DCFCE7;
+            color: #16A34A;
+        }
+        
+        .difficulty-medium {
+            background: #FEF3C7;
+            color: #D97706;
+        }
+        
+        .difficulty-hard {
+            background: #FEE2E2;
+            color: #DC2626;
+        }
+        
+        .service-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .service-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #E5E7EB;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .price {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .warning-box {
+            background: #FEF3C7;
+            border: 2px solid #F59E0B;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 30px 0;
+        }
+        
+        .warning-box h4 {
+            color: #D97706;
+            margin-bottom: 12px;
+        }
+        
+        .info-box {
+            background: #E0F2FE;
+            border: 2px solid #0284C7;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 30px 0;
+        }
+        
+        .info-box h4 {
+            color: #0369A1;
+            margin-bottom: 12px;
+        }
+        
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: var(--bg-light);
+        }
+        
+        .faq-toggle {
+            font-size: 2rem;
+            line-height: 1;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 24px 20px;
+            max-height: 500px;
+        }
+        
+        @media (max-width: 768px) {
+            .guide-step {
+                padding: 24px 20px;
+            }
+            
+            .step-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .option-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">LP制作サービス</a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">サンプルサイト</a>
+                <a href="deployment-guide.html" class="nav-link">公開ガイド</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">サンプルサイト</a>
+            <a href="deployment-guide.html" class="mobile-nav-link">公開ガイド</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+
+    <section class="guide-hero">
+        <div class="container">
+            <h1 class="text-center">納品後のサイト公開ガイド</h1>
+            <p class="text-center" style="font-size: 2rem; color: var(--text-light); margin-top: 16px;">
+                納品されたファイルを使って、実際にWebサイトを公開する方法をご案内します
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="guide-intro">
+                <h2>納品ファイルについて</h2>
+                <p>納品時には、以下のファイルが含まれたZIPファイルをお渡しします：</p>
+                <ul style="text-align: left; margin-top: 20px;">
+                    <li>• HTML ファイル（index.html など）</li>
+                    <li>• CSS ファイル（スタイルシート）</li>
+                    <li>• JavaScript ファイル（動的機能）</li>
+                    <li>• 画像素材（images フォルダ）</li>
+                    <li>• 設置マニュアル（README.txt）</li>
+                </ul>
+            </div>
+
+            <div class="guide-steps">
+                <div class="guide-step">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <div class="step-title">
+                            <h3>ドメインを取得する</h3>
+                            <p style="color: var(--text-light);">あなたのサイトのアドレス（URL）を決めます</p>
+                        </div>
+                    </div>
+                    
+                    <p>ドメインとは「example.com」のようなWebサイトのアドレスです。以下のサービスで取得できます：</p>
+                    
+                    <ul class="service-list">
+                        <li>
+                            <div>
+                                <strong>お名前.com</strong>
+                                <span style="color: var(--text-light); margin-left: 12px;">国内最大級のドメイン登録サービス</span>
+                            </div>
+                            <span class="price">年額 1,000円〜</span>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>ムームードメイン</strong>
+                                <span style="color: var(--text-light); margin-left: 12px;">初心者に優しい管理画面</span>
+                            </div>
+                            <span class="price">年額 1,200円〜</span>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>バリュードメイン</strong>
+                                <span style="color: var(--text-light); margin-left: 12px;">豊富な種類のドメイン</span>
+                            </div>
+                            <span class="price">年額 1,000円〜</span>
+                        </li>
+                    </ul>
+
+                    <div class="info-box">
+                        <h4>💡 ドメイン選びのポイント</h4>
+                        <p>• 短くて覚えやすい名前を選ぶ<br>
+                        • ビジネス名やサービス名を含める<br>
+                        • .com / .jp / .net などの一般的な拡張子がおすすめ</p>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <div class="step-title">
+                            <h3>サーバーを選ぶ</h3>
+                            <p style="color: var(--text-light);">ファイルを置いて公開する場所を用意します</p>
+                        </div>
+                    </div>
+                    
+                    <p>Webサーバーは、あなたのサイトのファイルを保管し、インターネット上で公開する場所です。目的や技術レベルに応じて選びましょう。</p>
+                    
+                    <div class="option-cards">
+                        <div class="option-card">
+                            <h4>
+                                🌟 レンタルサーバー
+                                <span class="difficulty difficulty-easy">初心者向け</span>
+                            </h4>
+                            <p>管理画面から簡単にファイルをアップロードできます。サポートも充実。</p>
+                            <ul style="margin-top: 16px;">
+                                <li>• <strong>エックスサーバー</strong> - 月額990円〜</li>
+                                <li>• <strong>ロリポップ</strong> - 月額220円〜</li>
+                                <li>• <strong>さくらインターネット</strong> - 月額524円〜</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="option-card">
+                            <h4>
+                                📦 WordPress運用代行
+                                <span class="difficulty difficulty-easy">初心者向け</span>
+                            </h4>
+                            <p>ココナラなどで、サーバー設定からファイルアップロードまで代行してもらえます。</p>
+                            <ul style="margin-top: 16px;">
+                                <li>• 設定代行費用：5,000円〜20,000円</li>
+                                <li>• 月額運用費：3,000円〜10,000円</li>
+                                <li>• 更新作業も依頼可能</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="option-card">
+                            <h4>
+                                ☁️ クラウドサービス
+                                <span class="difficulty difficulty-medium">中級者向け</span>
+                            </h4>
+                            <p>無料〜低価格で始められ、アクセス数に応じて拡張可能。</p>
+                            <ul style="margin-top: 16px;">
+                                <li>• <strong>Netlify</strong> - 無料〜</li>
+                                <li>• <strong>Vercel</strong> - 無料〜</li>
+                                <li>• <strong>GitHub Pages</strong> - 無料</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ ご注意</h4>
+                        <p>当サービスでは、ドメイン取得やサーバー契約の代行、運用管理は承っておりません。<br>
+                        上記のサービスをご自身でご契約いただくか、運用代行サービスのご利用をご検討ください。</p>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <div class="step-title">
+                            <h3>ファイルをアップロードする</h3>
+                            <p style="color: var(--text-light);">納品ファイルをサーバーに設置します</p>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin-bottom: 20px;">レンタルサーバーの場合</h4>
+                    <ol style="line-height: 2;">
+                        <li>1. サーバーの管理画面にログイン</li>
+                        <li>2. ファイルマネージャーを開く</li>
+                        <li>3. public_html（またはwww）フォルダを開く</li>
+                        <li>4. 納品されたファイルをすべてアップロード</li>
+                        <li>5. ドメインの設定を行う</li>
+                    </ol>
+                    
+                    <h4 style="margin: 30px 0 20px;">運用代行サービスの場合</h4>
+                    <ol style="line-height: 2;">
+                        <li>1. ココナラ等で「LP設置代行」「サイト公開代行」を検索</li>
+                        <li>2. 評価の高い出品者を選択</li>
+                        <li>3. 納品ファイルと希望ドメインを伝える</li>
+                        <li>4. 代行業者がすべて設定</li>
+                    </ol>
+
+                    <div class="info-box">
+                        <h4>📁 納品ファイルの構成</h4>
+                        <pre style="background: #F3F4F6; padding: 16px; border-radius: 8px; margin-top: 12px; overflow-x: auto;">
+your-site/
+├── index.html（トップページ）
+├── css/
+│   ├── style.css
+│   └── responsive.css
+├── js/
+│   └── main.js
+├── images/
+│   └── （画像ファイル）
+└── README.txt（設置マニュアル）</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--bg-light);">
+        <div class="container">
+            <h2 class="text-center">よくある質問</h2>
+            
+            <div class="faq-section">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>自分でサーバーにアップロードするのは難しいですか？</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>レンタルサーバーのファイルマネージャーを使えば、ドラッグ&ドロップで簡単にアップロードできます。多くのサーバーには詳しいマニュアルも用意されています。不安な場合は、ココナラなどで設置代行サービス（5,000円程度〜）を利用するのがおすすめです。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>公開後の更新や修正はどうすればいいですか？</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>HTMLファイルをテキストエディタで編集し、再度サーバーにアップロードすることで更新できます。当サービスでは更新作業も承っています（修正料金：20,000円〜）。また、定期的な更新が必要な場合は、WordPress化や運用代行サービスの利用もご検討ください。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>無料でサイトを公開する方法はありますか？</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>GitHub Pages、Netlify、Vercelなどの無料サービスを利用できます。ただし、これらは一定の技術知識が必要です。また、独自ドメインを使用する場合は、ドメイン代（年額1,000円程度〜）は別途必要になります。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>SSL証明書（https）の設定は必要ですか？</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい、セキュリティとSEOの観点から必須です。多くのレンタルサーバーでは無料のSSL証明書（Let's Encrypt）を簡単に設定できます。管理画面から数クリックで設定可能です。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>メールアドレスも作成できますか？</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>独自ドメインを取得し、レンタルサーバーを契約すれば、info@あなたのドメイン.com のようなメールアドレスを作成できます。多くのレンタルサーバーでは無制限にメールアドレスを作成可能です。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LP制作サービス</h4>
+                    <p>AI技術を活用した高速・高品質な<br>ランディングページ制作サービス</p>
+                    <p style="margin-top: 12px; font-size: 1.2rem; opacity: 0.8;">🤖 AI Powered Development</p>
+                </div>
+                <div class="footer-section">
+                    <h4>サービス</h4>
+                    <div class="footer-links">
+                        <a href="service.html" class="footer-link">サービス詳細</a>
+                        <a href="pricing.html" class="footer-link">料金プラン</a>
+                        <a href="portfolio.html" class="footer-link">サンプルサイト</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>お問い合わせ</h4>
+                    <div class="footer-links">
+                        <a href="contact.html" class="footer-link">お問い合わせフォーム</a>
+                        <a href="faq.html" class="footer-link">よくある質問</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LP制作サービス. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>料金プラン | LP制作サービス</title>
+    <meta name="description" content="LP制作サービスの料金プランをご紹介。初期制作費用20,000円から。修正対応や追加オプションも柔軟に対応いたします。">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .pricing-hero {
+            background: linear-gradient(135deg, #EBF4FF 0%, #F0F9FF 100%);
+            padding: 120px 0 80px;
+            margin-top: var(--header-height);
+        }
+        
+        .pricing-table {
+            background-color: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin: 40px 0;
+        }
+        
+        .pricing-table table {
+            width: 100%;
+        }
+        
+        .pricing-table th,
+        .pricing-table td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .pricing-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: 700;
+        }
+        
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .pricing-note {
+            background-color: #FEF3C7;
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+        
+        .option-card {
+            background-color: var(--bg-light);
+            padding: 32px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .option-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .faq-section {
+            margin: 60px 0;
+        }
+        
+        .faq-item {
+            background-color: var(--white);
+            margin-bottom: 16px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: var(--bg-light);
+        }
+        
+        .faq-answer {
+            padding: 0 20px 20px;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .faq-toggle {
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">LP制作サービス</a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">サンプルサイト</a>
+                <a href="deployment-guide.html" class="nav-link">公開ガイド</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">サンプルサイト</a>
+            <a href="deployment-guide.html" class="mobile-nav-link">公開ガイド</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+
+    <section class="pricing-hero">
+        <div class="container">
+            <h1 class="text-center">料金プラン</h1>
+            <p class="text-center" style="font-size: 2rem; color: var(--text-light); margin-top: 16px;">
+                明確な料金体系で安心してご依頼いただけます
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>基本料金</h2>
+            
+            <div class="pricing-table">
+                <table>
+                    <tr>
+                        <th style="width: 30%;">項目</th>
+                        <th style="width: 25%;">料金</th>
+                        <th style="width: 45%;">内容</th>
+                    </tr>
+                    <tr>
+                        <td><strong>基本プラン</strong></td>
+                        <td><span style="color: var(--primary-color); font-size: 2.4rem; font-weight: 700;">¥20,000</span></td>
+                        <td>
+                            <ul style="margin: 0;">
+                                <li>オリジナルデザイン制作</li>
+                                <li>レスポンシブ対応（PC/タブレット/スマートフォン）</li>
+                                <li>基本的なSEO対策</li>
+                                <li>お問い合わせフォーム設置</li>
+                                <li>納期：最速即日〜</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>リッチ版プラン</strong></td>
+                        <td><span style="color: var(--primary-color); font-size: 2.4rem; font-weight: 700;">¥50,000</span></td>
+                        <td>
+                            <ul style="margin: 0;">
+                                <li>GSAP高度アニメーション</li>
+                                <li>パララックス効果</li>
+                                <li>インタラクティブ要素</li>
+                                <li>プレミアムデザイン</li>
+                                <li>納期：最速即日〜</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3 style="margin-top: 60px;">修正対応料金（制作期間中）</h3>
+            <div class="pricing-table">
+                <table>
+                    <tr>
+                        <th>修正回数</th>
+                        <th>料金</th>
+                        <th>備考</th>
+                    </tr>
+                    <tr>
+                        <td>1回目</td>
+                        <td>¥10,000</td>
+                        <td>軽微な修正（テキスト変更、画像差し替えなど）</td>
+                    </tr>
+                    <tr>
+                        <td>2〜3回目</td>
+                        <td>¥10,000</td>
+                        <td>基本料金と同額</td>
+                    </tr>
+                    <tr>
+                        <td>4〜5回目</td>
+                        <td>¥15,000</td>
+                        <td>2回増えるごとに+¥5,000</td>
+                    </tr>
+                    <tr>
+                        <td>6回目以降</td>
+                        <td>¥20,000〜</td>
+                        <td>修正内容により別途見積もり</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="pricing-note">
+                <strong>ご注意：</strong>大幅なデザイン変更や機能追加など、修正要望が多い場合は別途お見積もりとなる場合があります。<br>
+                ※上記は制作期間中の修正料金です。納品後の修正は「制作完了後の追加修正」料金（¥20,000〜）が適用されます。
+            </div>
+
+            <h2 style="margin-top: 80px;">別途必要な費用（お客様ご自身でのご契約）</h2>
+            
+            <div class="pricing-note" style="background-color: #E0F2FE; border-left-color: var(--primary-color); margin-bottom: 40px;">
+                <strong>ご注意：</strong>以下の費用はLP制作費とは別に必要となります。詳しくは<a href="deployment-guide.html" style="color: var(--primary-color); text-decoration: underline;">公開ガイド</a>をご参照ください。
+            </div>
+            
+            <div class="option-grid">
+                <div class="option-card">
+                    <h3>ドメイン費用</h3>
+                    <p style="color: var(--primary-color); font-size: 2rem; font-weight: 700; margin: 16px 0;">年額 ¥1,000〜</p>
+                    <ul style="font-size: 1.4rem;">
+                        <li>お名前.com</li>
+                        <li>ムームードメイン</li>
+                        <li>バリュードメイン等</li>
+                        <li style="color: #DC2626; margin-top: 8px;">※当サービスでは取得代行は行っておりません</li>
+                    </ul>
+                </div>
+                
+                <div class="option-card">
+                    <h3>サーバー費用</h3>
+                    <p style="color: var(--primary-color); font-size: 2rem; font-weight: 700; margin: 16px 0;">月額 ¥220〜</p>
+                    <ul style="font-size: 1.4rem;">
+                        <li>エックスサーバー（月額990円〜）</li>
+                        <li>ロリポップ（月額220円〜）</li>
+                        <li>さくらインターネット（月額524円〜）</li>
+                        <li style="color: #DC2626; margin-top: 8px;">※当サービスでは契約代行は行っておりません</li>
+                    </ul>
+                </div>
+                
+                <div class="option-card">
+                    <h3>追加ページ制作</h3>
+                    <p style="color: var(--primary-color); font-size: 2rem; font-weight: 700; margin: 16px 0;">¥8,000〜/ページ</p>
+                    <ul style="font-size: 1.4rem;">
+                        <li>プライバシーポリシー</li>
+                        <li>特定商取引法ページ</li>
+                        <li>その他追加ページ</li>
+                    </ul>
+                </div>
+                
+                <div class="option-card">
+                    <h3>多言語対応</h3>
+                    <p style="color: var(--primary-color); font-size: 2rem; font-weight: 700; margin: 16px 0;">¥15,000〜/言語</p>
+                    <ul style="font-size: 1.4rem;">
+                        <li>英語、中国語など</li>
+                        <li>言語切り替え機能</li>
+                        <li>翻訳は別途</li>
+                    </ul>
+                </div>
+                
+                <div class="option-card">
+                    <h3>制作完了後の追加修正</h3>
+                    <p style="color: var(--primary-color); font-size: 2rem; font-weight: 700; margin: 16px 0;">¥20,000〜</p>
+                    <ul style="font-size: 1.4rem;">
+                        <li>新規セクション追加</li>
+                        <li>大幅なデザイン変更</li>
+                        <li>機能追加</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2>よくあるご質問</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>制作期間はどのくらいかかりますか？</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>通常、ご発注から約2週間で納品いたします。ただし、修正回数や内容により前後する場合があります。お急ぎの場合は別途ご相談ください。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>支払い方法を教えてください</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>銀行振込をお願いしております。着手時に50%、納品時に残り50%のお支払いとなります。詳細はお問い合わせ時にご案内いたします。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>キャンセルは可能ですか？</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>制作着手前であればキャンセル可能です。着手後のキャンセルは、進行状況に応じて料金が発生する場合があります。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>納品後のサポートはありますか？</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>納品後1週間は無料で軽微な修正に対応いたします。それ以降の修正は修正対応料金表に基づいて対応させていただきます。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>サンプルサイトを見ることはできますか？</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい、<a href="portfolio.html" style="color: var(--primary-color);">サンプルサイトページ</a>でサンプルをご覧いただけます。実際の制作事例については、お問い合わせ時に詳しくご紹介いたします。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--bg-light);">
+        <div class="container text-center">
+            <h2>お見積もりは無料です</h2>
+            <p>まずはお気軽にご相談ください。お客様のご要望に合わせて最適なプランをご提案いたします。</p>
+            <a href="contact.html" class="btn btn-primary" style="margin-top: 32px;">無料でお見積もり</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LP制作サービス</h4>
+                    <p>AI技術を活用した高速・高品質な<br>ランディングページ制作サービス</p>
+                    <p style="margin-top: 12px; font-size: 1.2rem; opacity: 0.8;">🤖 AI Powered Development</p>
+                </div>
+                <div class="footer-section">
+                    <h4>サービス</h4>
+                    <div class="footer-links">
+                        <a href="service.html" class="footer-link">サービス詳細</a>
+                        <a href="pricing.html" class="footer-link">料金プラン</a>
+                        <a href="portfolio.html" class="footer-link">サンプルサイト</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>お問い合わせ</h4>
+                    <div class="footer-links">
+                        <a href="contact.html" class="footer-link">お問い合わせフォーム</a>
+                        <a href="faq.html" class="footer-link">よくある質問</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LP制作サービス. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

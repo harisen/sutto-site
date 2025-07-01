@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サービス詳細 | LP制作サービス</title>
+    <meta name="description" content="LP制作サービスの詳細をご紹介。高品質なランディングページ制作で、あなたのビジネスの成果を最大化します。">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .service-hero {
+            background: linear-gradient(135deg, #EBF4FF 0%, #F0F9FF 100%);
+            padding: 120px 0 80px;
+            margin-top: var(--header-height);
+        }
+        
+        .service-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin: 60px 0;
+        }
+        
+        .service-image {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        .process-timeline {
+            position: relative;
+            margin: 60px 0;
+        }
+        
+        .process-item {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .process-content {
+            flex: 1;
+            padding-top: 8px;
+        }
+        
+        .process-item:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            bottom: -60px;
+            width: 2px;
+            background-color: #E5E7EB;
+            z-index: 1;
+        }
+        
+        .benefit-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin: 40px 0;
+        }
+        
+        .benefit-card {
+            background-color: var(--bg-light);
+            padding: 32px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .benefit-icon {
+            font-size: 3.2rem;
+            margin-bottom: 16px;
+        }
+        
+        @media (max-width: 767px) {
+            .service-intro {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-item {
+                gap: 24px;
+            }
+            
+            .process-number {
+                width: 48px;
+                height: 48px;
+                font-size: 2rem;
+            }
+            
+            .process-item:not(:last-child)::before {
+                left: 24px;
+                top: 48px;
+                bottom: -60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">LP制作サービス</a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">サンプルサイト</a>
+                <a href="deployment-guide.html" class="nav-link">公開ガイド</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">サンプルサイト</a>
+            <a href="deployment-guide.html" class="mobile-nav-link">公開ガイド</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+
+    <section class="service-hero">
+        <div class="container">
+            <h1 class="text-center">サービス詳細</h1>
+            <p class="text-center" style="font-size: 2rem; color: var(--text-light); margin-top: 16px;">
+                成果を出すLP制作で、ビジネスの成長をサポート
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="service-intro">
+                <div>
+                    <h2>なぜランディングページが必要なのか</h2>
+                    <p>ランディングページ（LP）は、特定の目的に特化した1ページ完結型のWebページです。訪問者を確実にコンバージョン（購入・お問い合わせなど）へ導くことに特化しており、通常のWebサイトよりも高い成果が期待できます。</p>
+                    <ul style="margin-top: 24px;">
+                        <li style="margin-bottom: 12px;">✓ 通常のWebサイトよりも<strong>2〜3倍高いコンバージョン率</strong></li>
+                        <li style="margin-bottom: 12px;">✓ 商品・サービスの魅力を<strong>効果的に伝える</strong></li>
+                        <li style="margin-bottom: 12px;">✓ 広告との連携で<strong>ROIを最大化</strong></li>
+                        <li style="margin-bottom: 12px;">✓ A/Bテストで<strong>継続的な改善が可能</strong></li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="LP制作の重要性" class="service-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--bg-light);">
+        <div class="container">
+            <h2 class="text-center">提供サービス</h2>
+            <p class="text-center" style="margin-bottom: 40px;">お客様のビジネスに最適なLPを制作いたします</p>
+            
+            <div class="benefit-cards">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>ターゲット分析</h3>
+                    <p>お客様のターゲット層を詳細に分析し、心に響くメッセージとデザインを設計します。</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎨</div>
+                    <h3>オリジナルデザイン</h3>
+                    <p>ブランドイメージに合わせた、他社と差別化できるオリジナルデザインを制作します。</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h3>レスポンシブ対応</h3>
+                    <p>PC、タブレット、スマートフォンすべてのデバイスで最適な表示を実現します。</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>高速表示</h3>
+                    <p>ページの読み込み速度を最適化し、離脱率を最小限に抑えます。</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔍</div>
+                    <h3>SEO対策</h3>
+                    <p>検索エンジンに評価されやすい構造で、集客力の高いLPを制作します。</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>分析ツール設置</h3>
+                    <p>Google Analyticsなどの分析ツールを設置し、効果測定を可能にします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section" style="background-color: #FFF3CD; padding: 60px 0;">
+        <div class="container">
+            <h2 class="text-center" style="color: #856404;">制作できない機能について</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="background: white; padding: 32px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-top: 32px;">
+                    <p style="margin-bottom: 24px; color: #856404;"><strong>当サービスは静的なLP（HTML/CSS/JavaScript）の制作に特化しています。</strong><br>以下のようなバックエンド処理が必要な機能は実装できません。</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 32px;">
+                        <div>
+                            <h4 style="color: #DC3545; margin-bottom: 12px;">❌ 制作できない機能</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 8px;">・決済システムの導入</li>
+                                <li style="margin-bottom: 8px;">・会員登録・ログイン機能</li>
+                                <li style="margin-bottom: 8px;">・データベース連携</li>
+                                <li style="margin-bottom: 8px;">・在庫管理システム</li>
+                                <li style="margin-bottom: 8px;">・予約管理システム</li>
+                                <li style="margin-bottom: 8px;">・自動返信メール</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 style="color: #28A745; margin-bottom: 12px;">✅ 代替案で対応可能</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 8px;">・Formspreeでのフォーム送信</li>
+                                <li style="margin-bottom: 8px;">・外部予約サイトへのリンク</li>
+                                <li style="margin-bottom: 8px;">・銀行振込の案内表示</li>
+                                <li style="margin-bottom: 8px;">・静的な商品カタログ</li>
+                                <li style="margin-bottom: 8px;">・PDFダウンロード</li>
+                                <li style="margin-bottom: 8px;">・電話・メールでの受付</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <p style="background: #F8F9FA; padding: 16px; border-radius: 4px; margin: 0;">
+                        <strong>💡 ご注意</strong><br>
+                        フォームのデザインは作成可能ですが、実際の送信処理には外部サービス（Formspree等）のご契約が必要です。
+                        詳しくはお問い合わせ時にご相談ください。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container text-center">
+            <h2>LP制作のご相談はお気軽に</h2>
+            <p>お客様のビジネスに最適なLPをご提案します。</p>
+            <a href="contact.html" class="btn btn-primary" style="margin-top: 32px;">お問い合わせはこちら</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LP制作サービス</h4>
+                    <p>AI技術を活用した高速・高品質な<br>ランディングページ制作サービス</p>
+                    <p style="margin-top: 12px; font-size: 1.2rem; opacity: 0.8;">🤖 AI Powered Development</p>
+                </div>
+                <div class="footer-section">
+                    <h4>サービス</h4>
+                    <div class="footer-links">
+                        <a href="service.html" class="footer-link">サービス詳細</a>
+                        <a href="pricing.html" class="footer-link">料金プラン</a>
+                        <a href="portfolio.html" class="footer-link">サンプルサイト</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>お問い合わせ</h4>
+                    <div class="footer-links">
+                        <a href="contact.html" class="footer-link">お問い合わせフォーム</a>
+                        <a href="faq.html" class="footer-link">よくある質問</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LP制作サービス. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

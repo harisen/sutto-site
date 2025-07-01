@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サンプルサイト | LP制作サービス</title>
+    <meta name="description" content="LP制作サービスのサンプルサイトをご紹介。美容院、飲食店、ECサイト、イベント、士業など様々な業界のランディングページのサンプルをご覧いただけます。">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .portfolio-hero {
+            background: linear-gradient(135deg, #EBF4FF 0%, #F0F9FF 100%);
+            padding: 120px 0 80px;
+            margin-top: var(--header-height);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 24px;
+            border: 2px solid #E5E7EB;
+            background-color: var(--white);
+            border-radius: 24px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+        
+        .portfolio-item {
+            background-color: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .portfolio-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-content {
+            padding: 24px;
+        }
+        
+        .portfolio-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 4px;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        
+        .portfolio-meta {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #E5E7EB;
+            font-size: 1.4rem;
+            color: var(--text-light);
+        }
+        
+        .portfolio-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .portfolio-tag-rich {
+            border: 2px solid #FFD700;
+        }
+        
+        .demo-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .cta-section {
+            background-color: var(--bg-light);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-box {
+            background-color: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        @media (max-width: 767px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-buttons {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding: 0 20px;
+                margin: 40px -20px;
+            }
+            
+            .cta-box {
+                padding: 40px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">LP制作サービス</a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">サンプルサイト</a>
+                <a href="deployment-guide.html" class="nav-link">公開ガイド</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">サンプルサイト</a>
+            <a href="deployment-guide.html" class="mobile-nav-link">公開ガイド</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+
+    <section class="portfolio-hero">
+        <div class="container">
+            <h1 class="text-center">サンプルサイト</h1>
+            <p class="text-center" style="font-size: 2rem; color: var(--text-light); margin-top: 16px;">
+                様々な業界のLPサンプルをご紹介します
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">すべて</button>
+                <button class="filter-btn" data-filter="beauty">美容・健康</button>
+                <button class="filter-btn" data-filter="food">飲食</button>
+                <button class="filter-btn" data-filter="ec">健康食品</button>
+                <button class="filter-btn" data-filter="event">イベント</button>
+                <button class="filter-btn" data-filter="professional">士業・専門職</button>
+                <button class="filter-btn" data-filter="rich">リッチ版</button>
+            </div>
+
+            <div class="portfolio-grid" id="portfolioGrid">
+                <a href="samples/beauty-salon/index.html" class="portfolio-item" data-category="beauty">
+                    <span class="demo-badge">サンプル</span>
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop" alt="美容院LP" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">美容院</span>
+                        <h3>Hair Salon LUXE</h3>
+                        <p>新規顧客獲得を目的とした高級美容院のLP。ビフォーアフター写真とスタッフ紹介で信頼感を演出。</p>
+                        <div class="portfolio-meta">
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="1" fill="currentColor"/>
+                                </svg>
+                                <span>新規顧客獲得</span>
+                            </div>
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <rect x="4" y="2" width="8" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle cx="8" cy="11" r="0.5" fill="currentColor"/>
+                                </svg>
+                                <span>レスポンシブ対応</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="samples/restaurant/index.html" class="portfolio-item" data-category="food">
+                    <span class="demo-badge">サンプル</span>
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop" alt="飲食店LP" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">飲食店</span>
+                        <h3>Italian Restaurant Dolce</h3>
+                        <p>予約促進を目的とした本格イタリアンレストランのLP。料理写真と店内の雰囲気で来店意欲を向上。</p>
+                        <div class="portfolio-meta">
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="1" fill="currentColor"/>
+                                </svg>
+                                <span>予約促進</span>
+                            </div>
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <rect x="2" y="4" width="12" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle cx="8" cy="8" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle cx="11" cy="5.5" r="0.5" fill="currentColor"/>
+                                </svg>
+                                <span>写真重視</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="samples/ec-shop/index.html" class="portfolio-item" data-category="ec">
+                    <span class="demo-badge">サンプル</span>
+                    <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=300&fit=crop" alt="健康食品LP" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">健康食品</span>
+                        <h3>健康サプリメント販売</h3>
+                        <p>商品購入を促進する健康サプリメントのLP。科学的根拠とお客様の声で信頼性を向上。</p>
+                        <div class="portfolio-meta">
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="1" fill="currentColor"/>
+                                </svg>
+                                <span>商品販売</span>
+                            </div>
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M3.5 2C3.5 1.44772 3.94772 1 4.5 1H6.5C6.77614 1 7.05357 1.10536 7.23223 1.31623L8.5 3H12C12.5523 3 13 3.44772 13 4V11C13 11.5523 12.5523 12 12 12H4.5C3.94772 12 3.5 11.5523 3.5 11V2Z" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                                <span>電話注文</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="samples/event/index.html" class="portfolio-item" data-category="event">
+                    <span class="demo-badge">サンプル</span>
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=300&fit=crop" alt="イベントLP" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">イベント</span>
+                        <h3>ビジネスセミナー2025</h3>
+                        <p>参加申込を促進するビジネスセミナーのLP。講師紹介とプログラム内容で参加意欲を向上。</p>
+                        <div class="portfolio-meta">
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="1" fill="currentColor"/>
+                                </svg>
+                                <span>参加者募集</span>
+                            </div>
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M8 5V8L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                <span>カウントダウン</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="samples/professional/index.html" class="portfolio-item" data-category="professional">
+                    <span class="demo-badge">サンプル</span>
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=400&h=300&fit=crop" alt="士業LP" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">士業</span>
+                        <h3>相続専門弁護士事務所</h3>
+                        <p>相談申込を促進する弁護士事務所のLP。解決事例で問い合わせを促進。</p>
+                        <div class="portfolio-meta">
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="1" fill="currentColor"/>
+                                </svg>
+                                <span>相談獲得</span>
+                            </div>
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <rect x="4" y="7" width="8" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M6 7V5C6 3.89543 6.89543 3 8 3C9.10457 3 10 3.89543 10 5V7" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle cx="8" cy="10" r="0.5" fill="currentColor"/>
+                                </svg>
+                                <span>信頼性重視</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="samples/fitness/index.html" class="portfolio-item" data-category="beauty">
+                    <span class="demo-badge">サンプル</span>
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=300&fit=crop" alt="フィットネスLP" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">フィットネス</span>
+                        <h3>Personal Training GYM</h3>
+                        <p>体験申込を促進するパーソナルジムのLP。トレーナー紹介と成功事例で入会意欲を向上。</p>
+                        <div class="portfolio-meta">
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="1" fill="currentColor"/>
+                                </svg>
+                                <span>体験申込</span>
+                            </div>
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M11 8C11 8 13 6.5 13 5C13 3.5 12 2.5 11 2.5C10 2.5 9 3.5 9 5C9 6.5 11 8 11 8ZM11 8V13.5M11 13.5C11 14.3284 10.3284 15 9.5 15H7.5C6.67157 15 6 14.3284 6 13.5M11 13.5C11 14.3284 11.6716 15 12.5 15H14.5C15.3284 15 16 14.3284 16 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M5 8C5 8 3 6.5 3 5C3 3.5 4 2.5 5 2.5C6 2.5 7 3.5 7 5C7 6.5 5 8 5 8ZM5 8V13.5M5 13.5C5 14.3284 4.32843 15 3.5 15H1.5C0.671573 15 0 14.3284 0 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Before/After</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="samples/cosmetics/index.html" class="portfolio-item" data-category="ec">
+                    <span class="demo-badge">サンプル</span>
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=300&fit=crop" alt="化粧品LP" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">化粧品</span>
+                        <h3>Natural Cosmetics</h3>
+                        <p>定期購入を促進する自然派化粧品のLP。成分説明と使用感レビューで購買意欲を向上。</p>
+                        <div class="portfolio-meta">
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="1" fill="currentColor"/>
+                                </svg>
+                                <span>定期購入</span>
+                            </div>
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 1C8 1 6 3 6 5C6 6 6.5 7 7 7.5V14.5C7 14.7761 7.22386 15 7.5 15H8.5C8.77614 15 9 14.7761 9 14.5V7.5C9.5 7 10 6 10 5C10 3 8 1 8 1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3 6C3 6 2 7 2 8C2 8.5 2.5 9 3 9H6M13 6C13 6 14 7 14 8C14 8.5 13.5 9 13 9H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>成分訴求</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="samples/tax-office/index.html" class="portfolio-item" data-category="professional">
+                    <span class="demo-badge">サンプル</span>
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop" alt="税理士LP" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">税理士</span>
+                        <h3>確定申告サポート</h3>
+                        <p>確定申告の相談を促進する税理士事務所のLP。料金明瞭化と実績紹介で信頼性を向上。</p>
+                        <div class="portfolio-meta">
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="1" fill="currentColor"/>
+                                </svg>
+                                <span>相談獲得</span>
+                            </div>
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M8 5V11M6 7H10M6 9H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                <span>料金明瞭</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="samples/wedding/index.html" class="portfolio-item" data-category="event">
+                    <span class="demo-badge">サンプル</span>
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop" alt="ウェディングLP" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">ウェディング</span>
+                        <h3>Wedding Fair 2025</h3>
+                        <p>ブライダルフェア参加を促進する結婚式場のLP。会場写真と特典で来場意欲を向上。</p>
+                        <div class="portfolio-meta">
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                    <circle cx="8" cy="8" r="1" fill="currentColor"/>
+                                </svg>
+                                <span>来場促進</span>
+                            </div>
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="5" cy="5" r="3" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle cx="11" cy="5" r="3" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M5 8C3 8 1.5 9.5 1.5 11.5C1.5 13.5 3 15 5 15H11C13 15 14.5 13.5 14.5 11.5C14.5 9.5 13 8 11 8" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                                <span>特典訴求</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="samples/beauty-salon/index-rich.html" class="portfolio-item portfolio-tag-rich" data-category="beauty">
+                    <span class="demo-badge" style="background-color: #FFD700; color: #000;">リッチ版</span>
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop" alt="美容院LP リッチ版" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">美容院</span>
+                        <h3>Hair Salon LUXE - Rich</h3>
+                        <p>GSAPアニメーションで魅せる高級美容院のLP。スクロール連動の演出とインタラクティブな要素で訪問者を魅了。</p>
+                        <div class="portfolio-meta">
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 1L9.98 5.06L14.5 5.84L11.25 9L12.05 13.5L8 11.39L3.95 13.5L4.75 9L1.5 5.84L6.02 5.06L8 1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                                </svg>
+                                <span>GSAPアニメーション</span>
+                            </div>
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <rect x="4" y="2" width="8" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle cx="8" cy="11" r="0.5" fill="currentColor"/>
+                                </svg>
+                                <span>パララックス効果</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="samples/restaurant/index-rich.html" class="portfolio-item portfolio-tag-rich" data-category="food">
+                    <span class="demo-badge" style="background-color: #FFD700; color: #000;">リッチ版</span>
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop" alt="飲食店LP リッチ版" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">飲食店</span>
+                        <h3>Italian Restaurant Dolce - Rich</h3>
+                        <p>料理写真が動き出すような演出で食欲をそそるLP。マウスの動きに反応する要素で没入感を演出。</p>
+                        <div class="portfolio-meta">
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 1L9.98 5.06L14.5 5.84L11.25 9L12.05 13.5L8 11.39L3.95 13.5L4.75 9L1.5 5.84L6.02 5.06L8 1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                                </svg>
+                                <span>GSAPアニメーション</span>
+                            </div>
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle cx="8" cy="8" r="2" fill="currentColor"/>
+                                </svg>
+                                <span>マウスインタラクション</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="samples/ec-shop/index-rich.html" class="portfolio-item portfolio-tag-rich" data-category="ec">
+                    <span class="demo-badge" style="background-color: #FFD700; color: #000;">リッチ版</span>
+                    <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=300&fit=crop" alt="健康食品LP リッチ版" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">健康食品</span>
+                        <h3>健康サプリメント販売 - Rich</h3>
+                        <p>商品の効果を視覚的に表現するアニメーションLP。スクロールで展開するストーリーで購買意欲を向上。</p>
+                        <div class="portfolio-meta">
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 1L9.98 5.06L14.5 5.84L11.25 9L12.05 13.5L8 11.39L3.95 13.5L4.75 9L1.5 5.84L6.02 5.06L8 1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                                </svg>
+                                <span>GSAPアニメーション</span>
+                            </div>
+                            <div class="portfolio-meta-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M2 8H14M8 2V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                <span>スクロールトリガー</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>あなたのビジネスに最適なLPを制作します</h2>
+                <p style="margin: 24px 0;">
+                    ここでご紹介したのは制作可能なLPの一例です。<br>
+                    お客様のビジネスに合わせて、オーダーメイドのLPを制作いたします。
+                </p>
+                <p style="margin-bottom: 32px;">
+                    あなたのビジネスの課題や目標をお聞かせください。
+                </p>
+                <a href="contact.html" class="btn btn-primary">お問い合わせはこちら</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LP制作サービス</h4>
+                    <p>AI技術を活用した高速・高品質な<br>ランディングページ制作サービス</p>
+                    <p style="margin-top: 12px; font-size: 1.2rem; opacity: 0.8;">🤖 AI Powered Development</p>
+                </div>
+                <div class="footer-section">
+                    <h4>サービス</h4>
+                    <div class="footer-links">
+                        <a href="service.html" class="footer-link">サービス詳細</a>
+                        <a href="pricing.html" class="footer-link">料金プラン</a>
+                        <a href="portfolio.html" class="footer-link">サンプルサイト</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>お問い合わせ</h4>
+                    <div class="footer-links">
+                        <a href="contact.html" class="footer-link">お問い合わせフォーム</a>
+                        <a href="faq.html" class="footer-link">よくある質問</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LP制作サービス. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Portfolio Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                const filterValue = this.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all') {
+                        item.style.display = 'block';
+                    } else if (filterValue === 'rich') {
+                        // Show only rich version items
+                        if (item.classList.contains('portfolio-tag-rich')) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    } else if (item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

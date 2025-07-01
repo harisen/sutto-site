@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Lumière - 極上のフレンチダイニング</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+            background: #0a0a0a;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* カスタムカーソル */
+        .cursor {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #D4AF37;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.2s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: #D4AF37;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor.hover {
+            transform: translate(-50%, -50%) scale(1.5);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* ローディング画面 */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 60px;
+            font-weight: 300;
+            color: #D4AF37;
+            letter-spacing: 10px;
+            overflow: hidden;
+        }
+
+        .loader-text span {
+            display: inline-block;
+        }
+
+        .loader-line {
+            width: 200px;
+            height: 1px;
+            background: #D4AF37;
+            margin: 30px auto 0;
+            transform-origin: left;
+        }
+
+        /* ヘッダー */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            z-index: 1000;
+            transition: all 0.6s ease;
+            padding: 30px 0;
+        }
+
+        .header.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 400;
+            color: #D4AF37;
+            letter-spacing: 2px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 50px;
+            list-style: none;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            position: relative;
+            transition: color 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #D4AF37;
+            transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .nav a:hover {
+            color: #D4AF37;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .reservation-header-btn {
+            background: transparent;
+            color: #D4AF37;
+            padding: 12px 35px;
+            border: 1px solid #D4AF37;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reservation-header-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #D4AF37;
+            transition: left 0.5s;
+            z-index: -1;
+        }
+
+        .reservation-header-btn:hover {
+            color: #0a0a0a;
+        }
+
+        .reservation-header-btn:hover::before {
+            left: 0;
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #0a0a0a;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%) scale(1.1);
+            z-index: 1;
+            opacity: 0.6;
+            filter: brightness(0.7);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: #fff;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            letter-spacing: 5px;
+            color: #D4AF37;
+            margin-bottom: 20px;
+            opacity: 0;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 300;
+            line-height: 0.9;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .hero-title-main {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero-title-main span {
+            display: inline-block;
+        }
+
+        .hero-title-sub {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 400;
+            margin-top: 20px;
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero-title-sub span {
+            display: inline-block;
+        }
+
+        .hero-text {
+            font-size: 16px;
+            line-height: 2;
+            margin-bottom: 50px;
+            opacity: 0;
+            font-weight: 300;
+        }
+
+        /* フローティングメニュー */
+        .floating-menu {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .floating-menu-item {
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            margin: 20px 0;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .floating-menu-item.active {
+            background: #D4AF37;
+            border-color: #D4AF37;
+        }
+
+        .floating-menu-item:hover {
+            border-color: #D4AF37;
+        }
+
+        .floating-menu-item span {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #D4AF37;
+            letter-spacing: 1px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+
+        .floating-menu-item:hover span {
+            opacity: 1;
+        }
+
+        /* 料理哲学セクション */
+        .philosophy {
+            padding: 150px 0;
+            background: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .philosophy-content {
+            color: #fff;
+        }
+
+        .section-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #D4AF37;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 60px;
+            height: 1px;
+            background: #D4AF37;
+        }
+
+        .philosophy-text {
+            font-size: 16px;
+            line-height: 2.2;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .philosophy-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transform: scale(1.1);
+        }
+
+        .philosophy-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(212, 175, 55, 0.2);
+            mix-blend-mode: multiply;
+        }
+
+        /* シェフセクション */
+        .chef {
+            padding: 150px 0;
+            background: #fff;
+            position: relative;
+        }
+
+        .chef-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .chef-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chef-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .chef-content {
+            padding: 40px;
+        }
+
+        .chef-content .section-tag {
+            color: #D4AF37;
+        }
+
+        .chef-content .section-title {
+            color: #0a0a0a;
+        }
+
+        .chef-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .chef-role {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: #D4AF37;
+            margin-bottom: 30px;
+        }
+
+        .chef-bio {
+            font-size: 16px;
+            line-height: 2;
+            color: #666;
+        }
+
+        /* メニューセクション */
+        .menu {
+            padding: 150px 0;
+            background: #0a0a0a;
+            position: relative;
+        }
+
+        .menu-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 100px;
+            color: #fff;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px;
+        }
+
+        .menu-category {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .menu-category-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: #D4AF37;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 25px;
+            position: relative;
+            cursor: pointer;
+            padding: 10px 0;
+            transition: all 0.3s;
+        }
+
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #D4AF37;
+            transition: width 0.5s;
+        }
+
+        .menu-item:hover::after {
+            width: 100%;
+        }
+
+        .menu-item-name {
+            font-size: 18px;
+            color: #fff;
+            font-weight: 400;
+        }
+
+        .menu-item-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            color: #D4AF37;
+            font-weight: 300;
+        }
+
+        .menu-item-description {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .menu-item:hover .menu-item-description {
+            opacity: 1;
+            bottom: -25px;
+        }
+
+        /* ギャラリーセクション */
+        .gallery {
+            padding: 150px 0;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .gallery-wrapper {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .gallery-track {
+            display: flex;
+            gap: 30px;
+            position: absolute;
+            left: 0;
+        }
+
+        .gallery-item {
+            flex: 0 0 400px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            transform: translateY(100%);
+            transition: transform 0.5s;
+        }
+
+        .gallery-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .gallery-subtitle {
+            font-size: 14px;
+            color: #D4AF37;
+            letter-spacing: 1px;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* 予約セクション */
+        .reservation {
+            padding: 150px 0;
+            background: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.8)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&fit=crop') center/cover fixed;
+            position: relative;
+        }
+
+        .reservation-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .reservation-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .reservation-text {
+            font-size: 18px;
+            line-height: 2;
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .reservation-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .reservation-info-item {
+            text-align: center;
+        }
+
+        .reservation-info-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #D4AF37;
+            margin-bottom: 10px;
+        }
+
+        .reservation-info-value {
+            font-size: 20px;
+            font-weight: 300;
+        }
+
+        .reservation-btn {
+            background: #D4AF37;
+            color: #0a0a0a;
+            padding: 18px 60px;
+            text-decoration: none;
+            font-size: 16px;
+            letter-spacing: 2px;
+            font-weight: 500;
+            display: inline-block;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .reservation-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: #fff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s;
+        }
+
+        .reservation-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .reservation-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .reservation-btn:hover {
+            color: #D4AF37;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .cursor,
+            .cursor-dot {
+                display: none;
+            }
+
+            .header-inner {
+                padding: 0 20px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .floating-menu {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: clamp(2.5rem, 12vw, 4rem);
+            }
+
+            .philosophy-container,
+            .chef-container,
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .gallery-item {
+                flex: 0 0 300px;
+                height: 400px;
+            }
+
+            .reservation-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- カスタムカーソル -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- ローディング画面 -->
+    <div class="loader">
+        <div class="loader-content">
+            <h1 class="loader-text">
+                <span>L</span><span>U</span><span>M</span><span>I</span><span>È</span><span>R</span><span>E</span>
+            </h1>
+            <div class="loader-line"></div>
+        </div>
+    </div>
+
+    <!-- フローティングメニュー -->
+    <div class="floating-menu">
+        <a href="#hero" class="floating-menu-item active">
+            <span>TOP</span>
+        </a>
+        <a href="#philosophy" class="floating-menu-item">
+            <span>PHILOSOPHY</span>
+        </a>
+        <a href="#chef" class="floating-menu-item">
+            <span>CHEF</span>
+        </a>
+        <a href="#menu" class="floating-menu-item">
+            <span>MENU</span>
+        </a>
+        <a href="#gallery" class="floating-menu-item">
+            <span>GALLERY</span>
+        </a>
+        <a href="#reservation" class="floating-menu-item">
+            <span>RESERVATION</span>
+        </a>
+    </div>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">Lumière</div>
+            <nav class="nav">
+                <a href="#philosophy">PHILOSOPHY</a>
+                <a href="#chef">CHEF</a>
+                <a href="#menu">MENU</a>
+                <a href="#gallery">GALLERY</a>
+                <a href="#access">ACCESS</a>
+            </nav>
+            <a href="#reservation" class="reservation-header-btn">RESERVATION</a>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero" id="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://cdn.coverr.co/videos/coverr-chef-preparing-food-8376/1080p.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <p class="hero-subtitle">FRENCH FINE DINING</p>
+            <h1 class="hero-title">
+                <span class="hero-title-main">
+                    <span>L</span><span>u</span><span>m</span><span>i</span><span>è</span><span>r</span><span>e</span>
+                </span>
+                <span class="hero-title-sub">
+                    <span>極上の</span><span>美食体験</span>
+                </span>
+            </h1>
+            <p class="hero-text">
+                五感で愉しむ、至福のひととき<br>
+                季節の恵みと伝統技法が織りなす美食の世界へ
+            </p>
+        </div>
+    </section>
+
+    <!-- 料理哲学セクション -->
+    <section class="philosophy" id="philosophy">
+        <div class="philosophy-container">
+            <div class="philosophy-content">
+                <p class="section-tag">OUR PHILOSOPHY</p>
+                <h2 class="section-title">季節と対話する料理</h2>
+                <p class="philosophy-text">
+                    私たちは、四季折々の食材が持つ本来の味わいを
+                    最大限に引き出すことを信条としています。
+                </p>
+                <p class="philosophy-text">
+                    フランス料理の伝統技法を基盤に、
+                    日本の季節感や美意識を取り入れた
+                    独創的な一皿をお届けいたします。
+                </p>
+                <p class="philosophy-text">
+                    食材との対話、生産者への敬意、
+                    そしてお客様への想いを込めて、
+                    記憶に残る美食体験を創造します。
+                </p>
+            </div>
+            <div class="philosophy-image">
+                <img src="https://images.unsplash.com/photo-1604328727766-a151f908e04e?w=800&h=1000&fit=crop" alt="料理">
+                <div class="philosophy-image-overlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- シェフセクション -->
+    <section class="chef" id="chef">
+        <div class="chef-container">
+            <div class="chef-image">
+                <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=800&h=1000&fit=crop" alt="シェフ">
+            </div>
+            <div class="chef-content">
+                <p class="section-tag">OUR CHEF</p>
+                <h2 class="section-title">料理への情熱</h2>
+                <h3 class="chef-name">山田 太郎</h3>
+                <p class="chef-role">EXECUTIVE CHEF</p>
+                <p class="chef-bio">
+                    パリの名門レストランで10年の修業を積み、
+                    ミシュラン星付きレストランでスーシェフを務めた後、
+                    2018年にLumièreをオープン。
+                </p>
+                <p class="chef-bio">
+                    「料理は芸術であり、科学であり、愛情表現である」
+                    という信念のもと、お客様一人ひとりに
+                    特別な体験をお届けすることを使命としています。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- メニューセクション -->
+    <section class="menu" id="menu">
+        <div class="menu-container">
+            <div class="menu-header">
+                <p class="section-tag">OUR MENU</p>
+                <h2 class="section-title">季節のコース料理</h2>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-category">
+                    <h3 class="menu-category-title">Déjeuner</h3>
+                    <div class="menu-item">
+                        <span class="menu-item-name">季節のランチコース</span>
+                        <span class="menu-item-price">¥5,500</span>
+                        <span class="menu-item-description">前菜・スープ・メイン・デザート</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">シェフおまかせランチ</span>
+                        <span class="menu-item-price">¥8,800</span>
+                        <span class="menu-item-description">その日の最高の食材を使用した特別コース</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">プレミアムランチ</span>
+                        <span class="menu-item-price">¥12,000</span>
+                        <span class="menu-item-description">前菜2品・スープ・魚料理・肉料理・デザート</span>
+                    </div>
+                </div>
+                <div class="menu-category">
+                    <h3 class="menu-category-title">Dîner</h3>
+                    <div class="menu-item">
+                        <span class="menu-item-name">スタンダードディナー</span>
+                        <span class="menu-item-price">¥15,000</span>
+                        <span class="menu-item-description">アミューズ・前菜2品・魚料理・肉料理・デザート</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">デギュスタシオン</span>
+                        <span class="menu-item-price">¥22,000</span>
+                        <span class="menu-item-description">シェフ渾身の7品コース</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">グランメニュー</span>
+                        <span class="menu-item-price">¥35,000</span>
+                        <span class="menu-item-description">最高級食材を使用した10品の特別コース</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ギャラリーセクション -->
+    <section class="gallery" id="gallery">
+        <div class="gallery-container">
+            <div class="gallery-header">
+                <p class="section-tag">GALLERY</p>
+                <h2 class="section-title">美食の芸術</h2>
+            </div>
+            <div class="gallery-wrapper">
+                <div class="gallery-track">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=800&fit=crop" alt="料理1">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">オマール海老のポワレ</h3>
+                            <p class="gallery-subtitle">Homard Poêlé</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=800&fit=crop" alt="料理2">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">和牛フィレのロッシーニ</h3>
+                            <p class="gallery-subtitle">Filet de Bœuf Rossini</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&h=800&fit=crop" alt="料理3">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">季節のデザート</h3>
+                            <p class="gallery-subtitle">Dessert de Saison</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1604328727766-a151f908e04e?w=600&h=800&fit=crop" alt="料理4">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">前菜の盛り合わせ</h3>
+                            <p class="gallery-subtitle">Assortiment d'Entrées</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1626957706120-884e9e6ce3e1?w=600&h=800&fit=crop" alt="料理5">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">本日の鮮魚</h3>
+                            <p class="gallery-subtitle">Poisson du Jour</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約セクション -->
+    <section class="reservation" id="reservation">
+        <div class="reservation-container">
+            <h2 class="reservation-title">Réservation</h2>
+            <p class="reservation-text">
+                特別な日のお食事、大切な方とのひととき<br>
+                心を込めておもてなしいたします
+            </p>
+            <div class="reservation-info">
+                <div class="reservation-info-item">
+                    <p class="reservation-info-label">LUNCH</p>
+                    <p class="reservation-info-value">11:30 - 14:30<br>(L.O. 13:30)</p>
+                </div>
+                <div class="reservation-info-item">
+                    <p class="reservation-info-label">DINNER</p>
+                    <p class="reservation-info-value">17:30 - 22:00<br>(L.O. 20:30)</p>
+                </div>
+            </div>
+            <a href="#" class="reservation-btn">
+                <span>ご予約はこちら</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+    <script>
+        // GSAPプラグインを登録
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+        // カスタムカーソル
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button').forEach(element => {
+            element.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            element.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // ローディングアニメーション
+        window.addEventListener('load', () => {
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    document.querySelector('.loader').style.display = 'none';
+                }
+            });
+
+            // ローダーテキストアニメーション
+            tl.from('.loader-text span', {
+                y: 100,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.05,
+                ease: 'power3.out'
+            })
+            .to('.loader-line', {
+                scaleX: 1,
+                duration: 0.8,
+                ease: 'power2.inOut'
+            }, '-=0.4')
+            .to('.loader-text span', {
+                y: -100,
+                opacity: 0,
+                duration: 0.6,
+                stagger: 0.03,
+                ease: 'power3.in'
+            }, '+=0.5')
+            .to('.loader', {
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power2.inOut'
+            }, '-=0.3')
+            .from('.hero-video', {
+                scale: 1.3,
+                duration: 2,
+                ease: 'power2.out'
+            }, '-=0.8')
+            .to('.hero-subtitle', {
+                opacity: 1,
+                duration: 0.8
+            }, '-=1.5')
+            .from('.hero-title-main span', {
+                y: 120,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.05,
+                ease: 'power3.out'
+            }, '-=1')
+            .from('.hero-title-sub span', {
+                y: 80,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: 'power3.out'
+            }, '-=0.5')
+            .to('.hero-text', {
+                opacity: 1,
+                duration: 1
+            }, '-=0.5')
+            .from('.header', {
+                y: -100,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out'
+            }, '-=1')
+            .from('.floating-menu', {
+                x: 100,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out'
+            }, '-=0.8');
+        });
+
+        // ヘッダースクロール
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // フローティングメニュー
+        const sections = document.querySelectorAll('section[id]');
+        const menuItems = document.querySelectorAll('.floating-menu-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // パララックス効果
+        gsap.to('.hero-video', {
+            yPercent: 50,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+
+        // 料理哲学アニメーション
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.philosophy',
+                start: 'top 80%'
+            }
+        })
+        .from('.philosophy-content .section-tag', {
+            opacity: 0,
+            y: 20,
+            duration: 0.6
+        })
+        .from('.philosophy-content .section-title', {
+            opacity: 0,
+            y: 40,
+            duration: 0.8
+        }, '-=0.3')
+        .from('.philosophy-text', {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            stagger: 0.2
+        }, '-=0.4')
+        .from('.philosophy-image img', {
+            scale: 1.2,
+            duration: 1.5,
+            ease: 'power2.out'
+        }, '-=1');
+
+        // シェフセクションアニメーション
+        ScrollTrigger.create({
+            trigger: '.chef-image',
+            start: 'top 80%',
+            onEnter: () => {
+                gsap.from('.chef-image img', {
+                    x: -100,
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: 'power3.out'
+                });
+            }
+        });
+
+        // メニューアニメーション
+        gsap.utils.toArray('.menu-category').forEach((category, i) => {
+            gsap.to(category, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: i * 0.3,
+                scrollTrigger: {
+                    trigger: category,
+                    start: 'top 80%'
+                }
+            });
+        });
+
+        // ギャラリー横スクロール
+        const galleryTrack = document.querySelector('.gallery-track');
+        const galleryItems = gsap.utils.toArray('.gallery-item');
+
+        let galleryAnimation = gsap.to(galleryTrack, {
+            x: () => -(galleryTrack.scrollWidth - window.innerWidth + 120),
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.gallery',
+                start: 'top top',
+                end: () => '+=' + (galleryTrack.scrollWidth - window.innerWidth),
+                scrub: 1,
+                pin: true,
+                invalidateOnRefresh: true
+            }
+        });
+
+        // ギャラリーアイテムアニメーション
+        galleryItems.forEach((item, i) => {
+            gsap.from(item, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.8,
+                delay: i * 0.1,
+                scrollTrigger: {
+                    trigger: '.gallery',
+                    start: 'top 80%'
+                }
+            });
+        });
+
+        // 予約セクションアニメーション
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.reservation',
+                start: 'top 80%'
+            }
+        })
+        .to('.reservation-title', {
+            opacity: 1,
+            y: 0,
+            duration: 1
+        })
+        .to('.reservation-text', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8
+        }, '-=0.5')
+        .to('.reservation-info', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8
+        }, '-=0.4')
+        .to('.reservation-btn', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'back.out(1.7)'
+        }, '-=0.4');
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, {
+                        duration: 1.5,
+                        scrollTo: {
+                            y: target,
+                            offsetY: 0
+                        },
+                        ease: 'power3.inOut'
+                    });
+                }
+            });
+        });
+
+        // マウス視差効果
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth - 0.5;
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+
+            gsap.to('.philosophy-image img', {
+                x: mouseX * 30,
+                y: mouseY * 30,
+                duration: 1.5
+            });
+        });
+    </script>
+</body>
+</html>

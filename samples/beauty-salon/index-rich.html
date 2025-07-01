@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair Salon Lux - 贅沢な美髪体験を</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+            background: #fff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ローディング画面 */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .loader-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid rgba(198, 160, 124, 0.2);
+            border-radius: 50%;
+        }
+
+        .loader-circle-active {
+            border-color: transparent;
+            border-top-color: #C6A07C;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ヘッダー */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #C6A07C;
+            letter-spacing: 1px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #C6A07C;
+            transition: width 0.3s;
+        }
+
+        .nav a:hover {
+            color: #C6A07C;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .reservation-btn {
+            background: #C6A07C;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .reservation-btn:hover {
+            background: #B08968;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(198, 160, 124, 0.3);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: #fff;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .hero-title span {
+            display: inline-block;
+        }
+
+        .hero-text {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-cta {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* コンセプトセクション */
+        .concept {
+            padding: 120px 0;
+            background: #FAFAFA;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .concept-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .concept-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .concept-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transform: scale(1.1);
+        }
+
+        .concept-content {
+            padding: 40px;
+        }
+
+        .section-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: #C6A07C;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .section-title span {
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-text {
+            font-size: 16px;
+            line-height: 2;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* サービスセクション */
+        .services {
+            padding: 120px 0;
+            background: #fff;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .service-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 2;
+            transition: all 0.3s;
+        }
+
+        .service-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            z-index: 3;
+            color: #fff;
+            transform: translateY(0);
+            transition: transform 0.3s;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            font-size: 15px;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+        }
+
+        .service-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #C6A07C;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-card:hover .service-overlay {
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+        }
+
+        .service-card:hover .service-description,
+        .service-card:hover .service-price {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* スタイリストセクション */
+        .stylists {
+            padding: 120px 0;
+            background: #FAFAFA;
+            position: relative;
+        }
+
+        .stylists-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .stylists-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .stylists-slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stylists-track {
+            display: flex;
+            transition: transform 0.6s;
+        }
+
+        .stylist-card {
+            flex: 0 0 33.333%;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .stylist-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stylist-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .stylist-info {
+            text-align: center;
+        }
+
+        .stylist-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .stylist-role {
+            font-size: 14px;
+            color: #C6A07C;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .stylist-bio {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        /* ギャラリーセクション */
+        .gallery {
+            padding: 120px 0;
+            background: #fff;
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item:nth-child(5) {
+            grid-column: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(198, 160, 124, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-text {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-text {
+            transform: translateY(0);
+        }
+
+        /* フッター・CTA */
+        .cta {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #C6A07C 0%, #B08968 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .cta-text {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .cta-button {
+            background: #fff;
+            color: #C6A07C;
+            padding: 18px 60px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 1px;
+            display: inline-block;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        /* フローティングパーティクル */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(198, 160, 124, 0.3);
+            border-radius: 50%;
+        }
+
+        /* スクロールインジケーター */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .scroll-indicator span::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 10px;
+            background: #fff;
+            border-radius: 2px;
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+            100% { transform: translateX(-50%) translateY(15px); opacity: 0; }
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .header-inner {
+                padding: 15px 20px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 10vw, 3rem);
+            }
+
+            .concept-container,
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .stylist-card {
+                flex: 0 0 100%;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ローディング画面 -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <div class="loader-circle"></div>
+                <div class="loader-circle loader-circle-active"></div>
+            </div>
+            <p style="font-family: 'Playfair Display', serif; font-size: 20px; color: #C6A07C;">Hair Salon Lux</p>
+        </div>
+    </div>
+
+    <!-- パーティクル -->
+    <div class="particles" id="particles"></div>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">Hair Salon Lux</div>
+            <nav class="nav">
+                <a href="#concept">CONCEPT</a>
+                <a href="#services">SERVICES</a>
+                <a href="#stylists">STYLISTS</a>
+                <a href="#gallery">GALLERY</a>
+            </nav>
+            <a href="#reservation" class="reservation-btn">RESERVATION</a>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=1920&h=1080&fit=crop" alt="美容室の内装">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">TRANSFORM YOUR BEAUTY</p>
+            <h1 class="hero-title">
+                <span>贅沢な</span><span>美髪体験を</span><br>
+                <span>あなたに</span>
+            </h1>
+            <p class="hero-text">
+                最高級の技術とホスピタリティで<br>
+                あなただけの特別な時間をお届けします
+            </p>
+            <div class="hero-cta">
+                <a href="#reservation" class="reservation-btn">ご予約はこちら</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- コンセプトセクション -->
+    <section class="concept" id="concept">
+        <div class="concept-container">
+            <div class="concept-image">
+                <img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=800&h=600&fit=crop" alt="サロンの雰囲気">
+            </div>
+            <div class="concept-content">
+                <p class="section-tag">OUR CONCEPT</p>
+                <h2 class="section-title">
+                    <span>心地よい空間で</span><br>
+                    <span>最上級の美を</span>
+                </h2>
+                <p class="section-text">
+                    都会の喧騒を忘れる贅沢な空間で、経験豊富なスタイリストが
+                    あなたの理想を叶えます。最新のトレンドと確かな技術で、
+                    あなただけの美しさを引き出します。
+                </p>
+                <p class="section-text">
+                    オーガニックカラーやトリートメントなど、
+                    髪と頭皮に優しいメニューも豊富にご用意。
+                    心も髪も輝く、特別な体験をお約束します。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- サービスセクション -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <div class="services-header">
+                <p class="section-tag">OUR SERVICES</p>
+                <h2 class="section-title">贅沢なメニューラインナップ</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=400&fit=crop" alt="カット">
+                    </div>
+                    <div class="service-overlay"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Designer Cut</h3>
+                        <p class="service-description">
+                            骨格や髪質を見極め、あなたに最も似合うスタイルをご提案。
+                            丁寧なカウンセリングで理想のヘアスタイルを実現します。
+                        </p>
+                        <p class="service-price">¥6,600〜</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?w=600&h=400&fit=crop" alt="カラー">
+                    </div>
+                    <div class="service-overlay"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Organic Color</h3>
+                        <p class="service-description">
+                            オーガニック成分配合のカラー剤で、髪と頭皮をいたわりながら
+                            美しい発色を実現。ダメージレスな仕上がりです。
+                        </p>
+                        <p class="service-price">¥8,800〜</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=600&h=400&fit=crop" alt="トリートメント">
+                    </div>
+                    <div class="service-overlay"></div>
+                    <div class="service-content">
+                        <h3 class="service-title">Premium Treatment</h3>
+                        <p class="service-description">
+                            最高級のトリートメントで髪の内部から補修。
+                            シルクのような手触りと輝きを取り戻します。
+                        </p>
+                        <p class="service-price">¥5,500〜</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- スタイリストセクション -->
+    <section class="stylists" id="stylists">
+        <div class="stylists-container">
+            <div class="stylists-header">
+                <p class="section-tag">OUR TEAM</p>
+                <h2 class="section-title">プロフェッショナルチーム</h2>
+            </div>
+            <div class="stylists-slider">
+                <div class="stylists-track">
+                    <div class="stylist-card">
+                        <div class="stylist-image">
+                            <img src="https://images.unsplash.com/photo-1560185893-a6bad91e3f55?w=400&h=400&fit=crop" alt="スタイリスト">
+                        </div>
+                        <div class="stylist-info">
+                            <h3 class="stylist-name">Yamada Yuki</h3>
+                            <p class="stylist-role">TOP STYLIST</p>
+                            <p class="stylist-bio">
+                                都内有名サロンで10年の経験を積み、
+                                トレンドを取り入れた提案が得意です。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stylist-card">
+                        <div class="stylist-image">
+                            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=400&fit=crop" alt="スタイリスト">
+                        </div>
+                        <div class="stylist-info">
+                            <h3 class="stylist-name">Sato Rina</h3>
+                            <p class="stylist-role">COLOR SPECIALIST</p>
+                            <p class="stylist-bio">
+                                カラーのスペシャリストとして、
+                                お客様の肌色に合わせた提案をいたします。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="stylist-card">
+                        <div class="stylist-image">
+                            <img src="https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?w=400&h=400&fit=crop" alt="スタイリスト">
+                        </div>
+                        <div class="stylist-info">
+                            <h3 class="stylist-name">Tanaka Ken</h3>
+                            <p class="stylist-role">CREATIVE DIRECTOR</p>
+                            <p class="stylist-bio">
+                                サロンのクリエイティブディレクターとして、
+                                最新のトレンドを発信しています。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ギャラリーセクション -->
+    <section class="gallery" id="gallery">
+        <div class="gallery-container">
+            <div class="gallery-header">
+                <p class="section-tag">GALLERY</p>
+                <h2 class="section-title">スタイルギャラリー</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&h=800&fit=crop" alt="ヘアスタイル1">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">ELEGANT STYLE</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?w=400&h=400&fit=crop" alt="ヘアスタイル2">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">NATURAL LOOK</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&h=400&fit=crop" alt="ヘアスタイル3">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">MODERN CUT</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1554519934-e32b1629d9ee?w=400&h=400&fit=crop" alt="ヘアスタイル4">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">COLOR DESIGN</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=800&h=400&fit=crop" alt="ヘアスタイル5">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">PREMIUM STYLE</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1522336284037-91f7da073525?w=400&h=400&fit=crop" alt="ヘアスタイル6">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">CASUAL WAVE</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="reservation">
+        <div class="cta-container">
+            <h2 class="cta-title">新規限定キャンペーン実施中</h2>
+            <p class="cta-text">
+                初回ご来店のお客様限定で、全メニュー20%OFF<br>
+                この機会に極上の美髪体験をお試しください
+            </p>
+            <a href="#" class="cta-button">今すぐ予約する</a>
+        </div>
+    </section>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        // GSAPプラグインを登録
+        gsap.registerPlugin(ScrollTrigger);
+
+        // パーティクル生成
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particlesContainer.appendChild(particle);
+                
+                // パーティクルアニメーション
+                gsap.to(particle, {
+                    y: -window.innerHeight,
+                    x: (Math.random() - 0.5) * 200,
+                    duration: 10 + Math.random() * 10,
+                    repeat: -1,
+                    ease: "none",
+                    opacity: 0,
+                    onRepeat: function() {
+                        particle.style.left = Math.random() * 100 + '%';
+                        particle.style.top = '100%';
+                        gsap.set(particle, {opacity: 0.3});
+                    }
+                });
+            }
+        }
+
+        // ローディングアニメーション
+        window.addEventListener('load', () => {
+            createParticles();
+            
+            const tl = gsap.timeline();
+            
+            // ローダーアニメーション
+            tl.to('.loader-circle-active', {
+                rotation: 360,
+                duration: 1,
+                ease: 'power2.inOut'
+            })
+            .to('.loader', {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                    document.querySelector('.loader').style.display = 'none';
+                }
+            })
+            .from('.hero-bg img', {
+                scale: 1.3,
+                duration: 2,
+                ease: 'power2.out'
+            }, '-=0.5')
+            .to('.hero-bg img', {
+                opacity: 1,
+                duration: 1
+            }, '-=2')
+            .from('.header', {
+                y: -100,
+                opacity: 0,
+                duration: 1,
+                ease: 'power3.out'
+            }, '-=1.5')
+            .to('.hero-subtitle', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8
+            }, '-=1')
+            .from('.hero-title span', {
+                y: 100,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.1,
+                ease: 'power3.out'
+            }, '-=0.8')
+            .to('.hero-text', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8
+            }, '-=0.5')
+            .to('.hero-cta', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8
+            }, '-=0.5')
+            .from('.scroll-indicator', {
+                opacity: 0,
+                duration: 1
+            }, '-=0.3');
+        });
+
+        // ヘッダースクロール
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+            const header = document.querySelector('.header');
+            
+            if (currentScroll > 100) {
+                header.style.transform = currentScroll > lastScroll ? 'translateY(-100%)' : 'translateY(0)';
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.transform = 'translateY(0)';
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // パララックス効果
+        gsap.to('.hero-bg img', {
+            yPercent: 30,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
+
+        // コンセプトセクションアニメーション
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.concept',
+                start: 'top 80%'
+            }
+        })
+        .from('.concept-image img', {
+            scale: 1.3,
+            duration: 1.5,
+            ease: 'power2.out'
+        })
+        .from('.section-tag', {
+            opacity: 0,
+            y: 20,
+            duration: 0.6
+        }, '-=1')
+        .from('.section-title span', {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            stagger: 0.1
+        }, '-=0.5')
+        .from('.section-text', {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            stagger: 0.2
+        }, '-=0.5');
+
+        // サービスカードアニメーション
+        gsap.utils.toArray('.service-card').forEach((card, i) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 100,
+                duration: 1,
+                delay: i * 0.2,
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%'
+                }
+            });
+        });
+
+        // スタイリストカードアニメーション
+        gsap.utils.toArray('.stylist-card').forEach((card, i) => {
+            gsap.to(card, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: i * 0.3,
+                scrollTrigger: {
+                    trigger: '.stylists',
+                    start: 'top 70%'
+                }
+            });
+        });
+
+        // ギャラリーアニメーション
+        gsap.utils.toArray('.gallery-item').forEach((item, i) => {
+            gsap.from(item, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.8,
+                delay: i * 0.1,
+                scrollTrigger: {
+                    trigger: '.gallery-grid',
+                    start: 'top 80%'
+                }
+            });
+        });
+
+        // CTAアニメーション
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.cta',
+                start: 'top 80%'
+            }
+        })
+        .to('.cta-title', {
+            opacity: 1,
+            y: 0,
+            duration: 1
+        })
+        .to('.cta-text', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8
+        }, '-=0.5')
+        .to('.cta-button', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'back.out(1.7)'
+        }, '-=0.5');
+
+        // マウス追従エフェクト
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth - 0.5;
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+
+            gsap.to('.hero-bg img', {
+                x: mouseX * 30,
+                y: mouseY * 30,
+                duration: 1
+            });
+
+            gsap.to('.particles', {
+                x: mouseX * 50,
+                y: mouseY * 50,
+                duration: 2
+            });
+        });
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, {
+                        duration: 1,
+                        scrollTo: {
+                            y: target,
+                            offsetY: 80
+                        },
+                        ease: 'power3.inOut'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

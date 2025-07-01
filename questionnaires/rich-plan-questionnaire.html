@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リッチ版LP制作ヒアリングシート</title>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #D4A574;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #D4A574 0%, #E8B4B8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        .required {
+            color: #DC2626;
+            margin-left: 4px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e5e5;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #D4A574;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+        .note {
+            background: #FFF3E0;
+            padding: 16px;
+            border-radius: 8px;
+            color: #B8860B;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        .premium-note {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE4E1 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            border: 2px solid #D4A574;
+        }
+        .submit-button {
+            background: linear-gradient(135deg, #D4A574 0%, #E8B4B8 100%);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto 0;
+            transition: all 0.3s;
+        }
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.4);
+        }
+        .animation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .animation-card {
+            background: #f8f8f8;
+            padding: 16px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .animation-card:hover {
+            border-color: #D4A574;
+            background: #FFF9F0;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>リッチ版LP制作ヒアリングシート</h1>
+        
+        <div class="premium-note">
+            <strong>🌟 リッチ版の特徴</strong><br>
+            GSAPを使用した高度なアニメーション、パララックス効果、インタラクティブな要素で、<br>
+            訪問者に忘れられない体験を提供します。ブランドの世界観を最大限に表現しましょう。
+        </div>
+
+        <form>
+            <div class="section">
+                <h2>1. 基本情報</h2>
+                
+                <div class="form-group">
+                    <label>会社名・屋号 <span class="required">*</span></label>
+                    <input type="text" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>ご担当者名 <span class="required">*</span></label>
+                    <input type="text" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>メールアドレス <span class="required">*</span></label>
+                    <input type="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>電話番号</label>
+                    <input type="tel">
+                </div>
+                
+                <div class="form-group">
+                    <label>希望納期</label>
+                    <input type="text" placeholder="例：3週間以内、◯月◯日まで">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>2. ブランド・コンセプト</h2>
+                
+                <div class="form-group">
+                    <label>ブランドのビジョン・ミッション <span class="required">*</span></label>
+                    <textarea placeholder="ブランドが目指す世界観、提供したい価値を詳しくお聞かせください" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>ブランドストーリー</label>
+                    <textarea placeholder="創業の経緯、込められた想い、大切にしている価値観など"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>表現したい感情・体験</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="emotion1">
+                            <label for="emotion1">高揚感・ワクワク感</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="emotion2">
+                            <label for="emotion2">安心感・信頼感</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="emotion3">
+                            <label for="emotion3">高級感・特別感</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="emotion4">
+                            <label for="emotion4">革新性・未来感</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="emotion5">
+                            <label for="emotion5">癒し・リラックス</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="emotion6">
+                            <label for="emotion6">驚き・インパクト</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>3. アニメーション・演出要望</h2>
+                
+                <div class="form-group">
+                    <label>希望するアニメーション効果 <span class="required">*</span></label>
+                    <div class="animation-options">
+                        <div class="animation-card">
+                            <input type="checkbox" id="anim1">
+                            <label for="anim1"><strong>ローディング画面</strong><br>
+                            <small>ブランドロゴやアニメーション</small></label>
+                        </div>
+                        <div class="animation-card">
+                            <input type="checkbox" id="anim2">
+                            <label for="anim2"><strong>パララックス効果</strong><br>
+                            <small>奥行き感のあるスクロール</small></label>
+                        </div>
+                        <div class="animation-card">
+                            <input type="checkbox" id="anim3">
+                            <label for="anim3"><strong>テキストアニメーション</strong><br>
+                            <small>文字の出現・変形効果</small></label>
+                        </div>
+                        <div class="animation-card">
+                            <input type="checkbox" id="anim4">
+                            <label for="anim4"><strong>ホバーエフェクト</strong><br>
+                            <small>マウスオーバー時の演出</small></label>
+                        </div>
+                        <div class="animation-card">
+                            <input type="checkbox" id="anim5">
+                            <label for="anim5"><strong>スクロールトリガー</strong><br>
+                            <small>スクロールに連動した動き</small></label>
+                        </div>
+                        <div class="animation-card">
+                            <input type="checkbox" id="anim6">
+                            <label for="anim6"><strong>3D効果</strong><br>
+                            <small>立体的な表現・回転</small></label>
+                        </div>
+                        <div class="animation-card">
+                            <input type="checkbox" id="anim7">
+                            <label for="anim7"><strong>パーティクル効果</strong><br>
+                            <small>粒子・光の演出</small></label>
+                        </div>
+                        <div class="animation-card">
+                            <input type="checkbox" id="anim8">
+                            <label for="anim8"><strong>横スクロール</strong><br>
+                            <small>横方向のコンテンツ展開</small></label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>アニメーションの速度・印象</label>
+                    <select>
+                        <option value="">選択してください</option>
+                        <option>ゆったりとした優雅な動き</option>
+                        <option>キビキビとしたスピード感</option>
+                        <option>重厚感のある動き</option>
+                        <option>軽快でポップな動き</option>
+                        <option>ミニマルで洗練された動き</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>参考にしたいサイト・アニメーション</label>
+                    <input type="url" placeholder="https://" style="margin-bottom: 8px;">
+                    <input type="url" placeholder="https://" style="margin-bottom: 8px;">
+                    <input type="url" placeholder="https://">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>4. ビジュアルデザイン詳細</h2>
+                
+                <div class="form-group">
+                    <label>メインビジュアルのイメージ <span class="required">*</span></label>
+                    <textarea placeholder="例：夕暮れの海を背景に、商品が浮遊しているような幻想的なイメージ"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>配色イメージ</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="color1">
+                            <label for="color1">グラデーション（複数色の美しい変化）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="color2">
+                            <label for="color2">モノトーン＋アクセントカラー</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="color3">
+                            <label for="color3">パステルカラー（優しい色合い）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="color4">
+                            <label for="color4">ビビッドカラー（鮮やかな色彩）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="color5">
+                            <label for="color5">ナチュラルカラー（自然な色合い）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="color6">
+                            <label for="color6">ダークトーン（重厚感のある色）</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>フォントイメージ</label>
+                    <select>
+                        <option value="">選択してください</option>
+                        <option>セリフ体（高級感・伝統的）</option>
+                        <option>サンセリフ体（モダン・シンプル）</option>
+                        <option>手書き風（親しみやすさ・温かみ）</option>
+                        <option>デザインフォント（個性的・インパクト）</option>
+                        <option>明朝体（日本的・上品）</option>
+                        <option>ゴシック体（力強さ・視認性）</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>5. インタラクティブ要素</h2>
+                
+                <div class="form-group">
+                    <label>ユーザー体験を高める機能</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="interactive1">
+                            <label for="interactive1">カスタムカーソル（オリジナルマウスカーソル）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="interactive2">
+                            <label for="interactive2">音声・効果音（クリック音、BGMなど）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="interactive3">
+                            <label for="interactive3">ドラッグ＆ドロップ要素</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="interactive4">
+                            <label for="interactive4">360度回転ビュー</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="interactive5">
+                            <label for="interactive5">ビデオ背景・動画演出</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="interactive6">
+                            <label for="interactive6">タイムライン型ストーリーテリング</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>スマートフォンでの体験</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="mobile" id="mobile-full">
+                            <label for="mobile-full">PCと同等の体験を提供したい</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="mobile" id="mobile-optimized">
+                            <label for="mobile-optimized">モバイル最適化（軽量版）を希望</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="mobile" id="mobile-unique">
+                            <label for="mobile-unique">モバイル独自の体験を作りたい</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>6. コンテンツ構成</h2>
+                
+                <div class="form-group">
+                    <label>必要なセクション（リッチ版推奨） <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rsection1" checked>
+                            <label for="rsection1">ローディング画面（ブランド演出）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rsection2" checked>
+                            <label for="rsection2">ヒーローセクション（インパクトのあるメインビジュアル）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rsection3" checked>
+                            <label for="rsection3">ブランドストーリー（感動的な演出）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rsection4">
+                            <label for="rsection4">商品・サービス紹介（インタラクティブ展示）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rsection5">
+                            <label for="rsection5">ギャラリー・ポートフォリオ</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rsection6">
+                            <label for="rsection6">お客様の声（カルーセル・スライダー）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rsection7">
+                            <label for="rsection7">チーム紹介（パララックス効果）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rsection8" checked>
+                            <label for="rsection8">CTA（印象的なコンバージョンエリア）</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>メインキャッチコピー案</label>
+                    <input type="text" placeholder="例：未来を、もっと美しく。">
+                </div>
+                
+                <div class="form-group">
+                    <label>サブキャッチコピー案</label>
+                    <input type="text" placeholder="例：テクノロジーとデザインが創る、新しい体験">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>7. ターゲット・ペルソナ詳細</h2>
+                
+                <div class="form-group">
+                    <label>プレミアムターゲットの特徴 <span class="required">*</span></label>
+                    <textarea placeholder="例：都心在住の30-40代エグゼクティブ層。デザインや体験価値を重視し、ブランドストーリーに共感する価値観を持つ" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>ターゲットのライフスタイル</label>
+                    <textarea placeholder="例：アートや文化に関心が高く、週末は美術館巡りやワインテイスティングを楽しむ"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>競合他社と差別化したいポイント</label>
+                    <textarea placeholder="例：単なる商品販売ではなく、ライフスタイル提案として位置づけたい"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>8. 素材・リソース</h2>
+                
+                <div class="form-group">
+                    <label>高品質な画像・動画素材 <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="media" id="media-pro">
+                            <label for="media-pro">プロカメラマンの撮影素材あり</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="media" id="media-stock">
+                            <label for="media-stock">高品質ストックフォトを使用希望</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="media" id="media-create">
+                            <label for="media-create">CGやイラストで制作希望</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="media" id="media-mix">
+                            <label for="media-mix">上記の組み合わせ</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>ブランドガイドライン</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="guidelines" id="guide-yes">
+                            <label for="guide-yes">あり（VI、トーン&マナーなど）</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="guidelines" id="guide-no">
+                            <label for="guide-no">なし（新規で世界観を構築）</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>9. 期待する成果・KPI</h2>
+                
+                <div class="form-group">
+                    <label>リッチ版LPで達成したい目標 <span class="required">*</span></label>
+                    <textarea placeholder="例：ブランド認知度の向上、高単価商品の成約率向上、SNSでの拡散など" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>成功指標</label>
+                    <textarea placeholder="例：平均滞在時間3分以上、直帰率30%以下、SNSシェア数100件/月など"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>10. その他のご要望</h2>
+                
+                <div class="form-group">
+                    <label>特にこだわりたいポイント</label>
+                    <textarea placeholder="ブランドの世界観を最大限に表現するために、特に重視したい要素をお聞かせください"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>避けたい表現・演出</label>
+                    <textarea placeholder="例：過度に派手な演出、読み込みが重い表現など"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>その他ご質問・ご要望</label>
+                    <textarea placeholder="リッチ版制作に関するご質問やご要望を自由にご記入ください"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">送信する</button>
+        </form>
+    </div>
+</body>
+</html>

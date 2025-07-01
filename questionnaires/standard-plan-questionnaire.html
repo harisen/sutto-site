@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スタンダード版LP制作ヒアリングシート</title>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2563EB;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        .required {
+            color: #DC2626;
+            margin-left: 4px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e5e5;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #2563EB;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+        .note {
+            background: #F0F9FF;
+            padding: 16px;
+            border-radius: 8px;
+            color: #0369A1;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+        .submit-button {
+            background: #2563EB;
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto 0;
+            transition: all 0.3s;
+        }
+        .submit-button:hover {
+            background: #1D4ED8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>スタンダード版LP制作ヒアリングシート</h1>
+        
+        <div class="note">
+            このフォームは、Googleフォームで実際に作成していただくための参考テンプレートです。<br>
+            必要に応じて項目を追加・削除してカスタマイズしてください。
+        </div>
+
+        <form>
+            <div class="section">
+                <h2>1. 基本情報</h2>
+                
+                <div class="form-group">
+                    <label>会社名・屋号 <span class="required">*</span></label>
+                    <input type="text" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>ご担当者名 <span class="required">*</span></label>
+                    <input type="text" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>メールアドレス <span class="required">*</span></label>
+                    <input type="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>電話番号</label>
+                    <input type="tel">
+                </div>
+                
+                <div class="form-group">
+                    <label>希望納期</label>
+                    <input type="text" placeholder="例：2週間以内、◯月◯日まで">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>2. サイトの目的・ゴール</h2>
+                
+                <div class="form-group">
+                    <label>LPを制作する目的は何ですか？ <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="purpose1">
+                            <label for="purpose1">商品・サービスの販売</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="purpose2">
+                            <label for="purpose2">お問い合わせ獲得</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="purpose3">
+                            <label for="purpose3">資料請求・ダウンロード</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="purpose4">
+                            <label for="purpose4">イベント・セミナー集客</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="purpose5">
+                            <label for="purpose5">ブランド認知向上</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="purpose6">
+                            <label for="purpose6">その他</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>成果指標（KPI）として重視するものは？</label>
+                    <textarea placeholder="例：月間問い合わせ数10件、コンバージョン率5%など"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>3. ターゲット情報</h2>
+                
+                <div class="form-group">
+                    <label>ターゲットとなるお客様の年齢層 <span class="required">*</span></label>
+                    <select required>
+                        <option value="">選択してください</option>
+                        <option>10代</option>
+                        <option>20代</option>
+                        <option>30代</option>
+                        <option>40代</option>
+                        <option>50代</option>
+                        <option>60代以上</option>
+                        <option>全年齢層</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>ターゲットの性別</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="gender" id="male">
+                            <label for="male">男性</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="gender" id="female">
+                            <label for="female">女性</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="gender" id="both">
+                            <label for="both">男女両方</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>ターゲットの特徴・ペルソナ</label>
+                    <textarea placeholder="例：都内在住の30代女性、美容に関心が高く、月1回は美容院に通う"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>4. 商品・サービス情報</h2>
+                
+                <div class="form-group">
+                    <label>商品・サービス名 <span class="required">*</span></label>
+                    <input type="text" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>価格帯</label>
+                    <input type="text" placeholder="例：月額5,000円、30,000円〜">
+                </div>
+                
+                <div class="form-group">
+                    <label>商品・サービスの特徴（3つまで）</label>
+                    <input type="text" placeholder="特徴1" style="margin-bottom: 8px;">
+                    <input type="text" placeholder="特徴2" style="margin-bottom: 8px;">
+                    <input type="text" placeholder="特徴3">
+                </div>
+                
+                <div class="form-group">
+                    <label>競合他社との差別化ポイント</label>
+                    <textarea placeholder="例：業界最安値、独自の技術、充実したアフターサポートなど"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>5. デザイン要望</h2>
+                
+                <div class="form-group">
+                    <label>希望するデザインのイメージ <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="design1">
+                            <label for="design1">シンプル・ミニマル</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="design2">
+                            <label for="design2">高級感・エレガント</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="design3">
+                            <label for="design3">親しみやすい・カジュアル</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="design4">
+                            <label for="design4">信頼感・プロフェッショナル</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="design5">
+                            <label for="design5">かわいい・ポップ</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="design6">
+                            <label for="design6">クール・スタイリッシュ</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>メインカラー（ブランドカラー）</label>
+                    <input type="text" placeholder="例：#2563EB、青系、コーポレートカラーに合わせる">
+                </div>
+                
+                <div class="form-group">
+                    <label>参考にしたいサイトURL（あれば）</label>
+                    <input type="url" placeholder="https://">
+                </div>
+                
+                <div class="form-group">
+                    <label>避けたいデザイン・色</label>
+                    <input type="text" placeholder="例：派手すぎる色、ごちゃごちゃしたレイアウト">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>6. コンテンツ・機能要望</h2>
+                
+                <div class="form-group">
+                    <label>必要なセクション <span class="required">*</span></label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="section1" checked>
+                            <label for="section1">ヘッダー（ロゴ・ナビゲーション）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="section2" checked>
+                            <label for="section2">メインビジュアル（キャッチコピー）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="section3">
+                            <label for="section3">お客様の声・実績</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="section4">
+                            <label for="section4">料金表</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="section5">
+                            <label for="section5">よくある質問（FAQ）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="section6" checked>
+                            <label for="section6">お問い合わせフォーム</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="section7">
+                            <label for="section7">会社概要</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="section8">
+                            <label for="section8">アクセス・地図</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>キャッチコピー案（あれば）</label>
+                    <input type="text" placeholder="例：あなたの美しさを、もっと輝かせる">
+                </div>
+                
+                <div class="form-group">
+                    <label>その他必要な機能・要望</label>
+                    <textarea placeholder="例：スマホでの表示を重視、loading画面が欲しい、など"></textarea>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>7. 素材提供について</h2>
+                
+                <div class="form-group">
+                    <label>ロゴデータの有無 <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="logo" id="logo-yes">
+                            <label for="logo-yes">あり（AI、PNG、JPGなど）</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="logo" id="logo-no">
+                            <label for="logo-no">なし（テキストロゴで対応）</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>画像素材の準備</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="images" id="images-have">
+                            <label for="images-have">自社で用意する</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="images" id="images-free">
+                            <label for="images-free">フリー素材を使用してほしい</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="images" id="images-both">
+                            <label for="images-both">一部用意する＋フリー素材</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>原稿（テキスト）の準備</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="text" id="text-ready">
+                            <label for="text-ready">すべて用意済み</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="text" id="text-partial">
+                            <label for="text-partial">一部用意済み</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="text" id="text-help">
+                            <label for="text-help">作成のアドバイスがほしい</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>8. その他</h2>
+                
+                <div class="form-group">
+                    <label>特に重視したいポイント</label>
+                    <textarea placeholder="例：スマホでの見やすさ、ページ表示速度、SEO対策など"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>その他ご要望・ご質問</label>
+                    <textarea placeholder="自由にご記入ください"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">送信する</button>
+        </form>
+    </div>
+</body>
+</html>

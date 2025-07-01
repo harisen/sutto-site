@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | LP制作サービス</title>
+    <meta name="description" content="LP制作サービスへのお申し込みはこちらから。スタンダードプラン（2万円）またはリッチプラン（5万円）からお選びください。">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, #EBF4FF 0%, #F0F9FF 100%);
+            padding: 120px 0 80px;
+            margin-top: var(--header-height);
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin: 60px 0;
+        }
+        
+        .contact-form {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .required {
+            color: #EF4444;
+            margin-left: 4px;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 1.6rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin: 24px 0;
+        }
+        
+        .form-checkbox input {
+            margin-top: 4px;
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-submit:hover {
+            background-color: #1D4ED8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .contact-info {
+            background-color: var(--bg-light);
+            padding: 40px;
+            border-radius: 16px;
+            height: fit-content;
+        }
+        
+        .info-item {
+            margin-bottom: 32px;
+        }
+        
+        .info-icon {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+        
+        .notice-box {
+            background-color: #FEF3C7;
+            border-left: 4px solid var(--accent-color);
+            padding: 16px;
+            margin-bottom: 24px;
+            border-radius: 8px;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 60px 0;
+        }
+        
+        .step-card {
+            text-align: center;
+            padding: 32px;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        @media (max-width: 1023px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .contact-form {
+                padding: 24px;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">LP制作サービス</a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">サンプルサイト</a>
+                <a href="deployment-guide.html" class="nav-link">公開ガイド</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">サンプルサイト</a>
+            <a href="deployment-guide.html" class="mobile-nav-link">公開ガイド</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+
+    <section class="contact-hero">
+        <div class="container">
+            <h1 class="text-center">お問い合わせ</h1>
+            <p class="text-center" style="font-size: 2rem; color: var(--text-light); margin-top: 16px;">
+                LP制作のお申し込みはこちらから
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>アンケート記入</h3>
+                    <p>フォームでご要望をお聞かせください</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>制作開始</h3>
+                    <p>アンケート内容を基に制作を開始します</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>テストページ確認・納品</h3>
+                    <p>制作したテストページをご確認後、各種データを納品<br>
+                    <small><a href="service.html#deliverables" style="color: var(--primary-color);">納品データの詳細はこちら</a></small></p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>お支払い</h3>
+                    <p>ご承諾後納品、1週間以内にお支払い</p>
+                </div>
+                <div class="step-card" style="opacity: 0.6;">
+                    <div class="step-number">5</div>
+                    <h3>修正対応<small style="display: block; font-size: 1.2rem; font-weight: normal; margin-top: 4px;">（必要に応じて）</small></h3>
+                    <p>必要に応じて修正対応・追加お支払い</p>
+                </div>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h2>LP制作のお申し込み</h2>
+                    
+                    <div class="notice-box">
+                        <strong>LP制作をご希望の方へ：</strong>
+                        下記のアンケートフォームよりお申し込みください。
+                    </div>
+
+                    <form id="lpRequestForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">
+                                お名前<span class="required">*</span>
+                            </label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company" class="form-label">
+                                会社名・屋号
+                            </label>
+                            <input type="text" id="company" name="company" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">
+                                メールアドレス<span class="required">*</span>
+                            </label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="form-label">
+                                電話番号<span class="required">*</span>
+                            </label>
+                            <input type="tel" id="phone" name="phone" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="plan" class="form-label">
+                                ご希望のプラン<span class="required">*</span>
+                            </label>
+                            <select id="plan" name="plan" class="form-select" required>
+                                <option value="">選択してください</option>
+                                <option value="standard">スタンダードプラン（2万円）</option>
+                                <option value="rich">リッチプラン（5万円）</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="business-type" class="form-label">
+                                業種・サービス内容<span class="required">*</span>
+                            </label>
+                            <input type="text" id="business-type" name="business-type" class="form-input" required placeholder="例：健康食品販売、オンライン英会話、不動産仲介等">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="target" class="form-label">
+                                ターゲット層<span class="required">*</span>
+                            </label>
+                            <input type="text" id="target" name="target" class="form-input" required placeholder="例：30代女性、中小企業経営者、学生等">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="purpose" class="form-label">
+                                LPの目的<span class="required">*</span>
+                            </label>
+                            <textarea id="purpose" name="purpose" class="form-textarea" required placeholder="例：商品の販売促進、資料請求の獲得、会員登録の促進等"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reference" class="form-label">
+                                参考サイト・競合サイト
+                            </label>
+                            <textarea id="reference" name="reference" class="form-textarea" placeholder="参考にしたいサイトのURLや競合サイトがあれば記入してください"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deadline" class="form-label">
+                                希望納期
+                            </label>
+                            <input type="text" id="deadline" name="deadline" class="form-input" placeholder="例：1ヶ月以内、○月○日まで、特に急ぎではない等">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="file-link" class="form-label">
+                                素材ダウンロードリンク
+                            </label>
+                            <input type="url" id="file-link" name="file-link" class="form-input" placeholder="例：https://gigafile.nu/xxxx">
+                            <p style="font-size: 1.4rem; color: var(--text-light); margin-top: 8px;">
+                                ロゴや使用してほしい素材をギガファイル便などにアップロードし、ダウンロードリンクを記載してください
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="file-password" class="form-label">
+                                ダウンロードパスワード
+                            </label>
+                            <input type="text" id="file-password" name="file-password" class="form-input" placeholder="パスワードがある場合は記入">
+                            <p style="font-size: 1.4rem; color: var(--text-light); margin-top: 8px;">
+                                ファイルにパスワードが設定されている場合は記入してください
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additional" class="form-label">
+                                その他ご要望
+                            </label>
+                            <textarea id="additional" name="additional" class="form-textarea" placeholder="その他、ご要望や質問があれば自由にご記入ください"></textarea>
+                        </div>
+
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">
+                                <a href="privacy.html" style="color: var(--primary-color);">プライバシーポリシー</a>に同意する
+                            </label>
+                        </div>
+
+                        <button type="submit" class="form-submit">アンケートを送信する</button>
+                    </form>
+
+                    <div style="margin-top: 60px; padding: 30px; background-color: var(--bg-light); border-radius: 12px;">
+                        <h3 style="margin-bottom: 20px;">修正対応や制作以外のお問い合わせ</h3>
+                        <p style="margin-bottom: 16px;">
+                            LP制作以外のお問い合わせ（サービスに関するご質問、ご意見など）は、
+                            下記のメールアドレスまでお送りください。
+                        </p>
+                        <p style="font-size: 1.8rem; font-weight: 700; color: var(--primary-color);">
+                            📧 sutto.apps@gmail.com
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <h3>お問い合わせ情報</h3>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            📧 メール
+                        </div>
+                        <p>sutto.apps@gmail.com</p>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            ⏰ 営業時間
+                        </div>
+                        <p>平日 10:00〜18:00<br>（土日祝日休み）</p>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            💬 返信について
+                        </div>
+                        <p>お問い合わせから2営業日以内にご返信いたします</p>
+                    </div>
+
+                    <div style="background-color: var(--white); padding: 24px; border-radius: 12px; margin-top: 32px;">
+                        <h4 style="margin-bottom: 12px;">よくあるご質問</h4>
+                        <p>お問い合わせ前に<a href="faq.html" style="color: var(--primary-color);">よくあるご質問</a>もご確認ください</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LP制作サービス</h4>
+                    <p>AI技術を活用した高速・高品質な<br>ランディングページ制作サービス</p>
+                    <p style="margin-top: 12px; font-size: 1.2rem; opacity: 0.8;">🤖 AI Powered Development</p>
+                </div>
+                <div class="footer-section">
+                    <h4>サービス</h4>
+                    <div class="footer-links">
+                        <a href="service.html" class="footer-link">サービス詳細</a>
+                        <a href="pricing.html" class="footer-link">料金プラン</a>
+                        <a href="portfolio.html" class="footer-link">サンプルサイト</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>お問い合わせ</h4>
+                    <div class="footer-links">
+                        <a href="contact.html" class="footer-link">お問い合わせフォーム</a>
+                        <a href="faq.html" class="footer-link">よくある質問</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LP制作サービス. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/form.js"></script>
+</body>
+</html>

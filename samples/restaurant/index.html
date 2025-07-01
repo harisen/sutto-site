@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ristorante Bella Vista - 本格イタリアンレストラン | 東京・青山</title>
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <meta name="description" content="厳選食材と熟練シェフが織りなす本格イタリアン。デート、接待、家族での特別な食事に。心に残る食事体験をお約束します。ランチ2,800円〜">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="イタリアン,レストラン,青山,ディナー,ランチ,デート,接待">
+    <meta name="author" content="LP制作サービス">
+    <link rel="canonical" href="https://example.com/samples/restaurant/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/samples/restaurant/">
+    <meta property="og:title" content="Ristorante Bella Vista - 本格イタリアンレストラン | 東京・青山">
+    <meta property="og:description" content="厳選食材と熟練シェフが織りなす本格イタリアン。デート、接待、家族での特別な食事に。心に残る食事体験をお約束します。ランチ2,800円〜">
+    <meta property="og:image" content="https://example.com/images/restaurant-og.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://example.com/samples/restaurant/">
+    <meta property="twitter:title" content="Ristorante Bella Vista - 本格イタリアンレストラン | 東京・青山">
+    <meta property="twitter:description" content="厳選食材と熟練シェフが織りなす本格イタリアン。デート、接待、家族での特別な食事に。心に残る食事体験をお約束します。ランチ2,800円〜">
+    <meta property="twitter:image" content="https://example.com/images/restaurant-og.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Ristorante Bella Vista",
+  "image": "https://example.com/images/restaurant-image.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "港区南青山3-4-5",
+    "addressLocality": "港区",
+    "addressRegion": "東京都",
+    "postalCode": "107-0062",
+    "addressCountry": "JP"
+  },
+  "telephone": "+81-3-1234-5678",
+  "servesCuisine": "Italian",
+  "priceRange": "¥¥¥",
+  "openingHours": [
+    "Mo-Fr 11:30-14:30,18:00-22:00",
+    "Sa-Su 11:30-15:00,17:30-22:00"
+  ]
+}
+    </script>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">Ristorante Bella Vista</h1>
+                <nav class="nav">
+                    <a href="#concept" class="nav-link">こだわり</a>
+                    <a href="#menu" class="nav-link">メニュー</a>
+                    <a href="#voice" class="nav-link">お客様の声</a>
+                    <a href="#access" class="nav-link">アクセス</a>
+                    <a href="#reservation" class="nav-link nav-cta">予約する</a>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="メニューを開く">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-subtitle">心に残る、特別な食事体験を</p>
+            <h2 class="hero-title">本格イタリアンを<br>カジュアルに</h2>
+            <p class="hero-description">
+                厳選された食材と熟練シェフの技が織りなす<br>
+                忘れられない一皿をお届けします
+            </p>
+            <div class="hero-actions">
+                <a href="#reservation" class="btn btn-primary btn-large">
+                    <span>今すぐ予約する</span>
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="tel:03-1234-5678" class="btn btn-secondary btn-large">
+                    <span>
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+                            <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z" fill="currentColor"/>
+                        </svg>
+                        03-1234-5678
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- こだわりポイント -->
+    <section id="concept" class="concept">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Commitment</h2>
+                <p class="section-subtitle">私たちのこだわり</p>
+            </div>
+            
+            <div class="concept-grid">
+                <div class="concept-item">
+                    <div class="concept-image">
+                        <img src="https://placehold.co/600x400/2c3e50/ffffff?text=厳選食材" alt="厳選された新鮮な食材" loading="lazy">
+                    </div>
+                    <h3 class="concept-title">厳選食材</h3>
+                    <p class="concept-description">
+                        毎朝市場で仕入れる新鮮な野菜と、イタリアから直輸入する本場の食材。
+                        素材本来の味を最大限に引き出します。
+                    </p>
+                </div>
+                
+                <div class="concept-item">
+                    <div class="concept-image">
+                        <img src="https://placehold.co/600x400/2c3e50/ffffff?text=シェフの技" alt="熟練シェフの調理風景" loading="lazy">
+                    </div>
+                    <h3 class="concept-title">シェフの技</h3>
+                    <p class="concept-description">
+                        ミラノで10年修行を積んだシェフが、伝統的な技法と独創的なアイデアで、
+                        記憶に残る一皿を創り上げます。
+                    </p>
+                </div>
+                
+                <div class="concept-item">
+                    <div class="concept-image">
+                        <img src="https://placehold.co/600x400/2c3e50/ffffff?text=心地よい空間" alt="落ち着いた店内の雰囲気" loading="lazy">
+                    </div>
+                    <h3 class="concept-title">心地よい空間</h3>
+                    <p class="concept-description">
+                        温かみのある照明と洗練されたインテリア。大切な人との特別な時間を、
+                        より素敵に演出します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 人気メニュー紹介 -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Popular Menu</h2>
+                <p class="section-subtitle">人気メニュー</p>
+            </div>
+            
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-menu="lunch">ランチ</button>
+                <button class="menu-tab" data-menu="dinner">ディナー</button>
+                <button class="menu-tab" data-menu="course">コース</button>
+            </div>
+            
+            <div class="menu-content">
+                <div class="menu-panel active" id="lunch">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&h=300&fit=crop" alt="本日のパスタランチ" loading="lazy">
+                            </div>
+                            <div class="menu-info">
+                                <h3 class="menu-name">本日のパスタランチ</h3>
+                                <p class="menu-description">前菜・スープ・パスタ・デザート・ドリンク付き</p>
+                                <p class="menu-price">¥1,500〜</p>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=400&h=300&fit=crop" alt="メイン料理ランチ" loading="lazy">
+                            </div>
+                            <div class="menu-info">
+                                <h3 class="menu-name">メイン料理ランチ</h3>
+                                <p class="menu-description">前菜・スープ・メイン・デザート・ドリンク付き</p>
+                                <p class="menu-price">¥2,200〜</p>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=300&fit=crop" alt="シェフのスペシャルランチ" loading="lazy">
+                            </div>
+                            <div class="menu-info">
+                                <h3 class="menu-name">シェフのスペシャルランチ</h3>
+                                <p class="menu-description">その日の特別な食材を使った贅沢なコース</p>
+                                <p class="menu-price">¥3,500〜</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-panel" id="dinner">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?w=400&h=300&fit=crop" alt="前菜の盛り合わせ" loading="lazy">
+                            </div>
+                            <div class="menu-info">
+                                <h3 class="menu-name">前菜の盛り合わせ</h3>
+                                <p class="menu-description">季節の食材を使った5種の前菜</p>
+                                <p class="menu-price">¥1,800</p>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=300&fit=crop" alt="黒トリュフのパスタ" loading="lazy">
+                            </div>
+                            <div class="menu-info">
+                                <h3 class="menu-name">黒トリュフのタリオリーニ</h3>
+                                <p class="menu-description">芳醇な香りの黒トリュフをたっぷりと</p>
+                                <p class="menu-price">¥3,200</p>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item">
+                            <div class="menu-image">
+                                <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop" alt="和牛のビステッカ" loading="lazy">
+                            </div>
+                            <div class="menu-info">
+                                <h3 class="menu-name">和牛のビステッカ</h3>
+                                <p class="menu-description">A5ランク和牛を使用した贅沢な一皿</p>
+                                <p class="menu-price">¥6,800</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-panel" id="course">
+                    <div class="course-list">
+                        <div class="course-item">
+                            <h3 class="course-name">スタンダードコース</h3>
+                            <p class="course-price">¥5,500</p>
+                            <ul class="course-menu">
+                                <li>アミューズ</li>
+                                <li>前菜</li>
+                                <li>パスタ</li>
+                                <li>魚料理または肉料理</li>
+                                <li>デザート</li>
+                                <li>食後のお飲み物</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="course-item featured">
+                            <div class="course-badge">おすすめ</div>
+                            <h3 class="course-name">プレミアムコース</h3>
+                            <p class="course-price">¥8,800</p>
+                            <ul class="course-menu">
+                                <li>シャンパンで乾杯</li>
+                                <li>アミューズ2種</li>
+                                <li>前菜2品</li>
+                                <li>パスタ</li>
+                                <li>魚料理</li>
+                                <li>肉料理</li>
+                                <li>チーズの盛り合わせ</li>
+                                <li>デザート</li>
+                                <li>食後のお飲み物</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="course-item">
+                            <h3 class="course-name">記念日コース</h3>
+                            <p class="course-price">¥12,000</p>
+                            <ul class="course-menu">
+                                <li>スペシャルカクテル</li>
+                                <li>キャビア付き前菜</li>
+                                <li>フォアグラ料理</li>
+                                <li>トリュフパスタ</li>
+                                <li>オマール海老</li>
+                                <li>和牛フィレ肉</li>
+                                <li>記念日デザートプレート</li>
+                                <li>シャンパン付き</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声 -->
+    <section id="voice" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Customer Voice</h2>
+                <p class="section-subtitle">お客様の声</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-stars">
+                            ★★★★★
+                        </div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">M.K様（30代女性）</p>
+                            <p class="testimonial-scene">記念日ディナー</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        結婚記念日に利用させていただきました。サプライズのデザートプレートも
+                        用意していただき、忘れられない思い出になりました。料理も雰囲気も最高でした！
+                    </p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-stars">
+                            ★★★★★
+                        </div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">T.S様（40代男性）</p>
+                            <p class="testimonial-scene">接待利用</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        大切なクライアントとの会食で利用しました。個室でゆっくり話ができ、
+                        料理のクオリティも高く、商談も成功しました。また利用させていただきます。
+                    </p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-stars">
+                            ★★★★★
+                        </div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Y.M様（50代女性）</p>
+                            <p class="testimonial-scene">家族での食事</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        娘の誕生日祝いで訪れました。子供向けのメニューも充実していて、
+                        スタッフの方々の心遣いが素晴らしかったです。家族全員大満足でした。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="testimonials-stats">
+                <div class="stat-item">
+                    <p class="stat-number">4.8</p>
+                    <p class="stat-label">平均評価</p>
+                </div>
+                <div class="stat-item">
+                    <p class="stat-number">高い</p>
+                    <p class="stat-label">リピート率</p>
+                </div>
+                <div class="stat-item">
+                    <p class="stat-number">1,000+</p>
+                    <p class="stat-label">月間来店数</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- シーン別提案 -->
+    <section class="scenes">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Perfect for</h2>
+                <p class="section-subtitle">こんなシーンにぴったり</p>
+            </div>
+            
+            <div class="scenes-grid">
+                <div class="scene-card">
+                    <div class="scene-icon">
+                        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+                            <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="scene-title">デート</h3>
+                    <p class="scene-description">
+                        落ち着いた雰囲気と美味しい料理で、
+                        二人の特別な時間を演出します
+                    </p>
+                </div>
+                
+                <div class="scene-card">
+                    <div class="scene-icon">
+                        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+                            <path d="M12 2C11.5 2 11 2.5 11 3V11C11 11.5 11.5 12 12 12H13V22H11V12H3C2.5 12 2 11.5 2 11C2 8 4 6 7 6C7.7 6 8.4 6.2 9 6.5V3C9 1.5 10.5 0 12 0C13.5 0 15 1.5 15 3V6.5C15.6 6.2 16.3 6 17 6C20 6 22 8 22 11C22 11.5 21.5 12 21 12H13V22H11V12H12C12.5 12 13 11.5 13 11V3C13 2.5 12.5 2 12 2Z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="scene-title">接待・会食</h3>
+                    <p class="scene-description">
+                        個室完備で大切な商談にも最適。
+                        ソムリエ厳選のワインもご用意
+                    </p>
+                </div>
+                
+                <div class="scene-card">
+                    <div class="scene-icon">
+                        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+                            <circle cx="9" cy="6" r="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="15" cy="6" r="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="6" cy="11" r="1.5" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="18" cy="11" r="1.5" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <path d="M9 8V16C9 16 9 18 11 18H13C15 18 15 16 15 16V8" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            <path d="M6 13V18C6 18 6 20 8 20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                            <path d="M18 13V18C18 18 18 20 16 20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="scene-title">家族での食事</h3>
+                    <p class="scene-description">
+                        お子様メニューもご用意。
+                        家族の記念日を彩ります
+                    </p>
+                </div>
+                
+                <div class="scene-card">
+                    <div class="scene-icon">
+                        <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+                            <path d="M5 4C5 3 6 2 7 2S9 3 9 4C9 4.9 8.2 5.7 7.4 5.9L9 22H7L5.5 5.9C4.7 5.7 4 4.9 4 4H5Z" fill="currentColor"/>
+                            <path d="M12 2L13.5 7H18L14.5 9.5L16 14L12 11L8 14L9.5 9.5L6 7H10.5L12 2Z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/>
+                            <path d="M19 4C19 3 18 2 17 2S15 3 15 4C15 4.9 15.8 5.7 16.6 5.9L15 22H17L18.5 5.9C19.3 5.7 20 4.9 20 4H19Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="scene-title">記念日・お祝い</h3>
+                    <p class="scene-description">
+                        サプライズ演出もお手伝い。
+                        忘れられない一日をプロデュース
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 店舗情報・アクセス -->
+    <section id="access" class="access">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Access</h2>
+                <p class="section-subtitle">店舗情報</p>
+            </div>
+            
+            <div class="access-content">
+                <div class="access-map">
+                    <img src="https://placehold.co/600x400/2c3e50/ffffff?text=アクセスマップ" alt="店舗までのアクセスマップ" loading="lazy">
+                </div>
+                
+                <div class="access-info">
+                    <dl class="info-list">
+                        <dt>店名</dt>
+                        <dd>Ristorante Bella Vista</dd>
+                        
+                        <dt>住所</dt>
+                        <dd>〒150-0001<br>東京都渋谷区神宮前1-2-3 ベラビスタビル2F</dd>
+                        
+                        <dt>電話番号</dt>
+                        <dd><a href="tel:03-1234-5678">03-1234-5678</a></dd>
+                        
+                        <dt>営業時間</dt>
+                        <dd>
+                            ランチ：11:30〜14:30（L.O. 14:00）<br>
+                            ディナー：17:30〜22:00（L.O. 21:00）
+                        </dd>
+                        
+                        <dt>定休日</dt>
+                        <dd>月曜日（祝日の場合は翌日）</dd>
+                        
+                        <dt>アクセス</dt>
+                        <dd>
+                            JR山手線「原宿駅」表参道口より徒歩5分<br>
+                            東京メトロ「明治神宮前駅」3番出口より徒歩3分
+                        </dd>
+                        
+                        <dt>駐車場</dt>
+                        <dd>提携駐車場あり（2時間無料）</dd>
+                        
+                        <dt>席数</dt>
+                        <dd>40席（個室2室あり）</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約セクション -->
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Reservation</h2>
+                <p class="section-subtitle">ご予約</p>
+            </div>
+            
+            <div class="reservation-options">
+                <div class="reservation-card">
+                    <h3 class="reservation-title">ご予約方法</h3>
+                    <p class="reservation-description">
+                        お電話またはメールにて承っております<br>
+                        お気軽にお問い合わせください
+                    </p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <h4>
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+                                    <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z" fill="currentColor"/>
+                                </svg>
+                                お電話でのご予約
+                            </h4>
+                            <a href="tel:03-1234-5678" class="phone-number">
+                                03-1234-5678
+                            </a>
+                            <p class="phone-hours">受付時間：10:00〜21:00</p>
+                            <p class="phone-note">
+                                ※ランチタイム（11:30〜14:30）は混雑のため<br>
+                                お電話に出られない場合がございます
+                            </p>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <h4>
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+                                    <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="currentColor"/>
+                                </svg>
+                                メールでのご予約
+                            </h4>
+                            <a href="mailto:reservation@bellavista.jp" class="email-address">
+                                reservation@bellavista.jp
+                            </a>
+                            <p class="email-note">
+                                以下の内容をお知らせください：<br>
+                                ・ご希望日時（第3希望まで）<br>
+                                ・人数<br>
+                                ・ご希望のコース<br>
+                                ・アレルギーなど特記事項
+                            </p>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <h4>
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12S6.48 22 12 22 22 17.52 22 12 17.52 2 12 2ZM11 19.93C7.05 19.44 4 16.08 4 12C4 11.38 4.08 10.79 4.21 10.21L9 15V16C9 17.1 9.9 18 11 18V19.93ZM17.9 17.39C17.64 16.58 16.9 16 16 16H15V13C15 12.45 14.55 12 14 12H8V10H10C10.55 10 11 9.55 11 9V7H13C14.1 7 15 6.1 15 5V4.59C17.93 5.78 20 8.65 20 12C20 14.08 19.2 15.97 17.9 17.39Z" fill="currentColor"/>
+                                </svg>
+                                外部予約サイト
+                            </h4>
+                            <div class="external-links">
+                                <a href="#" class="external-link">食べログで予約</a>
+                                <a href="#" class="external-link">ぐるなびで予約</a>
+                                <a href="#" class="external-link">ホットペッパーで予約</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reservation-card">
+                    <h3 class="reservation-title">電話予約</h3>
+                    <p class="reservation-description">
+                        お急ぎの方、ご相談がある方は<br>
+                        お電話でのご予約も承っております
+                    </p>
+                    <a href="tel:03-1234-5678" class="phone-number">
+                        <span class="phone-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+                                <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                        03-1234-5678
+                    </a>
+                    <p class="phone-hours">受付時間：10:00〜21:00</p>
+                    
+                    <div class="reservation-benefits">
+                        <h4>ご予約特典</h4>
+                        <ul>
+                            <li>
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+                                    <path d="M8 2V8C8 10.2 9.8 12 12 12C14.2 12 16 10.2 16 8V2H8Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                    <path d="M12 12V20" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M8 20H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M6 4H10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M14 4H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                ディナーコースご予約でスパークリングワイン1杯サービス
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+                                    <path d="M12 6C13.11 6 14 5.1 14 4C14 3.62 13.9 3.27 13.71 2.97L12 0L10.29 2.97C10.1 3.27 10 3.62 10 4C10 5.1 10.89 6 12 6Z" fill="currentColor"/>
+                                    <path d="M16 6C17.11 6 18 5.1 18 4C18 3.62 17.9 3.27 17.71 2.97L16 0L14.29 2.97C14.1 3.27 14 3.62 14 4C14 5.1 14.89 6 16 6Z" fill="currentColor"/>
+                                    <path d="M8 6C9.11 6 10 5.1 10 4C10 3.62 9.9 3.27 9.71 2.97L8 0L6.29 2.97C6.1 3.27 6 3.62 6 4C6 5.1 6.89 6 8 6Z" fill="currentColor"/>
+                                    <path d="M18 9H6C4.9 9 4 9.9 4 11V21C4 22.1 4.9 23 6 23H18C19.1 23 20 22.1 20 21V11C20 9.9 19.1 9 18 9ZM18 20H6V16C6 16 9 14 12 14S18 16 18 16V20Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                </svg>
+                                記念日のお客様にデザートプレートプレゼント
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+                                    <path d="M8 2V9C8 11.21 9.79 13 12 13S16 11.21 16 9V2H8Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                    <path d="M12 13V20" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M8 20H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M8 6H16" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                5名様以上のご予約でワイン1本サービス
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">Ristorante Bella Vista</h3>
+                    <p class="footer-tagline">心に残る、特別な食事体験を</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#concept">こだわり</a>
+                    <a href="#menu">メニュー</a>
+                    <a href="#voice">お客様の声</a>
+                    <a href="#access">アクセス</a>
+                    <a href="#reservation">予約</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M18 2H15C13.34 2 12 3.34 12 5V8H9V12H12V22H16V12H19L20 8H16V5C16 4.45 16.45 4 17 4H20V2H18Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M22.46 6C21.69 6.35 20.86 6.58 20 6.69C20.88 6.16 21.56 5.32 21.88 4.31C21.05 4.81 20.13 5.16 19.16 5.36C18.37 4.5 17.26 4 16 4C13.65 4 11.73 5.92 11.73 8.29C11.73 8.63 11.77 8.96 11.84 9.27C8.28 9.09 5.11 7.38 3 4.79C2.63 5.42 2.42 6.16 2.42 6.94C2.42 8.43 3.17 9.75 4.33 10.5C3.62 10.5 2.96 10.3 2.38 10C2.38 10 2.38 10 2.38 10.03C2.38 12.11 3.86 13.85 5.82 14.24C5.46 14.34 5.08 14.39 4.69 14.39C4.42 14.39 4.15 14.36 3.89 14.31C4.43 16 6 17.26 7.89 17.29C6.43 18.45 4.58 19.13 2.56 19.13C2.22 19.13 1.88 19.11 1.54 19.07C3.44 20.29 5.74 21 8.23 21C16 21 20.33 14.46 20.33 8.79C20.33 8.6 20.33 8.42 20.32 8.23C21.16 7.63 21.88 6.87 22.46 6Z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ristorante Bella Vista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+<!-- Anime.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+<script>
+// Anime.jsアニメーション
+document.addEventListener('DOMContentLoaded', function() {
+    // ヒーローセクションのアニメーション
+    anime.timeline({
+        easing: 'easeOutExpo',
+        duration: 1200
+    })
+    .add({
+        targets: '.hero-title',
+        opacity: [0, 1],
+        translateY: [30, 0],
+        duration: 800
+    })
+    .add({
+        targets: '.hero-description',
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: 600
+    }, '-=400')
+    .add({
+        targets: '.hero-actions .btn',
+        opacity: [0, 1],
+        translateY: [20, 0],
+        delay: anime.stagger(100),
+        duration: 600
+    }, '-=200');
+
+    // スクロールトリガーアニメーション
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const animateOnScroll = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // カードのフェードイン
+                if (entry.target.classList.contains('feature-card') || 
+                    entry.target.classList.contains('service-card') ||
+                    entry.target.classList.contains('pricing-card')) {
+                    anime({
+                        targets: entry.target,
+                        opacity: [0, 1],
+                        translateY: [30, 0],
+                        duration: 800,
+                        easing: 'easeOutQuad'
+                    });
+                }
+                
+                // 数値のカウントアップ
+                if (entry.target.classList.contains('stat-number')) {
+                    const finalValue = parseInt(entry.target.textContent);
+                    anime({
+                        targets: entry.target,
+                        innerHTML: [0, finalValue],
+                        round: 1,
+                        duration: 2000,
+                        easing: 'easeInOutExpo'
+                    });
+                }
+                
+                animateOnScroll.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // 監視対象の要素を追加
+    document.querySelectorAll('.feature-card, .service-card, .pricing-card, .stat-number').forEach(el => {
+        el.style.opacity = '0';
+        animateOnScroll.observe(el);
+    });
+
+    // ボタンホバーアニメーション
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            anime({
+                targets: this,
+                scale: 1.05,
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+        });
+        
+        button.addEventListener('mouseleave', function() {
+            anime({
+                targets: this,
+                scale: 1,
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+        });
+    });
+
+    // グラフアニメーション（ECサイト用）
+    const graphBars = document.querySelectorAll('.graph-fill');
+    if (graphBars.length > 0) {
+        const graphObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const percent = entry.target.getAttribute('data-percent');
+                    anime({
+                        targets: entry.target,
+                        width: percent + '%',
+                        duration: 1500,
+                        easing: 'easeOutQuart'
+                    });
+                    graphObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        graphBars.forEach(bar => {
+            bar.style.width = '0%';
+            graphObserver.observe(bar);
+        });
+    }
+
+    // タイムラインアニメーション（イベントサイト用）
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    if (timelineItems.length > 0) {
+        anime({
+            targets: '.timeline-item',
+            opacity: [0, 1],
+            translateX: [-30, 0],
+            delay: anime.stagger(100),
+            duration: 800,
+            easing: 'easeOutQuad'
+        });
+    }
+
+    // パララックススクロール効果
+    let scrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+        scrollY = window.scrollY;
+        
+        // ヒーロー背景のパララックス
+        const heroBg = document.querySelector('.hero-bg');
+        if (heroBg) {
+            anime({
+                targets: heroBg,
+                translateY: scrollY * 0.5,
+                duration: 0,
+                easing: 'linear'
+            });
+        }
+    });
+});
+</script>
+</body>
+</html>

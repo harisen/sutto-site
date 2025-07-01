@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>よくある質問 | LP制作サービス</title>
+    <meta name="description" content="LP制作サービスに関するよくある質問をまとめました。料金、納期、制作プロセス、サポートなど、お客様からよくいただく質問にお答えします。">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        /* FAQ専用スタイル */
+        .faq-hero {
+            background: linear-gradient(135deg, #EBF4FF 0%, #F0F9FF 100%);
+            padding: 120px 0 80px;
+            margin-top: var(--header-height);
+        }
+        
+        .faq-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        
+        .faq-hero p {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--text-light);
+        }
+        
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 60px 0 40px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 12px 32px;
+            border: 2px solid #E5E7EB;
+            background-color: var(--white);
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .category-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+        
+        .faq-section {
+            padding-bottom: 80px;
+        }
+        
+        .faq-category {
+            margin-bottom: 60px;
+        }
+        
+        .faq-category-title {
+            font-size: 2.4rem;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #E5E7EB;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .faq-category-icon {
+            width: 36px;
+            height: 36px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .faq-item {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            padding: 24px 32px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--white);
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #F9FAFB;
+        }
+        
+        .faq-question h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0;
+            flex: 1;
+            padding-right: 20px;
+        }
+        
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-icon::before {
+            width: 100%;
+            height: 2px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+        
+        .faq-icon::after {
+            width: 2px;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .faq-item.active .faq-icon::after {
+            transform: translateX(-50%) rotate(90deg);
+            opacity: 0;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer-content {
+            padding: 0 32px 24px;
+            font-size: 1.6rem;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+        
+        .faq-answer-content ul {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+        
+        .faq-answer-content li {
+            list-style: disc;
+            margin-bottom: 8px;
+        }
+        
+        .faq-answer-content strong {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background-color: #FFF9E6;
+            border-left: 4px solid var(--accent-color);
+            padding: 16px 20px;
+            margin: 16px 0;
+            border-radius: 4px;
+        }
+        
+        .cta-section {
+            background-color: var(--bg-light);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-box {
+            background-color: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .cta-box h2 {
+            font-size: 3.2rem;
+            margin-bottom: 24px;
+        }
+        
+        .cta-box p {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .faq-hero {
+                padding: 100px 20px 60px;
+            }
+            
+            .faq-categories {
+                justify-content: flex-start;
+                overflow-x: auto;
+                margin: 40px -20px 30px;
+                padding: 0 20px;
+                gap: 12px;
+            }
+            
+            .category-btn {
+                font-size: 1.4rem;
+                padding: 10px 24px;
+                white-space: nowrap;
+            }
+            
+            .faq-question {
+                padding: 20px;
+            }
+            
+            .faq-question h3 {
+                font-size: 1.6rem;
+            }
+            
+            .faq-answer-content {
+                padding: 0 20px 20px;
+                font-size: 1.5rem;
+            }
+            
+            .cta-box {
+                padding: 40px 24px;
+            }
+            
+            .cta-box h2 {
+                font-size: 2.4rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">LP制作サービス</a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">サンプルサイト</a>
+                <a href="deployment-guide.html" class="nav-link">公開ガイド</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">サンプルサイト</a>
+            <a href="deployment-guide.html" class="mobile-nav-link">公開ガイド</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+
+    <section class="faq-hero">
+        <div class="container">
+            <h1>よくある質問</h1>
+            <p>お客様からよくいただく質問をまとめました</p>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-categories">
+                <button class="category-btn active" data-category="all">すべて</button>
+                <button class="category-btn" data-category="price">料金について</button>
+                <button class="category-btn" data-category="process">制作プロセス</button>
+                <button class="category-btn" data-category="delivery">納期・納品</button>
+                <button class="category-btn" data-category="support">サポート</button>
+            </div>
+
+            <!-- 料金について -->
+            <div class="faq-category" data-category="price">
+                <h2 class="faq-category-title">
+                    <span class="faq-category-icon">💰</span>
+                    料金について
+                </h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>制作期間はどのくらいかかりますか？</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <strong>基本プラン</strong>：最速即日〜5営業日<br>
+                                <strong>リッチプラン</strong>：最速即日〜7営業日<br><br>
+                                素材や情報が揃っている場合は最速での納品が可能です。修正回数や内容により変動する場合があります。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>初期費用以外に追加料金はかかりますか？</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                基本的に初期費用のみで制作いたします。ただし、以下の場合は追加料金が発生する場合があります：
+                                <ul>
+                                    <li>大幅な仕様変更や追加ページの制作</li>
+                                    <li>特殊な機能の実装（予約システム、決済機能など）</li>
+                                    <li>急ぎの納期対応（特急料金）</li>
+                                </ul>
+                                追加料金が発生する場合は、必ず事前にお見積もりをご提示し、ご了承いただいてから作業を進めます。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>リッチプラン（5万円）は通常プラン（2万円）と何が違いますか？</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <strong>リッチプラン</strong>は、GSAPを活用した高度なアニメーションが特徴です：
+                                <ul>
+                                    <li>スクロールに連動した動きのあるアニメーション</li>
+                                    <li>パララックス効果による奥行き感のある演出</li>
+                                    <li>マウスの動きに反応するインタラクティブな要素</li>
+                                    <li>画面遷移時の滑らかなトランジション</li>
+                                </ul>
+                                通常のWebサイト制作会社では30〜50万円相当のアニメーション実装を、AI技術により5万円でご提供しています。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>支払い方法と支払いタイミングを教えてください</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                お支払いは以下の方法に対応しています：
+                                <ul>
+                                    <li>銀行振込</li>
+                                    <li>クレジットカード決済（VISA、MasterCard、JCB、AMEX）</li>
+                                </ul>
+                                <div class="highlight-box">
+                                    お支払いタイミング：<br>
+                                    1. 制作完了後、テストページをご確認いただきます<br>
+                                    2. ご承諾のメールをいただいた時点で納品いたします<br>
+                                    3. 納品後1週間以内にお支払いをお願いいたします
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>キャンセルは可能ですか？</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                制作着手前であればキャンセル可能です。着手後のキャンセルについては、進行状況により以下の通りとなります。
+                                <ul>
+                                    <li>着手前：全額返金</li>
+                                    <li>デザイン作成後：基本的に返金不可</li>
+                                    <li>コーディング完了後：返金不可</li>
+                                </ul>
+                                <div class="highlight-box">
+                                    ※制作着手後は基本的に返金不可となりますので、ご了承ください。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 制作プロセス -->
+            <div class="faq-category" data-category="process">
+                <h2 class="faq-category-title">
+                    <span class="faq-category-icon">🚀</span>
+                    制作プロセス
+                </h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>AI技術を使った制作とはどういうものですか？</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                最新のAI技術を活用してコーディング作業を効率化しています：
+                                <ul>
+                                    <li>デザインからHTMLへの変換を高速化</li>
+                                    <li>レスポンシブ対応の自動最適化</li>
+                                    <li>SEO最適化されたコード生成</li>
+                                    <li>ブラウザ互換性の自動チェック</li>
+                                </ul>
+                                ただし、デザインの企画や最終的な品質チェックは人間が行い、高品質を保証しています。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>制作の流れを教えてください</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <strong>1. お問い合わせ・ヒアリング（1日目）</strong><br>
+                                お客様のビジネスや目的をお聞きし、最適なプランをご提案します。<br><br>
+                                
+                                <strong>2. ご契約・お支払い</strong><br>
+                                プランが決定したら、ご契約とお支払いをお願いします。<br><br>
+                                
+                                <strong>3. 制作開始（1-2日目）</strong><br>
+                                AI技術と人間のクリエイティビティを組み合わせて高速制作します。<br><br>
+                                
+                                <strong>4. 確認・修正（2-3日目）</strong><br>
+                                完成したLPをご確認いただき、必要に応じて修正を行います。<br><br>
+                                
+                                <strong>5. 納品</strong><br>
+                                最終確認後、データを納品いたします。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>どんな情報を準備すればいいですか？</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                以下の情報があるとスムーズに制作を進められます：
+                                <ul>
+                                    <li>会社・サービスの概要資料</li>
+                                    <li>ロゴデータ（あれば）</li>
+                                    <li>使用したい写真や画像</li>
+                                    <li>参考にしたいWebサイトのURL</li>
+                                    <li>ターゲット層の情報</li>
+                                    <li>強みや差別化ポイント</li>
+                                </ul>
+                                <div class="highlight-box">
+                                    素材がない場合は、商用利用可能な素材をこちらでご用意することも可能です。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>サンプルサイトを見ることはできますか？</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                はい、サンプルサイトページで様々な業界のLP制作例をご覧いただけます。実際の制作においては、お客様のビジネスに合わせてカスタマイズいたします。
+                                <div class="highlight-box">
+                                    <a href="portfolio.html" style="color: var(--primary-color);">サンプルサイトを見る →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 納期・納品 -->
+            <div class="faq-category" data-category="delivery">
+                <h2 class="faq-category-title">
+                    <span class="faq-category-icon">📅</span>
+                    納期・納品
+                </h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>本当に即日で納品できるのですか？</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <strong>最速即日での納品が可能な場合もございます</strong>が、これは確約するものではありません。以下の条件が必要です：
+                                <ul>
+                                    <li>必要な素材や情報が全て揃っている</li>
+                                    <li>標準的な構成での制作</li>
+                                    <li>営業日での計算（土日祝を除く）</li>
+                                    <li><strong>修正がない場合（一発OKの場合）</strong></li>
+                                </ul>
+                                <div class="highlight-box">
+                                    ※即日納品は修正がない場合の最速納期です。<br>
+                                    通常、お客様のフィードバックと修正作業を含めると2〜5営業日程度かかります。<br>
+                                    具体的な納期は、ヒアリング後に個別にお伝えいたします。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>納品形式を教えてください</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                以下の形式で納品いたします：
+                                <ul>
+                                    <li>HTML、CSS、JavaScriptファイル一式</li>
+                                    <li>画像ファイル（最適化済み）</li>
+                                    <li>ファイル構成説明書（テキストファイル）</li>
+                                </ul>
+                                納品はZIPファイルでのダウンロード形式となります。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>サーバーやドメインの準備は必要ですか？</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                納品時点では不要ですが、公開には以下が必要です：
+                                <ul>
+                                    <li><strong>ドメイン</strong>：年間1,000〜5,000円程度</li>
+                                    <li><strong>サーバー</strong>：月額500〜2,000円程度</li>
+                                </ul>
+                                <div class="highlight-box">
+                                    ※弊社ではサーバー・ドメインの取得代行やアップロード作業は行っておりません。公開方法については別途ガイドページをご参照ください。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- サポート -->
+            <div class="faq-category" data-category="support">
+                <h2 class="faq-category-title">
+                    <span class="faq-category-icon">🛠️</span>
+                    サポート
+                </h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>納品後のサポートはありますか？</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                基本的にファイル納品をもって弊社のサービスは完了となりますが、以下の対応は可能です：
+                                <ul>
+                                    <li>納品後1週間は表示不具合に関する相談を無料で受付</li>
+                                    <li>ファイルの再ダウンロード（1ヶ月間）</li>
+                                    <li>有料での修正・更新作業</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>自分で内容を更新することはできますか？</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                納品したHTMLファイルはテキストエディタで編集可能です。ただし、HTMLやCSSの知識が必要となります。
+                                <div class="highlight-box">
+                                    ご自身での更新が難しい場合は、別途有料で修正作業を承ることも可能です。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>SEO対策は含まれていますか？</h3>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                基本的なSEO対策は標準で含まれています：
+                                <ul>
+                                    <li>適切なHTMLタグの使用</li>
+                                    <li>メタタグの最適化</li>
+                                    <li>画像のalt属性設定</li>
+                                    <li>ページ読み込み速度の最適化</li>
+                                    <li>モバイルフレンドリー対応</li>
+                                </ul>
+                                ※コンテンツSEOや被リンク対策などの運用面でのSEO対策は含まれません。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>ご不明な点はお気軽にお問い合わせください</h2>
+                <p>こちらに掲載されていないご質問も、お気軽にお問い合わせください。<br>専門スタッフが丁寧にお答えいたします。</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">お問い合わせはこちら</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LP制作サービス</h4>
+                    <p>AI技術を活用した高速・高品質な<br>ランディングページ制作サービス</p>
+                    <p style="margin-top: 12px; font-size: 1.2rem; opacity: 0.8;">🤖 AI Powered Development</p>
+                </div>
+                <div class="footer-section">
+                    <h4>サービス</h4>
+                    <div class="footer-links">
+                        <a href="service.html" class="footer-link">サービス詳細</a>
+                        <a href="pricing.html" class="footer-link">料金プラン</a>
+                        <a href="portfolio.html" class="footer-link">サンプルサイト</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>お問い合わせ</h4>
+                    <div class="footer-links">
+                        <a href="contact.html" class="footer-link">お問い合わせフォーム</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LP制作サービス. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // FAQアコーディオン機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const faqCategories = document.querySelectorAll('.faq-category');
+            
+            // アコーディオン機能
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const answerContent = item.querySelector('.faq-answer-content');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // 他のアイテムを閉じる
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-answer').style.maxHeight = '0';
+                        }
+                    });
+                    
+                    // クリックされたアイテムをトグル
+                    if (isActive) {
+                        item.classList.remove('active');
+                        answer.style.maxHeight = '0';
+                    } else {
+                        item.classList.add('active');
+                        answer.style.maxHeight = answerContent.scrollHeight + 'px';
+                    }
+                });
+            });
+            
+            // カテゴリーフィルター機能
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const category = btn.getAttribute('data-category');
+                    
+                    // ボタンのアクティブ状態を更新
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // カテゴリーの表示/非表示
+                    if (category === 'all') {
+                        faqCategories.forEach(cat => {
+                            cat.style.display = 'block';
+                        });
+                    } else {
+                        faqCategories.forEach(cat => {
+                            if (cat.getAttribute('data-category') === category) {
+                                cat.style.display = 'block';
+                            } else {
+                                cat.style.display = 'none';
+                            }
+                        });
+                    }
+                    
+                    // 開いているアコーディオンを閉じる
+                    faqItems.forEach(item => {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-answer').style.maxHeight = '0';
+                    });
+                });
+            });
+            
+            // URLパラメータでカテゴリーを指定された場合の処理
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryParam = urlParams.get('category');
+            if (categoryParam) {
+                const targetBtn = document.querySelector(`[data-category="${categoryParam}"]`);
+                if (targetBtn) {
+                    targetBtn.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
