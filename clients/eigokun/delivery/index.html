@@ -33,7 +33,7 @@
                     <a href="#pricing" class="nav-link">料金</a>
                     <a href="#voice" class="nav-link">受講生の声</a>
                 </nav>
-                <a href="#register" class="btn btn-primary btn-header">無料体験</a>
+                <a href="#register" class="btn btn-primary btn-header">お問い合わせ</a>
                 <button class="mobile-menu-btn" aria-label="メニュー">
                     <span></span>
                     <span></span>
@@ -78,12 +78,12 @@
                     </div>
                     <div class="hero-cta">
                         <a href="#register" class="btn btn-primary btn-large">
-                            今すぐ無料体験を申し込む
+                            無料体験のお問い合わせ
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" fill="white"/>
                             </svg>
                         </a>
-                        <p class="cta-note">※クレジットカード不要・3分で登録完了</p>
+                        <p class="cta-note">※お電話・メールでお気軽にご相談ください</p>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -212,7 +212,7 @@
                         <li>レッスン録画機能</li>
                         <li>学習レポート</li>
                     </ul>
-                    <a href="#register" class="btn btn-outline">このプランで始める</a>
+                    <a href="#register" class="btn btn-outline">詳しく問い合わせる</a>
                 </div>
                 <div class="pricing-card featured">
                     <div class="popular-badge">人気No.1</div>
@@ -230,7 +230,7 @@
                         <li>学習レポート</li>
                         <li>専任カウンセラー</li>
                     </ul>
-                    <a href="#register" class="btn btn-primary">このプランで始める</a>
+                    <a href="#register" class="btn btn-primary">詳しく問い合わせる</a>
                 </div>
                 <div class="pricing-card">
                     <h3>プレミアムプラン</h3>
@@ -248,7 +248,7 @@
                         <li>専任カウンセラー</li>
                         <li>特別教材使い放題</li>
                     </ul>
-                    <a href="#register" class="btn btn-outline">このプランで始める</a>
+                    <a href="#register" class="btn btn-outline">詳しく問い合わせる</a>
                 </div>
             </div>
         </div>
@@ -393,49 +393,42 @@
                         </div>
                     </div>
                 </div>
-                <div class="register-form">
-                    <form id="registrationForm" class="form">
-                        <h3>無料体験申し込み</h3>
-                        <div class="form-group">
-                            <label for="name">お名前 <span class="required">*</span></label>
-                            <input type="text" id="name" name="name" required placeholder="山田 太郎">
+                <div class="contact-info-box">
+                    <h3>無料体験のお申し込み</h3>
+                    <p>以下の連絡先からお気軽にお問い合わせください</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <h4>メールでのお問い合わせ</h4>
+                                <a href="mailto:info@amalia-english.com" class="contact-link">info@amalia-english.com</a>
+                                <p class="contact-note">24時間受付・2営業日以内に返信</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">メールアドレス <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" required placeholder="example@email.com">
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <h4>お電話でのお問い合わせ</h4>
+                                <a href="tel:0120-123-456" class="contact-link">0120-123-456</a>
+                                <p class="contact-note">平日 10:00〜18:00</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">電話番号 <span class="required">*</span></label>
-                            <input type="tel" id="phone" name="phone" required placeholder="090-1234-5678">
-                        </div>
-                        <div class="form-group">
-                            <label for="level">現在の英語レベル</label>
-                            <select id="level" name="level">
-                                <option value="">選択してください</option>
-                                <option value="beginner">初心者</option>
-                                <option value="elementary">初級</option>
-                                <option value="intermediate">中級</option>
-                                <option value="advanced">上級</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="purpose">学習目的</label>
-                            <select id="purpose" name="purpose">
-                                <option value="">選択してください</option>
-                                <option value="business">ビジネス英語</option>
-                                <option value="daily">日常会話</option>
-                                <option value="test">試験対策（TOEIC等）</option>
-                                <option value="travel">旅行・趣味</option>
-                                <option value="other">その他</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">
-                            無料体験を申し込む
-                        </button>
-                        <p class="form-note">
-                            ※ご入力いただいた情報は、無料体験レッスンのご案内にのみ使用いたします。
-                        </p>
-                    </form>
+                    </div>
+                    
+                    <div class="contact-message">
+                        <p>「無料体験を希望」とお伝えください。<br>
+                        お客様のご希望に合わせて、最適なレッスンプランをご提案いたします。</p>
+                    </div>
                 </div>
             </div>
         </div>

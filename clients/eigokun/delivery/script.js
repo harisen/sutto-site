@@ -37,74 +37,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Form Validation and Submission
-    const registrationForm = document.getElementById('registrationForm');
-    if (registrationForm) {
-        registrationForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Validate required fields
-            const requiredFields = ['name', 'email', 'phone'];
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                const input = this.querySelector(`[name="${field}"]`);
-                if (!input.value.trim()) {
-                    isValid = false;
-                    input.classList.add('error');
-                } else {
-                    input.classList.remove('error');
-                }
-            });
-            
-            // Email validation
-            const emailInput = this.querySelector('[name="email"]');
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(emailInput.value)) {
-                isValid = false;
-                emailInput.classList.add('error');
-            }
-            
-            // Phone validation (Japanese format)
-            const phoneInput = this.querySelector('[name="phone"]');
-            const phoneRegex = /^[\d-]+$/;
-            if (!phoneRegex.test(phoneInput.value.replace(/\s/g, ''))) {
-                isValid = false;
-                phoneInput.classList.add('error');
-            }
-            
-            if (isValid) {
-                // Show success message
-                alert('お申し込みありがとうございます！\n担当者より2営業日以内にご連絡させていただきます。');
-                
-                // Here you would normally send the data to a server
-                console.log('Form submitted:', data);
-                
-                // Reset form
-                this.reset();
-                
-                // Scroll to top
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            } else {
-                alert('必須項目をご入力ください。');
-            }
+    // Contact link hover effect
+    const contactLinks = document.querySelectorAll('.contact-link');
+    contactLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
         });
-        
-        // Remove error class on input
-        const inputs = registrationForm.querySelectorAll('input, select');
-        inputs.forEach(input => {
-            input.addEventListener('input', function() {
-                this.classList.remove('error');
-            });
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
         });
-    }
+    });
     
     // Scroll Animation
     const observerOptions = {
