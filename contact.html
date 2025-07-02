@@ -4,168 +4,234 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>お問い合わせ | LP制作サービス</title>
-    <meta name="description" content="LP制作サービスへのお申し込みはこちらから。スタンダードプラン（2万円）またはリッチプラン（5万円）からお選びください。">
+    <meta name="description" content="LP制作のお申し込みはこちらから。詳細なアンケートにお答えいただくことで、お客様のビジネスに最適なLPを制作いたします。">
     
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+
     <style>
-        .contact-hero {
-            background: linear-gradient(135deg, #EBF4FF 0%, #F0F9FF 100%);
-            padding: 120px 0 80px;
-            margin-top: var(--header-height);
-        }
-        
-        .contact-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 60px;
-            margin: 60px 0;
-        }
-        
-        .contact-form {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-        
-        .form-group {
-            margin-bottom: 24px;
-        }
-        
-        .form-label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .required {
-            color: #EF4444;
-            margin-left: 4px;
-        }
-        
-        .form-input,
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #E5E7EB;
-            border-radius: 8px;
-            font-size: 1.6rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            border-color: var(--primary-color);
-            outline: none;
-        }
-        
-        .form-textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .form-checkbox {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            margin: 24px 0;
-        }
-        
-        .form-checkbox input {
-            margin-top: 4px;
-        }
-        
-        .form-submit {
-            width: 100%;
-            padding: 16px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            font-size: 1.8rem;
-            font-weight: 700;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .form-submit:hover {
-            background-color: #1D4ED8;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-        }
-        
-        .contact-info {
-            background-color: var(--bg-light);
-            padding: 40px;
-            border-radius: 16px;
-            height: fit-content;
-        }
-        
-        .info-item {
-            margin-bottom: 32px;
-        }
-        
-        .info-icon {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 8px;
-        }
-        
-        .notice-box {
-            background-color: #FEF3C7;
-            border-left: 4px solid var(--accent-color);
-            padding: 16px;
-            margin-bottom: 24px;
-            border-radius: 8px;
-        }
-        
+        /* お問い合わせページ専用スタイル */
         .steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            margin: 60px 0;
+            gap: 20px;
+            margin-bottom: 60px;
         }
-        
+
         .step-card {
             text-align: center;
-            padding: 32px;
-            background-color: var(--white);
+            padding: 30px 20px;
+            background: var(--white);
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-sm);
+            position: relative;
         }
-        
+
+        .step-card::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 2px;
+            background: var(--border);
+        }
+
+        .step-card:last-child::after {
+            display: none;
+        }
+
         .step-number {
-            display: inline-flex;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            border-radius: 50%;
-            font-size: 2.4rem;
+            font-size: 2rem;
             font-weight: 700;
+            margin: 0 auto 16px;
+        }
+
+        .step-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .contact-main {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-main h2 {
+            font-size: 2.4rem;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .contact-info {
+            background: var(--bg-light);
+            padding: 32px;
+            border-radius: 16px;
+            position: sticky;
+            top: 100px;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .info-item {
+            margin-bottom: 24px;
+        }
+
+        .info-icon {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .info-item p {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .notice-box {
+            background: #f0f9ff;
+            border: 1px solid #3b82f6;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 32px;
+            font-size: 1.6rem;
+            color: #1e40af;
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .cta-card h3 {
+            font-size: 2.4rem;
             margin-bottom: 16px;
         }
-        
-        @media (max-width: 1023px) {
+
+        .cta-card p {
+            font-size: 1.6rem;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            padding: 16px 40px;
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .features-list li {
+            font-size: 1.6rem;
+            padding: 12px 0;
+            padding-left: 32px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .method-card {
+            background: var(--bg-light);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .method-icon {
+            font-size: 3.2rem;
+            margin-bottom: 16px;
+        }
+
+        .method-card h4 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .method-card p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .step-card::after {
+                display: none;
+            }
+
             .contact-content {
                 grid-template-columns: 1fr;
             }
-        }
-        
-        @media (max-width: 767px) {
-            .contact-form {
-                padding: 24px;
+
+            .contact-info {
+                position: static;
+                margin-top: 40px;
             }
-            
-            .steps {
+
+            .contact-methods {
                 grid-template-columns: 1fr;
             }
         }
@@ -196,7 +262,7 @@
         </div>
     </nav>
 
-    <section class="contact-hero">
+    <section class="page-hero">
         <div class="container">
             <h1 class="text-center">お問い合わせ</h1>
             <p class="text-center" style="font-size: 2rem; color: var(--text-light); margin-top: 16px;">
@@ -211,7 +277,7 @@
                 <div class="step-card">
                     <div class="step-number">1</div>
                     <h3>アンケート記入</h3>
-                    <p>フォームでご要望をお聞かせください</p>
+                    <p>詳細なアンケートでご要望をお聞かせください</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">2</div>
@@ -237,135 +303,45 @@
             </div>
 
             <div class="contact-content">
-                <div class="contact-form">
+                <div class="contact-main">
                     <h2>LP制作のお申し込み</h2>
                     
-                    <div class="notice-box">
-                        <strong>LP制作をご希望の方へ：</strong>
-                        下記のアンケートフォームよりお申し込みください。
+                    <div class="cta-card">
+                        <h3>詳細アンケートフォームへ</h3>
+                        <p>お客様のビジネスに最適なLPを制作するために、<br>詳しい情報をお聞かせください。</p>
+                        <a href="questionnaire.html" class="btn-cta">
+                            アンケートを開始する →
+                        </a>
                     </div>
 
-                    <form id="lpRequestForm">
-                        <div class="form-group">
-                            <label for="name" class="form-label">
-                                お名前<span class="required">*</span>
-                            </label>
-                            <input type="text" id="name" name="name" class="form-input" required>
+                    <div class="notice-box">
+                        <strong>アンケートについて：</strong>
+                        7つのステップに分かれた詳細なアンケートです。所要時間は約10〜15分です。
+                        わからない項目は空欄でも構いません。
+                    </div>
+
+                    <h3 style="margin-bottom: 24px; font-size: 2rem;">アンケートの内容</h3>
+                    <ul class="features-list">
+                        <li>基本情報（お名前、会社名、連絡先など）</li>
+                        <li>プロジェクト詳細（プラン選択、業種、目的など）</li>
+                        <li>ターゲット情報（年齢層、性別、詳細な特徴）</li>
+                        <li>デザイン要望（キャッチコピー、デザイントーン、色など）</li>
+                        <li>必要なコンテンツ（含めたいセクション、フォーム項目）</li>
+                        <li>素材・技術要件（ロゴ、画像素材の有無など）</li>
+                        <li>スケジュール・その他（納期、予算、追加要望）</li>
+                    </ul>
+
+                    <div class="contact-methods">
+                        <div class="method-card">
+                            <div class="method-icon">📧</div>
+                            <h4>メールでのお問い合わせ</h4>
+                            <p>LP制作以外のご質問は<br>sutto.apps@gmail.com</p>
                         </div>
-
-                        <div class="form-group">
-                            <label for="company" class="form-label">
-                                会社名・屋号
-                            </label>
-                            <input type="text" id="company" name="company" class="form-input">
+                        <div class="method-card">
+                            <div class="method-icon">📝</div>
+                            <h4>よくある質問</h4>
+                            <p>お問い合わせ前に<br><a href="faq.html" style="color: var(--primary-color);">FAQ</a>もご確認ください</p>
                         </div>
-
-                        <div class="form-group">
-                            <label for="email" class="form-label">
-                                メールアドレス<span class="required">*</span>
-                            </label>
-                            <input type="email" id="email" name="email" class="form-input" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone" class="form-label">
-                                電話番号<span class="required">*</span>
-                            </label>
-                            <input type="tel" id="phone" name="phone" class="form-input" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="plan" class="form-label">
-                                ご希望のプラン<span class="required">*</span>
-                            </label>
-                            <select id="plan" name="plan" class="form-select" required>
-                                <option value="">選択してください</option>
-                                <option value="standard">スタンダードプラン（2万円）</option>
-                                <option value="rich">リッチプラン（5万円）</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="business-type" class="form-label">
-                                業種・サービス内容<span class="required">*</span>
-                            </label>
-                            <input type="text" id="business-type" name="business-type" class="form-input" required placeholder="例：健康食品販売、オンライン英会話、不動産仲介等">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="target" class="form-label">
-                                ターゲット層<span class="required">*</span>
-                            </label>
-                            <input type="text" id="target" name="target" class="form-input" required placeholder="例：30代女性、中小企業経営者、学生等">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="purpose" class="form-label">
-                                LPの目的<span class="required">*</span>
-                            </label>
-                            <textarea id="purpose" name="purpose" class="form-textarea" required placeholder="例：商品の販売促進、資料請求の獲得、会員登録の促進等"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="reference" class="form-label">
-                                参考サイト・競合サイト
-                            </label>
-                            <textarea id="reference" name="reference" class="form-textarea" placeholder="参考にしたいサイトのURLや競合サイトがあれば記入してください"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="deadline" class="form-label">
-                                希望納期
-                            </label>
-                            <input type="text" id="deadline" name="deadline" class="form-input" placeholder="例：1ヶ月以内、○月○日まで、特に急ぎではない等">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="file-link" class="form-label">
-                                素材ダウンロードリンク
-                            </label>
-                            <input type="url" id="file-link" name="file-link" class="form-input" placeholder="例：https://gigafile.nu/xxxx">
-                            <p style="font-size: 1.4rem; color: var(--text-light); margin-top: 8px;">
-                                ロゴや使用してほしい素材をギガファイル便などにアップロードし、ダウンロードリンクを記載してください
-                            </p>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="file-password" class="form-label">
-                                ダウンロードパスワード
-                            </label>
-                            <input type="text" id="file-password" name="file-password" class="form-input" placeholder="パスワードがある場合は記入">
-                            <p style="font-size: 1.4rem; color: var(--text-light); margin-top: 8px;">
-                                ファイルにパスワードが設定されている場合は記入してください
-                            </p>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="additional" class="form-label">
-                                その他ご要望
-                            </label>
-                            <textarea id="additional" name="additional" class="form-textarea" placeholder="その他、ご要望や質問があれば自由にご記入ください"></textarea>
-                        </div>
-
-                        <div class="form-checkbox">
-                            <input type="checkbox" id="privacy" name="privacy" required>
-                            <label for="privacy">
-                                <a href="privacy.html" style="color: var(--primary-color);">プライバシーポリシー</a>に同意する
-                            </label>
-                        </div>
-
-                        <button type="submit" class="form-submit">アンケートを送信する</button>
-                    </form>
-
-                    <div style="margin-top: 60px; padding: 30px; background-color: var(--bg-light); border-radius: 12px;">
-                        <h3 style="margin-bottom: 20px;">修正対応や制作以外のお問い合わせ</h3>
-                        <p style="margin-bottom: 16px;">
-                            LP制作以外のお問い合わせ（サービスに関するご質問、ご意見など）は、
-                            下記のメールアドレスまでお送りください。
-                        </p>
-                        <p style="font-size: 1.8rem; font-weight: 700; color: var(--primary-color);">
-                            📧 sutto.apps@gmail.com
-                        </p>
                     </div>
                 </div>
 
@@ -394,8 +370,8 @@
                     </div>
 
                     <div style="background-color: var(--white); padding: 24px; border-radius: 12px; margin-top: 32px;">
-                        <h4 style="margin-bottom: 12px;">よくあるご質問</h4>
-                        <p>お問い合わせ前に<a href="faq.html" style="color: var(--primary-color);">よくあるご質問</a>もご確認ください</p>
+                        <h4 style="margin-bottom: 12px;">制作の流れ</h4>
+                        <p><a href="service.html#flow" style="color: var(--primary-color);">詳しい制作フローはこちら</a></p>
                     </div>
                 </div>
             </div>
@@ -406,12 +382,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>LP制作サービス</h4>
-                    <p>AI技術を活用した高速・高品質な<br>ランディングページ制作サービス</p>
-                    <p style="margin-top: 12px; font-size: 1.2rem; opacity: 0.8;">🤖 AI Powered Development</p>
-                </div>
-                <div class="footer-section">
-                    <h4>サービス</h4>
+                    <h3>サービス</h3>
                     <div class="footer-links">
                         <a href="service.html" class="footer-link">サービス詳細</a>
                         <a href="pricing.html" class="footer-link">料金プラン</a>
@@ -419,20 +390,20 @@
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h4>お問い合わせ</h4>
+                    <h3>サポート</h3>
                     <div class="footer-links">
                         <a href="contact.html" class="footer-link">お問い合わせフォーム</a>
                         <a href="faq.html" class="footer-link">よくある質問</a>
+                        <a href="deployment-guide.html" class="footer-link">LP公開ガイド</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 LP制作サービス. All rights reserved.</p>
+                <p>&copy; 2025 All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/form.js"></script>
 </body>
 </html>

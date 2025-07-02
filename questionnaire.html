@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LP制作アンケート | LP制作サービス</title>
+    <meta name="description" content="LP制作のための詳細アンケート。お客様のビジネスに最適なLPを制作するために、詳しい情報をお聞かせください。">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        /* アンケートページ専用スタイル */
+        .questionnaire-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .progress-circle {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .progress-step.completed .progress-circle {
+            background: #10b981;
+            border-color: #10b981;
+            color: white;
+        }
+
+        .progress-label {
+            margin-top: 8px;
+            font-size: 1.3rem;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        .progress-step.active .progress-label {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-header {
+            margin-bottom: 32px;
+        }
+
+        .step-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .step-description {
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .form-description {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1.6rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .required {
+            color: #ef4444;
+            margin-left: 4px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-item input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 6px;
+        }
+
+        .radio-item label {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+        }
+
+        .checkbox-item label {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn-nav {
+            padding: 12px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.6rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-prev {
+            background: var(--bg-light);
+            color: var(--text-secondary);
+        }
+
+        .btn-prev:hover {
+            background: #e5e7eb;
+        }
+
+        .btn-next {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-next:hover {
+            background: #6366f1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-confirm {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-confirm:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+
+        /* 確認画面のスタイル */
+        .confirmation-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+
+        .confirmation-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+
+        .confirmation-item {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .confirmation-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .confirmation-label {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .confirmation-value {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .edit-notice {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            font-size: 1.5rem;
+            color: #92400e;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 1.3rem;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .form-input.error,
+        .form-select.error,
+        .form-textarea.error {
+            border-color: #ef4444;
+        }
+
+        @media (max-width: 768px) {
+            .questionnaire-container {
+                padding: 24px;
+            }
+
+            .progress-label {
+                font-size: 1.1rem;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
+            .radio-group {
+                flex-direction: column;
+            }
+
+            .step-navigation {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .btn-nav {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">LP制作サービス</a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">サンプルサイト</a>
+                <a href="deployment-guide.html" class="nav-link">公開ガイド</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">サンプルサイト</a>
+            <a href="deployment-guide.html" class="mobile-nav-link">公開ガイド</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="text-center">LP制作アンケート</h1>
+            <p class="text-center" style="font-size: 2rem; color: var(--text-light); margin-top: 16px;">
+                お客様のビジネスに最適なLPを制作するために
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="questionnaire-container">
+                <!-- プログレスバー -->
+                <div class="progress-bar">
+                    <div class="progress-step active" data-step="1">
+                        <div class="progress-circle">1</div>
+                        <span class="progress-label">基本情報</span>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="progress-circle">2</div>
+                        <span class="progress-label">プロジェクト詳細</span>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="progress-circle">3</div>
+                        <span class="progress-label">ターゲット</span>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="progress-circle">4</div>
+                        <span class="progress-label">デザイン</span>
+                    </div>
+                    <div class="progress-step" data-step="5">
+                        <div class="progress-circle">5</div>
+                        <span class="progress-label">コンテンツ</span>
+                    </div>
+                    <div class="progress-step" data-step="6">
+                        <div class="progress-circle">6</div>
+                        <span class="progress-label">素材・その他</span>
+                    </div>
+                    <div class="progress-step" data-step="7">
+                        <div class="progress-circle">✓</div>
+                        <span class="progress-label">確認</span>
+                    </div>
+                </div>
+
+                <form id="questionnaireForm">
+                    <!-- ステップ1: 基本情報 -->
+                    <div class="step-content active" data-step="1">
+                        <div class="step-header">
+                            <h2 class="step-title">基本情報</h2>
+                            <p class="step-description">まずはお客様の基本情報をお聞かせください。</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="form-label">
+                                お名前<span class="required">*</span>
+                            </label>
+                            <input type="text" id="name" name="name" class="form-input" required placeholder="山田 太郎">
+                            <span class="error-message">お名前を入力してください</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company" class="form-label">
+                                会社名・屋号・サービス名<span class="required">*</span>
+                            </label>
+                            <p class="form-description">法人名、個人事業の屋号、またはサービス名をご記入ください</p>
+                            <input type="text" id="company" name="company" class="form-input" required placeholder="株式会社サンプル / サンプル事務所 / ○○オンライン">
+                            <span class="error-message">会社名・屋号・サービス名を入力してください</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">
+                                メールアドレス<span class="required">*</span>
+                            </label>
+                            <p class="form-description">連絡可能なメールアドレスをご記入ください</p>
+                            <input type="email" id="email" name="email" class="form-input" required placeholder="sample@example.com">
+                            <span class="error-message">有効なメールアドレスを入力してください</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="form-label">
+                                電話番号<span class="required">*</span>
+                            </label>
+                            <p class="form-description">日中連絡可能な電話番号をハイフンありでご記入ください</p>
+                            <input type="tel" id="phone" name="phone" class="form-input" required placeholder="090-1234-5678">
+                            <span class="error-message">電話番号を入力してください</span>
+                        </div>
+                    </div>
+
+                    <!-- ステップ2: プロジェクト詳細 -->
+                    <div class="step-content" data-step="2">
+                        <div class="step-header">
+                            <h2 class="step-title">プロジェクト詳細</h2>
+                            <p class="step-description">制作するLPの詳細についてお聞かせください。</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="plan" class="form-label">
+                                ご希望のプラン<span class="required">*</span>
+                            </label>
+                            <p class="form-description">制作費用とサービス内容の違いについては<a href="pricing.html" target="_blank" style="color: var(--primary-color);">料金ページ</a>をご確認ください</p>
+                            <select id="plan" name="plan" class="form-select" required>
+                                <option value="">選択してください</option>
+                                <option value="standard">スタンダードプラン（2万円）- 基本的な機能とデザイン</option>
+                                <option value="rich">リッチプラン（5万円）- 高度なアニメーションと機能</option>
+                            </select>
+                            <span class="error-message">プランを選択してください</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="business-type" class="form-label">
+                                業種・サービス内容<span class="required">*</span>
+                            </label>
+                            <p class="form-description">どのような業種・サービスのLPを制作するか具体的にご記入ください</p>
+                            <input type="text" id="business-type" name="business-type" class="form-input" required placeholder="例：健康食品のEC販売、オンライン英会話スクール、不動産売買仲介、整体院">
+                            <span class="error-message">業種・サービス内容を入力してください</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lp-purpose" class="form-label">
+                                LPの主な目的<span class="required">*</span>
+                            </label>
+                            <p class="form-description">このLPで最も達成したい目標を選択してください</p>
+                            <select id="lp-purpose" name="lp-purpose" class="form-select" required>
+                                <option value="">選択してください</option>
+                                <option value="product-sales">商品・サービスの直接販売</option>
+                                <option value="lead-generation">見込み客の獲得（資料請求・問い合わせ）</option>
+                                <option value="member-registration">会員登録・無料体験の促進</option>
+                                <option value="event-application">セミナー・イベントの申込み</option>
+                                <option value="brand-awareness">ブランド認知度の向上</option>
+                                <option value="other">その他</option>
+                            </select>
+                            <span class="error-message">LPの目的を選択してください</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lp-purpose-detail" class="form-label">
+                                目的の詳細・ゴール
+                            </label>
+                            <p class="form-description">具体的な数値目標やKPIがあればご記入ください</p>
+                            <textarea id="lp-purpose-detail" name="lp-purpose-detail" class="form-textarea" placeholder="例：月間50件の問い合わせ獲得、コンバージョン率3%達成、初月で100名の会員登録"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deadline" class="form-label">
+                                希望納期<span class="required">*</span>
+                            </label>
+                            <p class="form-description">いつまでにLPが必要かご記入ください</p>
+                            <input type="text" id="deadline" name="deadline" class="form-input" required placeholder="例：2週間以内、○月○日まで、特に急ぎではない">
+                            <span class="error-message">希望納期を入力してください</span>
+                        </div>
+                    </div>
+
+                    <!-- ステップ3: ターゲット情報 -->
+                    <div class="step-content" data-step="3">
+                        <div class="step-header">
+                            <h2 class="step-title">ターゲット情報</h2>
+                            <p class="step-description">LPのターゲットとなるお客様について教えてください。</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                メインターゲットの年齢層<span class="required">*</span>
+                            </label>
+                            <p class="form-description">最も訴求したい年齢層を選択してください（複数選択可）</p>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="age-10s" name="target-age" value="10代">
+                                    <label for="age-10s">10代</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="age-20s" name="target-age" value="20代">
+                                    <label for="age-20s">20代</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="age-30s" name="target-age" value="30代">
+                                    <label for="age-30s">30代</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="age-40s" name="target-age" value="40代">
+                                    <label for="age-40s">40代</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="age-50s" name="target-age" value="50代">
+                                    <label for="age-50s">50代</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="age-60s" name="target-age" value="60代以上">
+                                    <label for="age-60s">60代以上</label>
+                                </div>
+                            </div>
+                            <span class="error-message">少なくとも1つの年齢層を選択してください</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                メインターゲットの性別
+                            </label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="gender-male" name="target-gender" value="男性">
+                                    <label for="gender-male">男性</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="gender-female" name="target-gender" value="女性">
+                                    <label for="gender-female">女性</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="gender-both" name="target-gender" value="両方" checked>
+                                    <label for="gender-both">両方</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="target-detail" class="form-label">
+                                ターゲットの詳細情報
+                            </label>
+                            <p class="form-description">職業、年収、ライフスタイル、悩みなど、ターゲットの具体的な特徴をご記入ください</p>
+                            <textarea id="target-detail" name="target-detail" class="form-textarea" placeholder="例：都内在住の会社員、年収400-600万円、健康志向が高く、仕事のストレスに悩んでいる"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- ステップ4: デザイン要望 -->
+                    <div class="step-content" data-step="4">
+                        <div class="step-header">
+                            <h2 class="step-title">デザイン要望</h2>
+                            <p class="step-description">LPのデザインについてのご希望をお聞かせください。</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="main-message" class="form-label">
+                                メインキャッチコピー・訴求ポイント<span class="required">*</span>
+                            </label>
+                            <p class="form-description">LPで最も伝えたいメッセージや、商品・サービスの強みをご記入ください</p>
+                            <textarea id="main-message" name="main-message" class="form-textarea" required placeholder="例：たった3ヶ月で英語がペラペラに！マンツーマンレッスンで確実に上達"></textarea>
+                            <span class="error-message">メインメッセージを入力してください</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="unique-points" class="form-label">
+                                他社との差別化ポイント
+                            </label>
+                            <p class="form-description">競合他社と比較した際の独自の強みや特徴を3つ程度ご記入ください</p>
+                            <textarea id="unique-points" name="unique-points" class="form-textarea" placeholder="例：&#10;1. 業界最安値の料金設定&#10;2. 24時間365日対応可能&#10;3. 満足度保証制度あり"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                デザインの雰囲気・トーン<span class="required">*</span>
+                            </label>
+                            <p class="form-description">希望するデザインの印象を選択してください（複数選択可）</p>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="tone-modern" name="design-tone" value="モダン・洗練">
+                                    <label for="tone-modern">モダン・洗練</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="tone-friendly" name="design-tone" value="親しみやすい">
+                                    <label for="tone-friendly">親しみやすい</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="tone-professional" name="design-tone" value="プロフェッショナル">
+                                    <label for="tone-professional">プロフェッショナル</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="tone-luxury" name="design-tone" value="高級感">
+                                    <label for="tone-luxury">高級感</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="tone-pop" name="design-tone" value="ポップ・楽しい">
+                                    <label for="tone-pop">ポップ・楽しい</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="tone-trust" name="design-tone" value="信頼感・安心感">
+                                    <label for="tone-trust">信頼感・安心感</label>
+                                </div>
+                            </div>
+                            <span class="error-message">少なくとも1つのトーンを選択してください</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="color-preference" class="form-label">
+                                希望する色・カラーイメージ
+                            </label>
+                            <p class="form-description">使用したい色や避けたい色があればご記入ください</p>
+                            <input type="text" id="color-preference" name="color-preference" class="form-input" placeholder="例：青系でクリーンな印象、赤は避けたい、コーポレートカラーの緑を使用">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reference-sites" class="form-label">
+                                参考サイト・競合サイト
+                            </label>
+                            <p class="form-description">デザインや構成の参考にしたいサイト、競合他社のサイトURLをご記入ください</p>
+                            <textarea id="reference-sites" name="reference-sites" class="form-textarea" placeholder="https://example.com - シンプルで見やすいレイアウトが参考になる&#10;https://competitor.com - 競合サイト、これより魅力的にしたい"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- ステップ5: 必要なコンテンツ -->
+                    <div class="step-content" data-step="5">
+                        <div class="step-header">
+                            <h2 class="step-title">必要なコンテンツ</h2>
+                            <p class="step-description">LPに含めたいコンテンツを選択してください。</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                LPに含めたいセクション<span class="required">*</span>
+                            </label>
+                            <p class="form-description">必要なコンテンツを選択してください（複数選択可）</p>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="section-hero" name="sections" value="ヒーローセクション" checked>
+                                    <label for="section-hero">ヒーローセクション（メインビジュアル）</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="section-problem" name="sections" value="課題提起">
+                                    <label for="section-problem">課題提起・お悩み</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="section-solution" name="sections" value="解決策">
+                                    <label for="section-solution">解決策の提示</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="section-features" name="sections" value="特徴・強み">
+                                    <label for="section-features">特徴・強み</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="section-benefits" name="sections" value="メリット">
+                                    <label for="section-benefits">お客様のメリット</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="section-price" name="sections" value="料金">
+                                    <label for="section-price">料金・プラン</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="section-voice" name="sections" value="お客様の声">
+                                    <label for="section-voice">お客様の声・実績</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="section-faq" name="sections" value="よくある質問">
+                                    <label for="section-faq">よくある質問</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="section-company" name="sections" value="会社情報">
+                                    <label for="section-company">会社・運営者情報</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="section-flow" name="sections" value="利用の流れ">
+                                    <label for="section-flow">サービス利用の流れ</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="section-contact" name="sections" value="問い合わせ" checked>
+                                    <label for="section-contact">お問い合わせフォーム</label>
+                                </div>
+                            </div>
+                            <span class="error-message">少なくとも1つのセクションを選択してください</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-items" class="form-label">
+                                フォームに必要な入力項目
+                            </label>
+                            <p class="form-description">お問い合わせフォームで収集したい情報をご記入ください</p>
+                            <textarea id="form-items" name="form-items" class="form-textarea" placeholder="例：名前、メールアドレス、電話番号、会社名、お問い合わせ内容、希望プラン"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- ステップ6: 素材・その他 -->
+                    <div class="step-content" data-step="6">
+                        <div class="step-header">
+                            <h2 class="step-title">素材・その他</h2>
+                            <p class="step-description">素材の提供やその他のご要望についてお聞かせください。</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                ロゴデータの有無<span class="required">*</span>
+                            </label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="logo-yes" name="logo-status" value="あり" required>
+                                    <label for="logo-yes">ロゴデータあり</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="logo-no" name="logo-status" value="なし" required>
+                                    <label for="logo-no">ロゴデータなし（テキストロゴ希望）</label>
+                                </div>
+                            </div>
+                            <span class="error-message">ロゴデータの有無を選択してください</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                使用したい画像素材
+                            </label>
+                            <p class="form-description">商品写真、施設写真、スタッフ写真など、使用したい画像の有無</p>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="image-yes" name="image-status" value="提供可能">
+                                    <label for="image-yes">提供可能</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="image-some" name="image-status" value="一部提供可能">
+                                    <label for="image-some">一部提供可能</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="image-no" name="image-status" value="なし" checked>
+                                    <label for="image-no">なし（ストック画像を使用）</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="file-link" class="form-label">
+                                素材ダウンロードリンク
+                            </label>
+                            <p class="form-description">ロゴや画像などの素材をギガファイル便などにアップロードし、ダウンロードリンクをご記入ください</p>
+                            <input type="url" id="file-link" name="file-link" class="form-input" placeholder="https://gigafile.nu/xxxx">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="file-password" class="form-label">
+                                ダウンロードパスワード
+                            </label>
+                            <p class="form-description">ファイルにパスワードが設定されている場合はご記入ください</p>
+                            <input type="text" id="file-password" name="file-password" class="form-input" placeholder="パスワード">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="domain-status" class="form-label">
+                                公開予定のドメイン（URL）
+                            </label>
+                            <p class="form-description">すでに取得済みのドメインがあればご記入ください（なければ空欄で構いません）</p>
+                            <input type="text" id="domain-status" name="domain-status" class="form-input" placeholder="例：https://example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="launch-timing" class="form-label">
+                                公開予定時期
+                            </label>
+                            <p class="form-description">キャンペーンやイベントに合わせた公開時期があればご記入ください</p>
+                            <input type="text" id="launch-timing" name="launch-timing" class="form-input" placeholder="例：○月○日のキャンペーン開始に合わせて公開したい">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additional-requests" class="form-label">
+                                その他のご要望・ご質問
+                            </label>
+                            <p class="form-description">上記以外でご要望やご不明な点があれば自由にご記入ください</p>
+                            <textarea id="additional-requests" name="additional-requests" class="form-textarea" placeholder="例：スマートフォン表示を特に重視したい、特定のブラウザ対応が必要、など"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- ステップ7: 確認画面 -->
+                    <div class="step-content" data-step="7">
+                        <div class="step-header">
+                            <h2 class="step-title">入力内容の確認</h2>
+                            <p class="step-description">以下の内容で送信します。修正が必要な場合は「前へ」ボタンで戻って修正してください。</p>
+                        </div>
+
+                        <div class="edit-notice">
+                            <strong>ご注意：</strong>修正したい項目がある場合は、該当するステップまで戻って編集してください。
+                        </div>
+
+                        <div id="confirmationContent">
+                            <!-- JavaScriptで動的に生成 -->
+                        </div>
+
+                        <div class="form-checkbox" style="margin-top: 32px;">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy" style="font-size: 1.6rem;">
+                                <a href="privacy.html" target="_blank" style="color: var(--primary-color);">プライバシーポリシー</a>に同意する
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- ナビゲーションボタン -->
+                    <div class="step-navigation">
+                        <button type="button" class="btn-nav btn-prev" id="prevBtn" style="display: none;">
+                            ← 前へ
+                        </button>
+                        <button type="button" class="btn-nav btn-next" id="nextBtn">
+                            次へ →
+                        </button>
+                        <button type="submit" class="btn-nav btn-confirm" id="submitBtn" style="display: none;">
+                            送信する
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>サービス</h3>
+                    <div class="footer-links">
+                        <a href="service.html" class="footer-link">サービス詳細</a>
+                        <a href="pricing.html" class="footer-link">料金プラン</a>
+                        <a href="portfolio.html" class="footer-link">サンプルサイト</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>サポート</h3>
+                    <div class="footer-links">
+                        <a href="contact.html" class="footer-link">お問い合わせフォーム</a>
+                        <a href="faq.html" class="footer-link">よくある質問</a>
+                        <a href="deployment-guide.html" class="footer-link">LP公開ガイド</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // ページング機能の実装
+        const form = document.getElementById('questionnaireForm');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const progressSteps = document.querySelectorAll('.progress-step');
+        const stepContents = document.querySelectorAll('.step-content');
+        
+        let currentStep = 1;
+        const totalSteps = 7;
+
+        // フォームデータを保存するオブジェクト
+        let formData = {};
+
+        // ステップ表示を更新
+        function updateStep(step) {
+            // プログレスバーを更新
+            progressSteps.forEach((progressStep, index) => {
+                if (index + 1 < step) {
+                    progressStep.classList.add('completed');
+                    progressStep.classList.remove('active');
+                } else if (index + 1 === step) {
+                    progressStep.classList.add('active');
+                    progressStep.classList.remove('completed');
+                } else {
+                    progressStep.classList.remove('active', 'completed');
+                }
+            });
+
+            // コンテンツを表示/非表示
+            stepContents.forEach((content, index) => {
+                if (index + 1 === step) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+
+            // ボタンの表示を更新
+            prevBtn.style.display = step === 1 ? 'none' : 'block';
+            nextBtn.style.display = step === totalSteps ? 'none' : 'block';
+            submitBtn.style.display = step === totalSteps ? 'block' : 'none';
+
+            // 確認画面の場合、内容を生成
+            if (step === 7) {
+                generateConfirmation();
+            }
+        }
+
+        // 現在のステップのデータを保存
+        function saveCurrentStepData() {
+            const currentContent = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+            const inputs = currentContent.querySelectorAll('input, select, textarea');
+            
+            inputs.forEach(input => {
+                if (input.type === 'checkbox' || input.type === 'radio') {
+                    if (input.checked) {
+                        if (!formData[input.name]) {
+                            formData[input.name] = [];
+                        }
+                        if (input.type === 'checkbox') {
+                            formData[input.name].push(input.value);
+                        } else {
+                            formData[input.name] = input.value;
+                        }
+                    }
+                } else {
+                    formData[input.name] = input.value;
+                }
+            });
+        }
+
+        // 現在のステップのバリデーション
+        function validateCurrentStep() {
+            const currentContent = document.querySelector(`.step-content[data-step="${currentStep}"]`);
+            const requiredInputs = currentContent.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredInputs.forEach(input => {
+                const errorMessage = input.parentElement.querySelector('.error-message');
+                
+                if (input.type === 'checkbox') {
+                    const checkboxGroup = currentContent.querySelectorAll(`input[name="${input.name}"]`);
+                    const isChecked = Array.from(checkboxGroup).some(cb => cb.checked);
+                    
+                    if (!isChecked) {
+                        isValid = false;
+                        if (errorMessage) errorMessage.style.display = 'block';
+                    } else {
+                        if (errorMessage) errorMessage.style.display = 'none';
+                    }
+                } else if (input.type === 'radio') {
+                    const radioGroup = currentContent.querySelectorAll(`input[name="${input.name}"]`);
+                    const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+                    
+                    if (!isChecked) {
+                        isValid = false;
+                        input.classList.add('error');
+                        if (errorMessage) errorMessage.style.display = 'block';
+                    } else {
+                        input.classList.remove('error');
+                        if (errorMessage) errorMessage.style.display = 'none';
+                    }
+                } else {
+                    if (!input.value.trim()) {
+                        isValid = false;
+                        input.classList.add('error');
+                        if (errorMessage) errorMessage.style.display = 'block';
+                    } else {
+                        input.classList.remove('error');
+                        if (errorMessage) errorMessage.style.display = 'none';
+                    }
+                }
+            });
+
+            return isValid;
+        }
+
+        // 確認画面の生成
+        function generateConfirmation() {
+            const confirmationContent = document.getElementById('confirmationContent');
+            confirmationContent.innerHTML = '';
+
+            const sections = [
+                {
+                    title: '基本情報',
+                    fields: [
+                        { label: 'お名前', name: 'name' },
+                        { label: '会社名・屋号・サービス名', name: 'company' },
+                        { label: 'メールアドレス', name: 'email' },
+                        { label: '電話番号', name: 'phone' }
+                    ]
+                },
+                {
+                    title: 'プロジェクト詳細',
+                    fields: [
+                        { label: 'ご希望のプラン', name: 'plan', format: value => value === 'standard' ? 'スタンダードプラン（2万円）' : 'リッチプラン（5万円）' },
+                        { label: '業種・サービス内容', name: 'business-type' },
+                        { label: 'LPの主な目的', name: 'lp-purpose' },
+                        { label: '目的の詳細・ゴール', name: 'lp-purpose-detail' },
+                        { label: '希望納期', name: 'deadline' }
+                    ]
+                },
+                {
+                    title: 'ターゲット情報',
+                    fields: [
+                        { label: 'メインターゲットの年齢層', name: 'target-age', isArray: true },
+                        { label: 'メインターゲットの性別', name: 'target-gender' },
+                        { label: 'ターゲットの詳細情報', name: 'target-detail' }
+                    ]
+                },
+                {
+                    title: 'デザイン要望',
+                    fields: [
+                        { label: 'メインキャッチコピー・訴求ポイント', name: 'main-message' },
+                        { label: '他社との差別化ポイント', name: 'unique-points' },
+                        { label: 'デザインの雰囲気・トーン', name: 'design-tone', isArray: true },
+                        { label: '希望する色・カラーイメージ', name: 'color-preference' },
+                        { label: '参考サイト・競合サイト', name: 'reference-sites' }
+                    ]
+                },
+                {
+                    title: '必要なコンテンツ',
+                    fields: [
+                        { label: 'LPに含めたいセクション', name: 'sections', isArray: true },
+                        { label: 'フォームに必要な入力項目', name: 'form-items' }
+                    ]
+                },
+                {
+                    title: '素材・その他',
+                    fields: [
+                        { label: 'ロゴデータの有無', name: 'logo-status' },
+                        { label: '使用したい画像素材', name: 'image-status' },
+                        { label: '素材ダウンロードリンク', name: 'file-link' },
+                        { label: 'ダウンロードパスワード', name: 'file-password' },
+                        { label: '公開予定のドメイン', name: 'domain-status' },
+                        { label: '公開予定時期', name: 'launch-timing' },
+                        { label: 'その他のご要望・ご質問', name: 'additional-requests' }
+                    ]
+                }
+            ];
+
+            sections.forEach(section => {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'confirmation-section';
+                
+                const sectionTitle = document.createElement('h3');
+                sectionTitle.className = 'confirmation-title';
+                sectionTitle.textContent = section.title;
+                sectionDiv.appendChild(sectionTitle);
+
+                section.fields.forEach(field => {
+                    const value = formData[field.name];
+                    if (value && (Array.isArray(value) ? value.length > 0 : value.trim())) {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.className = 'confirmation-item';
+                        
+                        const labelDiv = document.createElement('div');
+                        labelDiv.className = 'confirmation-label';
+                        labelDiv.textContent = field.label;
+                        
+                        const valueDiv = document.createElement('div');
+                        valueDiv.className = 'confirmation-value';
+                        
+                        if (field.isArray && Array.isArray(value)) {
+                            valueDiv.textContent = value.join('、');
+                        } else if (field.format) {
+                            valueDiv.textContent = field.format(value);
+                        } else {
+                            valueDiv.textContent = value;
+                        }
+                        
+                        itemDiv.appendChild(labelDiv);
+                        itemDiv.appendChild(valueDiv);
+                        sectionDiv.appendChild(itemDiv);
+                    }
+                });
+
+                confirmationContent.appendChild(sectionDiv);
+            });
+        }
+
+        // 次へボタンのクリック処理
+        nextBtn.addEventListener('click', () => {
+            if (validateCurrentStep()) {
+                saveCurrentStepData();
+                currentStep++;
+                updateStep(currentStep);
+                window.scrollTo(0, 0);
+            }
+        });
+
+        // 前へボタンのクリック処理
+        prevBtn.addEventListener('click', () => {
+            saveCurrentStepData();
+            currentStep--;
+            updateStep(currentStep);
+            window.scrollTo(0, 0);
+        });
+
+        // フォーム送信処理
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // プライバシーポリシーの同意確認
+            const privacyCheckbox = document.getElementById('privacy');
+            if (!privacyCheckbox.checked) {
+                alert('プライバシーポリシーに同意してください。');
+                return;
+            }
+
+            // フォームデータを整理
+            const submissionData = {
+                ...formData,
+                submittedAt: new Date().toISOString()
+            };
+
+            try {
+                // ここで実際のAPI送信処理を行う
+                console.log('送信データ:', submissionData);
+                
+                // 成功メッセージを表示
+                alert('アンケートを送信しました。2営業日以内にご連絡いたします。');
+                
+                // トップページへリダイレクト
+                window.location.href = 'index.html';
+            } catch (error) {
+                alert('送信中にエラーが発生しました。もう一度お試しください。');
+            }
+        });
+
+        // 入力フィールドのリアルタイムバリデーション
+        document.querySelectorAll('input, select, textarea').forEach(field => {
+            field.addEventListener('blur', () => {
+                if (field.hasAttribute('required')) {
+                    const errorMessage = field.parentElement.querySelector('.error-message');
+                    if (!field.value.trim()) {
+                        field.classList.add('error');
+                        if (errorMessage) errorMessage.style.display = 'block';
+                    } else {
+                        field.classList.remove('error');
+                        if (errorMessage) errorMessage.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // 初期化
+        updateStep(currentStep);
+    </script>
+</body>
+</html>

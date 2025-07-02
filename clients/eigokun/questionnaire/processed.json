@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "createdAt": "2025-01-15T06:00:00.000Z",
+    "clientName": "eigokun",
+    "projectType": "standard"
+  },
+  "client": {
+    "name": "えいごくん",
+    "companyName": "アマリア",
+    "email": "harisen1012@gmail.com",
+    "phone": "09032957404",
+    "industry": "オンライン英会話",
+    "budget": "2万円",
+    "deadline": "1日"
+  },
+  "project": {
+    "objective": "会員登録の促進",
+    "targetAudience": ["20代", "30代", "40代", "50代"],
+    "mainMessage": "英語学習を始めるなら今！プロ講師とマンツーマンレッスン"
+  },
+  "design": {
+    "preference": "モダン・親しみやすい",
+    "colorScheme": ["ブルー系", "白", "アクセントカラー"],
+    "referenceUrls": []
+  },
+  "requirements": {
+    "sections": [
+      "ヒーローセクション",
+      "サービスの特徴",
+      "講師紹介",
+      "料金プラン",
+      "受講生の声",
+      "よくある質問",
+      "無料体験申し込み"
+    ],
+    "hasContactForm": true,
+    "additionalNotes": "会員登録フォームを目立たせる"
+  }
+}
