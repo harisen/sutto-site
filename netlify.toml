@@ -1,0 +1,20 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[build]
+  publish = "."
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  [plugins.inputs]
+    output_path = "reports/lighthouse.html"
