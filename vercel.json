@@ -3,5 +3,9 @@
     "api/send-email.js": {
       "maxDuration": 10
     }
+  },
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- dashboard.html data/",
+  "github": {
+    "silent": true
   }
 }

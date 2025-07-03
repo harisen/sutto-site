@@ -1,0 +1,27 @@
+# robots.txt for LP制作サービス
+# https://lp-service-site.vercel.app/
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /test-sites/
+Disallow: /data/
+Disallow: /dashboard.html
+Disallow: /scripts/
+Disallow: /node_modules/
+Disallow: /.git/
+
+# サンプルサイトは検索エンジンにインデックスさせる
+Allow: /samples/
+
+# サイトマップ
+Sitemap: https://lp-service-site.vercel.app/sitemap.xml
+
+# クロール速度制限（Googlebot用）
+User-agent: Googlebot
+Crawl-delay: 1
+
+# 画像検索を許可
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /samples/*/images/

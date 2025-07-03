@@ -355,6 +355,10 @@
             }
         }
     </style>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W2NSTXJNG"></script>
+    <script src="/js/analytics.js"></script>
 </head>
 <body>
     <header class="header">
@@ -513,6 +517,15 @@
                                 <option value="other">その他</option>
                             </select>
                             <span class="error-message">LPの目的を選択してください</span>
+                        </div>
+
+                        <div class="form-group" id="lp-purpose-other-group" style="display: none;">
+                            <label for="lp-purpose-other" class="form-label">
+                                その他の目的<span class="required">*</span>
+                            </label>
+                            <p class="form-description">上記以外の目的を具体的にご記入ください</p>
+                            <input type="text" id="lp-purpose-other" name="lp-purpose-other" class="form-input" placeholder="例：既存顧客向けの限定キャンペーン告知、採用募集ページ">
+                            <span class="error-message">その他の目的を入力してください</span>
                         </div>
 
                         <div class="form-group">
@@ -732,19 +745,175 @@
                                     <label for="section-flow">サービス利用の流れ</label>
                                 </div>
                                 <div class="checkbox-item">
-                                    <input type="checkbox" id="section-contact" name="sections" value="問い合わせ" checked>
-                                    <label for="section-contact">お問い合わせフォーム</label>
+                                    <input type="checkbox" id="section-contact" name="sections" value="問い合わせ先" checked>
+                                    <label for="section-contact">お問い合わせ先の記載</label>
                                 </div>
                             </div>
                             <span class="error-message">少なくとも1つのセクションを選択してください</span>
                         </div>
 
-                        <div class="form-group">
-                            <label for="form-items" class="form-label">
-                                フォームに必要な入力項目
-                            </label>
-                            <p class="form-description">お問い合わせフォームで収集したい情報をご記入ください</p>
-                            <textarea id="form-items" name="form-items" class="form-textarea" placeholder="例：名前、メールアドレス、電話番号、会社名、お問い合わせ内容、希望プラン"></textarea>
+                        <!-- 各セクションの詳細入力フォーム -->
+                        <div id="section-details">
+                            <!-- ヒーローセクション詳細 -->
+                            <div class="section-detail-group" id="detail-hero" style="display: none;">
+                                <h3 class="detail-title">ヒーローセクションの詳細</h3>
+                                <div class="form-group">
+                                    <label for="hero-catchcopy" class="form-label">メインキャッチコピー</label>
+                                    <input type="text" id="hero-catchcopy" name="hero-catchcopy" class="form-input" placeholder="例：あなたの悩みを解決する最高のサービス">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hero-subcopy" class="form-label">サブキャッチコピー</label>
+                                    <input type="text" id="hero-subcopy" name="hero-subcopy" class="form-input" placeholder="例：創業20年の実績と信頼">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hero-cta" class="form-label">CTAボタンの文言</label>
+                                    <input type="text" id="hero-cta" name="hero-cta" class="form-input" placeholder="例：今すぐ無料相談、資料請求はこちら">
+                                </div>
+                            </div>
+
+                            <!-- 課題提起詳細 -->
+                            <div class="section-detail-group" id="detail-problem" style="display: none;">
+                                <h3 class="detail-title">課題提起・お悩みの詳細</h3>
+                                <div class="form-group">
+                                    <label for="problem-content" class="form-label">想定される課題・悩み</label>
+                                    <textarea id="problem-content" name="problem-content" class="form-textarea" placeholder="例：&#10;・こんなことでお悩みではありませんか？&#10;・売上が伸び悩んでいる&#10;・集客がうまくいかない&#10;・競合他社に差をつけられている"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- 解決策詳細 -->
+                            <div class="section-detail-group" id="detail-solution" style="display: none;">
+                                <h3 class="detail-title">解決策の詳細</h3>
+                                <div class="form-group">
+                                    <label for="solution-content" class="form-label">提供する解決策</label>
+                                    <textarea id="solution-content" name="solution-content" class="form-textarea" placeholder="例：&#10;・私たちのサービスが解決します&#10;・独自の手法で売上アップ&#10;・専門家によるサポート"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- 特徴・強み詳細 -->
+                            <div class="section-detail-group" id="detail-features" style="display: none;">
+                                <h3 class="detail-title">特徴・強みの詳細</h3>
+                                <div class="form-group">
+                                    <label for="features-count" class="form-label">特徴の数</label>
+                                    <select id="features-count" name="features-count" class="form-select">
+                                        <option value="3" selected>3つ</option>
+                                        <option value="4">4つ</option>
+                                        <option value="5">5つ</option>
+                                        <option value="6">6つ</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="features-content" class="form-label">具体的な特徴・強み</label>
+                                    <textarea id="features-content" name="features-content" class="form-textarea" placeholder="例：&#10;1. 業界最安値の料金設定&#10;2. 24時間365日サポート&#10;3. 専門資格を持つスタッフ&#10;4. 全国対応可能"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- 料金詳細 -->
+                            <div class="section-detail-group" id="detail-price" style="display: none;">
+                                <h3 class="detail-title">料金・プランの詳細</h3>
+                                <div class="form-group">
+                                    <label for="price-plans" class="form-label">プラン数</label>
+                                    <select id="price-plans" name="price-plans" class="form-select">
+                                        <option value="1">1プラン</option>
+                                        <option value="2">2プラン</option>
+                                        <option value="3" selected>3プラン</option>
+                                        <option value="4">4プラン以上</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price-details" class="form-label">料金の詳細</label>
+                                    <textarea id="price-details" name="price-details" class="form-textarea" placeholder="例：&#10;ライトプラン：月額5,000円&#10;スタンダードプラン：月額10,000円（人気）&#10;プレミアムプラン：月額20,000円"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price-campaign" class="form-label">キャンペーン・割引情報</label>
+                                    <input type="text" id="price-campaign" name="price-campaign" class="form-input" placeholder="例：初月無料、今なら50%OFF">
+                                </div>
+                            </div>
+
+                            <!-- お客様の声詳細 -->
+                            <div class="section-detail-group" id="detail-voice" style="display: none;">
+                                <h3 class="detail-title">お客様の声・実績の詳細</h3>
+                                <div class="form-group">
+                                    <label for="voice-count" class="form-label">掲載する声の数</label>
+                                    <select id="voice-count" name="voice-count" class="form-select">
+                                        <option value="3" selected>3件</option>
+                                        <option value="5">5件</option>
+                                        <option value="10">10件</option>
+                                        <option value="more">それ以上</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="voice-provided" class="form-label">お客様の声の提供</label>
+                                    <select id="voice-provided" name="voice-provided" class="form-select">
+                                        <option value="yes">提供可能</option>
+                                        <option value="sample">サンプルで作成希望</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- FAQ詳細 -->
+                            <div class="section-detail-group" id="detail-faq" style="display: none;">
+                                <h3 class="detail-title">よくある質問の詳細</h3>
+                                <div class="form-group">
+                                    <label for="faq-count" class="form-label">質問の数</label>
+                                    <select id="faq-count" name="faq-count" class="form-select">
+                                        <option value="5" selected>5個程度</option>
+                                        <option value="10">10個程度</option>
+                                        <option value="more">それ以上</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="faq-content" class="form-label">よくある質問の例</label>
+                                    <textarea id="faq-content" name="faq-content" class="form-textarea" placeholder="例：&#10;Q: 初心者でも大丈夫ですか？&#10;Q: 料金はいくらですか？&#10;Q: キャンセルはできますか？"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- 会社情報詳細 -->
+                            <div class="section-detail-group" id="detail-company" style="display: none;">
+                                <h3 class="detail-title">会社・運営者情報の詳細</h3>
+                                <div class="form-group">
+                                    <label for="company-info" class="form-label">掲載する情報</label>
+                                    <textarea id="company-info" name="company-info" class="form-textarea" placeholder="例：&#10;会社名：株式会社○○&#10;代表者：山田太郎&#10;所在地：東京都○○区&#10;設立：2005年&#10;資本金：1,000万円"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- 利用の流れ詳細 -->
+                            <div class="section-detail-group" id="detail-flow" style="display: none;">
+                                <h3 class="detail-title">サービス利用の流れの詳細</h3>
+                                <div class="form-group">
+                                    <label for="flow-steps" class="form-label">ステップ数</label>
+                                    <select id="flow-steps" name="flow-steps" class="form-select">
+                                        <option value="3">3ステップ</option>
+                                        <option value="4" selected>4ステップ</option>
+                                        <option value="5">5ステップ</option>
+                                        <option value="more">それ以上</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="flow-content" class="form-label">各ステップの内容</label>
+                                    <textarea id="flow-content" name="flow-content" class="form-textarea" placeholder="例：&#10;1. お問い合わせ&#10;2. ヒアリング&#10;3. ご提案&#10;4. ご契約・サービス開始"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- お問い合わせ先詳細 -->
+                            <div class="section-detail-group" id="detail-contact" style="display: none;">
+                                <h3 class="detail-title">お問い合わせ先の詳細</h3>
+                                <div class="form-group">
+                                    <label for="contact-phone" class="form-label">電話番号</label>
+                                    <input type="tel" id="contact-phone" name="contact-phone" class="form-input" placeholder="例：03-1234-5678、0120-123-456">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email" class="form-label">メールアドレス</label>
+                                    <input type="email" id="contact-email" name="contact-email" class="form-input" placeholder="例：info@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-hours" class="form-label">営業時間・対応時間</label>
+                                    <input type="text" id="contact-hours" name="contact-hours" class="form-input" placeholder="例：平日9:00-18:00（土日祝除く）">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-other" class="form-label">その他の連絡方法</label>
+                                    <textarea id="contact-other" name="contact-other" class="form-textarea" placeholder="例：&#10;LINE: @example&#10;住所：東京都○○区○○1-2-3"></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -810,6 +979,80 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="form-label">
+                                ファビコンの画像提供
+                            </label>
+                            <p class="form-description">ファビコンとは、ブラウザのタブに表示される小さなアイコンです。ロゴマークなどを使用します。</p>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="favicon-yes" name="favicon-status" value="提供可能">
+                                    <label for="favicon-yes">提供可能</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="favicon-no" name="favicon-status" value="提供なし" checked>
+                                    <label for="favicon-no">提供なし（ロゴから作成希望）</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="copyright-text" class="form-label">
+                                コピーライト表記
+                            </label>
+                            <p class="form-description">フッターに表示する著作権表示をご指定ください（例：© 2025 会社名 All rights reserved.）</p>
+                            <input type="text" id="copyright-text" name="copyright-text" class="form-input" placeholder="例：© 2025 株式会社○○ All rights reserved.">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">
+                                必要なページ・情報
+                            </label>
+                            <p class="form-description">LPに含めたい情報をお選びください（複数選択可）</p>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="page-menu" name="required-pages" value="料金表・メニュー">
+                                    <label for="page-menu">料金表・メニュー一覧</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="page-staff" name="required-pages" value="スタッフ情報">
+                                    <label for="page-staff">スタッフ・従業員情報</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="page-company" name="required-pages" value="会社概要">
+                                    <label for="page-company">会社概要・運営者情報</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="page-terms" name="required-pages" value="利用規約">
+                                    <label for="page-terms">利用規約</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="page-privacy" name="required-pages" value="プライバシーポリシー">
+                                    <label for="page-privacy">プライバシーポリシー</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="page-transaction" name="required-pages" value="特定商取引法">
+                                    <label for="page-transaction">特定商取引法に基づく表記</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="essential-content" class="form-label">
+                                必ず含めたい情報・要素
+                            </label>
+                            <p class="form-description">LPに絶対に入れてほしい重要な情報があればご記入ください</p>
+                            <textarea id="essential-content" name="essential-content" class="form-textarea" placeholder="例：&#10;・創業20年の実績を必ず記載&#10;・○○認定資格の表示&#10;・初回限定50%OFFクーポン&#10;・返金保証について&#10;・○○メディア掲載実績"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="analytics-tracking" class="form-label">
+                                アクセス解析・広告タグ
+                            </label>
+                            <p class="form-description">設置したい解析ツールや広告タグがあればご記入ください</p>
+                            <textarea id="analytics-tracking" name="analytics-tracking" class="form-textarea" placeholder="例：&#10;・Google Analytics（測定ID: G-XXXXXXX）&#10;・Google広告のコンバージョンタグ&#10;・Facebook Pixel&#10;・Yahoo!広告タグ"></textarea>
+                        </div>
+
+                        <div class="form-group">
                             <label for="domain-status" class="form-label">
                                 公開予定のドメイン（URL）
                             </label>
@@ -823,6 +1066,22 @@
                             </label>
                             <p class="form-description">キャンペーンやイベントに合わせた公開時期があればご記入ください</p>
                             <input type="text" id="launch-timing" name="launch-timing" class="form-input" placeholder="例：○月○日のキャンペーン開始に合わせて公開したい">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="competitor-sites" class="form-label">
+                                競合サイト・差別化ポイント
+                            </label>
+                            <p class="form-description">競合他社のサイトや、差別化したいポイントがあればご記入ください</p>
+                            <textarea id="competitor-sites" name="competitor-sites" class="form-textarea" placeholder="例：&#10;・競合A社：https://example-a.com（デザインは参考にしたいが、もっと親しみやすく）&#10;・競合B社：料金の安さで差別化したい"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="maintenance-update" class="form-label">
+                                納品後の更新・運用
+                            </label>
+                            <p class="form-description">納品後の更新頻度や運用体制についてご記入ください</p>
+                            <textarea id="maintenance-update" name="maintenance-update" class="form-textarea" placeholder="例：&#10;・月1回程度、キャンペーン情報を更新したい&#10;・社内で更新できるようにマニュアルが欲しい&#10;・基本的に更新はしない予定"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -1067,7 +1326,29 @@
                     title: '必要なコンテンツ',
                     fields: [
                         { label: 'LPに含めたいセクション', name: 'sections', isArray: true },
-                        { label: 'フォームに必要な入力項目', name: 'form-items' }
+                        { label: 'フォームに必要な入力項目', name: 'form-items' },
+                        // セクション詳細
+                        { label: 'ヒーロー：メインキャッチコピー', name: 'hero-catchcopy' },
+                        { label: 'ヒーロー：サブキャッチコピー', name: 'hero-subcopy' },
+                        { label: 'ヒーロー：CTAボタンの文言', name: 'hero-cta' },
+                        { label: '課題提起・お悩み', name: 'problem-content' },
+                        { label: '解決策の提示', name: 'solution-content' },
+                        { label: '特徴の数', name: 'features-count' },
+                        { label: '具体的な特徴・強み', name: 'features-content' },
+                        { label: '料金プラン数', name: 'price-plans' },
+                        { label: '料金の詳細', name: 'price-details' },
+                        { label: 'キャンペーン・割引情報', name: 'price-campaign' },
+                        { label: 'お客様の声の数', name: 'voice-count' },
+                        { label: 'お客様の声の提供', name: 'voice-provided' },
+                        { label: 'FAQ質問の数', name: 'faq-count' },
+                        { label: 'よくある質問の例', name: 'faq-content' },
+                        { label: '会社・運営者情報', name: 'company-info' },
+                        { label: '利用の流れステップ数', name: 'flow-steps' },
+                        { label: '各ステップの内容', name: 'flow-content' },
+                        { label: 'お問い合わせ先：電話番号', name: 'contact-phone' },
+                        { label: 'お問い合わせ先：メールアドレス', name: 'contact-email' },
+                        { label: 'お問い合わせ先：営業時間', name: 'contact-hours' },
+                        { label: 'お問い合わせ先：その他の連絡方法', name: 'contact-other' }
                     ]
                 },
                 {
@@ -1077,8 +1358,15 @@
                         { label: '使用したい画像素材', name: 'image-status' },
                         { label: '素材ダウンロードリンク', name: 'file-link' },
                         { label: 'ダウンロードパスワード', name: 'file-password' },
+                        { label: 'ファビコンの画像提供', name: 'favicon-status' },
+                        { label: 'コピーライト表記', name: 'copyright-text' },
+                        { label: '必要なページ・情報', name: 'required-pages', isArray: true },
+                        { label: '必ず含めたい情報・要素', name: 'essential-content' },
+                        { label: 'アクセス解析・広告タグ', name: 'analytics-tracking' },
                         { label: '公開予定のドメイン', name: 'domain-status' },
                         { label: '公開予定時期', name: 'launch-timing' },
+                        { label: '競合サイト・差別化ポイント', name: 'competitor-sites' },
+                        { label: '納品後の更新・運用', name: 'maintenance-update' },
                         { label: 'その他のご要望・ご質問', name: 'additional-requests' }
                     ]
                 }
@@ -1160,8 +1448,76 @@
             };
 
             try {
-                // ここで実際のAPI送信処理を行う
-                console.log('送信データ:', submissionData);
+                // API送信処理
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: formData['name'],
+                        email: formData['email'],
+                        company: formData['company'],
+                        phone: formData['phone'],
+                        plan: formData['plan'],
+                        business_type: formData['business-type'],
+                        target: [
+                            formData['target-age']?.join(', '),
+                            formData['target-gender'],
+                            formData['target-detail']
+                        ].filter(Boolean).join(' / '),
+                        purpose: formData['lp-purpose'] === 'other' ? formData['lp-purpose-other'] : formData['lp-purpose'],
+                        reference: formData['reference-sites'],
+                        deadline: formData['deadline'],
+                        additional: [
+                            formData['main-message'] ? `キャッチコピー: ${formData['main-message']}` : '',
+                            formData['unique-points'] ? `差別化ポイント: ${formData['unique-points']}` : '',
+                            formData['design-tone']?.length ? `デザイントーン: ${formData['design-tone'].join(', ')}` : '',
+                            formData['color-preference'] ? `希望色: ${formData['color-preference']}` : '',
+                            formData['sections']?.length ? `必要セクション: ${formData['sections'].join(', ')}` : '',
+                            formData['form-items'] ? `フォーム項目: ${formData['form-items']}` : '',
+                            // セクション詳細情報
+                            formData['hero-catchcopy'] ? `ヒーローキャッチコピー: ${formData['hero-catchcopy']}` : '',
+                            formData['hero-subcopy'] ? `ヒーローサブコピー: ${formData['hero-subcopy']}` : '',
+                            formData['hero-cta'] ? `ヒーローCTA: ${formData['hero-cta']}` : '',
+                            formData['problem-content'] ? `課題提起: ${formData['problem-content']}` : '',
+                            formData['solution-content'] ? `解決策: ${formData['solution-content']}` : '',
+                            formData['features-count'] ? `特徴数: ${formData['features-count']}` : '',
+                            formData['features-content'] ? `特徴詳細: ${formData['features-content']}` : '',
+                            formData['price-plans'] ? `料金プラン数: ${formData['price-plans']}` : '',
+                            formData['price-details'] ? `料金詳細: ${formData['price-details']}` : '',
+                            formData['price-campaign'] ? `キャンペーン: ${formData['price-campaign']}` : '',
+                            formData['voice-count'] ? `お客様の声数: ${formData['voice-count']}` : '',
+                            formData['voice-provided'] ? `お客様の声提供: ${formData['voice-provided']}` : '',
+                            formData['faq-count'] ? `FAQ数: ${formData['faq-count']}` : '',
+                            formData['faq-content'] ? `FAQ内容: ${formData['faq-content']}` : '',
+                            formData['company-info'] ? `会社情報: ${formData['company-info']}` : '',
+                            formData['flow-steps'] ? `利用の流れステップ数: ${formData['flow-steps']}` : '',
+                            formData['flow-content'] ? `利用の流れ内容: ${formData['flow-content']}` : '',
+                            formData['contact-phone'] ? `連絡先電話番号: ${formData['contact-phone']}` : '',
+                            formData['contact-email'] ? `連絡先メール: ${formData['contact-email']}` : '',
+                            formData['contact-hours'] ? `営業時間: ${formData['contact-hours']}` : '',
+                            formData['contact-other'] ? `その他連絡方法: ${formData['contact-other']}` : '',
+                            formData['favicon-status'] ? `ファビコン: ${formData['favicon-status']}` : '',
+                            formData['copyright-text'] ? `コピーライト: ${formData['copyright-text']}` : '',
+                            formData['required-pages']?.length ? `必要なページ: ${formData['required-pages'].join(', ')}` : '',
+                            formData['essential-content'] ? `必須要素: ${formData['essential-content']}` : '',
+                            formData['analytics-tracking'] ? `解析タグ: ${formData['analytics-tracking']}` : '',
+                            formData['competitor-sites'] ? `競合・差別化: ${formData['competitor-sites']}` : '',
+                            formData['maintenance-update'] ? `更新・運用: ${formData['maintenance-update']}` : '',
+                            formData['additional-requests'] ? `その他要望: ${formData['additional-requests']}` : ''
+                        ].filter(Boolean).join('\n\n'),
+                        file_link: formData['file-link'],
+                        file_password: formData['file-password']
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('送信に失敗しました');
+                }
+
+                const result = await response.json();
+                console.log('送信成功:', result);
                 
                 // 成功メッセージを表示
                 alert('アンケートを送信しました。2営業日以内にご連絡いたします。');
@@ -1169,6 +1525,7 @@
                 // トップページへリダイレクト
                 window.location.href = 'index.html';
             } catch (error) {
+                console.error('送信エラー:', error);
                 alert('送信中にエラーが発生しました。もう一度お試しください。');
             }
         });
@@ -1188,6 +1545,68 @@
                 }
             });
         });
+
+        // LPの目的「その他」選択時の処理
+        const lpPurposeSelect = document.getElementById('lp-purpose');
+        const lpPurposeOtherGroup = document.getElementById('lp-purpose-other-group');
+        const lpPurposeOtherInput = document.getElementById('lp-purpose-other');
+
+        if (lpPurposeSelect) {
+            lpPurposeSelect.addEventListener('change', function() {
+                if (this.value === 'other') {
+                    lpPurposeOtherGroup.style.display = 'block';
+                    lpPurposeOtherInput.setAttribute('required', '');
+                } else {
+                    lpPurposeOtherGroup.style.display = 'none';
+                    lpPurposeOtherInput.removeAttribute('required');
+                    lpPurposeOtherInput.value = '';
+                    lpPurposeOtherInput.classList.remove('error');
+                    const errorMsg = lpPurposeOtherGroup.querySelector('.error-message');
+                    if (errorMsg) errorMsg.style.display = 'none';
+                }
+            });
+        }
+
+        // セクション選択に応じた詳細フォームの表示/非表示
+        const sectionCheckboxes = document.querySelectorAll('input[name="sections"]');
+        const sectionDetailGroups = document.querySelectorAll('.section-detail-group');
+
+        function updateSectionDetails() {
+            // すべての詳細グループを非表示にする
+            sectionDetailGroups.forEach(group => {
+                group.style.display = 'none';
+                // 必須属性をクリア
+                const requiredInputs = group.querySelectorAll('[required]');
+                requiredInputs.forEach(input => {
+                    input.removeAttribute('data-was-required');
+                });
+            });
+
+            // チェックされたセクションの詳細を表示
+            sectionCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    const sectionId = checkbox.id.replace('section-', '');
+                    const detailGroup = document.getElementById(`detail-${sectionId}`);
+                    if (detailGroup) {
+                        detailGroup.style.display = 'block';
+                        // 必要に応じて必須フィールドを設定
+                        const shouldBeRequired = detailGroup.querySelectorAll('[data-required-when-selected]');
+                        shouldBeRequired.forEach(input => {
+                            input.setAttribute('required', '');
+                            input.setAttribute('data-was-required', 'true');
+                        });
+                    }
+                }
+            });
+        }
+
+        // 各チェックボックスにイベントリスナーを追加
+        sectionCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateSectionDetails);
+        });
+
+        // 初期状態の設定（ヒーローセクションとお問い合わせ先がデフォルトでチェックされているため）
+        updateSectionDetails();
 
         // 初期化
         updateStep(currentStep);

@@ -31,3 +31,11 @@ yarn-error.log*
 # Misc
 .vercel
 *.bak
+
+# Dashboard - NEVER DEPLOY
+dashboard.html
+data/clients.json
+data/
+
+# Test sites - temporary
+test-sites/

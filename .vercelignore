@@ -1,0 +1,16 @@
+# Dashboard files - NEVER DEPLOY
+dashboard.html
+data/
+data/clients.json
+
+# Development files
+*.log
+.env*
+.vscode/
+.idea/
+
+# Documentation that shouldn't be deployed
+README.md
+CHANGELOG.md
+TODO.md
+*.bak
