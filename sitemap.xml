@@ -79,4 +79,20 @@
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
+    
+    <!-- 利用規約 -->
+    <url>
+        <loc>https://lp-service-site.vercel.app/terms.html</loc>
+        <lastmod>2025-07-03</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <!-- キャンセルポリシー -->
+    <url>
+        <loc>https://lp-service-site.vercel.app/cancellation-policy.html</loc>
+        <lastmod>2025-07-03</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
 </urlset>

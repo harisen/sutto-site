@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キャンセルポリシー | LP制作サービス</title>
+    <meta name="description" content="LP制作サービスのキャンセルポリシーについて詳しくご説明します。">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W2NSTXJNG"></script>
+    <script src="/js/analytics.js"></script>
+    
+    <style>
+        .policy-hero {
+            background: linear-gradient(135deg, #FEE2E2 0%, #FEF3C7 100%);
+            padding: 120px 0 80px;
+            margin-top: var(--header-height);
+        }
+        
+        .policy-content {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin: 40px 0;
+        }
+        
+        .policy-table {
+            width: 100%;
+            margin: 30px 0;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .policy-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 20px;
+            text-align: left;
+            font-weight: 700;
+        }
+        
+        .policy-table td {
+            padding: 20px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .policy-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .policy-table tr:nth-child(even) {
+            background-color: #F9FAFB;
+        }
+        
+        .policy-section {
+            margin-bottom: 50px;
+        }
+        
+        .policy-section h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .highlight-box {
+            background-color: #FEF3C7;
+            border: 2px solid var(--accent-color);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .highlight-box h3 {
+            font-size: 2.4rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .flow-step {
+            background-color: var(--bg-light);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .flow-step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .flow-step h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        
+        .flow-step p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .important-note {
+            background-color: #DC2626;
+            color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .faq-list {
+            margin-top: 30px;
+        }
+        
+        .faq-item {
+            background-color: var(--bg-light);
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #E5E7EB;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">LP制作サービス</a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">サンプルサイト</a>
+                <a href="deployment-guide.html" class="nav-link">公開ガイド</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">サンプルサイト</a>
+            <a href="deployment-guide.html" class="mobile-nav-link">公開ガイド</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+
+    <section class="policy-hero">
+        <div class="container">
+            <h1 class="text-center">キャンセルポリシー</h1>
+            <p class="text-center" style="font-size: 2rem; color: var(--text-light); margin-top: 16px;">
+                安心してご利用いただくための明確な規定
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="policy-content">
+                <div class="highlight-box">
+                    <h3>テストサイトで確認してから決められる安心システム</h3>
+                    <p style="font-size: 1.8rem; margin-top: 10px;">実際の仕上がりをご確認いただいてから、承認またはキャンセルをお選びいただけます</p>
+                </div>
+
+                <div class="policy-section">
+                    <h2>キャンセル料金表</h2>
+                    <table class="policy-table">
+                        <thead>
+                            <tr>
+                                <th>キャンセルタイミング</th>
+                                <th>キャンセル料</th>
+                                <th>詳細説明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>テストサイト確認前</strong></td>
+                                <td style="color: #059669; font-weight: 700; font-size: 2rem;">無料</td>
+                                <td>制作着手前、または制作中でもテストサイトをご確認いただく前であれば、キャンセル料は一切かかりません。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>テストサイト確認後</strong></td>
+                                <td style="color: #DC2626; font-weight: 700; font-size: 2rem;">¥10,000</td>
+                                <td>テストサイトで実際の仕上がりをご確認いただいた後のキャンセルには、制作工数を考慮し、一律1万円のキャンセル料をいただきます。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>承認メール送信後</strong></td>
+                                <td style="color: #DC2626; font-weight: 700; font-size: 2rem;">全額請求</td>
+                                <td>「承認します」とのメールをいただいた後は、納品準備に入るためキャンセルはできません。全額のお支払いが必要です。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="policy-section">
+                    <h2>制作フローとキャンセル可能タイミング</h2>
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-number">1</div>
+                            <h3>お問い合わせ</h3>
+                            <p>アンケートフォームにご回答</p>
+                            <p style="color: #059669; font-weight: 700; margin-top: 10px;">✓ キャンセル可能（無料）</p>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-number">2</div>
+                            <h3>制作開始</h3>
+                            <p>AI技術を活用して迅速に制作</p>
+                            <p style="color: #059669; font-weight: 700; margin-top: 10px;">✓ キャンセル可能（無料）</p>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-number">3</div>
+                            <h3>テストサイト確認</h3>
+                            <p>実際の仕上がりをご確認</p>
+                            <p style="color: #DC2626; font-weight: 700; margin-top: 10px;">⚠ 確認後のキャンセルは1万円</p>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-number">4</div>
+                            <h3>承認・納品</h3>
+                            <p>承認メール後、納品実施</p>
+                            <p style="color: #DC2626; font-weight: 700; margin-top: 10px;">✗ キャンセル不可</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="important-note">
+                    ご注意：テストサイトURLは他者に共有しないでください
+                </div>
+
+                <div class="policy-section">
+                    <h2>よくあるご質問</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>なぜテストサイト確認後にキャンセル料が発生するのですか？</span>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>テストサイトにアップロードする段階では、すでに制作作業の大部分が完了しているためです。デザイン・コーディング・テスト等の工数を考慮し、最小限のキャンセル料として1万円を設定しています。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>テストサイトで修正依頼をした場合もキャンセル料はかかりますか？</span>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>修正依頼はキャンセルとは異なりますので、キャンセル料はかかりません。プランに応じた修正回数内であれば追加料金なしで対応いたします。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>承認メールとは具体的にどのようなものですか？</span>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>テストサイトをご確認いただいた後、「承認します」「問題ありません」「これで納品をお願いします」など、明確に承認の意思を示すメールのことです。このメールをいただいた時点で納品準備に入ります。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>キャンセル料の支払い方法は？</span>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>通常の制作料金と同じく、銀行振込またはPayPay送金でお支払いいただけます。キャンセル確定後、請求書を発行いたします。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="policy-section">
+                    <h2>お客様への約束</h2>
+                    <div style="background-color: #E0F2FE; padding: 30px; border-radius: 12px; margin-top: 30px;">
+                        <p style="font-size: 1.8rem; line-height: 1.8;">
+                            私たちは、お客様に安心してご利用いただけるよう、透明性の高い料金体系を心がけています。<br><br>
+                            
+                            <strong>✅ テストサイトで実物を確認してから判断できる</strong><br>
+                            <strong>✅ 明確なキャンセル料金設定</strong><br>
+                            <strong>✅ 隠れた費用は一切なし</strong><br><br>
+                            
+                            ご不明な点がございましたら、お気軽にお問い合わせください。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--bg-light);">
+        <div class="container text-center">
+            <h2>ご質問・ご相談はお気軽に</h2>
+            <p>キャンセルポリシーについてご不明な点がございましたら、お問い合わせください。</p>
+            <a href="contact.html" class="btn btn-primary" style="margin-top: 32px;">お問い合わせはこちら</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LP制作サービス</h4>
+                    <p>AI技術を活用した高速・高品質な<br>ランディングページ制作サービス</p>
+                </div>
+                <div class="footer-section">
+                    <h4>サービス</h4>
+                    <div class="footer-links">
+                        <a href="service.html" class="footer-link">サービス詳細</a>
+                        <a href="pricing.html" class="footer-link">料金プラン</a>
+                        <a href="portfolio.html" class="footer-link">サンプルサイト</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>お問い合わせ</h4>
+                    <div class="footer-links">
+                        <a href="contact.html" class="footer-link">お問い合わせフォーム</a>
+                        <a href="faq.html" class="footer-link">よくある質問</a>
+                        <a href="terms.html" class="footer-link">利用規約</a>
+                        <a href="cancellation-policy.html" class="footer-link">キャンセルポリシー</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
