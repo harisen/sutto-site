@@ -1017,6 +1017,7 @@
             position: relative;
             z-index: 2;
             transition: all 0.4s ease;
+            margin: 0 60px;
         }
 
         .process-step:hover .process-content {
@@ -1027,9 +1028,10 @@
         .process-number {
             position: absolute;
             left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 80px;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
             background: var(--color-yellow);
             border-radius: 50%;
             display: flex;
@@ -1254,7 +1256,13 @@
             }
 
             .process-content {
-                margin: 0 20px;
+                margin: 0 40px;
+            }
+            
+            .process-number {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
             }
 
             .footer-content {
