@@ -1262,14 +1262,15 @@
 
         /* アニメーション */
         .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .animate-on-scroll.animated {
             opacity: 1;
             transform: translateY(0);
             transition: all 0.8s ease;
+        }
+
+        /* GSAPが読み込まれた場合のみ初期状態を非表示に */
+        .gsap-loaded .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
         }
     </style>
 </head>
@@ -1744,14 +1745,7 @@
     </footer>
 
     <script>
-        // GSAPの登録
-        if (typeof gsap !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger, TextPlugin);
-        } else {
-            console.error('GSAP not loaded');
-        }
-
-        // ローディングアニメーション
+        // ローディングアニメーション（GSAPに依存しない）
         window.addEventListener('load', () => {
             const loader = document.querySelector('.loader');
             if (loader) {
@@ -1760,12 +1754,127 @@
                     loader.style.transition = 'opacity 0.8s';
                     setTimeout(() => {
                         loader.style.display = 'none';
+                        // ローダーが非表示になったらGSAPを初期化
+                        initializeGSAP();
                     }, 800);
                 }, 1000);
+            } else {
+                // ローダーがない場合もGSAPを初期化
+                initializeGSAP();
             }
         });
 
-        // カスタムカーソル
+        // GSAP初期化関数
+        function initializeGSAP() {
+            // GSAPの登録
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && typeof TextPlugin !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger, TextPlugin);
+                console.log('GSAP initialized successfully');
+                // GSAPが読み込まれたことを示すクラスを追加
+                document.body.classList.add('gsap-loaded');
+                // GSAPアニメーションを開始
+                startGSAPAnimations();
+            } else {
+                console.error('GSAP or plugins not loaded properly');
+                // GSAPが読み込まれていない場合でも基本的な機能は動作するように
+                fallbackAnimations();
+            }
+        }
+
+        // フォールバックアニメーション
+        function fallbackAnimations() {
+            // スクロール表示アニメーションの簡易版
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            animateElements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        }
+
+        // GSAPアニメーションを別関数に分離
+        function startGSAPAnimations() {
+            // フローティングシェイプアニメーション
+            gsap.utils.toArray('.shape').forEach((shape, i) => {
+                gsap.to(shape, {
+                    y: gsap.utils.random(-50, 50),
+                    x: gsap.utils.random(-30, 30),
+                    rotation: gsap.utils.random(-30, 30),
+                    duration: gsap.utils.random(3, 6),
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut',
+                    delay: i * 0.5
+                });
+            });
+
+            // スクロールアニメーション
+            gsap.utils.toArray('.animate-on-scroll').forEach(element => {
+                gsap.from(element, {
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        end: 'bottom 20%',
+                        toggleActions: 'play none none reverse'
+                    }
+                });
+            });
+
+            // ヒーローテキストアニメーション
+            gsap.timeline()
+                .from('.hero-text h1', {
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    delay: 0.5
+                })
+                .from('.hero-text p', {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.8
+                }, '-=0.5')
+                .from('.hero-buttons', {
+                    y: 20,
+                    opacity: 0,
+                    duration: 0.8
+                }, '-=0.3');
+
+            // ヒーローイメージアニメーション
+            gsap.from('.hero-visual', {
+                x: 100,
+                opacity: 0,
+                duration: 1.2,
+                delay: 0.8
+            });
+
+            // 装飾要素のアニメーション
+            gsap.from('.hero-decoration', {
+                scale: 0,
+                opacity: 0,
+                duration: 0.6,
+                stagger: 0.2,
+                delay: 1.5,
+                ease: 'back.out(1.7)'
+            });
+
+            // パララックス効果
+            gsap.utils.toArray('.hero-bg-pattern').forEach(layer => {
+                gsap.to(layer, {
+                    yPercent: -50,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '.hero',
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: true
+                    }
+                });
+            });
+        }
+
+        // カスタムカーソル（GSAPに依存しない）
         const cursor = document.querySelector('.cursor');
         let mouseX = 0;
         let mouseY = 0;
@@ -1808,21 +1917,7 @@
             element.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
 
-        // フローティングシェイプアニメーション
-        gsap.utils.toArray('.shape').forEach((shape, i) => {
-            gsap.to(shape, {
-                y: gsap.utils.random(-50, 50),
-                x: gsap.utils.random(-30, 30),
-                rotation: gsap.utils.random(-30, 30),
-                duration: gsap.utils.random(3, 6),
-                repeat: -1,
-                yoyo: true,
-                ease: 'sine.inOut',
-                delay: i * 0.5
-            });
-        });
-
-        // ヘッダースクロールエフェクト
+        // ヘッダースクロールエフェクト（GSAPに依存しない）
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
@@ -1831,40 +1926,6 @@
                 header.classList.remove('scrolled');
             }
         });
-
-        // スクロールアニメーション
-        gsap.utils.toArray('.animate-on-scroll').forEach(element => {
-            gsap.from(element, {
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: element,
-                    start: 'top 80%',
-                    end: 'bottom 20%',
-                    toggleActions: 'play none none reverse'
-                }
-            });
-        });
-
-        // ヒーローテキストアニメーション
-        gsap.timeline()
-            .from('.hero-text h1', {
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                delay: 1.5
-            })
-            .from('.hero-text p', {
-                y: 30,
-                opacity: 0,
-                duration: 0.8
-            }, '-=0.5')
-            .from('.hero-buttons', {
-                y: 30,
-                opacity: 0,
-                duration: 0.8
-            }, '-=0.5');
 
         // FAQ開閉
         document.querySelectorAll('.faq-question').forEach(question => {
@@ -1895,17 +1956,27 @@
                 
                 portfolioItems.forEach(item => {
                     if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        gsap.to(item, {
-                            opacity: 1,
-                            scale: 1,
-                            duration: 0.5
-                        });
+                        if (typeof gsap !== 'undefined') {
+                            gsap.to(item, {
+                                opacity: 1,
+                                scale: 1,
+                                duration: 0.5
+                            });
+                        } else {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }
                     } else {
-                        gsap.to(item, {
-                            opacity: 0.3,
-                            scale: 0.9,
-                            duration: 0.5
-                        });
+                        if (typeof gsap !== 'undefined') {
+                            gsap.to(item, {
+                                opacity: 0.3,
+                                scale: 0.9,
+                                duration: 0.5
+                            });
+                        } else {
+                            item.style.opacity = '0.3';
+                            item.style.transform = 'scale(0.9)';
+                        }
                     }
                 });
             });
@@ -1921,17 +1992,19 @@
             });
         });
 
-        // パララックス効果
-        gsap.to('.hero-bg-pattern', {
-            yPercent: -50,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.hero',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: true
-            }
-        });
+        // パララックス効果（GSAPがある場合のみ）
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.to('.hero-bg-pattern', {
+                yPercent: -50,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.hero',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+        }
 
         // スムーススクロール
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
