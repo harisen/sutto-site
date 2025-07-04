@@ -195,6 +195,10 @@ body {
 
 .hero-content {
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xxl);
+    align-items: center;
 }
 
 .hero-badge {
@@ -248,26 +252,59 @@ body {
     gap: var(--spacing-md);
 }
 
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+}
+
+.hero-note {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-left: var(--spacing-sm);
+}
+
+.hero-image {
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+}
+
 .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
     gap: var(--spacing-lg);
-    margin-top: var(--spacing-xxl);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-lg);
     background: var(--bg-white);
     border-radius: 12px;
     box-shadow: var(--shadow-md);
+    white-space: nowrap;
 }
 
-.stat-item {
+.stat {
     text-align: center;
+    padding: 0 var(--spacing-md);
+}
+
+.stat:not(:last-child) {
+    border-right: 1px solid var(--border-color);
 }
 
 .stat-number {
     display: block;
-    font-size: 36px;
+    font-size: 24px;
     font-weight: 700;
     color: var(--primary-color);
+    margin-bottom: 4px;
 }
 
 .stat-label {
@@ -338,6 +375,17 @@ body {
 .problem-impact h3 {
     font-size: 24px;
     margin-bottom: var(--spacing-sm);
+}
+
+.solution-message {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+}
+
+.solution-message p {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.5;
 }
 
 /* サービスセクション */
@@ -907,6 +955,11 @@ body {
         display: none;
     }
     
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
     .hero-features {
         flex-direction: column;
         gap: var(--spacing-sm);
@@ -916,8 +969,24 @@ body {
         flex-direction: column;
     }
     
+    .hero-image {
+        margin-top: var(--spacing-lg);
+    }
+    
     .hero-stats {
-        grid-template-columns: 1fr;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        flex-direction: column;
+        margin-top: var(--spacing-md);
+    }
+    
+    .stat:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
     }
     
     .profile-content {
