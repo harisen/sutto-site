@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>請求書</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Meiryo', 'メイリオ', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+        }
+        
+        .container {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 30mm 25mm;
+            background: white;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+            }
+            .container {
+                width: 100%;
+                padding: 20mm 25mm;
+            }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 8px;
+        }
+        
+        .invoice-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .client-info {
+            flex: 1;
+        }
+        
+        .client-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .invoice-meta {
+            text-align: right;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .total-amount {
+            background: #f8f8f8;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .total-amount h3 {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .total-amount .amount {
+            font-size: 32px;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .total-amount .tax-note {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .invoice-statement {
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        .items-table th {
+            text-align: left;
+            padding: 10px;
+            background: #f5f5f5;
+            border-bottom: 2px solid #ddd;
+            font-size: 13px;
+            font-weight: normal;
+            color: #666;
+        }
+        
+        .items-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+        
+        .items-table th:last-child,
+        .items-table td:last-child {
+            text-align: right;
+        }
+        
+        .summary {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 40px;
+        }
+        
+        .summary-table {
+            width: 300px;
+        }
+        
+        .summary-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .summary-table td {
+            padding: 8px;
+            font-size: 14px;
+        }
+        
+        .summary-table td:first-child {
+            text-align: right;
+            padding-right: 20px;
+            color: #666;
+        }
+        
+        .summary-table td:last-child {
+            text-align: right;
+            font-weight: bold;
+        }
+        
+        .summary-table .tax-row td {
+            font-size: 13px;
+        }
+        
+        .summary-table .total-row td {
+            border-top: 2px solid #333;
+            padding-top: 12px;
+            font-size: 16px;
+        }
+        
+        .payment-info {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        
+        .payment-info h4 {
+            font-size: 15px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .payment-info-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 10px;
+            font-size: 14px;
+        }
+        
+        .payment-info-label {
+            color: #666;
+        }
+        
+        .payment-info-value {
+            font-weight: 500;
+        }
+        
+        .payment-due {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            font-size: 15px;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        
+        .issuer-info {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: right;
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .footer-note {
+            margin-top: 30px;
+            padding: 15px;
+            background: #fffbf0;
+            border-radius: 5px;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>請求書</h1>
+        </div>
+        
+        <div class="invoice-info">
+            <div class="client-info">
+                <div class="client-name">{{CLIENT_NAME}} 御中</div>
+            </div>
+            <div class="invoice-meta">
+                請求書番号: {{INVOICE_NUMBER}}<br>
+                発行日: {{ISSUE_DATE}}
+            </div>
+        </div>
+        
+        <div class="total-amount">
+            <h3>ご請求金額</h3>
+            <div class="amount">¥{{TOTAL_AMOUNT}}</div>
+            <div class="tax-note">（税込）</div>
+        </div>
+        
+        <div class="invoice-statement">
+            下記の通りご請求申し上げます。
+        </div>
+        
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th style="width: 60%;">内容</th>
+                    <th style="width: 20%;">数量</th>
+                    <th style="width: 20%;">金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ITEM_DESCRIPTION}}</td>
+                    <td>1</td>
+                    <td>¥{{SUBTOTAL}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="summary">
+            <div class="summary-table">
+                <table>
+                    <tr>
+                        <td>小計</td>
+                        <td>¥{{SUBTOTAL}}</td>
+                    </tr>
+                    <tr class="tax-row">
+                        <td>消費税（10%）</td>
+                        <td>¥{{TAX}}</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>合計金額</td>
+                        <td>¥{{TOTAL_AMOUNT}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="payment-info">
+            <h4>お振込先</h4>
+            <div class="payment-info-grid">
+                <div class="payment-info-label">銀行名</div>
+                <div class="payment-info-value">三井住友銀行</div>
+                
+                <div class="payment-info-label">支店名</div>
+                <div class="payment-info-value">渋谷駅前支店</div>
+                
+                <div class="payment-info-label">口座種別</div>
+                <div class="payment-info-value">普通</div>
+                
+                <div class="payment-info-label">口座番号</div>
+                <div class="payment-info-value">5067447</div>
+                
+                <div class="payment-info-label">口座名義</div>
+                <div class="payment-info-value">アクタガワ　ゲンキ</div>
+            </div>
+            <div class="payment-due">
+                お支払期限: {{PAYMENT_DUE_DATE}}
+            </div>
+        </div>
+        
+        <div class="issuer-info">
+            担当者: 芥川 元紀<br>
+            Email: sutto.apps@gmail.com
+        </div>
+        
+        <div class="footer-note">
+            ※本請求書は電子的に発行されたものです。<br>
+            {{NOTES}}
+        </div>
+    </div>
+</body>
+</html>

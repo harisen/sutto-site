@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "projectType": "standard",
+    "clientId": "powerfit-yokohama"
+  },
+  "client": {
+    "name": "鈴木 太郎",
+    "company": "PowerFit 横浜店",
+    "email": "suzuki@powerfit-yokohama.com",
+    "phone": "045-123-4567"
+  },
+  "project": {
+    "plan": "standard",
+    "business": "24時間営業のフィットネスジム。マシン特化型で、初心者から上級者まで対応。パーソナルトレーニングオプションあり",
+    "target": {
+      "age": ["20代", "30代", "40代"],
+      "gender": "両方",
+      "description": "横浜駅周辺で働く会社員、健康意識が高まっているが運動習慣がない、仕事帰りや早朝に通いたい、月額1万円程度なら投資できる"
+    },
+    "purpose": "期間限定の新規入会キャンペーン告知と入会促進",
+    "deadline": "10日以内（キャンペーン開始に間に合わせたい）",
+    "references": [
+      {
+        "url": "https://fitness-example.com",
+        "note": "デザインがスタイリッシュ"
+      },
+      {
+        "url": "https://24h-gym-competitor.com",
+        "note": "料金表示が分かりやすい"
+      }
+    ]
+  },
+  "design": {
+    "catchphrase": "24時間、あなたの時間で理想のカラダへ",
+    "subheading": "横浜駅徒歩5分！今なら入会金0円＋2ヶ月分無料",
+    "tone": ["モダン・洗練", "プロフェッショナル", "信頼感・安心感"],
+    "colors": {
+      "primary": "黒",
+      "secondary": "オレンジ",
+      "accent": "白",
+      "description": "黒とオレンジを基調。力強さと活力を表現。白を効果的に使ってメリハリを"
+    }
+  },
+  "content": {
+    "differentiators": [
+      "横浜駅から最も近い24時間ジム（徒歩5分）",
+      "最新マシン50台以上完備",
+      "月額6,980円の明確な料金設定（追加料金なし）"
+    ],
+    "features": [
+      "24時間365日営業",
+      "横浜駅から徒歩5分の好立地",
+      "最新マシン50台以上",
+      "広々としたフリーウェイトエリア",
+      "男女別シャワー・ロッカー完備",
+      "セキュリティ万全（防犯カメラ・入退室管理）"
+    ],
+    "pricing": {
+      "monthly": "6,980円（税込）",
+      "admission": "通常11,000円→今だけ0円",
+      "administrative": "通常3,300円→今だけ0円"
+    },
+    "campaign": {
+      "period": "2月末まで",
+      "content": "入会金0円＋最初の2ヶ月分無料（合計24,960円お得）"
+    },
+    "testimonials_count": 3,
+    "faq_count": 5,
+    "steps_count": 4
+  },
+  "company": {
+    "name": "PowerFit 横浜店",
+    "operator": "株式会社パワーフィット",
+    "address": "神奈川県横浜市西区○○1-2-3",
+    "hours": "24時間365日（スタッフ対応時間：10:00-20:00）",
+    "contact": {
+      "phone": "045-123-4567",
+      "email": "info@powerfit-yokohama.com",
+      "line": "@powerfit-yokohama",
+      "parking": "無料駐車場完備（2時間まで）"
+    }
+  },
+  "requirements": {
+    "essential": [
+      "施設の清潔感が伝わる画像",
+      "Googleマップ（駅からの道順が分かるように）",
+      "キャンペーン終了までのカウントダウンタイマー",
+      "見学予約フォーム（簡易版でOK）"
+    ],
+    "analytics": "Google Analytics 4（後日設定）",
+    "copyright": "© 2025 PowerFit Inc."
+  },
+  "competitors": [
+    {
+      "name": "エニタイム",
+      "weakness": "知名度は高いが、月額料金が高い（8,000円〜）"
+    },
+    {
+      "name": "ジョイフィット",
+      "weakness": "安いが、マシンが古い"
+    }
+  ],
+  "notes": [
+    "とにかくキャンペーンの訴求を強くしたい",
+    "スマホで見やすく、予約しやすくしてほしい",
+    "シンプルで分かりやすい構成を希望"
+  ]
+}

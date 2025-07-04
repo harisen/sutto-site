@@ -1,0 +1,21 @@
+PowerFit 横浜店様
+
+この度はLP制作サービスをご利用いただき、誠にありがとうございました。
+
+■納品内容
+powerfit-yokohama-lpフォルダ内に以下のファイルが含まれています：
+- index.html（メインファイル）
+- powerfit-style.css（デザインファイル）
+- powerfit-script.js（動作制御ファイル）
+- README.md（使用方法）
+
+■公開方法
+1. powerfit-yokohama-lpフォルダ内の全ファイルをサーバーにアップロード
+2. index.htmlにアクセスして表示確認
+
+■サポート
+納品後1週間は軽微な修正に無料で対応いたします。
+お気軽にご連絡ください。
+
+LP制作サービス
+sutto.apps@gmail.com

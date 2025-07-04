@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerFit 横浜店 | 24時間営業フィットネスジム | 今なら入会金0円＋2ヶ月分無料</title>
+    <meta name="description" content="横浜駅徒歩5分の24時間フィットネスジム。最新マシン50台以上完備。今なら入会金0円＋2ヶ月分無料キャンペーン実施中！月額6,980円で追加料金なし。">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FF6B35'/%3E%3Cpath d='M8 10h2v12H8zm6 2h2v8h-2zm6-2h2v12h-2zm6 2h2v8h-2z' fill='%23000'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FF6B35'/%3E%3Cpath d='M8 10h2v12H8zm6 2h2v8h-2zm6-2h2v12h-2zm6 2h2v8h-2z' fill='%23000'/%3E%3C/svg%3E">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="powerfit-style.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ヒーローセクション -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="campaign-badge">
+                <span class="badge-text">2月末まで限定</span>
+            </div>
+            <h1 class="hero-title">24時間、あなたの時間で<br>理想のカラダへ</h1>
+            <p class="hero-subtitle">横浜駅徒歩5分！今なら入会金0円＋2ヶ月分無料</p>
+            <div class="hero-cta-wrapper">
+                <a href="#contact" class="cta-button primary">今すぐ無料見学を予約する</a>
+            </div>
+            <div class="countdown-wrapper">
+                <p class="countdown-label">キャンペーン終了まで</p>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-unit">日</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-unit">時間</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-unit">分</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-unit">秒</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop" alt="PowerFit横浜店の最新フィットネス設備">
+        </div>
+    </section>
+
+    <!-- 特徴セクション -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">PowerFit横浜店が選ばれる<span class="highlight">3つの理由</span></h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="feature-title">横浜駅から最短アクセス</h3>
+                    <p class="feature-description">横浜駅西口から徒歩わずか5分。仕事帰りや買い物ついでに気軽に立ち寄れる好立地。雨の日も地下通路で快適アクセス。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 class="feature-title">最新マシン50台以上完備</h3>
+                    <p class="feature-description">有酸素マシンから筋力トレーニング機器まで、最新設備を豊富に取り揃え。待ち時間なく効率的なトレーニングが可能。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-yen-sign"></i>
+                    </div>
+                    <h3 class="feature-title">明確な料金設定</h3>
+                    <p class="feature-description">月額6,980円（税込）のみ。追加料金は一切なし。水素水やタオルなどのオプション押し売りもありません。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料金・キャンペーンセクション -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">料金プラン</h2>
+            <div class="pricing-wrapper">
+                <div class="campaign-box">
+                    <div class="campaign-header">
+                        <span class="campaign-badge">2月末まで限定キャンペーン</span>
+                        <h3 class="campaign-title">今なら総額28,260円お得！</h3>
+                    </div>
+                    <div class="campaign-benefits">
+                        <div class="benefit-item">
+                            <span class="benefit-label">入会金</span>
+                            <span class="benefit-original">通常 11,000円</span>
+                            <span class="benefit-arrow">→</span>
+                            <span class="benefit-new">0円</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-label">事務手数料</span>
+                            <span class="benefit-original">通常 3,300円</span>
+                            <span class="benefit-arrow">→</span>
+                            <span class="benefit-new">0円</span>
+                        </div>
+                        <div class="benefit-item special">
+                            <span class="benefit-label">月会費</span>
+                            <span class="benefit-text">最初の2ヶ月分無料！</span>
+                            <span class="benefit-amount">13,960円分</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="regular-price">
+                    <h3 class="price-title">通常料金</h3>
+                    <div class="price-amount">
+                        <span class="price-label">月額</span>
+                        <span class="price-number">6,980</span>
+                        <span class="price-unit">円（税込）</span>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i>24時間365日利用可能</li>
+                        <li><i class="fas fa-check"></i>全マシン使い放題</li>
+                        <li><i class="fas fa-check"></i>シャワー・ロッカー完備</li>
+                        <li><i class="fas fa-check"></i>セキュリティ万全</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声セクション -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">お客様の声</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="customer-info">
+                            <span class="customer-name">T.Sさん（30代男性）</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">「仕事が不規則なので24時間営業は本当に助かります。早朝や深夜でも快適に利用でき、3ヶ月で-5kgの減量に成功しました！」</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="customer-info">
+                            <span class="customer-name">M.Kさん（20代女性）</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">「駅から近いので仕事帰りに通いやすい！マシンも新しくて清潔感があり、女性でも安心して利用できます。」</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="customer-info">
+                            <span class="customer-name">K.Yさん（40代男性）</span>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">「料金が明確で追加費用がないのが決め手でした。設備も充実していて、この価格は本当にお得だと思います。」</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQセクション -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">よくあるご質問</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>入会に必要なものは何ですか？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>本人確認書類（運転免許証、保険証など）、クレジットカードまたは銀行口座情報、印鑑をお持ちください。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>初心者でも大丈夫ですか？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>もちろん大丈夫です！初回利用時にはマシンの使い方をスタッフが丁寧にご説明します。また、各マシンには使い方の説明も掲示されています。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>見学や体験はできますか？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>はい、無料見学を随時受け付けています。実際の設備や雰囲気をご確認いただけます。体験利用は1回1,000円で可能です。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>退会する場合の手続きは？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>退会希望月の前月10日までにスタッフにお申し出ください。違約金等は一切ございません。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>駐車場はありますか？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>はい、無料駐車場を完備しています。ジム利用者は2時間まで無料でご利用いただけます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 利用の流れセクション -->
+    <section class="process" id="process">
+        <div class="container">
+            <h2 class="section-title">ご利用開始までの流れ</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h3 class="step-title">無料見学予約</h3>
+                    <p class="step-description">Webフォームまたはお電話で見学予約</p>
+                </div>
+                <div class="process-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h3 class="step-title">施設見学</h3>
+                    <p class="step-description">スタッフが設備をご案内</p>
+                </div>
+                <div class="process-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h3 class="step-title">入会手続き</h3>
+                    <p class="step-description">必要書類をご持参の上、手続き</p>
+                </div>
+                <div class="process-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h3 class="step-title">利用開始</h3>
+                    <p class="step-description">即日から24時間利用可能</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセスセクション -->
+    <section class="access" id="access">
+        <div class="container">
+            <h2 class="section-title">アクセス・店舗情報</h2>
+            <div class="access-content">
+                <div class="access-info">
+                    <h3 class="info-title">PowerFit 横浜店</h3>
+                    <dl class="info-list">
+                        <dt><i class="fas fa-building"></i>運営会社</dt>
+                        <dd>株式会社パワーフィット</dd>
+                        
+                        <dt><i class="fas fa-map-marker-alt"></i>住所</dt>
+                        <dd>神奈川県横浜市西区○○1-2-3<br>（横浜駅西口より徒歩5分）</dd>
+                        
+                        <dt><i class="fas fa-clock"></i>営業時間</dt>
+                        <dd>24時間365日営業<br>スタッフ対応時間：10:00-20:00</dd>
+                        
+                        <dt><i class="fas fa-phone"></i>電話番号</dt>
+                        <dd><a href="tel:045-123-4567">045-123-4567</a></dd>
+                        
+                        <dt><i class="fas fa-envelope"></i>メール</dt>
+                        <dd><a href="mailto:info@powerfit-yokohama.com">info@powerfit-yokohama.com</a></dd>
+                        
+                        <dt><i class="fab fa-line"></i>LINE</dt>
+                        <dd>@powerfit-yokohama</dd>
+                        
+                        <dt><i class="fas fa-car"></i>駐車場</dt>
+                        <dd>無料駐車場完備（2時間まで）</dd>
+                    </dl>
+                </div>
+                <div class="access-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3249.952665518621!2d139.61587931549908!3d35.45606508024474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185c3ea36c3e45%3A0x5b6d91e9ce8e8e5b!2z5qiq5rWc6aeF!5e0!3m2!1sja!2sjp!4v1638425847586!5m2!1sja!2sjp" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせセクション -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">無料見学予約・お問い合わせ</h2>
+            <div class="contact-wrapper">
+                <div class="contact-main">
+                    <h3 class="contact-subtitle">お電話でのお問い合わせ・ご予約</h3>
+                    <a href="tel:045-123-4567" class="phone-link primary">
+                        <i class="fas fa-phone"></i>
+                        <span class="phone-number">045-123-4567</span>
+                    </a>
+                    <p class="phone-hours">受付時間：10:00-20:00（年中無休）</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <h4><i class="fas fa-envelope"></i> メール</h4>
+                            <p><a href="mailto:info@powerfit-yokohama.com">info@powerfit-yokohama.com</a></p>
+                        </div>
+                        <div class="contact-method">
+                            <h4><i class="fab fa-line"></i> LINE</h4>
+                            <p>@powerfit-yokohama</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div class="campaign-reminder">
+                        <p class="reminder-text">
+                            <strong>キャンペーン期間：2月末まで</strong><br>
+                            今なら入会金0円＋2ヶ月分無料！<br>
+                            総額28,260円お得！
+                        </p>
+                    </div>
+                    <div class="contact-notes">
+                        <h4>ご見学について</h4>
+                        <ul>
+                            <li>予約なしでもご見学いただけます</li>
+                            <li>スタッフ対応時間（10:00-20:00）にお越しください</li>
+                            <li>動きやすい服装でお越しいただければ体験も可能です</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>PowerFit 横浜店</h3>
+                    <p>24時間営業フィットネスジム</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#features">特徴</a>
+                    <a href="#pricing">料金</a>
+                    <a href="#access">アクセス</a>
+                    <a href="#contact">お問い合わせ</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 PowerFit Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="powerfit-script.js"></script>
+</body>
+</html>

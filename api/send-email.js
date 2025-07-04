@@ -1,12 +1,12 @@
 // Vercel Serverless Function for sending emails with Resend
 // このファイルを /api/send-email.js に配置してください
 
-import { Resend } from 'resend';
+const { Resend } = require('resend');
 
 // Resend APIキーを環境変数から取得
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // CORSヘッダーを設定
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');

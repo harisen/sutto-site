@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>領収書</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Meiryo', 'メイリオ', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+        }
+        
+        .container {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 30mm 25mm;
+            background: white;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+            }
+            .container {
+                width: 100%;
+                padding: 20mm 25mm;
+            }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .receipt-number {
+            text-align: right;
+            margin-bottom: 30px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .client-info {
+            margin-bottom: 30px;
+        }
+        
+        .client-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .amount-section {
+            background: #f8f8f8;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .amount-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .amount {
+            font-size: 32px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        
+        .amount-text {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .receipt-for {
+            font-size: 14px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .receipt-statement {
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+        
+        .breakdown {
+            margin-bottom: 40px;
+        }
+        
+        .breakdown-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .breakdown-table th {
+            text-align: left;
+            padding: 10px;
+            background: #f5f5f5;
+            border-bottom: 2px solid #ddd;
+            font-size: 13px;
+            font-weight: normal;
+            color: #666;
+        }
+        
+        .breakdown-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+        
+        .breakdown-table td:last-child {
+            text-align: right;
+            font-weight: bold;
+        }
+        
+        .breakdown-table .subtotal-row td {
+            border-bottom: 1px solid #ddd;
+            padding-top: 15px;
+        }
+        
+        .breakdown-table .tax-row td {
+            color: #666;
+            font-size: 13px;
+        }
+        
+        .breakdown-table .total-row td {
+            border-top: 2px solid #333;
+            border-bottom: none;
+            padding-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .issuer-info {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .issuer-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .issuer-details {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .footer-note {
+            margin-top: 30px;
+            padding: 15px;
+            background: #fffbf0;
+            border-radius: 5px;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>領収書</h1>
+        </div>
+        
+        <div class="receipt-number">
+            領収書番号: {{RECEIPT_NUMBER}}<br>
+            発行日: {{ISSUE_DATE}}
+        </div>
+        
+        <div class="client-info">
+            <div class="client-name">{{CLIENT_NAME}} 様</div>
+        </div>
+        
+        <div class="amount-section">
+            <div class="amount-label">領収金額</div>
+            <div class="amount">¥{{TOTAL_AMOUNT}}</div>
+            <div class="amount-text">（{{AMOUNT_IN_WORDS}}）</div>
+            <div class="receipt-for">但し、{{DESCRIPTION}} として</div>
+        </div>
+        
+        <div class="receipt-statement">
+            上記の金額を正に領収いたしました。
+        </div>
+        
+        <div class="breakdown">
+            <table class="breakdown-table">
+                <thead>
+                    <tr>
+                        <th>内訳</th>
+                        <th style="text-align: right;">金額</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ITEM_DESCRIPTION}}</td>
+                        <td>¥{{SUBTOTAL}}</td>
+                    </tr>
+                    <tr class="subtotal-row">
+                        <td>小計</td>
+                        <td>¥{{SUBTOTAL}}</td>
+                    </tr>
+                    <tr class="tax-row">
+                        <td>消費税（10%）</td>
+                        <td>¥{{TAX}}</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>合計</td>
+                        <td>¥{{TOTAL_AMOUNT}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="issuer-info">
+            <div class="issuer-details">
+                担当者: 芥川 元紀<br>
+                Email: sutto.apps@gmail.com
+            </div>
+        </div>
+        
+        <div class="footer-note">
+            ※本領収書は電子的に発行されたものです。<br>
+            {{NOTES}}
+        </div>
+    </div>
+</body>
+</html>

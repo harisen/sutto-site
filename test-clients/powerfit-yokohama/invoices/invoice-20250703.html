@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>請求書 - PowerFit 横浜店様</title>
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; margin: 0; padding: 20px; color: #333; }
+        .invoice-wrapper { max-width: 800px; margin: 0 auto; background: #fff; padding: 40px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 50px; }
+        .title { font-size: 32px; font-weight: bold; color: #333; }
+        .invoice-info { text-align: right; }
+        .invoice-number { font-size: 14px; color: #666; margin-bottom: 5px; }
+        .invoice-date { font-size: 14px; color: #666; }
+        .billing-info { display: flex; justify-content: space-between; margin-bottom: 40px; }
+        .bill-to h3, .bill-from h3 { font-size: 14px; color: #666; margin-bottom: 10px; }
+        .company-name { font-size: 20px; font-weight: bold; margin-bottom: 8px; }
+        .client-name { font-size: 16px; margin-bottom: 5px; }
+        .address { font-size: 14px; color: #666; line-height: 1.6; }
+        .invoice-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
+        .invoice-table th { background: #f5f5f5; padding: 15px; text-align: left; font-weight: bold; border-bottom: 2px solid #ddd; }
+        .invoice-table td { padding: 15px; border-bottom: 1px solid #eee; }
+        .item-name { font-weight: bold; }
+        .item-description { font-size: 14px; color: #666; margin-top: 5px; }
+        .text-right { text-align: right; }
+        .totals { margin-left: auto; width: 300px; }
+        .total-row { display: flex; justify-content: space-between; padding: 10px 0; }
+        .total-label { color: #666; }
+        .grand-total { border-top: 2px solid #333; margin-top: 10px; padding-top: 10px; }
+        .grand-total .total-label { font-size: 18px; font-weight: bold; }
+        .grand-total .total-amount { font-size: 24px; font-weight: bold; color: #333; }
+        .payment-info { margin-top: 50px; padding: 20px; background: #f9f9f9; border-radius: 8px; }
+        .payment-info h3 { font-size: 16px; margin-bottom: 15px; }
+        .payment-details { font-size: 14px; line-height: 1.8; }
+        .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #999; }
+        @media print {
+            body { padding: 0; }
+            .invoice-wrapper { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-wrapper">
+        <div class="header">
+            <h1 class="title">請求書</h1>
+            <div class="invoice-info">
+                <div class="invoice-number">請求書番号: INV-20250703-PFY</div>
+                <div class="invoice-date">発行日: 2025年7月3日</div>
+            </div>
+        </div>
+
+        <div class="billing-info">
+            <div class="bill-to">
+                <h3>請求先</h3>
+                <div class="company-name">PowerFit 横浜店</div>
+                <div class="client-name">鈴木 太郎 様</div>
+                <div class="address">
+                    神奈川県横浜市西区○○1-2-3<br>
+                    TEL: 045-123-4567<br>
+                    Email: suzuki@powerfit-yokohama.com
+                </div>
+            </div>
+            <div class="bill-from">
+                <h3>請求元</h3>
+                <div class="company-name">LP制作サービス</div>
+                <div class="address">
+                    Email: sutto.apps@gmail.com<br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th style="width: 50%">項目</th>
+                    <th style="width: 15%" class="text-right">数量</th>
+                    <th style="width: 15%" class="text-right">単価</th>
+                    <th style="width: 20%" class="text-right">金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="item-name">LP制作費（スタンダードプラン）</div>
+                        <div class="item-description">24時間営業フィットネスジム 新規入会キャンペーンLP制作</div>
+                    </td>
+                    <td class="text-right">1</td>
+                    <td class="text-right">¥20,000</td>
+                    <td class="text-right">¥20,000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="totals">
+            <div class="total-row">
+                <span class="total-label">小計</span>
+                <span class="total-amount">¥20,000</span>
+            </div>
+            <div class="total-row">
+                <span class="total-label">消費税（10%）</span>
+                <span class="total-amount">¥2,000</span>
+            </div>
+            <div class="total-row grand-total">
+                <span class="total-label">合計金額</span>
+                <span class="total-amount">¥22,000</span>
+            </div>
+        </div>
+
+        <div class="payment-info">
+            <h3>お支払い情報</h3>
+            <div class="payment-details">
+                お支払い期限：2025年7月10日（納品後1週間以内）<br>
+                <br>
+                【お振込先】<br>
+                銀行名：三井住友銀行<br>
+                支店名：渋谷駅前支店<br>
+                口座種別：普通<br>
+                口座番号：5067447<br>
+                口座名義：アクタガワ　ゲンキ<br>
+                <br>
+                ※恐れ入りますが、振込手数料はお客様のご負担となります<br>
+                ※お振込み名義は「PowerFit横浜店」または「スズキタロウ」でお願いいたします
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>この請求書に関するお問い合わせは sutto.apps@gmail.com までご連絡ください。</p>
+        </div>
+    </div>
+</body>
+</html>

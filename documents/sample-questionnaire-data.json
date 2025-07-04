@@ -1,0 +1,80 @@
+{
+  "基本情報": {
+    "name": "田中 健太",
+    "company": "たなか整体院",
+    "email": "tanaka@example.com",
+    "phone": "03-1234-5678"
+  },
+  "プロジェクト詳細": {
+    "plan": "standard",
+    "business-type": "整体・カイロプラクティック・骨盤矯正を専門とする治療院。国家資格を持つ施術者が、腰痛・肩こり・姿勢改善などの施術を提供。",
+    "lp-purpose": "lead-generation",
+    "lp-purpose-detail": "月間20件の新規予約獲得、特に30-50代のデスクワーカーからの問い合わせを増やしたい",
+    "deadline": "2週間以内"
+  },
+  "ターゲット情報": {
+    "target-age": ["30代", "40代", "50代"],
+    "target-gender": "両方",
+    "target-detail": "都内在住の会社員、年収400-600万円、デスクワークによる慢性的な腰痛・肩こりに悩んでいる。健康への投資意識が高く、根本的な改善を求めている。"
+  },
+  "デザイン要望": {
+    "main-message": "「痛みのない毎日を、あなたに」世田谷で20年の実績。国家資格保有の確かな技術で、根本から改善します。",
+    "unique-points": "1. 国家資格（柔道整復師・鍼灸師）を持つ院長が全ての施術を担当\n2. 完全個室のプライベート空間で、周りを気にせず施術を受けられる\n3. 土日祝日も営業、当日予約OK、駅から徒歩3分の好立地",
+    "design-tone": ["信頼感・安心感", "親しみやすい"],
+    "color-preference": "緑系（健康・自然をイメージ）、白をベースにクリーンな印象",
+    "reference-sites": "https://example-seitai.com - シンプルで見やすいレイアウト\nhttps://competitor-seitai.com - 競合、これより親しみやすくしたい"
+  },
+  "必要なコンテンツ": {
+    "sections": [
+      "ヒーローセクション",
+      "課題提起",
+      "解決策",
+      "特徴・強み",
+      "料金",
+      "お客様の声",
+      "よくある質問",
+      "会社情報",
+      "利用の流れ",
+      "問い合わせ先"
+    ],
+    "セクション詳細": {
+      "hero-catchcopy": "痛みのない毎日を、あなたに",
+      "hero-subcopy": "世田谷で20年の実績。国家資格保有の確かな技術",
+      "hero-cta": "今すぐ予約する / LINE予約",
+      "problem-content": "・毎朝起きるのがつらい腰痛\n・デスクワークで慢性化した肩こり\n・姿勢の悪さからくる体の不調\n・マッサージに行っても改善しない痛み",
+      "solution-content": "・当院の施術で根本から改善\n・国家資格を持つ院長が原因を特定\n・一人ひとりに合わせたオーダーメイド施術\n・再発防止のアドバイスも充実",
+      "features-count": "3",
+      "features-content": "1. 国家資格保有の確かな技術\n2. 完全個室のプライベート空間\n3. 土日祝も営業・当日予約OK",
+      "price-plans": "3",
+      "price-details": "整体コース（60分）：6,600円\n骨盤矯正コース（45分）：5,500円【人気No.1】\n肩こり・腰痛集中コース（30分）：4,400円",
+      "price-campaign": "初回限定50%OFF（期間限定）",
+      "voice-count": "5",
+      "voice-provided": "yes",
+      "faq-count": "5",
+      "faq-content": "Q: 初めてでも大丈夫ですか？\nQ: 保険は使えますか？\nQ: 施術時間はどのくらいですか？\nQ: 予約は必要ですか？\nQ: 駐車場はありますか？",
+      "company-info": "院名：たなか整体院\n院長：田中 健太\n住所：東京都世田谷区○○1-2-3\n資格：柔道整復師、鍼灸師\n開業：2005年",
+      "flow-steps": "4",
+      "flow-content": "1. 電話・LINE・Webで予約\n2. 問診票記入・カウンセリング\n3. 施術（症状に合わせて30-60分）\n4. アフターケアのアドバイス",
+      "contact-phone": "03-1234-5678",
+      "contact-email": "info@tanaka-seitai.com",
+      "contact-hours": "平日9:00-21:00、土日祝9:00-18:00",
+      "contact-other": "LINE: @tanaka-seitai\n住所：東京都世田谷区○○1-2-3（○○駅徒歩3分）"
+    }
+  },
+  "素材・その他": {
+    "logo-status": "あり",
+    "image-status": "一部提供可能",
+    "file-link": "https://gigafile.nu/example123",
+    "file-password": "tanaka2025",
+    "favicon-status": "提供なし",
+    "copyright-text": "© 2025 たなか整体院 All rights reserved.",
+    "required-pages": ["プライバシーポリシー", "キャンセルポリシー"],
+    "essential-content": "・院長の顔写真と経歴\n・施術室の写真（清潔感をアピール）\n・アクセスマップ（Googleマップ埋め込み）\n・予約カレンダー（外部サービスのリンクでOK）",
+    "analytics-tracking": "Google Analytics（UA-123456789）",
+    "domain-status": "サブドメインを作成（lp.tanaka-seitai.com）",
+    "launch-timing": "2週間後（3月初旬のキャンペーン開始に合わせて）",
+    "competitor-sites": "競合A（大手チェーン）：価格は安いが、施術者が毎回変わる\n競合B（個人院）：技術は良いが、土日休み\n差別化：院長が全て施術＋土日営業＋完全個室",
+    "maintenance-update": "料金やキャンペーン情報は自分で更新したい（簡単な編集方法を教えてほしい）",
+    "additional-requests": "スマホからの予約を重視したい。LINEからの予約導線を分かりやすくしてほしい。"
+  }
+}

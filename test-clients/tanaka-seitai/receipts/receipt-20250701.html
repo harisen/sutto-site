@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>領収書 - 田中整体院様</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', 'Meiryo', 'メイリオ', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+        }
+        
+        .container {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 20mm;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+            }
+            .container {
+                width: 100%;
+                box-shadow: none;
+                padding: 15mm 20mm;
+            }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .receipt-info {
+            margin-bottom: 40px;
+        }
+        
+        .receipt-number {
+            text-align: right;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+        
+        .client-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+        
+        .amount-section {
+            background: #f0f0f0;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            border: 2px solid #333;
+        }
+        
+        .amount-section h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .amount-section .amount {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        
+        .amount-section .amount-text {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .amount-section .receipt-for {
+            font-size: 16px;
+            text-align: left;
+            border-top: 1px solid #666;
+            padding-top: 20px;
+        }
+        
+        .receipt-body {
+            margin-bottom: 40px;
+        }
+        
+        .receipt-body p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .company-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 60px;
+        }
+        
+        .company-info {
+            flex: 1;
+        }
+        
+        .company-info .company-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .company-info p {
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        
+        
+        .breakdown {
+            margin-top: 40px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+        }
+        
+        .breakdown h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .breakdown-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .breakdown-table td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+        }
+        
+        .breakdown-table td:first-child {
+            width: 70%;
+        }
+        
+        .breakdown-table td:last-child {
+            text-align: right;
+            font-weight: bold;
+        }
+        
+        .breakdown-table .total-row td {
+            border-top: 2px solid #333;
+            border-bottom: none;
+            padding-top: 12px;
+            font-size: 16px;
+        }
+        
+        .notes {
+            margin-top: 40px;
+            padding: 15px;
+            background: #fffaf0;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .notes h4 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .notes p {
+            font-size: 12px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>領収書</h1>
+        </div>
+        
+        <div class="receipt-info">
+            <div class="receipt-number">
+                領収書番号: RCP-2025-0701-002<br>
+                発行日: 2025年7月1日
+            </div>
+            
+            <div class="client-name">
+                田中整体院 様
+            </div>
+        </div>
+        
+        <div class="amount-section">
+            <h2>領収金額</h2>
+            <div class="amount">¥22,000-</div>
+            <div class="amount-text">（金二万二千円也）</div>
+            <div class="receipt-for">
+                但し、田中整体院LP制作費用 として
+            </div>
+        </div>
+        
+        <div class="receipt-body">
+            <p>上記の金額を正に領収いたしました。</p>
+        </div>
+        
+        <div class="company-section">
+            <div class="company-info">
+                <div class="company-name">芥川 元紀</div>
+                <p>Email: sutto.apps@gmail.com</p>
+            </div>
+            
+        </div>
+        
+        <div class="breakdown">
+            <h3>内訳</h3>
+            <table class="breakdown-table">
+                <tr>
+                    <td>田中整体院LP制作（スタンダードプラン）</td>
+                    <td>¥20,000</td>
+                </tr>
+                <tr>
+                    <td>消費税（10%）</td>
+                    <td>¥2,000</td>
+                </tr>
+                <tr class="total-row">
+                    <td>合計</td>
+                    <td>¥22,000</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="notes">
+            <h4>備考</h4>
+            <p>・本領収書は電子的に発行されたものです。<br>
+            ・銀行振込にて受領いたしました。</p>
+        </div>
+    </div>
+</body>
+</html>
