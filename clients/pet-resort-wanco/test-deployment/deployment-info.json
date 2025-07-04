@@ -1,0 +1,23 @@
+{
+  "projectName": "pet-resort-wanco-test",
+  "deployUrl": "https://pet-resort-wanco-test-1ttwjc4yg-harisens-projects.vercel.app",
+  "deployedAt": "2025-07-04T03:24:56Z",
+  "status": "pending",
+  "environment": "test",
+  "vercelProject": "pet-resort-wanco-test",
+  "expires": "2025-08-03T03:24:56Z",
+  "features": {
+    "favicon": "カスタムSVGファビコン実装済み",
+    "images": "Unsplashによる代替画像使用",
+    "video": "動画代替スライドショー実装",
+    "icons": "Font Awesomeアイコン使用",
+    "animations": "GSAP ScrollTrigger実装",
+    "responsive": "完全レスポンシブ対応"
+  },
+  "notes": [
+    "画像素材は全てUnsplashの代替画像を使用しています",
+    "動画コンテンツは自動切り替えスライドショーで代替しています",
+    "ファビコンはWANCOロゴのSVG版を作成しました",
+    "本番環境では実際の画像・動画素材に差し替えが必要です"
+  ]
+}

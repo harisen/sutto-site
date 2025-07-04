@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Reservation Form
 function initializeReservationForm() {
-    const reservationForm = document.getElementById('reservation-form');
+    const reservationForm = document.getElementById('reservationForm');
     if (!reservationForm) return;
 
     // Form validation rules
@@ -23,21 +23,19 @@ function initializeReservationForm() {
             pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
             message: '有効なメールアドレスを入力してください'
         },
-        phone: {
+        tel: {
             required: true,
             pattern: /^[0-9]{10,11}$/,
             message: '電話番号は10〜11桁の数字で入力してください'
         },
-        petName: {
+        'pet-type': {
             required: true,
-            minLength: 1,
-            maxLength: 30,
-            message: 'ペットのお名前を入力してください'
+            message: 'ペットの種類を選択してください'
         },
-        visitDate: {
+        date: {
             required: true,
             futureDate: true,
-            message: '見学希望日を選択してください'
+            message: '希望日時を選択してください'
         }
     };
 

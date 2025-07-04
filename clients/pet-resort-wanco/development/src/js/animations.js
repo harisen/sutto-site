@@ -46,14 +46,14 @@ function initHeroAnimations() {
             duration: 1.2,
             ease: "power3.out"
         }, "-=0.8")
-        .from('.hero-description span', {
+        .from('.hero-text', {
             y: 50,
             opacity: 0,
             duration: 0.8,
             stagger: 0.2,
             ease: "power2.out"
         }, "-=0.6")
-        .from('.hero-actions .btn', {
+        .from('.hero-cta .btn', {
             scale: 0.8,
             opacity: 0,
             duration: 0.6,

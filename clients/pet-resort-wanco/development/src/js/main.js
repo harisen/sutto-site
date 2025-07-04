@@ -1,244 +1,245 @@
-// Main JavaScript File
+// Main JavaScript for Pet Resort WANCO
+
+// DOM Ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all modules
-    initializeHeader();
-    initializeHeroSlider();
-    initializeFacilityGallery();
-    initializeVoiceSlider();
-    initializeModal();
-    initializeSmoothScroll();
-    initializeLoading();
+    initLoading();
+    initHeader();
+    initHeroSlider();
+    initGallery();
+    initVoiceSlider();
+    initModal();
+    initSmoothScroll();
 });
 
 // Loading Screen
-function initializeLoading() {
+function initLoading() {
     window.addEventListener('load', function() {
         setTimeout(function() {
             const loading = document.getElementById('loading');
-            loading.classList.add('loaded');
-            
-            // Remove from DOM after animation
-            setTimeout(function() {
-                loading.style.display = 'none';
-            }, 600);
+            if (loading) {
+                loading.classList.add('loaded');
+                setTimeout(function() {
+                    loading.style.display = 'none';
+                }, 600);
+            }
         }, 1000);
     });
 }
 
 // Header Scroll Effect
-function initializeHeader() {
+function initHeader() {
     const header = document.getElementById('header');
-    let lastScrollY = 0;
-    
+    if (!header) return;
+
     window.addEventListener('scroll', function() {
-        const currentScrollY = window.scrollY;
-        
-        // Add scrolled class when scrolling down
-        if (currentScrollY > 100) {
+        if (window.scrollY > 100) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-        
-        lastScrollY = currentScrollY;
     });
-    
+
     // Mobile Menu Toggle
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileMenu = document.createElement('nav');
-    mobileMenu.className = 'mobile-menu';
-    mobileMenu.innerHTML = `
-        <ul class="mobile-nav-list">
-            <li><a href="#concept">コンセプト</a></li>
-            <li><a href="#facility">施設案内</a></li>
-            <li><a href="#service">サービス</a></li>
-            <li><a href="#price">料金</a></li>
-            <li><a href="#access">アクセス</a></li>
-            <li><a href="#reservation" class="btn btn-primary">施設見学予約</a></li>
-        </ul>
-    `;
-    document.body.appendChild(mobileMenu);
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
     
-    mobileMenuToggle.addEventListener('click', function() {
-        this.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-    });
-    
-    // Close mobile menu when clicking links
-    mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', function() {
-            mobileMenuToggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
+    if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener('click', function() {
+            mobileToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
         });
-    });
+    }
 }
 
-// Hero Slider (Swiper)
-function initializeHeroSlider() {
-    new Swiper('.hero-slider', {
+// Hero Slider
+function initHeroSlider() {
+    const heroSlider = document.querySelector('.hero-slider');
+    if (!heroSlider) return;
+
+    new Swiper(heroSlider, {
         loop: true,
-        effect: 'fade',
-        fadeEffect: {
-            crossFade: true
-        },
         autoplay: {
             delay: 5000,
             disableOnInteraction: false,
         },
-        speed: 1500,
-    });
-}
-
-// Facility Gallery
-function initializeFacilityGallery() {
-    const mainImage = document.getElementById('facility-main-image');
-    const mainTitle = document.getElementById('facility-main-title');
-    const thumbs = document.querySelectorAll('.facility-thumb');
-    
-    thumbs.forEach(thumb => {
-        thumb.addEventListener('click', function() {
-            // Update active state
-            thumbs.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Update main image
-            const imageName = this.dataset.image;
-            const title = this.dataset.title;
-            
-            // Fade out
-            mainImage.style.opacity = '0';
-            mainTitle.style.opacity = '0';
-            
-            setTimeout(() => {
-                mainImage.src = `images/facility/${imageName}`;
-                mainTitle.textContent = title;
-                
-                // Fade in
-                mainImage.style.opacity = '1';
-                mainTitle.style.opacity = '1';
-            }, 300);
-        });
-    });
-    
-    // Add transition styles
-    mainImage.style.transition = 'opacity 0.3s ease';
-    mainTitle.style.transition = 'opacity 0.3s ease';
-}
-
-// Voice Slider (Swiper)
-function initializeVoiceSlider() {
-    new Swiper('.voice-slider', {
-        loop: true,
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
         },
-        autoplay: {
-            delay: 7000,
-            disableOnInteraction: false,
-        },
-        speed: 800,
-        spaceBetween: 30,
     });
 }
 
-// Modal Functionality
-function initializeModal() {
-    const modal = document.getElementById('price-modal');
-    const openButton = document.getElementById('open-simulator');
-    const closeButton = modal.querySelector('.modal-close');
-    const overlay = modal.querySelector('.modal-overlay');
-    
-    // Open modal
-    openButton.addEventListener('click', function() {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
-    
-    // Close modal
-    function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    
-    closeButton.addEventListener('click', closeModal);
-    overlay.addEventListener('click', closeModal);
-    
-    // Close with ESC key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
-        }
-    });
-}
+// Facility Gallery
+function initGallery() {
+    const thumbs = document.querySelectorAll('.gallery-thumb');
+    const images = document.querySelectorAll('.gallery-image');
+    const infos = document.querySelectorAll('.room-info');
 
-// Smooth Scroll
-function initializeSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
+    if (thumbs.length === 0 || images.length === 0) return;
+
+    thumbs.forEach(thumb => {
+        thumb.addEventListener('click', function() {
+            const targetRoom = this.getAttribute('data-room');
             
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            // Update active states
+            thumbs.forEach(t => t.classList.remove('active'));
+            images.forEach(i => i.classList.remove('active'));
+            infos.forEach(i => i.classList.remove('active'));
             
-            const targetElement = document.querySelector(targetId);
-            if (!targetElement) return;
+            this.classList.add('active');
             
-            const headerHeight = document.getElementById('header').offsetHeight;
-            const targetPosition = targetElement.offsetTop - headerHeight - 20;
+            // Show corresponding image and info
+            const targetImage = document.querySelector(`.gallery-image[data-room="${targetRoom}"]`);
+            const targetInfo = document.querySelector(`.room-info[data-room="${targetRoom}"]`);
             
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
+            if (targetImage) targetImage.classList.add('active');
+            if (targetInfo) targetInfo.classList.add('active');
         });
     });
 }
 
-// Utility Functions
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
+// Voice Slider
+function initVoiceSlider() {
+    const voiceSlider = document.querySelector('.voice-slider');
+    if (!voiceSlider) return;
+
+    new Swiper(voiceSlider, {
+        loop: true,
+        spaceBetween: 30,
+        autoplay: {
+            delay: 6000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
 }
 
-function throttle(func, limit) {
-    let inThrottle;
-    return function(...args) {
-        if (!inThrottle) {
-            func.apply(this, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
+// Modal
+function initModal() {
+    const modal = document.getElementById('priceSimulator');
+    const openBtn = document.getElementById('openSimulator');
+    const closeBtn = document.querySelector('.modal-close');
+    
+    if (!modal || !openBtn || !closeBtn) return;
 
-// Intersection Observer for lazy loading
-const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const img = entry.target;
-            if (img.dataset.src) {
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                observer.unobserve(img);
-            }
+    openBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    closeBtn.addEventListener('click', function() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
-}, {
-    rootMargin: '50px 0px',
-    threshold: 0.01
-});
 
-// Observe all images with data-src
-document.querySelectorAll('img[data-src]').forEach(img => {
-    imageObserver.observe(img);
-});
+    // Price Calculator
+    const serviceSelect = document.getElementById('sim-service');
+    const durationGroup = document.getElementById('sim-duration-group');
+    const daycareGroup = document.getElementById('sim-daycare-group');
+
+    if (serviceSelect && durationGroup && daycareGroup) {
+        serviceSelect.addEventListener('change', function() {
+            if (this.value === 'stay') {
+                durationGroup.style.display = 'block';
+                daycareGroup.style.display = 'none';
+            } else {
+                durationGroup.style.display = 'none';
+                daycareGroup.style.display = 'block';
+            }
+            calculatePrice();
+        });
+
+        // Add event listeners for all form elements
+        const formElements = modal.querySelectorAll('select, input');
+        formElements.forEach(element => {
+            element.addEventListener('change', calculatePrice);
+        });
+
+        calculatePrice(); // Initial calculation
+    }
+}
+
+// Price Calculation
+function calculatePrice() {
+    const service = document.getElementById('sim-service').value;
+    const pet = document.getElementById('sim-pet').value;
+    const room = document.getElementById('sim-room').value;
+    const duration = parseInt(document.getElementById('sim-duration').value) || 1;
+    const daycareType = document.getElementById('sim-daycare-type').value;
+    const options = document.querySelectorAll('input[name="options"]:checked');
+
+    let basePrice = 0;
+
+    // Base prices
+    const prices = {
+        stay: {
+            'dog-small': { standard: 5000, suite: 8000 },
+            'dog-medium': { standard: 7000, suite: 10000 },
+            'dog-large': { standard: 9000, suite: 12000 },
+            'cat': { standard: 4000, suite: 6000 }
+        },
+        daycare: {
+            'dog-small': { half: 2500, full: 4000 },
+            'dog-medium': { half: 3500, full: 5500 },
+            'dog-large': { half: 4500, full: 7000 },
+            'cat': { half: 2000, full: 3500 }
+        }
+    };
+
+    // Calculate base price
+    if (service === 'stay' && prices.stay[pet]) {
+        basePrice = prices.stay[pet][room] * duration;
+    } else if (service === 'daycare' && prices.daycare[pet]) {
+        basePrice = prices.daycare[pet][daycareType];
+    }
+
+    // Add options
+    let optionsPrice = 0;
+    options.forEach(option => {
+        if (option.value === 'trimming') optionsPrice += 3000;
+        if (option.value === 'transport') optionsPrice += 2000;
+    });
+
+    const totalPrice = basePrice + optionsPrice;
+    document.getElementById('totalPrice').textContent = totalPrice.toLocaleString();
+}
+
+// Smooth Scroll
+function initSmoothScroll() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            
+            e.preventDefault();
+            const target = document.querySelector(href);
+            
+            if (target) {
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
