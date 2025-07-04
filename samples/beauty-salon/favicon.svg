@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="beautySalonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A373"/>
+      <stop offset="100%" style="stop-color:#8B6743"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="#FFF8F0"/>
+  <g transform="translate(32,32)">
+    <path d="M -8,-8 L 8,8 M -8,8 L 8,-8" stroke="url(#beautySalonGrad)" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="-8" cy="-8" r="6" fill="none" stroke="url(#beautySalonGrad)" stroke-width="2"/>
+    <circle cx="8" cy="8" r="6" fill="none" stroke="url(#beautySalonGrad)" stroke-width="2"/>
+    <path d="M -8,-2 L -8,2 M 8,-2 L 8,2" stroke="url(#beautySalonGrad)" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

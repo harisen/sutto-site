@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="ecShopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#66BB6A"/>
+      <stop offset="100%" style="stop-color:#43A047"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="#F0FFF0"/>
+  <g transform="translate(32,32)">
+    <path d="M -12,-10 L -10,-2 L 10,-2 L 8,-10 L -12,-10 Z" fill="url(#ecShopGrad)"/>
+    <path d="M -10,-2 L -8,8 L 8,8 L 10,-2" fill="url(#ecShopGrad)" opacity="0.8"/>
+    <circle cx="-4" cy="12" r="3" fill="#333"/>
+    <circle cx="4" cy="12" r="3" fill="#333"/>
+    <path d="M -15,-10 L -12,-10" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>
