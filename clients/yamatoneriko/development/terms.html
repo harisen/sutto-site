@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用規約 - yamatoneriko</title>
+    <meta name="description" content="yamatonerikoのサービス利用規約。">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --color-main: #FFEC00;
+            --color-sub-blue: #A4C4E8;
+            --color-dark-blue: #0363A6;
+            --color-bg: #F9F9FC;
+            --color-text: #333333;
+            --color-gray: #B5B5B6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヘッダー */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+            object-fit: contain;
+        }
+        
+        .logo span {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .back-link {
+            color: var(--color-dark-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--color-main);
+        }
+
+        /* メインコンテンツ */
+        main {
+            padding: 80px 0;
+            background: #fff;
+            min-height: calc(100vh - 200px);
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--color-main);
+        }
+
+        .terms-content {
+            background: var(--color-bg);
+            padding: 40px;
+            border-radius: 20px;
+            line-height: 1.8;
+        }
+
+        .terms-content h2 {
+            font-size: 24px;
+            margin: 40px 0 20px;
+            color: var(--color-dark-blue);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-main);
+        }
+
+        .terms-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .terms-content h3 {
+            font-size: 18px;
+            margin: 30px 0 15px;
+            color: var(--color-text);
+        }
+
+        .terms-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .terms-content ol,
+        .terms-content ul {
+            margin: 20px 0;
+            padding-left: 30px;
+            color: #666;
+        }
+
+        .terms-content li {
+            margin-bottom: 10px;
+        }
+
+        .update-date {
+            text-align: right;
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* フッター */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: #999;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .terms-content {
+                padding: 25px;
+            }
+
+            .terms-content h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="yamatoneriko ロゴ">
+                <span>yamatoneriko</span>
+            </a>
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                トップに戻る
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>利用規約</h1>
+            
+            <div class="terms-content">
+                <p class="update-date">最終更新日：2025年7月4日</p>
+
+                <h2>第1条（適用）</h2>
+                <p>
+                    本規約は、yamatoneriko（以下、「当方」といいます。）が提供するイラスト制作、デザイン制作、Web制作等のサービス（以下、「本サービス」といいます。）の利用条件を定めるものです。お客様（以下、「利用者」といいます。）には、本規約に従って、本サービスをご利用いただきます。
+                </p>
+
+                <h2>第2条（利用登録）</h2>
+                <p>
+                    本サービスの利用を希望する方は、当方の定める方法によって利用申込みを行い、当方がこれを承認することによって、本サービスの利用ができるものとします。
+                </p>
+
+                <h2>第3条（サービス内容）</h2>
+                <p>当方は、利用者に対し、以下のサービスを提供します。</p>
+                <ol>
+                    <li>イラスト制作サービス</li>
+                    <li>デザイン制作サービス（ロゴ、バナー、グラフィックデザイン等）</li>
+                    <li>Web制作サービス（Webサイトデザイン、コーディング等）</li>
+                    <li>グッズデザインサービス</li>
+                    <li>その他、当方が定めるサービス</li>
+                </ol>
+
+                <h2>第4条（料金および支払方法）</h2>
+                <p>
+                    利用者は、本サービスの利用対価として、当方が別途定め、利用者に提示する利用料金を、当方が指定する方法により支払うものとします。
+                </p>
+                <p>
+                    利用料金の支払期限は、請求書発行日から30日以内とします。支払期限を過ぎても支払いがない場合、遅延損害金として年14.6%の割合で計算した金額をお支払いいただきます。
+                </p>
+
+                <h2>第5条（制作物の納品）</h2>
+                <p>
+                    当方は、利用者との間で合意した納期までに制作物を納品するよう努めます。ただし、やむを得ない事情により納期に遅れが生じる場合は、速やかに利用者に通知し、協議の上、新たな納期を設定するものとします。
+                </p>
+
+                <h2>第6条（知的財産権）</h2>
+                <p>
+                    本サービスにより制作された成果物の著作権その他の知的財産権は、利用料金の完済をもって利用者に移転するものとします。ただし、当方は、自己のポートフォリオやプロモーション目的で、制作物を使用する権利を有するものとします。
+                </p>
+
+                <h2>第7条（禁止事項）</h2>
+                <p>利用者は、本サービスの利用にあたり、以下の行為をしてはなりません。</p>
+                <ol>
+                    <li>法令または公序良俗に違反する行為</li>
+                    <li>犯罪行為に関連する行為</li>
+                    <li>当方、他の利用者、その他第三者の知的財産権、肖像権、プライバシー、名誉その他の権利または利益を侵害する行為</li>
+                    <li>当方のサービスの運営を妨害するおそれのある行為</li>
+                    <li>その他、当方が不適切と判断する行為</li>
+                </ol>
+
+                <h2>第8条（本サービスの提供の停止等）</h2>
+                <p>
+                    当方は、以下のいずれかの事由があると判断した場合、利用者に事前に通知することなく本サービスの全部または一部の提供を停止または中断することができるものとします。
+                </p>
+                <ol>
+                    <li>本サービスにかかるコンピュータシステムの保守点検または更新を行う場合</li>
+                    <li>地震、落雷、火災、停電または天災などの不可抗力により、本サービスの提供が困難となった場合</li>
+                    <li>その他、当方が本サービスの提供が困難と判断した場合</li>
+                </ol>
+
+                <h2>第9条（免責事項）</h2>
+                <p>
+                    当方は、本サービスに関して、利用者と他の利用者または第三者との間において生じた取引、連絡または紛争等について一切責任を負いません。
+                </p>
+
+                <h2>第10条（秘密保持）</h2>
+                <p>
+                    利用者および当方は、本サービスに関連して相手方から開示された秘密情報を、相手方の事前の書面による承諾なく第三者に開示または漏洩してはならないものとします。
+                </p>
+
+                <h2>第11条（利用規約の変更）</h2>
+                <p>
+                    当方は、必要と判断した場合には、利用者に通知することなくいつでも本規約を変更することができるものとします。なお、本規約の変更後、本サービスの利用を開始した場合には、当該利用者は変更後の規約に同意したものとみなします。
+                </p>
+
+                <h2>第12条（準拠法・裁判管轄）</h2>
+                <p>
+                    本規約の解釈にあたっては、日本法を準拠法とします。本サービスに関して紛争が生じた場合には、当方の所在地を管轄する裁判所を専属的合意管轄とします。
+                </p>
+
+                <h2>第13条（お問い合わせ）</h2>
+                <p>
+                    本規約に関するお問い合わせは、下記の連絡先までお願いいたします。
+                </p>
+                <p>
+                    Email: atelier.yamatoneriko@gmail.com<br>
+                    営業時間: 平日10:00〜17:30
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>©︎2025 toneko All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

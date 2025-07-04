@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yamatoneriko | あなたの世界観、まるごとカタチにします</title>
+    <meta name="description" content="イラストからWeb、グッズまで一貫制作。あなたの世界観をまるごとカタチにします。企画段階からご相談OK。">
+    
+    <!-- OGP -->
+    <meta property="og:title" content="yamatoneriko | あなたの世界観、まるごとカタチにします">
+    <meta property="og:description" content="イラストからWeb、グッズまで一貫制作。あなたの世界観をまるごとカタチにします。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yamatoneriko.com">
+    <meta property="og:image" content="/images/ogp.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --color-yellow: #FFEC00;
+            --color-light-blue: #A4C4E8;
+            --color-dark-blue: #0363A6;
+            --color-gray: #B5B5B6;
+            --color-light-gray: #F9F9FC;
+            --color-dark: #333333;
+            --color-white: #FFFFFF;
+            --shadow: 0 2px 20px rgba(3, 99, 166, 0.1);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--color-dark);
+            background: var(--color-light-gray);
+            line-height: 1.8;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヘッダー */
+        header {
+            background: var(--color-white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--color-dark);
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            filter: brightness(0) saturate(100%);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-dark-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--color-yellow);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--color-yellow);
+            color: var(--color-dark);
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 236, 0, 0.4);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, var(--color-light-gray) 0%, var(--color-light-blue) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--color-dark);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero-text h1 span {
+            color: var(--color-dark-blue);
+            display: inline-block;
+            position: relative;
+        }
+
+        .hero-text h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: var(--color-yellow);
+            z-index: -1;
+            transform: skewY(-2deg);
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: var(--color-gray);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .secondary-button {
+            background: var(--color-white);
+            color: var(--color-dark-blue);
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: 2px solid var(--color-dark-blue);
+        }
+
+        .secondary-button:hover {
+            background: var(--color-dark-blue);
+            color: var(--color-white);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: var(--color-yellow);
+            color: var(--color-dark);
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .badge-1 {
+            top: 20px;
+            right: -20px;
+        }
+
+        .badge-2 {
+            bottom: 40px;
+            left: -20px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* セクション共通 */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--color-dark);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--color-yellow);
+            border-radius: 2px;
+        }
+
+        /* 課題提起セクション */
+        .problems {
+            background: var(--color-white);
+        }
+
+        .problem-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .problem-item {
+            background: var(--color-light-gray);
+            padding: 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .problem-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .problem-item i {
+            font-size: 48px;
+            color: var(--color-light-blue);
+            margin-bottom: 20px;
+        }
+
+        .problem-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--color-dark);
+        }
+
+        /* 特徴セクション */
+        .features {
+            background: var(--color-light-gray);
+        }
+
+        .feature-grid {
+            display: grid;
+            gap: 60px;
+        }
+
+        .feature-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .feature-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .feature-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .feature-content h3 {
+            font-size: 28px;
+            color: var(--color-dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .feature-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--color-yellow);
+            color: var(--color-dark);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .feature-content p {
+            color: var(--color-gray);
+            line-height: 1.8;
+        }
+
+        .feature-image {
+            position: relative;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* ポートフォリオセクション */
+        .portfolio {
+            background: var(--color-white);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.3s;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(3, 99, 166, 0.9) 0%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-info {
+            color: var(--color-white);
+        }
+
+        .portfolio-info h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .portfolio-info p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* 料金プラン */
+        .pricing {
+            background: var(--color-light-gray);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--color-white);
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--color-yellow);
+        }
+
+        .pricing-card.featured::before {
+            content: 'おすすめ';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-yellow);
+            color: var(--color-dark);
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            color: var(--color-dark);
+            margin-bottom: 20px;
+        }
+
+        .pricing-price {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--color-dark-blue);
+            margin-bottom: 30px;
+        }
+
+        .pricing-price span {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--color-gray);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(181, 181, 182, 0.2);
+        }
+
+        .pricing-features i {
+            color: var(--color-yellow);
+            margin-right: 8px;
+        }
+
+        /* お客様の声 */
+        .testimonials {
+            background: var(--color-white);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--color-light-gray);
+            padding: 30px;
+            border-radius: var(--radius);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 60px;
+            color: var(--color-light-blue);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-content {
+            margin-bottom: 20px;
+            padding-top: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--color-dark);
+        }
+
+        .author-info h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: var(--color-gray);
+        }
+
+        /* FAQ */
+        .faq {
+            background: var(--color-light-gray);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--color-white);
+            margin-bottom: 20px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: var(--color-light-gray);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+            color: var(--color-dark-blue);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px 30px;
+            max-height: 300px;
+        }
+
+        /* 利用の流れ */
+        .process {
+            background: var(--color-white);
+        }
+
+        .process-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--color-light-blue);
+        }
+
+        .process-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .process-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .process-content {
+            flex: 1;
+            padding: 30px;
+            background: var(--color-light-gray);
+            border-radius: var(--radius);
+            position: relative;
+        }
+
+        .process-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--color-yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 20px;
+            box-shadow: var(--shadow);
+            z-index: 1;
+        }
+
+        .process-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--color-dark);
+        }
+
+        .process-content p {
+            color: var(--color-gray);
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-dark-blue) 0%, var(--color-light-blue) 100%);
+            color: var(--color-white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-white {
+            background: var(--color-white);
+            color: var(--color-dark-blue);
+            padding: 15px 40px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .cta-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        /* フッター */
+        footer {
+            background: var(--color-dark);
+            color: var(--color-white);
+            padding: 60px 0 30px;
+        }
+
+        footer .logo img {
+            filter: brightness(0) saturate(100%) invert(1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about .logo {
+            color: var(--color-white);
+            margin-bottom: 20px;
+        }
+
+        .footer-about .logo span {
+            font-size: 24px;
+        }
+
+        .footer-about p {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.6;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .feature-item,
+            .feature-item:nth-child(even) {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .process-item,
+            .process-item:nth-child(even) {
+                flex-direction: column;
+                padding-left: 60px;
+            }
+
+            .process-number {
+                left: 30px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <img src="assets/images/logo.png" alt="yamatoneriko">
+                yamatoneriko
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact" class="cta-button">無料相談 <i class="fas fa-arrow-right"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>あなたの<span>世界観</span>、<br>まるごとカタチにします。</h1>
+                    <p>イラスト・Web・グッズまで、一貫制作でブランド力アップ。<br>企画段階からご相談OK。"届けたい想い"が伝わるデザインを。</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="cta-button">
+                            <i class="fas fa-paper-plane"></i> 無料相談・お見積もりはこちら
+                        </a>
+                        <a href="#portfolio" class="secondary-button">制作実績を見る</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" alt="Creative Design">
+                    <div class="floating-badge badge-1">イラスト制作</div>
+                    <div class="floating-badge badge-2">Web制作</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 課題提起 -->
+    <section class="problems">
+        <div class="container">
+            <div class="section-title">
+                <h2>こんなお悩みありませんか？</h2>
+            </div>
+            <div class="problem-list">
+                <div class="problem-item">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h3>魅力的な見せ方がわからない</h3>
+                    <p>キャラクターやコンセプトはあるけど、どう表現すればいいか迷っている</p>
+                </div>
+                <div class="problem-item">
+                    <i class="fas fa-random"></i>
+                    <h3>世界観がバラバラに</h3>
+                    <p>デザインを複数人に依頼した結果、統一感がなくなってしまった</p>
+                </div>
+                <div class="problem-item">
+                    <i class="fas fa-users"></i>
+                    <h3>一貫して任せる人がいない</h3>
+                    <p>グッズやWeb、SNSまで総合的に相談できる相手が見つからない</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特徴 -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>yamatonerikoが選ばれる理由</h2>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-content">
+                        <span class="feature-number">1</span>
+                        <h3>ビジュアル × プロモーション設計の両立</h3>
+                        <p>ただ美しいだけでなく、ターゲットに「伝わる」デザインを。感性と戦略のバランスを大切に、あなたのメッセージを視覚化します。マーケティング視点も含めた総合的な提案で、ビジネスの成果につながるクリエイティブを実現します。</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=500&h=350&fit=crop" alt="Design Strategy">
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-content">
+                        <span class="feature-number">2</span>
+                        <h3>イラスト〜Webまで一貫制作でブレない世界観</h3>
+                        <p>キャラクターデザインからWebサイト、各種グッズまで。すべてを一人で手がけるからこそ、細部まで統一された世界観を表現できます。ワンストップ対応で、時間もコストも効率的に。</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=500&h=350&fit=crop" alt="Consistent Design">
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-content">
+                        <span class="feature-number">3</span>
+                        <h3>SNSやファン心理を踏まえた企画提案力</h3>
+                        <p>「拡散されるには？」「ファンに愛されるには？」実際にSNSやクラウドファンディングを運営してきた経験から、リアルなファン視点でのアドバイスが可能です。</p>
+                    </div>
+                    <div class="feature-image">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=500&h=350&fit=crop" alt="Social Media Design">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ポートフォリオ -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>制作実績</h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1618788372246-79faff0c3742?w=400&h=300&fit=crop" alt="Portfolio 1">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h3>キャラクターデザイン</h3>
+                            <p>オリジナルキャラクター制作</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&h=300&fit=crop" alt="Portfolio 2">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h3>Webサイトデザイン</h3>
+                            <p>コーポレートサイト制作</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?w=400&h=300&fit=crop" alt="Portfolio 3">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h3>グッズデザイン</h3>
+                            <p>オリジナルグッズ展開</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1636955816868-fcb881e57954?w=400&h=300&fit=crop" alt="Portfolio 4">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h3>SNS素材</h3>
+                            <p>SNS用ビジュアル制作</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&h=300&fit=crop" alt="Portfolio 5">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h3>ロゴデザイン</h3>
+                            <p>ブランドロゴ制作</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1620503292890-c597f62cce8d?w=400&h=300&fit=crop" alt="Portfolio 6">
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-info">
+                            <h3>イラストレーション</h3>
+                            <p>書籍挿絵・表紙デザイン</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- お客様の声 -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>お客様の声</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-content">
+                        キャラクターから世界観まで、すべてお任せできて本当に助かりました。統一感のあるデザインで、ファンの方々からも好評です！
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>A社様</h4>
+                            <p>エンタメ企業</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content">
+                        SNSでの反響を考えたデザイン提案が素晴らしかったです。おかげさまで認知度が大幅にアップしました。
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">B</div>
+                        <div class="author-info">
+                            <h4>B様</h4>
+                            <p>個人事業主</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-content">
+                        細かい要望にも丁寧に対応していただき、想像以上の仕上がりになりました。次回もぜひお願いしたいです。
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">C</div>
+                        <div class="author-info">
+                            <h4>C社様</h4>
+                            <p>IT企業</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>よくあるご質問</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        初めてでも大丈夫ですか？
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい、もちろん大丈夫です。ゼロからの世界観づくりもご一緒に伴走いたします。ヒアリングを重視し、お客様のイメージを丁寧に形にしていきます。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        どのくらいの予算が必要ですか？
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>内容により異なりますが、イラスト単体であれば5万円〜、総合的なブランディングは15万円〜ご相談可能です。まずはお気軽にご相談ください。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        SNS用画像やバナーだけでも依頼できますか？
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい、単発でのご依頼も承っております。継続的なSNS運用サポートも可能ですので、ご要望に合わせて柔軟に対応いたします。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        グッズの入稿や業者選びもお願いできますか？
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>ご希望があれば入稿サポート・印刷所のご紹介も可能です。品質とコストのバランスを考慮した最適な業者をご提案いたします。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        納品までの流れを教えてください
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>お問い合わせ→ヒアリング→ご提案・お見積もり→制作→確認・修正→納品という流れになります。詳しくは下記の「サービスの流れ」をご参照ください。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 利用の流れ -->
+    <section class="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>サービスの流れ</h2>
+            </div>
+            <div class="process-timeline">
+                <div class="process-item">
+                    <div class="process-content">
+                        <h3>お問い合わせ</h3>
+                        <p>まずはお気軽にご相談ください。ご要望やお悩みを丁寧にヒアリングいたします。</p>
+                    </div>
+                    <div class="process-number">1</div>
+                    <div class="process-content" style="opacity: 0; pointer-events: none;"></div>
+                </div>
+                <div class="process-item">
+                    <div class="process-content" style="opacity: 0; pointer-events: none;"></div>
+                    <div class="process-number">2</div>
+                    <div class="process-content">
+                        <h3>ご提案・お見積もり</h3>
+                        <p>内容に応じた最適なプランをご提案。費用感も明確にお伝えします。</p>
+                    </div>
+                </div>
+                <div class="process-item">
+                    <div class="process-content">
+                        <h3>制作・確認</h3>
+                        <p>ラフ制作から始まり、フィードバックを反映しながら完成度を高めていきます。</p>
+                    </div>
+                    <div class="process-number">3</div>
+                    <div class="process-content" style="opacity: 0; pointer-events: none;"></div>
+                </div>
+                <div class="process-item">
+                    <div class="process-content" style="opacity: 0; pointer-events: none;"></div>
+                    <div class="process-number">4</div>
+                    <div class="process-content">
+                        <h3>納品・アフターサポート</h3>
+                        <p>データ納品後も、必要に応じて運用のフォローをいたします。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>あなたの想いを、カタチにしませんか？</h2>
+            <p>まずは無料相談から。お気軽にお問い合わせください。</p>
+            <div class="cta-buttons">
+                <a href="https://tayori.com/form/4a4b1bb38a770dd2596d6b87b38bb7991faa8bd9/" class="cta-white">
+                    <i class="fas fa-envelope"></i> 無料相談フォーム
+                </a>
+                <a href="mailto:atelier.yamatoneriko@gmail.com" class="cta-white">
+                    <i class="fas fa-paper-plane"></i> メールで相談
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="logo">
+                        <img src="assets/images/logo.png" alt="yamatoneriko">
+                        <span>yamatoneriko</span>
+                    </div>
+                    <p>イラストレーター兼デザイナーとして、あなたの世界観を視覚化します。<br>
+                    企画段階からの相談も歓迎。一貫した制作体制で、ブレない世界観を実現します。</p>
+                </div>
+                <div class="footer-links">
+                    <h4>サービス</h4>
+                    <ul>
+                        <li><a href="#portfolio">制作実績</a></li>
+                        <li><a href="#process">サービスの流れ</a></li>
+                        <li><a href="#faq">よくある質問</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>その他</h4>
+                    <ul>
+                        <li><a href="about.html">会社概要</a></li>
+                        <li><a href="terms.html">利用規約</a></li>
+                        <li><a href="privacy.html">プライバシーポリシー</a></li>
+                        <li><a href="law.html">特定商取引法</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 toneko All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--color-white)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

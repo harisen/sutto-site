@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特定商取引法に基づく表記 - yamatoneriko</title>
+    <meta name="description" content="yamatonerikoの特定商取引法に基づく表記。">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --color-main: #FFEC00;
+            --color-sub-blue: #A4C4E8;
+            --color-dark-blue: #0363A6;
+            --color-bg: #F9F9FC;
+            --color-text: #333333;
+            --color-gray: #B5B5B6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヘッダー */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+            object-fit: contain;
+        }
+        
+        .logo span {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .back-link {
+            color: var(--color-dark-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--color-main);
+        }
+
+        /* メインコンテンツ */
+        main {
+            padding: 80px 0;
+            background: #fff;
+            min-height: calc(100vh - 200px);
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--color-main);
+        }
+
+        .law-content {
+            background: var(--color-bg);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .law-table {
+            width: 100%;
+        }
+
+        .law-table tr {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .law-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .law-table th {
+            width: 200px;
+            padding: 20px 20px 20px 0;
+            text-align: left;
+            font-weight: 700;
+            color: var(--color-dark-blue);
+            vertical-align: top;
+        }
+
+        .law-table td {
+            padding: 20px 0;
+            color: #666;
+        }
+
+        /* フッター */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: #999;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .law-content {
+                padding: 25px;
+            }
+
+            .law-table th {
+                width: 100%;
+                display: block;
+                padding-bottom: 10px;
+            }
+
+            .law-table td {
+                display: block;
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="yamatoneriko ロゴ">
+                <span>yamatoneriko</span>
+            </a>
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                トップに戻る
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>特定商取引法に基づく表記</h1>
+            
+            <div class="law-content">
+                <table class="law-table">
+                    <tr>
+                        <th>販売業者</th>
+                        <td>yamatoneriko</td>
+                    </tr>
+                    <tr>
+                        <th>運営責任者</th>
+                        <td>トネコ</td>
+                    </tr>
+                    <tr>
+                        <th>所在地</th>
+                        <td>お問い合わせ後、遅滞なく開示いたします</td>
+                    </tr>
+                    <tr>
+                        <th>電話番号</th>
+                        <td>お問い合わせ後、遅滞なく開示いたします</td>
+                    </tr>
+                    <tr>
+                        <th>メールアドレス</th>
+                        <td>atelier.yamatoneriko@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <th>営業時間</th>
+                        <td>平日 10:00〜17:30</td>
+                    </tr>
+                    <tr>
+                        <th>販売価格</th>
+                        <td>各サービスページに記載</td>
+                    </tr>
+                    <tr>
+                        <th>商品代金以外の必要料金</th>
+                        <td>振込手数料（お客様負担）</td>
+                    </tr>
+                    <tr>
+                        <th>支払方法</th>
+                        <td>銀行振込</td>
+                    </tr>
+                    <tr>
+                        <th>支払時期</th>
+                        <td>請求書発行日から30日以内</td>
+                    </tr>
+                    <tr>
+                        <th>商品引渡し時期</th>
+                        <td>ご契約時に個別に設定</td>
+                    </tr>
+                    <tr>
+                        <th>キャンセル・返品</th>
+                        <td>
+                            制作着手前：キャンセル料なし<br>
+                            制作着手後：進行状況に応じてキャンセル料が発生する場合があります<br>
+                            納品後：デジタルデータの性質上、返品はお受けできません
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>©︎2025 toneko All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

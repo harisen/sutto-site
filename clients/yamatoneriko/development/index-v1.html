@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yamatoneriko | イラスト・デザイン・Web制作をワンストップで</title>
+    <meta name="description" content="イラストからWeb、グッズまで一貫制作。あなたの世界観をまるごとカタチにします。企画段階からご相談OK。">
+    
+    <!-- OGP -->
+    <meta property="og:title" content="yamatoneriko | イラスト・デザイン・Web制作をワンストップで">
+    <meta property="og:description" content="イラストからWeb、グッズまで一貫制作。あなたの世界観をまるごとカタチにします。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yamatoneriko.com">
+    <meta property="og:image" content="/images/ogp.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@400;600;700&family=Inter:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <style>
+        :root {
+            --color-main: #F9C349;
+            --color-sub-blue: #A4C4E8;
+            --color-dark-blue: #0363A6;
+            --color-bg: #F8F7F3;
+            --color-text: #1E1810;
+            --color-gray: #B5B5B6;
+            --color-accent: #FFEC00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ローディング画面 */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--color-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s, visibility 0.8s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-circle {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ヘッダー */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+            object-fit: contain;
+        }
+        
+        .logo span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--color-text);
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-main);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-dark-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--color-main);
+            color: var(--color-text);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 236, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 236, 0, 0.4);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(255, 236, 0, 0.2) 0%, rgba(164, 196, 232, 0.2) 100%),
+                        url('https://picsum.photos/1920/1080?random=1') center/cover;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        .hero h1 .highlight {
+            color: var(--color-dark-blue);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: var(--color-main);
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .hero .subtitle {
+            font-size: 20px;
+            color: var(--color-dark-blue);
+            margin-bottom: 10px;
+        }
+
+        .hero .description {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #666;
+        }
+
+        .hero-decoration {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: var(--color-main);
+            border-radius: 50%;
+            opacity: 0.3;
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        /* 手描き風装飾 */
+        .hand-drawn-circle {
+            position: absolute;
+            border: 3px solid var(--color-main);
+            border-radius: 50%;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .hand-drawn-circle:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 5%;
+            animation: float 15s ease-in-out infinite;
+        }
+        
+        .hand-drawn-circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            bottom: 15%;
+            right: 10%;
+            animation: float 20s ease-in-out infinite reverse;
+        }
+        
+        .hand-drawn-line {
+            position: absolute;
+            width: 200px;
+            height: 3px;
+            background: var(--color-main);
+            opacity: 0.3;
+            transform: rotate(-5deg);
+        }
+        
+        .hand-drawn-line::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            transform: scaleX(0.8) rotate(3deg);
+            transform-origin: left center;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-30px, -30px) rotate(120deg); }
+            66% { transform: translate(20px, -20px) rotate(240deg); }
+        }
+
+        /* 課題提起セクション */
+        .problems {
+            padding: 100px 0;
+            background: #fff;
+            position: relative;
+        }
+        
+        .problems::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: url('https://picsum.photos/300/300?random=2') center/cover;
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--color-main);
+            border-radius: 2px;
+            box-shadow: -30px 0 0 0 var(--color-main), 30px 0 0 0 var(--color-main);
+            opacity: 0.5;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .problem-card {
+            background: var(--color-bg);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--color-main);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .problem-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .problem-icon {
+            font-size: 48px;
+            color: var(--color-dark-blue);
+            margin-bottom: 20px;
+        }
+
+        .problem-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--color-text);
+        }
+
+        /* 特徴セクション */
+        .features {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #fff 0%, var(--color-bg) 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--color-main) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .feature-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--color-main);
+            color: var(--color-text);
+            font-size: 24px;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* 料金プラン */
+        .pricing {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: var(--color-bg);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.popular {
+            background: #fff;
+            border: 3px solid var(--color-main);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.popular::before {
+            content: '人気プラン';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-main);
+            color: var(--color-text);
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .plan-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        .plan-price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--color-dark-blue);
+            margin-bottom: 30px;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan-features li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-main);
+            font-weight: 700;
+        }
+
+        /* お客様の声 */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--color-bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 60px;
+            color: var(--color-main);
+            opacity: 0.5;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-content {
+            margin-bottom: 30px;
+            line-height: 1.8;
+            color: #666;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-sub-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .author-info h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 60px auto 0;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            background: var(--color-bg);
+            padding: 25px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #e8e8f0;
+        }
+
+        .faq-question.active {
+            background: var(--color-main);
+            color: var(--color-text);
+        }
+
+        .faq-question h3 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .faq-icon {
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .faq-question.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-answer.active {
+            padding: 20px 30px 30px;
+            max-height: 500px;
+        }
+
+        /* 利用の流れ */
+        .process {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #fff 0%, var(--color-bg) 100%);
+        }
+
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 60px auto 0;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--color-main);
+        }
+
+        .process-step {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .process-step:nth-child(odd) .step-content {
+            text-align: right;
+            padding-right: calc(50% + 40px);
+        }
+
+        .process-step:nth-child(even) .step-content {
+            text-align: left;
+            padding-left: calc(50% + 40px);
+        }
+
+        .step-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--color-main);
+            color: var(--color-text);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .step-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .step-content p {
+            color: #666;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(255, 236, 0, 0.9) 0%, rgba(255, 239, 77, 0.9) 100%),
+                        url('https://picsum.photos/1920/400?random=30') center/cover;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-section h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        .cta-info {
+            margin-top: 30px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* フッター */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+        }
+        
+        .footer-logo span {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-main);
+        }
+
+        .footer-info p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 20px;
+            color: var(--color-main);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-main);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #555;
+            color: #999;
+        }
+
+        /* ポートフォリオセクション */
+        .portfolio-section {
+            padding: 80px 0;
+            background: var(--color-bg);
+        }
+        
+        .portfolio-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 50px;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .portfolio-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(30, 24, 16, 0.9) 0%, transparent 100%);
+            padding: 30px 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+        
+        .portfolio-overlay h3 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 5px;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+        
+        .portfolio-overlay p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+        
+        /* モバイル対応 */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--color-text);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            header {
+                padding: 15px 0;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero {
+                min-height: 80vh;
+                margin-top: 60px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+                line-height: 1.4;
+            }
+            
+            .hero .subtitle {
+                font-size: 16px;
+            }
+            
+            .hero .description {
+                font-size: 16px;
+            }
+            
+            .cta-button {
+                padding: 10px 25px;
+                font-size: 14px;
+            }
+            
+            .hand-drawn-circle {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 26px;
+                margin-bottom: 40px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+
+            .features-grid,
+            .problems-grid,
+            .pricing-grid,
+            .testimonials-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card,
+            .problem-card,
+            .pricing-card,
+            .testimonial-card {
+                padding: 30px 20px;
+            }
+            
+            .portfolio-item {
+                height: 250px;
+            }
+            
+            .portfolio-overlay {
+                transform: translateY(0);
+                background: linear-gradient(to top, rgba(30, 24, 16, 0.8) 0%, rgba(30, 24, 16, 0.3) 100%);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .process-timeline::before {
+                left: 20px;
+            }
+
+            .process-step .step-content {
+                padding-left: 60px !important;
+                text-align: left !important;
+            }
+
+            .step-number {
+                left: 20px;
+                transform: translateX(-50%);
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .faq-question h3 {
+                font-size: 16px;
+            }
+            
+            .cta-section h2 {
+                font-size: 28px;
+            }
+            
+            .cta-section p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ローディング画面 -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-circle"></div>
+        </div>
+    </div>
+
+    <!-- ヘッダー -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <img src="assets/images/logo.png" alt="yamatoneriko ロゴ">
+                <span>yamatoneriko</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">特徴</a></li>
+                <li><a href="#pricing">料金プラン</a></li>
+                <li><a href="#testimonials">お客様の声</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">無料相談・お見積もり</a>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="subtitle" data-aos="fade-up">―「届けたい想い」が伝わるデザインを。</p>
+                <h1 data-aos="fade-up" data-aos-delay="100">
+                    あなたの<span class="highlight">世界観</span>、<br>
+                    まるごとカタチにします。
+                </h1>
+                <p class="description" data-aos="fade-up" data-aos-delay="200">
+                    イラスト・Web・グッズまで、一貫制作でブランド力アップ。
+                </p>
+                <a href="#contact" class="cta-button" data-aos="fade-up" data-aos-delay="300">
+                    ▶ 無料相談・お見積もりはこちら
+                </a>
+            </div>
+        </div>
+        <div class="hero-decoration"></div>
+        <div class="hand-drawn-circle"></div>
+        <div class="hand-drawn-circle"></div>
+    </section>
+    
+    <!-- ポートフォリオギャラリー -->
+    <section style="padding: 80px 0; background: #f9f9fc;">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">制作実績</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 50px;">
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://picsum.photos/400/300?random=20" alt="作品1" style="width: 100%; height: 300px; object-fit: cover; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                    <p style="text-align: center; margin-top: 15px; color: #666;">キャラクターデザイン</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://picsum.photos/400/300?random=21" alt="作品2" style="width: 100%; height: 300px; object-fit: cover; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                    <p style="text-align: center; margin-top: 15px; color: #666;">Webサイト制作</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://picsum.photos/400/300?random=22" alt="作品3" style="width: 100%; height: 300px; object-fit: cover; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                    <p style="text-align: center; margin-top: 15px; color: #666;">グッズデザイン</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://picsum.photos/400/300?random=23" alt="作品4" style="width: 100%; height: 300px; object-fit: cover; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                    <p style="text-align: center; margin-top: 15px; color: #666;">SNS用素材</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="500">
+                    <img src="https://picsum.photos/400/300?random=24" alt="作品5" style="width: 100%; height: 300px; object-fit: cover; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                    <p style="text-align: center; margin-top: 15px; color: #666;">ロゴデザイン</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="600">
+                    <img src="https://picsum.photos/400/300?random=25" alt="作品6" style="width: 100%; height: 300px; object-fit: cover; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                    <p style="text-align: center; margin-top: 15px; color: #666;">パッケージデザイン</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 課題提起セクション -->
+    <section class="problems">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">こんなお悩みありませんか？</h2>
+            <div class="problems-grid">
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="problem-icon">
+                        <img src="https://picsum.photos/100/100?random=3" alt="課題1" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <h3>魅力的な見せ方がわからない</h3>
+                    <p>キャラクターやコンセプトはあるけど、どう表現すればいいか悩んでいる</p>
+                </div>
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="problem-icon">
+                        <img src="https://picsum.photos/100/100?random=4" alt="課題2" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <h3>世界観がバラバラに</h3>
+                    <p>デザインを複数人に依頼した結果、統一感がなくなってしまった</p>
+                </div>
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="problem-icon">
+                        <img src="https://picsum.photos/100/100?random=5" alt="課題3" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <h3>一貫して任せられる人がいない</h3>
+                    <p>グッズやWeb、SNSまですべてお任せできるパートナーが見つからない</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特徴セクション -->
+    <section class="features" id="about">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">yamatonerikoが選ばれる3つの理由</h2>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://picsum.photos/400/200?random=6" alt="ビジュアル×プロモーション" class="feature-image">
+                    <div class="feature-number">01</div>
+                    <h3>ビジュアル × プロモーション設計の両立</h3>
+                    <p>感性と戦略のバランスで「伝わる」デザインを実現。ただ美しいだけでなく、ビジネスの成果につながるクリエイティブをご提供します。</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://picsum.photos/400/200?random=7" alt="一貫制作" class="feature-image">
+                    <div class="feature-number">02</div>
+                    <h3>イラスト〜Webまで一貫制作でブレない世界観</h3>
+                    <p>ワンストップ対応だから、時間もコストも効率的。すべての制作物に統一感を持たせ、強いブランドイメージを構築します。</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://picsum.photos/400/200?random=8" alt="企画提案力" class="feature-image">
+                    <div class="feature-number">03</div>
+                    <h3>SNSやファン心理を踏まえた企画提案力</h3>
+                    <p>「拡散されるには？」まで考えてご提案。実際のSNS運用経験を活かし、ファンに愛されるコンテンツづくりをサポートします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料金プラン -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">選べる3つのプラン</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="plan-name">ライトプラン</h3>
+                    <p class="plan-price">¥30,000〜</p>
+                    <ul class="plan-features">
+                        <li>単発イラスト制作</li>
+                        <li>バナー・アイコン制作</li>
+                        <li>簡単なロゴデザイン</li>
+                        <li>納期：1週間〜</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">このプランで相談</a>
+                </div>
+                <div class="pricing-card popular" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="plan-name">スタンダードプラン</h3>
+                    <p class="plan-price">¥100,000〜</p>
+                    <ul class="plan-features">
+                        <li>複数イラスト制作</li>
+                        <li>簡単なWebページ制作</li>
+                        <li>SNS用素材セット</li>
+                        <li>ブランドガイドライン</li>
+                        <li>納期：2週間〜</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">このプランで相談</a>
+                </div>
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="plan-name">プレミアムプラン</h3>
+                    <p class="plan-price">¥300,000〜</p>
+                    <ul class="plan-features">
+                        <li>世界観構築から相談</li>
+                        <li>フルWebサイト制作</li>
+                        <li>グッズデザイン</li>
+                        <li>マーケティング戦略</li>
+                        <li>継続サポート</li>
+                        <li>納期：1ヶ月〜</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">このプランで相談</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声 -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">お客様からの嬉しいお声</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100" style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('https://picsum.photos/400/200?random=40'); background-size: cover; background-position: bottom;">
+                    <p class="testimonial-content">
+                        キャラクターのイメージをここまで完璧に形にしていただけるとは思いませんでした。SNSでの反響も素晴らしく、ファンの方々からも大好評です！
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-image: url('https://picsum.photos/50/50?random=41'); background-size: cover;"></div>
+                        <div class="author-info">
+                            <h4>A.K様</h4>
+                            <p>ゲーム制作会社</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200" style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('https://picsum.photos/400/200?random=42'); background-size: cover; background-position: bottom;">
+                    <p class="testimonial-content">
+                        企画段階から親身に相談に乗っていただき、想像以上の成果物が完成しました。今では欠かせないビジネスパートナーです。
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-image: url('https://picsum.photos/50/50?random=43'); background-size: cover;"></div>
+                        <div class="author-info">
+                            <h4>M.T様</h4>
+                            <p>アパレルブランド</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300" style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('https://picsum.photos/400/200?random=44'); background-size: cover; background-position: bottom;">
+                    <p class="testimonial-content">
+                        Webからグッズまで統一感のあるデザインで、ブランドイメージが格段に向上しました。売上も前年比150%を達成できました！
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background-image: url('https://picsum.photos/50/50?random=45'); background-size: cover;"></div>
+                        <div class="author-info">
+                            <h4>S.N様</h4>
+                            <p>カフェオーナー</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">よくあるご質問</h2>
+            <div class="faq-list">
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-question">
+                        <h3>Q1. 初めてでも大丈夫ですか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい。ゼロからの世界観づくりもご一緒に伴走いたします。初めての方でも安心してご相談ください。丁寧にヒアリングを行い、お客様のイメージを形にしていきます。</p>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="150">
+                    <div class="faq-question">
+                        <h3>Q2. どのくらいの予算が必要ですか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>内容により異なりますが、目安は30,000円〜ご相談可能です。まずはお気軽にご要望をお聞かせください。ご予算に応じた最適なプランをご提案させていただきます。</p>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-question">
+                        <h3>Q3. SNS用画像やバナーだけでも依頼できますか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい。単発でも、継続でも柔軟に対応しております。小さなご依頼から大きなプロジェクトまで、お客様のニーズに合わせてサポートいたします。</p>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="250">
+                    <div class="faq-question">
+                        <h3>Q4. グッズの入稿や業者選びもお願いできますか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>ご希望があれば入稿サポート・印刷所のご紹介も可能です。デザインから製品化まで、トータルでサポートさせていただきます。</p>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-question">
+                        <h3>Q5. 納品までの流れを教えてください。</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>下記の「サービスの流れ」をご参照ください。お問い合わせから納品まで、各ステップで丁寧にコミュニケーションを取りながら進めていきます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 利用の流れ -->
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">ご依頼の流れ</h2>
+            <div class="process-timeline">
+                <div class="process-step" data-aos="fade-right">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>お問い合わせ</h3>
+                        <p>ご要望やお悩みをヒアリングいたします</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-left">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>ご提案・お見積もり</h3>
+                        <p>内容に応じてご提案＋費用感を明確に</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-right">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>制作・確認</h3>
+                        <p>ラフ制作〜フィードバック反映・清書</p>
+                    </div>
+                </div>
+                <div class="process-step" data-aos="fade-left">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>納品・アフターサポート</h3>
+                        <p>データ納品＋必要に応じた運用フォロー</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2 data-aos="fade-up">まずはお気軽にご相談ください</h2>
+            <p data-aos="fade-up" data-aos-delay="100">あなたの「想い」を形にするお手伝いをさせてください</p>
+            <a href="https://tayori.com/form/4a4b1bb38a770dd2596d6b87b38bb7991faa8bd9/" class="cta-button" data-aos="fade-up" data-aos-delay="200" target="_blank">
+                ▶ 無料相談・お見積もりはこちら
+            </a>
+            <p class="cta-info" data-aos="fade-up" data-aos-delay="300">
+                営業時間：平日10:00〜17:30<br>
+                メール：atelier.yamatoneriko@gmail.com
+            </p>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="yamatoneriko ロゴ">
+                        <span>yamatoneriko</span>
+                    </div>
+                    <p>イラスト・デザイン・Web制作</p>
+                    <p>あなたの世界観をカタチに</p>
+                    <p>Email: atelier.yamatoneriko@gmail.com</p>
+                </div>
+                <div class="footer-links">
+                    <h4>サービス</h4>
+                    <ul>
+                        <li><a href="#about">特徴</a></li>
+                        <li><a href="#pricing">料金プラン</a></li>
+                        <li><a href="#testimonials">お客様の声</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>会社情報</h4>
+                    <ul>
+                        <li><a href="about.html">会社概要</a></li>
+                        <li><a href="law.html">特定商取引法に基づく表記</a></li>
+                        <li><a href="terms.html">利用規約</a></li>
+                        <li><a href="privacy.html">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>©︎2025 toneko All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ローディング画面
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // AOS初期化
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // FAQ アコーディオン
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('.faq-icon');
+                
+                // 他のFAQを閉じる
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    if (q !== question) {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('active');
+                    }
+                });
+                
+                question.classList.toggle('active');
+                answer.classList.toggle('active');
+            });
+        });
+
+        // スクロールアニメーション
+        gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+        // ヒーローテキストアニメーション
+        gsap.from('.hero h1', {
+            duration: 1.5,
+            y: 50,
+            opacity: 0,
+            ease: 'power3.out',
+            delay: 1.5
+        });
+
+        // 特徴カードのパララックス
+        gsap.utils.toArray('.feature-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    scrub: 1
+                },
+                y: 50,
+                opacity: 0.8,
+                duration: 1,
+                delay: i * 0.1
+            });
+        });
+
+        // 数字のカウントアップ
+        gsap.utils.toArray('.feature-number').forEach(num => {
+            const finalNum = parseInt(num.textContent);
+            gsap.from(num, {
+                scrollTrigger: {
+                    trigger: num,
+                    start: 'top 80%',
+                    once: true
+                },
+                textContent: 0,
+                duration: 2,
+                ease: 'power1.in',
+                snap: { textContent: 1 },
+                onUpdate: function() {
+                    num.textContent = Math.ceil(this.targets()[0].textContent).toString().padStart(2, '0');
+                }
+            });
+        });
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ヘッダーのスクロール制御
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const header = document.querySelector('header');
+            
+            if (currentScroll <= 0) {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            } else if (currentScroll > lastScroll) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+            lastScroll = currentScroll;
+        });
+
+        // モバイルメニュー（実装は簡略化）
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            alert('モバイルメニューは実装予定です');
+        });
+    </script>
+</body>
+</html>

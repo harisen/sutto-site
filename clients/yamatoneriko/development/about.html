@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会社概要 - yamatoneriko</title>
+    <meta name="description" content="yamatonerikoの会社概要。イラスト・デザイン・Web制作をワンストップでご提供。">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --color-main: #FFEC00;
+            --color-sub-blue: #A4C4E8;
+            --color-dark-blue: #0363A6;
+            --color-bg: #F9F9FC;
+            --color-text: #333333;
+            --color-gray: #B5B5B6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヘッダー */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+            object-fit: contain;
+        }
+        
+        .logo span {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .back-link {
+            color: var(--color-dark-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--color-main);
+        }
+
+        /* メインコンテンツ */
+        main {
+            padding: 80px 0;
+            background: #fff;
+            min-height: calc(100vh - 200px);
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--color-main);
+        }
+
+        .company-info {
+            background: var(--color-bg);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+
+        .info-row {
+            display: flex;
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            width: 150px;
+            font-weight: 700;
+            color: var(--color-dark-blue);
+        }
+
+        .info-value {
+            flex: 1;
+            color: #666;
+        }
+
+        .profile-section {
+            margin-top: 60px;
+        }
+
+        .profile-section h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: var(--color-dark-blue);
+        }
+
+        .profile-content {
+            background: var(--color-bg);
+            padding: 40px;
+            border-radius: 20px;
+            line-height: 1.8;
+        }
+
+        .profile-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .skills-section {
+            margin-top: 40px;
+        }
+
+        .skills-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid var(--color-main);
+        }
+
+        .skill-item i {
+            color: var(--color-dark-blue);
+        }
+
+        /* フッター */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: #999;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .info-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .info-label {
+                width: 100%;
+            }
+
+            .company-info,
+            .profile-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="yamatoneriko ロゴ">
+                <span>yamatoneriko</span>
+            </a>
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                トップに戻る
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>会社概要</h1>
+            
+            <div class="company-info">
+                <div class="info-row">
+                    <div class="info-label">屋号</div>
+                    <div class="info-value">yamatoneriko</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">代表者</div>
+                    <div class="info-value">トネコ</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">事業内容</div>
+                    <div class="info-value">イラスト制作、デザイン制作、Web制作、グッズデザイン、ブランディング支援</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">営業時間</div>
+                    <div class="info-value">平日 10:00〜17:30</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">連絡先</div>
+                    <div class="info-value">
+                        Email: atelier.yamatoneriko@gmail.com<br>
+                        <a href="https://tayori.com/form/4a4b1bb38a770dd2596d6b87b38bb7991faa8bd9/" target="_blank" style="color: var(--color-dark-blue);">お問い合わせフォーム</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h2>代表プロフィール</h2>
+                <div class="profile-content">
+                    <p>
+                        イラストレーター兼デザイナーとして、お客様の「想い」を形にするお手伝いをさせていただいております。
+                    </p>
+                    <p>
+                        単なるビジュアル制作にとどまらず、企画段階からご相談いただき、世界観の構築からプロモーション戦略まで、トータルでサポートいたします。
+                    </p>
+                    <p>
+                        「"好き"をカタチに。デザインも、届け方も。」をモットーに、イラスト、UI、Web、グッズまで一貫して対応。ブレないプロモーションの実現をお約束します。
+                    </p>
+                    <p>
+                        自らもSNSやクラウドファンディングでの実践経験を持ち、マーケティング・集客・ファンとの接点設計にも精通。現場視点とプロ視点を両立した、頼れるパートナーとして、皆様のビジネスの成功に貢献いたします。
+                    </p>
+
+                    <div class="skills-section">
+                        <h3>対応可能な制作物</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fas fa-paint-brush"></i>
+                                <span>イラスト制作</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-desktop"></i>
+                                <span>Webデザイン</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>UIデザイン</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-gift"></i>
+                                <span>グッズデザイン</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-bullhorn"></i>
+                                <span>SNS素材</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>ロゴデザイン</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>©︎2025 toneko All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

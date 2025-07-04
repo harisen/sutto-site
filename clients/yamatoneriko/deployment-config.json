@@ -1,0 +1,11 @@
+{
+  "subdomain": "yamatoneriko",
+  "customDomain": "yamatoneriko.yourdomain.com",
+  "vercelProject": "yamatoneriko-site",
+  "deployment": {
+    "type": "subdomain",
+    "status": "pending",
+    "temporaryUrl": "https://development-51at7dndo-harisens-projects.vercel.app",
+    "targetUrl": "https://yamatoneriko.yourdomain.com"
+  }
+}
