@@ -1326,15 +1326,15 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="animate-on-scroll">
+                    <h1>
                         あなたの<span class="highlight">世界観</span>、<br>
                         まるごとカタチにします。
                     </h1>
-                    <p class="animate-on-scroll">
+                    <p>
                         イラスト・Web・グッズまで、一貫制作でブランド力アップ。<br>
                         企画段階からご相談OK。"届けたい想い"が伝わるデザインを。
                     </p>
-                    <div class="hero-buttons animate-on-scroll">
+                    <div class="hero-buttons">
                         <a href="#contact" class="cta-button">
                             <i class="fas fa-sparkles"></i> 無料相談・お見積もりはこちら
                         </a>
@@ -1343,7 +1343,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="hero-visual animate-on-scroll">
+                <div class="hero-visual">
                     <div class="hero-main-image">
                         <img src="https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=600&h=600&fit=crop" alt="Creative Design">
                     </div>
@@ -1815,19 +1815,22 @@
                 });
             });
 
-            // スクロールアニメーション
+            // スクロールアニメーション（ヒーローセクション以外）
             gsap.utils.toArray('.animate-on-scroll').forEach(element => {
-                gsap.from(element, {
-                    y: 50,
-                    opacity: 0,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: element,
-                        start: 'top 80%',
-                        end: 'bottom 20%',
-                        toggleActions: 'play none none reverse'
-                    }
-                });
+                // ヒーローセクション内の要素はスキップ
+                if (!element.closest('.hero')) {
+                    gsap.from(element, {
+                        y: 50,
+                        opacity: 0,
+                        duration: 1,
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 80%',
+                            end: 'bottom 20%',
+                            toggleActions: 'play none none none'  // reverseを削除
+                        }
+                    });
+                }
             });
 
             // ヒーローテキストアニメーション（初期状態を設定してアニメーション）
