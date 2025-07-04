@@ -635,10 +635,14 @@
                         } else {
                             item.style.display = 'none';
                         }
-                    } else if (item.getAttribute('data-category') === filterValue) {
-                        item.style.display = 'block';
                     } else {
-                        item.style.display = 'none';
+                        // Check if the category contains the filter value
+                        const categories = item.getAttribute('data-category');
+                        if (categories && categories.split(' ').includes(filterValue)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
                     }
                 });
             });
