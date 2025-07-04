@@ -1131,11 +1131,33 @@
                             <!-- JavaScriptで動的に生成 -->
                         </div>
 
-                        <div class="form-checkbox" style="margin-top: 32px;">
-                            <input type="checkbox" id="privacy" name="privacy" required>
-                            <label for="privacy" style="font-size: 1.6rem;">
-                                <a href="privacy.html" target="_blank" style="color: var(--primary-color);">プライバシーポリシー</a>に同意する
-                            </label>
+                        <div style="margin-top: 32px;">
+                            <p style="font-size: 1.6rem; margin-bottom: 16px; font-weight: 500;">以下の内容をご確認の上、同意してください：</p>
+                            
+                            <div class="form-checkbox" style="margin-bottom: 12px;">
+                                <input type="checkbox" id="privacy" name="privacy" required>
+                                <label for="privacy" style="font-size: 1.6rem;">
+                                    <a href="privacy.html" target="_blank" style="color: var(--primary-color); text-decoration: underline;">プライバシーポリシー</a>に同意する
+                                </label>
+                            </div>
+                            
+                            <div class="form-checkbox" style="margin-bottom: 12px;">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms" style="font-size: 1.6rem;">
+                                    <a href="terms.html" target="_blank" style="color: var(--primary-color); text-decoration: underline;">利用規約</a>に同意する
+                                </label>
+                            </div>
+                            
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="cancellation" name="cancellation" required>
+                                <label for="cancellation" style="font-size: 1.6rem;">
+                                    <a href="cancellation-policy.html" target="_blank" style="color: var(--primary-color); text-decoration: underline;">キャンセルポリシー</a>を確認しました
+                                </label>
+                            </div>
+                            
+                            <p style="font-size: 1.4rem; margin-top: 12px; color: var(--text-secondary);">
+                                ※リンクをクリックすると新しいタブで開きます。入力内容は保持されます。
+                            </p>
                         </div>
                     </div>
 
