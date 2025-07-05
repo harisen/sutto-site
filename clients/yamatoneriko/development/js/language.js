@@ -15,13 +15,33 @@ const translations = {
             tagline: "あなたの世界観、まるごとカタチにします。",
             subtitle: "「届けたい想い」が伝わるデザインを。",
             description: "イラストからWeb、グッズまで一貫制作",
-            cta: "まずは相談してみる"
+            cta: "まずは相談してみる",
+            cta2: "制作実績を見る",
+            decorations: {
+                illustration: "イラスト制作",
+                web: "Web制作",
+                goods: "グッズ展開"
+            }
         },
         
         // Problems section
         problems: {
             title: "こんなお悩みありませんか？",
-            subtitle: "クリエイティブな課題を、一緒に解決しましょう"
+            subtitle: "クリエイティブな課題を、一緒に解決しましょう",
+            cards: [
+                {
+                    title: "魅力的な見せ方がわからない",
+                    description: "キャラクターやコンセプトはあるけど、どう表現すればいいか迷っている"
+                },
+                {
+                    title: "世界観がバラバラに",
+                    description: "デザインを複数人に依頼した結果、統一感がなくなってしまった"
+                },
+                {
+                    title: "一貫して任せる人がいない",
+                    description: "グッズやWeb、SNSまで総合的に相談できる相手が見つからない"
+                }
+            ]
         },
         
         // Features section (Why choose yamatoneriko)
@@ -29,16 +49,16 @@ const translations = {
             title: "yamatonerikoが選ばれる理由",
             subtitle: "創造性と戦略性を兼ね備えた、トータルクリエイティブサポート",
             item1: {
-                title: "イラスト制作",
-                description: "キャラクターから背景まで、世界観に合わせたイラストを制作"
+                title: "ビジュアル × プロモーション設計の両立",
+                description: "ただ美しいだけでなく、ターゲットに「伝わる」デザインを。感性と戦略のバランスを大切に、あなたのメッセージを視覚化します。マーケティング視点も含めた総合的な提案で、ビジネスの成果につながるクリエイティブを実現します。"
             },
             item2: {
-                title: "デザイン制作",
-                description: "ロゴ、名刺、チラシなど、ブランディングに必要なデザイン全般"
+                title: "イラスト〜Webまで一貫制作でブレない世界観",
+                description: "キャラクターデザインからWebサイト、各種グッズまで。すべてを一人で手がけるからこそ、細部まで統一された世界観を表現できます。ワンストップ対応で、時間もコストも効率的に。"
             },
             item3: {
-                title: "Web制作",
-                description: "LP、HP制作から運用まで。集客につながるWebサイトを"
+                title: "SNSやファン心理を踏まえた企画提案力",
+                description: "「拡散されるには？」「ファンに愛されるには？」実際にSNSやクラウドファンディングを運営してきた経験から、リアルなファン視点でのアドバイスが可能です。"
             },
             item4: {
                 title: "グッズ制作",
@@ -50,13 +70,26 @@ const translations = {
         works: {
             title: "制作実績",
             subtitle: "さまざまなクリエイティブワークをご紹介",
-            viewMore: "もっと見る"
+            viewMore: "もっと見る",
+            filterButtons: {
+                all: "すべて",
+                illustration: "イラスト",
+                web: "Web",
+                goods: "グッズ"
+            }
         },
         
         // Testimonials section
         testimonials: {
             title: "お客様の声",
-            subtitle: "ご利用いただいた皆様からの嬉しいお言葉"
+            subtitle: "ご利用いただいた皆様からの嬉しいお言葉",
+            items: [
+                {
+                    content: "キャラクターから世界観まで、すべてお任せできて本当に助かりました。統一感のあるデザインで、ファンの方々からも好評です！想像以上の仕上がりに大満足です。",
+                    author: "A社様",
+                    company: "エンタメ企業"
+                }
+            ]
         },
         
         // FAQ section
@@ -116,6 +149,11 @@ const translations = {
             title: "CONTACT",
             subtitle: "お問い合わせ",
             description: "制作のご依頼・ご相談はお気軽に",
+            ctaDescription: "まずは無料相談から。お気軽にお問い合わせください。",
+            ctaButtons: {
+                consultation: "無料相談フォーム",
+                email: "メールで相談"
+            },
             form: {
                 name: "お名前",
                 email: "メールアドレス", 
@@ -127,12 +165,24 @@ const translations = {
         
         // Footer
         footer: {
+            about: {
+                description: "イラストレーター兼デザイナーとして、あなたの世界観を視覚化します。<br>企画段階からの相談も歓迎。一貫した制作体制で、ブレない世界観を実現します。"
+            },
+            sectionTitles: {
+                service: "サービス",
+                other: "その他"
+            },
+            serviceLinks: {
+                portfolio: "制作実績",
+                flow: "サービスの流れ",
+                faq: "よくある質問"
+            },
             copyright: "© 2025 yamatoneriko All Rights Reserved.",
             links: {
-                about: "運営者情報",
+                about: "会社概要",
                 terms: "利用規約",
                 privacy: "プライバシーポリシー",
-                law: "特定商取引法に基づく表記"
+                law: "特定商取引法"
             }
         },
         
@@ -186,13 +236,33 @@ const translations = {
             tagline: "Bringing Your Entire Worldview to Life",
             subtitle: "Design that Conveys What You Want to Deliver",
             description: "Comprehensive creation from illustrations to web and merchandise",
-            cta: "Get Started with a Consultation"
+            cta: "Get Started with a Consultation",
+            cta2: "View Portfolio",
+            decorations: {
+                illustration: "Illustration",
+                web: "Web Design",
+                goods: "Merchandise"
+            }
         },
         
         // Problems section
         problems: {
             title: "Do You Have These Concerns?",
-            subtitle: "Let's solve your creative challenges together"
+            subtitle: "Let's solve your creative challenges together",
+            cards: [
+                {
+                    title: "Don't know how to present attractively",
+                    description: "Have characters and concepts but unsure how to express them effectively"
+                },
+                {
+                    title: "Inconsistent worldview",
+                    description: "Lost unity after commissioning multiple designers"
+                },
+                {
+                    title: "No one-stop solution",
+                    description: "Can't find someone to consult comprehensively about goods, web, and SNS"
+                }
+            ]
         },
         
         // Features section (Why choose yamatoneriko)
@@ -200,19 +270,19 @@ const translations = {
             title: "Why Choose yamatoneriko",
             subtitle: "Total creative support combining creativity and strategy",
             item1: {
-                title: "Illustration",
-                description: "Creating illustrations from characters to backgrounds that match your worldview"
+                title: "Visual × Promotional Design Balance",
+                description: "Not just beautiful designs, but designs that 'communicate' to your target audience. We visualize your message with a careful balance of creativity and strategy. Our comprehensive proposals include marketing perspectives to realize creative work that leads to business results."
             },
             item2: {
-                title: "Design",
-                description: "All design needs for branding including logos, business cards, and flyers"
+                title: "Consistent Worldview from Illustration to Web",
+                description: "From character design to websites and various merchandise. Because everything is handled by one person, we can express a unified worldview down to the smallest detail. One-stop service saves both time and cost efficiently."
             },
             item3: {
-                title: "Web Development",
-                description: "From LP and website creation to operation. Websites that lead to customer acquisition"
+                title: "Planning Power Based on SNS and Fan Psychology",
+                description: "'How to go viral?' 'How to be loved by fans?' With actual experience running SNS and crowdfunding campaigns, we can provide advice from a real fan perspective."
             },
             item4: {
-                title: "Merchandise",
+                title: "Merchandise Production",
                 description: "Planning and production of original goods from acrylic keychains to T-shirts"
             }
         },
@@ -221,13 +291,26 @@ const translations = {
         works: {
             title: "Portfolio",
             subtitle: "Showcasing our diverse creative works",
-            viewMore: "View More"
+            viewMore: "View More",
+            filterButtons: {
+                all: "All",
+                illustration: "Illustration",
+                web: "Web",
+                goods: "Goods"
+            }
         },
         
         // Testimonials section
         testimonials: {
             title: "Client Testimonials",
-            subtitle: "Happy words from our valued clients"
+            subtitle: "Happy words from our valued clients",
+            items: [
+                {
+                    content: "They handled everything from character design to worldview creation. The consistent design received great feedback from our fans! The results exceeded our expectations.",
+                    author: "Company A",
+                    company: "Entertainment Company"
+                }
+            ]
         },
         
         // FAQ section
@@ -287,6 +370,11 @@ const translations = {
             title: "CONTACT",
             subtitle: "Get in Touch",
             description: "Feel free to contact us for production requests and consultations",
+            ctaDescription: "Start with a free consultation. Feel free to contact us.",
+            ctaButtons: {
+                consultation: "Free Consultation Form",
+                email: "Contact via Email"
+            },
             form: {
                 name: "Name",
                 email: "Email Address",
@@ -298,6 +386,18 @@ const translations = {
         
         // Footer
         footer: {
+            about: {
+                description: "As an illustrator and designer, we visualize your worldview.<br>Welcome consultations from the planning stage. With consistent production, we realize an unwavering worldview."
+            },
+            sectionTitles: {
+                service: "Service",
+                other: "Other"
+            },
+            serviceLinks: {
+                portfolio: "Portfolio",
+                flow: "Service Flow",
+                faq: "FAQ"
+            },
             copyright: "© 2025 yamatoneriko All Rights Reserved.",
             links: {
                 about: "About Us",
@@ -357,13 +457,33 @@ const translations = {
             tagline: "將您的世界觀完整呈現",
             subtitle: "傳達您想表達的心意的設計",
             description: "從插畫到網站、周邊商品的一站式製作",
-            cta: "立即諮詢"
+            cta: "立即諮詢",
+            cta2: "查看作品",
+            decorations: {
+                illustration: "插畫製作",
+                web: "網頁製作",
+                goods: "周邊展開"
+            }
         },
         
         // Problems section
         problems: {
             title: "您有這些困擾嗎？",
-            subtitle: "讓我們一起解決您的創意挑戰"
+            subtitle: "讓我們一起解決您的創意挑戰",
+            cards: [
+                {
+                    title: "不知道如何有魅力地展現",
+                    description: "有角色和概念，但不確定如何有效表達"
+                },
+                {
+                    title: "世界觀不一致",
+                    description: "委託多位設計師後，失去了統一性"
+                },
+                {
+                    title: "沒有一站式解決方案",
+                    description: "找不到可以全面諮詢商品、網站和社群媒體的人"
+                }
+            ]
         },
         
         // Features section (Why choose yamatoneriko)
@@ -371,16 +491,16 @@ const translations = {
             title: "選擇yamatoneriko的理由",
             subtitle: "結合創造力與策略的全方位創意支援",
             item1: {
-                title: "插畫製作",
-                description: "從角色到背景，製作符合世界觀的插畫"
+                title: "視覺 × 推廣設計的平衡",
+                description: "不只是美麗的設計，更是能「傳達」給目標受眾的設計。我們重視創意與策略的平衡，將您的訊息視覺化。包含行銷觀點的綜合提案，實現能帶來商業成果的創意作品。"
             },
             item2: {
-                title: "設計製作",
-                description: "標誌、名片、傳單等品牌所需的整體設計"
+                title: "從插畫到網站的一致世界觀",
+                description: "從角色設計到網站、各種周邊商品。因為全部由一人負責，所以能夠表現出細節都統一的世界觀。一站式服務，時間和成本都更有效率。"
             },
             item3: {
-                title: "網站製作", 
-                description: "從登陸頁、官網製作到營運。打造能吸引客戶的網站"
+                title: "基於SNS和粉絲心理的企劃提案力",
+                description: "「如何擴散？」「如何受粉絲喜愛？」憑藉實際運營SNS和群眾募資的經驗，我們可以從真實的粉絲角度提供建議。"
             },
             item4: {
                 title: "周邊商品製作",
@@ -392,13 +512,26 @@ const translations = {
         works: {
             title: "作品集",
             subtitle: "展示我們多樣化的創意作品",
-            viewMore: "查看更多"
+            viewMore: "查看更多",
+            filterButtons: {
+                all: "全部",
+                illustration: "插畫",
+                web: "網頁",
+                goods: "周邊"
+            }
         },
         
         // Testimonials section
         testimonials: {
             title: "客戶評價",
-            subtitle: "來自滿意客戶的真心推薦"
+            subtitle: "來自滿意客戶的真心推薦",
+            items: [
+                {
+                    content: "從角色設計到世界觀建構，全部都能放心交給他們。統一的設計獲得了粉絲們的一致好評！成果超出我們的期望。",
+                    author: "A公司",
+                    company: "娛樂企業"
+                }
+            ]
         },
         
         // FAQ section
@@ -458,6 +591,11 @@ const translations = {
             title: "聯絡我們",
             subtitle: "諮詢表單",
             description: "歡迎隨時諮詢製作委託事宜",
+            ctaDescription: "從免費諮詢開始。歡迎隨時聯絡我們。",
+            ctaButtons: {
+                consultation: "免費諮詢表單",
+                email: "郵件諮詢"
+            },
             form: {
                 name: "姓名",
                 email: "電子郵件",
@@ -469,12 +607,24 @@ const translations = {
         
         // Footer
         footer: {
+            about: {
+                description: "作為插畫師和設計師，我們將您的世界觀視覺化。<br>歡迎從企劃階段開始諮詢。通過一致的製作體系，實現不搖擺的世界觀。"
+            },
+            sectionTitles: {
+                service: "服務",
+                other: "其他"
+            },
+            serviceLinks: {
+                portfolio: "製作實績",
+                flow: "服務流程",
+                faq: "常見問題"
+            },
             copyright: "© 2025 yamatoneriko 版權所有",
             links: {
-                about: "營運者資訊",
+                about: "公司概要",
                 terms: "使用條款",
                 privacy: "隱私權政策",
-                law: "特定商業交易法相關標示"
+                law: "特定商業交易法"
             }
         },
         
@@ -666,12 +816,37 @@ function updateLanguage(lang) {
         heroCta.innerHTML = `<i class="fas fa-sparkles"></i> ${t.hero.cta}`;
     }
     
+    // Update second hero button
+    const heroButtons = document.querySelectorAll('.hero-buttons .cta-button');
+    if (heroButtons.length >= 2) {
+        heroButtons[1].textContent = t.hero.cta2;
+    }
+    
+    // Update hero decorations
+    const decorations = document.querySelectorAll('.hero-decoration');
+    if (decorations.length >= 3) {
+        decorations[0].innerHTML = `<i class="fas fa-palette"></i> ${t.hero.decorations.illustration}`;
+        decorations[1].innerHTML = `<i class="fas fa-laptop-code"></i> ${t.hero.decorations.web}`;
+        decorations[2].innerHTML = `<i class="fas fa-gift"></i> ${t.hero.decorations.goods}`;
+    }
+    
     // Update problems section
     const problemsTitle = document.querySelector('.problems .section-title h2');
     if (problemsTitle) problemsTitle.textContent = t.problems.title;
     
     const problemsSubtitle = document.querySelector('.problems .section-subtitle');
     if (problemsSubtitle) problemsSubtitle.textContent = t.problems.subtitle;
+    
+    // Update problem cards
+    const problemCards = document.querySelectorAll('.problem-card');
+    if (problemCards.length >= 3 && t.problems.cards) {
+        for (let i = 0; i < Math.min(3, problemCards.length); i++) {
+            const h3 = problemCards[i].querySelector('h3');
+            const p = problemCards[i].querySelector('p');
+            if (h3) h3.textContent = t.problems.cards[i].title;
+            if (p) p.textContent = t.problems.cards[i].description;
+        }
+    }
     
     // Update features section (Why choose yamatoneriko)
     const featuresTitle = document.querySelector('.features .section-title h2');
@@ -702,7 +877,14 @@ function updateLanguage(lang) {
     const worksSubtitle = document.querySelector('.portfolio .section-subtitle');
     if (worksSubtitle) worksSubtitle.textContent = t.works.subtitle;
     
-    // No view more button in current HTML
+    // Update filter buttons
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    if (filterButtons.length >= 4 && t.works.filterButtons) {
+        filterButtons[0].textContent = t.works.filterButtons.all;
+        filterButtons[1].textContent = t.works.filterButtons.illustration;
+        filterButtons[2].textContent = t.works.filterButtons.web;
+        filterButtons[3].textContent = t.works.filterButtons.goods;
+    }
     
     // Update contact section (CTA section)
     const ctaTitle = document.querySelector('.cta-section h2');
@@ -717,7 +899,14 @@ function updateLanguage(lang) {
     }
     
     const ctaP = document.querySelector('.cta-section p');
-    if (ctaP) ctaP.textContent = t.contact.description;
+    if (ctaP) ctaP.textContent = t.contact.ctaDescription;
+    
+    // Update CTA buttons
+    const ctaButtons = document.querySelectorAll('.cta-white');
+    if (ctaButtons.length >= 2) {
+        ctaButtons[0].innerHTML = `<i class="fas fa-envelope"></i> ${t.contact.ctaButtons.consultation}`;
+        ctaButtons[1].innerHTML = `<i class="fas fa-paper-plane"></i> ${t.contact.ctaButtons.email}`;
+    }
     
     // Update form placeholders
     const nameInput = document.querySelector('input[name="name"]');
@@ -739,16 +928,32 @@ function updateLanguage(lang) {
     const copyright = document.querySelector('.footer-bottom p');
     if (copyright) copyright.textContent = t.footer.copyright;
     
-    // Update footer links - they are in the second footer-links div
-    const footerLinksDivs = document.querySelectorAll('.footer-links');
-    if (footerLinksDivs.length >= 2) {
-        const links = footerLinksDivs[1].querySelectorAll('a');
-        if (links.length >= 4) {
-            links[0].textContent = t.footer.links.about;
-            links[1].textContent = t.footer.links.terms;
-            links[2].textContent = t.footer.links.privacy;
-            links[3].textContent = t.footer.links.law;
-        }
+    // Update footer about description
+    const footerAbout = document.querySelector('.footer-about p');
+    if (footerAbout) footerAbout.innerHTML = t.footer.about.description;
+    
+    // Update footer section titles
+    const footerSectionTitles = document.querySelectorAll('.footer-links h4');
+    if (footerSectionTitles.length >= 2) {
+        footerSectionTitles[0].textContent = t.footer.sectionTitles.service;
+        footerSectionTitles[1].textContent = t.footer.sectionTitles.other;
+    }
+    
+    // Update footer service links
+    const footerServiceLinks = document.querySelectorAll('.footer-links')[0]?.querySelectorAll('a');
+    if (footerServiceLinks && footerServiceLinks.length >= 3) {
+        footerServiceLinks[0].textContent = t.footer.serviceLinks.portfolio;
+        footerServiceLinks[1].textContent = t.footer.serviceLinks.flow;
+        footerServiceLinks[2].textContent = t.footer.serviceLinks.faq;
+    }
+    
+    // Update footer other links
+    const footerOtherLinks = document.querySelectorAll('.footer-links')[1]?.querySelectorAll('a');
+    if (footerOtherLinks && footerOtherLinks.length >= 4) {
+        footerOtherLinks[0].textContent = t.footer.links.about;
+        footerOtherLinks[1].textContent = t.footer.links.terms;
+        footerOtherLinks[2].textContent = t.footer.links.privacy;
+        footerOtherLinks[3].textContent = t.footer.links.law;
     }
     
     // Update testimonials section
@@ -757,6 +962,22 @@ function updateLanguage(lang) {
     
     const testimonialsSubtitle = document.querySelector('.testimonials .section-subtitle');
     if (testimonialsSubtitle) testimonialsSubtitle.textContent = t.testimonials.subtitle;
+    
+    // Update testimonial content
+    const testimonialContent = document.querySelector('.testimonial-content');
+    if (testimonialContent && t.testimonials.items && t.testimonials.items[0]) {
+        testimonialContent.textContent = t.testimonials.items[0].content;
+    }
+    
+    const authorName = document.querySelector('.author-info h4');
+    if (authorName && t.testimonials.items && t.testimonials.items[0]) {
+        authorName.textContent = t.testimonials.items[0].author;
+    }
+    
+    const authorCompany = document.querySelector('.author-info p');
+    if (authorCompany && t.testimonials.items && t.testimonials.items[0]) {
+        authorCompany.textContent = t.testimonials.items[0].company;
+    }
     
     // Update FAQ section
     const faqTitle = document.querySelector('.faq .section-title h2');
