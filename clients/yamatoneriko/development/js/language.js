@@ -18,19 +18,16 @@ const translations = {
             cta: "まずは相談してみる"
         },
         
-        // About section
-        about: {
-            title: "ABOUT",
-            subtitle: "yamatoneriko",
-            content1: "イラストレーター・デザイナーとして活動しています。",
-            content2: "ただ「きれい」なだけではない、あなたの想いが伝わるデザインを心がけています。",
-            content3: "世界観の統一から、ターゲットの心理を考えた企画まで。トータルでサポートいたします。"
+        // Problems section
+        problems: {
+            title: "こんなお悩みありませんか？",
+            subtitle: "クリエイティブな課題を、一緒に解決しましょう"
         },
         
-        // Service section
-        service: {
-            title: "SERVICE",
-            subtitle: "提供サービス",
+        // Features section (Why choose yamatoneriko)
+        features: {
+            title: "yamatonerikoが選ばれる理由",
+            subtitle: "創造性と戦略性を兼ね備えた、トータルクリエイティブサポート",
             item1: {
                 title: "イラスト制作",
                 description: "キャラクターから背景まで、世界観に合わせたイラストを制作"
@@ -100,19 +97,16 @@ const translations = {
             cta: "Get Started with a Consultation"
         },
         
-        // About section
-        about: {
-            title: "ABOUT",
-            subtitle: "yamatoneriko",
-            content1: "Working as an illustrator and designer.",
-            content2: "Creating designs that are not just 'beautiful' but convey your feelings.",
-            content3: "From unifying worldviews to planning with target psychology in mind. We provide total support."
+        // Problems section
+        problems: {
+            title: "Do You Have These Concerns?",
+            subtitle: "Let's solve your creative challenges together"
         },
         
-        // Service section
-        service: {
-            title: "SERVICE",
-            subtitle: "Our Services",
+        // Features section (Why choose yamatoneriko)
+        features: {
+            title: "Why Choose yamatoneriko",
+            subtitle: "Total creative support combining creativity and strategy",
             item1: {
                 title: "Illustration",
                 description: "Creating illustrations from characters to backgrounds that match your worldview"
@@ -182,19 +176,16 @@ const translations = {
             cta: "立即諮詢"
         },
         
-        // About section
-        about: {
-            title: "關於我們",
-            subtitle: "yamatoneriko", 
-            content1: "作為插畫師和設計師活躍中。",
-            content2: "不只是追求「美觀」，更注重傳達您的心意的設計。",
-            content3: "從統一世界觀到考慮目標受眾心理的企劃。提供全方位支援。"
+        // Problems section
+        problems: {
+            title: "您有這些困擾嗎？",
+            subtitle: "讓我們一起解決您的創意挑戰"
         },
         
-        // Service section
-        service: {
-            title: "服務項目",
-            subtitle: "我們提供的服務",
+        // Features section (Why choose yamatoneriko)
+        features: {
+            title: "選擇yamatoneriko的理由",
+            subtitle: "結合創造力與策略的全方位創意支援",
             item1: {
                 title: "插畫製作",
                 description: "從角色到背景，製作符合世界觀的插畫"
@@ -360,82 +351,97 @@ function updateLanguage(lang) {
     document.title = `yamatoneriko | ${t.hero.tagline}`;
     
     // Update navigation
-    const navLinks = document.querySelectorAll('.nav-list a');
-    if (navLinks.length > 0) {
+    const navLinks = document.querySelectorAll('.nav-links li a');
+    if (navLinks.length >= 3) {
         navLinks[0].textContent = t.nav.about;
-        navLinks[1].textContent = t.nav.service;
-        navLinks[2].textContent = t.nav.works;
-        navLinks[3].textContent = t.nav.contact;
+        navLinks[1].textContent = 'Portfolio';  // Keep Portfolio in English
+        navLinks[2].textContent = 'Flow';  // Keep Flow in English
+        // Last button is the CTA button, update its content
+        if (navLinks[3]) {
+            navLinks[3].innerHTML = t.hero.cta + ' <i class="fas fa-arrow-right"></i>';
+        }
     }
     
     // Update hero section
-    const heroTagline = document.querySelector('.hero-tagline');
-    if (heroTagline) heroTagline.textContent = t.hero.tagline;
-    
-    const heroSubtitle = document.querySelector('.hero-subtitle');
-    if (heroSubtitle) heroSubtitle.textContent = t.hero.subtitle;
-    
-    const heroDescription = document.querySelector('.hero-description');
-    if (heroDescription) heroDescription.textContent = t.hero.description;
-    
-    const heroCta = document.querySelector('.hero-cta');
-    if (heroCta) heroCta.textContent = t.hero.cta;
-    
-    // Update about section
-    const aboutTitle = document.querySelector('#about .section-title');
-    if (aboutTitle) aboutTitle.textContent = t.about.title;
-    
-    const aboutSubtitle = document.querySelector('#about .section-subtitle');
-    if (aboutSubtitle) aboutSubtitle.textContent = t.about.subtitle;
-    
-    const aboutTexts = document.querySelectorAll('.about-text p');
-    if (aboutTexts.length >= 3) {
-        aboutTexts[0].textContent = t.about.content1;
-        aboutTexts[1].textContent = t.about.content2;
-        aboutTexts[2].textContent = t.about.content3;
+    const heroH1 = document.querySelector('.hero-text h1');
+    if (heroH1) {
+        // Split tagline for proper formatting
+        const taglineParts = t.hero.tagline.split('、');
+        if (lang === 'ja') {
+            heroH1.innerHTML = `あなたの<span class="highlight">世界観</span>、<br>まるごとカタチにします。`;
+        } else if (lang === 'en') {
+            heroH1.innerHTML = `Bringing Your Entire <span class="highlight">Worldview</span><br>to Life`;
+        } else if (lang === 'zh') {
+            heroH1.innerHTML = `將您的<span class="highlight">世界觀</span><br>完整呈現`;
+        }
     }
     
-    // Update service section
-    const serviceTitle = document.querySelector('#service .section-title');
-    if (serviceTitle) serviceTitle.textContent = t.service.title;
+    const heroP = document.querySelector('.hero-text p');
+    if (heroP) {
+        if (lang === 'ja') {
+            heroP.innerHTML = `イラスト・Web・グッズまで、一貫制作でブランド力アップ。<br>企画段階からご相談OK。"届けたい想い"が伝わるデザインを。`;
+        } else {
+            heroP.innerHTML = t.hero.description + '<br>' + t.hero.subtitle;
+        }
+    }
     
-    const serviceSubtitle = document.querySelector('#service .section-subtitle');
-    if (serviceSubtitle) serviceSubtitle.textContent = t.service.subtitle;
+    const heroCta = document.querySelector('.hero-buttons .cta-button');
+    if (heroCta) {
+        heroCta.innerHTML = `<i class="fas fa-sparkles"></i> ${t.hero.cta}`;
+    }
     
-    const serviceItems = document.querySelectorAll('.service-item');
-    if (serviceItems.length >= 4) {
-        serviceItems[0].querySelector('h3').textContent = t.service.item1.title;
-        serviceItems[0].querySelector('p').textContent = t.service.item1.description;
+    // Update problems section
+    const problemsTitle = document.querySelector('.problems .section-title h2');
+    if (problemsTitle) problemsTitle.textContent = t.problems.title;
+    
+    const problemsSubtitle = document.querySelector('.problems .section-subtitle');
+    if (problemsSubtitle) problemsSubtitle.textContent = t.problems.subtitle;
+    
+    // Update features section (Why choose yamatoneriko)
+    const featuresTitle = document.querySelector('.features .section-title h2');
+    if (featuresTitle) featuresTitle.textContent = t.features.title;
+    
+    const featuresSubtitle = document.querySelector('.features .section-subtitle');
+    if (featuresSubtitle) featuresSubtitle.textContent = t.features.subtitle;
+    
+    const featureItems = document.querySelectorAll('.feature-card');
+    if (featureItems.length >= 4) {
+        featureItems[0].querySelector('h3').textContent = t.features.item1.title;
+        featureItems[0].querySelector('p').textContent = t.features.item1.description;
         
-        serviceItems[1].querySelector('h3').textContent = t.service.item2.title;
-        serviceItems[1].querySelector('p').textContent = t.service.item2.description;
+        featureItems[1].querySelector('h3').textContent = t.features.item2.title;
+        featureItems[1].querySelector('p').textContent = t.features.item2.description;
         
-        serviceItems[2].querySelector('h3').textContent = t.service.item3.title;
-        serviceItems[2].querySelector('p').textContent = t.service.item3.description;
+        featureItems[2].querySelector('h3').textContent = t.features.item3.title;
+        featureItems[2].querySelector('p').textContent = t.features.item3.description;
         
-        serviceItems[3].querySelector('h3').textContent = t.service.item4.title;
-        serviceItems[3].querySelector('p').textContent = t.service.item4.description;
+        featureItems[3].querySelector('h3').textContent = t.features.item4.title;
+        featureItems[3].querySelector('p').textContent = t.features.item4.description;
     }
     
     // Update works section
-    const worksTitle = document.querySelector('#works .section-title');
+    const worksTitle = document.querySelector('.portfolio .section-title h2');
     if (worksTitle) worksTitle.textContent = t.works.title;
     
-    const worksSubtitle = document.querySelector('#works .section-subtitle');
+    const worksSubtitle = document.querySelector('.portfolio .section-subtitle');
     if (worksSubtitle) worksSubtitle.textContent = t.works.subtitle;
     
-    const viewMore = document.querySelector('.view-more');
-    if (viewMore) viewMore.textContent = t.works.viewMore;
+    // No view more button in current HTML
     
-    // Update contact section
-    const contactTitle = document.querySelector('#contact .section-title');
-    if (contactTitle) contactTitle.textContent = t.contact.title;
+    // Update contact section (CTA section)
+    const ctaTitle = document.querySelector('.cta-section h2');
+    if (ctaTitle) {
+        if (lang === 'ja') {
+            ctaTitle.textContent = 'あなたの想いを、カタチにしませんか？';
+        } else if (lang === 'en') {
+            ctaTitle.textContent = 'Ready to Bring Your Ideas to Life?';
+        } else if (lang === 'zh') {
+            ctaTitle.textContent = '準備好將您的想法實現了嗎？';
+        }
+    }
     
-    const contactSubtitle = document.querySelector('#contact .section-subtitle');
-    if (contactSubtitle) contactSubtitle.textContent = t.contact.subtitle;
-    
-    const contactDescription = document.querySelector('.contact-description');
-    if (contactDescription) contactDescription.textContent = t.contact.description;
+    const ctaP = document.querySelector('.cta-section p');
+    if (ctaP) ctaP.textContent = t.contact.description;
     
     // Update form placeholders
     const nameInput = document.querySelector('input[name="name"]');
@@ -454,17 +460,24 @@ function updateLanguage(lang) {
     if (submitBtn) submitBtn.textContent = t.contact.form.submit;
     
     // Update footer
-    const copyright = document.querySelector('.copyright');
+    const copyright = document.querySelector('.footer-bottom p');
     if (copyright) copyright.textContent = t.footer.copyright;
     
-    const footerLinks = document.querySelectorAll('.footer-links a');
-    if (footerLinks.length >= 4) {
-        footerLinks[0].textContent = t.footer.links.about;
-        footerLinks[1].textContent = t.footer.links.terms;
-        footerLinks[2].textContent = t.footer.links.privacy;
-        footerLinks[3].textContent = t.footer.links.law;
+    // Update footer links - they are in the second footer-links div
+    const footerLinksDivs = document.querySelectorAll('.footer-links');
+    if (footerLinksDivs.length >= 2) {
+        const links = footerLinksDivs[1].querySelectorAll('a');
+        if (links.length >= 4) {
+            links[0].textContent = t.footer.links.about;
+            links[1].textContent = t.footer.links.terms;
+            links[2].textContent = t.footer.links.privacy;
+            links[3].textContent = t.footer.links.law;
+        }
     }
     
     // Update HTML lang attribute
     document.documentElement.lang = lang === 'zh' ? 'zh-TW' : lang;
+    
+    // Debug logging
+    console.log('Language changed to:', lang);
 }
