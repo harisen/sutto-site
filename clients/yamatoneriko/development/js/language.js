@@ -48,9 +48,67 @@ const translations = {
         
         // Works section
         works: {
-            title: "WORKS",
-            subtitle: "制作実績",
+            title: "制作実績",
+            subtitle: "さまざまなクリエイティブワークをご紹介",
             viewMore: "もっと見る"
+        },
+        
+        // Testimonials section
+        testimonials: {
+            title: "お客様の声",
+            subtitle: "ご利用いただいた皆様からの嬉しいお言葉"
+        },
+        
+        // FAQ section
+        faq: {
+            title: "よくあるご質問",
+            subtitle: "お客様からよくいただくご質問にお答えします",
+            items: [
+                {
+                    question: "初めてでも大丈夫ですか？",
+                    answer: "はい、もちろん大丈夫です。ゼロからの世界観づくりもご一緒に伴走いたします。ヒアリングを重視し、お客様のイメージを丁寧に形にしていきます。"
+                },
+                {
+                    question: "どのくらいの予算が必要ですか？",
+                    answer: "内容により異なりますが、イラスト単体であれば5万円〜、総合的なブランディングは15万円〜ご相談可能です。まずはお気軽にご相談ください。"
+                },
+                {
+                    question: "SNS用画像やバナーだけでも依頼できますか？",
+                    answer: "はい、単発でのご依頼も承っております。継続的なSNS運用サポートも可能ですので、ご要望に合わせて柔軟に対応いたします。"
+                },
+                {
+                    question: "グッズの入稿や業者選びもお願いできますか？",
+                    answer: "ご希望があれば入稿サポート・印刷所のご紹介も可能です。品質とコストのバランスを考慮した最適な業者をご提案いたします。"
+                },
+                {
+                    question: "納品までの流れを教えてください",
+                    answer: "お問い合わせ→ヒアリング→ご提案・お見積もり→制作→確認・修正→納品という流れになります。詳しくは下記の「サービスの流れ」をご参照ください。"
+                }
+            ]
+        },
+        
+        // Process section
+        process: {
+            title: "サービスの流れ",
+            subtitle: "ご相談から納品まで、スムーズにサポートします",
+            steps: [
+                {
+                    title: "お問い合わせ",
+                    description: "まずはお気軽にご相談ください。ご要望やお悩みを丁寧にヒアリングいたします。"
+                },
+                {
+                    title: "ご提案・お見積もり",
+                    description: "内容に応じた最適なプランをご提案。費用感も明確にお伝えします。"
+                },
+                {
+                    title: "制作・確認",
+                    description: "ラフ制作から始まり、フィードバックを反映しながら完成度を高めていきます。"
+                },
+                {
+                    title: "納品・アフターサポート",
+                    description: "データ納品後も、必要に応じて運用のフォローをいたします。"
+                }
+            ]
         },
         
         // Contact section
@@ -76,7 +134,41 @@ const translations = {
                 privacy: "プライバシーポリシー",
                 law: "特定商取引法に基づく表記"
             }
-        }
+        },
+        
+        // Portfolio items
+        portfolioItems: [
+            {
+                title: "キャラクターデザイン",
+                description: "オリジナルキャラクター制作",
+                tags: ["イラスト", "キャラクター"]
+            },
+            {
+                title: "Webサイトデザイン",
+                description: "コーポレートサイト制作",
+                tags: ["Web", "UI/UX"]
+            },
+            {
+                title: "グッズデザイン",
+                description: "オリジナルグッズ展開",
+                tags: ["グッズ", "プロダクト"]
+            },
+            {
+                title: "SNS素材",
+                description: "SNS用ビジュアル制作",
+                tags: ["イラスト", "SNS"]
+            },
+            {
+                title: "ロゴデザイン",
+                description: "ブランドロゴ制作",
+                tags: ["ロゴ", "ブランディング"]
+            },
+            {
+                title: "イラストレーション",
+                description: "書籍挿絵・表紙デザイン",
+                tags: ["イラスト", "出版"]
+            }
+        ]
     },
     
     en: {
@@ -127,9 +219,67 @@ const translations = {
         
         // Works section
         works: {
-            title: "WORKS",
-            subtitle: "Portfolio",
+            title: "Portfolio",
+            subtitle: "Showcasing our diverse creative works",
             viewMore: "View More"
+        },
+        
+        // Testimonials section
+        testimonials: {
+            title: "Client Testimonials",
+            subtitle: "Happy words from our valued clients"
+        },
+        
+        // FAQ section
+        faq: {
+            title: "Frequently Asked Questions",
+            subtitle: "Answers to common questions from our clients",
+            items: [
+                {
+                    question: "Is it okay if I'm a first-timer?",
+                    answer: "Yes, absolutely! We'll accompany you in creating your worldview from scratch. We emphasize listening to carefully shape your vision."
+                },
+                {
+                    question: "What budget do I need?",
+                    answer: "It varies by content, but illustrations start from 50,000 yen, and comprehensive branding starts from 150,000 yen. Please feel free to consult with us."
+                },
+                {
+                    question: "Can I order just SNS images or banners?",
+                    answer: "Yes, we accept one-off requests. We can also provide ongoing SNS management support, flexibly accommodating your needs."
+                },
+                {
+                    question: "Can you help with merchandise submission and vendor selection?",
+                    answer: "If desired, we can provide submission support and printing company recommendations. We'll suggest optimal vendors considering quality and cost balance."
+                },
+                {
+                    question: "What's the delivery process?",
+                    answer: "The flow is: Inquiry → Consultation → Proposal/Quote → Production → Review/Revision → Delivery. Please see 'Service Flow' below for details."
+                }
+            ]
+        },
+        
+        // Process section
+        process: {
+            title: "Service Flow",
+            subtitle: "Smooth support from consultation to delivery",
+            steps: [
+                {
+                    title: "Inquiry",
+                    description: "Feel free to contact us. We'll carefully listen to your needs and concerns."
+                },
+                {
+                    title: "Proposal & Quote",
+                    description: "We'll propose the optimal plan based on your needs and clearly communicate costs."
+                },
+                {
+                    title: "Production & Review",
+                    description: "Starting from rough drafts, we'll refine the work while incorporating your feedback."
+                },
+                {
+                    title: "Delivery & Support",
+                    description: "After data delivery, we'll provide operational support as needed."
+                }
+            ]
         },
         
         // Contact section  
@@ -155,7 +305,41 @@ const translations = {
                 privacy: "Privacy Policy",
                 law: "Legal Notice"
             }
-        }
+        },
+        
+        // Portfolio items
+        portfolioItems: [
+            {
+                title: "Character Design",
+                description: "Original character creation",
+                tags: ["Illustration", "Character"]
+            },
+            {
+                title: "Website Design",
+                description: "Corporate website production",
+                tags: ["Web", "UI/UX"]
+            },
+            {
+                title: "Merchandise Design",
+                description: "Original goods development",
+                tags: ["Goods", "Product"]
+            },
+            {
+                title: "SNS Materials",
+                description: "Visual creation for social media",
+                tags: ["Illustration", "SNS"]
+            },
+            {
+                title: "Logo Design",
+                description: "Brand logo creation",
+                tags: ["Logo", "Branding"]
+            },
+            {
+                title: "Illustration",
+                description: "Book illustrations and cover design",
+                tags: ["Illustration", "Publishing"]
+            }
+        ]
     },
     
     zh: {
@@ -207,8 +391,66 @@ const translations = {
         // Works section
         works: {
             title: "作品集",
-            subtitle: "製作實績",
+            subtitle: "展示我們多樣化的創意作品",
             viewMore: "查看更多"
+        },
+        
+        // Testimonials section
+        testimonials: {
+            title: "客戶評價",
+            subtitle: "來自滿意客戶的真心推薦"
+        },
+        
+        // FAQ section
+        faq: {
+            title: "常見問題",
+            subtitle: "回答客戶常見的疑問",
+            items: [
+                {
+                    question: "第一次委託也可以嗎？",
+                    answer: "當然可以！我們會陪伴您從零開始建立世界觀。重視傾聽，仔細將您的想法實現。"
+                },
+                {
+                    question: "需要多少預算？",
+                    answer: "視內容而定，插畫從5萬日圓起，綜合品牌塑造從15萬日圓起。歡迎隨時諮詢。"
+                },
+                {
+                    question: "只要SNS圖片或橫幅也可以嗎？",
+                    answer: "可以，我們接受單次委託。也可提供持續的SNS管理支援，靈活滿足您的需求。"
+                },
+                {
+                    question: "周邊商品的入稿和廠商選擇也可以幫忙嗎？",
+                    answer: "如果需要，我們可以提供入稿支援和印刷廠推薦。考慮品質與成本平衡，提供最佳建議。"
+                },
+                {
+                    question: "交件流程是什麼？",
+                    answer: "流程為：諮詢→洽談→提案/報價→製作→確認/修改→交件。詳情請參閱下方「服務流程」。"
+                }
+            ]
+        },
+        
+        // Process section
+        process: {
+            title: "服務流程",
+            subtitle: "從諮詢到交件，提供順暢的支援",
+            steps: [
+                {
+                    title: "諮詢",
+                    description: "歡迎聯絡我們。我們會仔細傾聽您的需求和困擾。"
+                },
+                {
+                    title: "提案與報價",
+                    description: "根據您的需求提供最佳方案，並清楚說明費用。"
+                },
+                {
+                    title: "製作與確認",
+                    description: "從草稿開始，根據您的反饋不斷完善作品。"
+                },
+                {
+                    title: "交件與後續支援",
+                    description: "資料交付後，我們也會根據需要提供營運支援。"
+                }
+            ]
         },
         
         // Contact section
@@ -234,7 +476,41 @@ const translations = {
                 privacy: "隱私權政策",
                 law: "特定商業交易法相關標示"
             }
-        }
+        },
+        
+        // Portfolio items
+        portfolioItems: [
+            {
+                title: "角色設計",
+                description: "原創角色製作",
+                tags: ["插畫", "角色"]
+            },
+            {
+                title: "網站設計",
+                description: "企業網站製作",
+                tags: ["網頁", "UI/UX"]
+            },
+            {
+                title: "周邊設計",
+                description: "原創周邊展開",
+                tags: ["周邊", "產品"]
+            },
+            {
+                title: "SNS素材",
+                description: "社群媒體視覺製作",
+                tags: ["插畫", "SNS"]
+            },
+            {
+                title: "標誌設計",
+                description: "品牌標誌製作",
+                tags: ["標誌", "品牌"]
+            },
+            {
+                title: "插畫作品",
+                description: "書籍插圖與封面設計",
+                tags: ["插畫", "出版"]
+            }
+        ]
     }
 };
 
@@ -472,6 +748,72 @@ function updateLanguage(lang) {
             links[1].textContent = t.footer.links.terms;
             links[2].textContent = t.footer.links.privacy;
             links[3].textContent = t.footer.links.law;
+        }
+    }
+    
+    // Update testimonials section
+    const testimonialsTitle = document.querySelector('.testimonials .section-title h2');
+    if (testimonialsTitle) testimonialsTitle.textContent = t.testimonials.title;
+    
+    const testimonialsSubtitle = document.querySelector('.testimonials .section-subtitle');
+    if (testimonialsSubtitle) testimonialsSubtitle.textContent = t.testimonials.subtitle;
+    
+    // Update FAQ section
+    const faqTitle = document.querySelector('.faq .section-title h2');
+    if (faqTitle) faqTitle.textContent = t.faq.title;
+    
+    const faqSubtitle = document.querySelector('.faq .section-subtitle');
+    if (faqSubtitle) faqSubtitle.textContent = t.faq.subtitle;
+    
+    // Update FAQ items
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    const faqAnswers = document.querySelectorAll('.faq-answer p');
+    if (faqQuestions.length >= 5 && faqAnswers.length >= 5) {
+        for (let i = 0; i < Math.min(5, faqQuestions.length); i++) {
+            // Update question text (remove icon)
+            const questionText = faqQuestions[i].childNodes[0];
+            if (questionText && questionText.nodeType === 3) {
+                questionText.textContent = t.faq.items[i].question;
+            }
+            // Update answer
+            if (faqAnswers[i]) {
+                faqAnswers[i].textContent = t.faq.items[i].answer;
+            }
+        }
+    }
+    
+    // Update process section
+    const processTitle = document.querySelector('.process .section-title h2');
+    if (processTitle) processTitle.textContent = t.process.title;
+    
+    const processSubtitle = document.querySelector('.process .section-subtitle');
+    if (processSubtitle) processSubtitle.textContent = t.process.subtitle;
+    
+    // Update process steps
+    const processSteps = document.querySelectorAll('.process-step');
+    if (processSteps.length >= 4) {
+        for (let i = 0; i < 4; i++) {
+            const h3 = processSteps[i].querySelector('h3');
+            const p = processSteps[i].querySelector('p');
+            if (h3) h3.textContent = t.process.steps[i].title;
+            if (p) p.textContent = t.process.steps[i].description;
+        }
+    }
+    
+    // Update portfolio items
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    if (portfolioItems.length >= 6 && t.portfolioItems) {
+        for (let i = 0; i < Math.min(6, portfolioItems.length); i++) {
+            const h3 = portfolioItems[i].querySelector('.portfolio-info h3');
+            const p = portfolioItems[i].querySelector('.portfolio-info p');
+            const tags = portfolioItems[i].querySelectorAll('.portfolio-tag');
+            
+            if (h3) h3.textContent = t.portfolioItems[i].title;
+            if (p) p.textContent = t.portfolioItems[i].description;
+            if (tags.length >= 2) {
+                tags[0].textContent = t.portfolioItems[i].tags[0];
+                tags[1].textContent = t.portfolioItems[i].tags[1];
+            }
         }
     }
     
