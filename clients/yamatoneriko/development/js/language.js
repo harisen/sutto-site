@@ -855,19 +855,22 @@ function updateLanguage(lang) {
     const featuresSubtitle = document.querySelector('.features .section-subtitle');
     if (featuresSubtitle) featuresSubtitle.textContent = t.features.subtitle;
     
-    const featureItems = document.querySelectorAll('.feature-card');
-    if (featureItems.length >= 4) {
-        featureItems[0].querySelector('h3').textContent = t.features.item1.title;
-        featureItems[0].querySelector('p').textContent = t.features.item1.description;
+    const featureItems = document.querySelectorAll('.feature-item');
+    if (featureItems.length >= 3) {
+        const item1H3 = featureItems[0].querySelector('h3');
+        const item1P = featureItems[0].querySelector('p');
+        if (item1H3) item1H3.textContent = t.features.item1.title;
+        if (item1P) item1P.textContent = t.features.item1.description;
         
-        featureItems[1].querySelector('h3').textContent = t.features.item2.title;
-        featureItems[1].querySelector('p').textContent = t.features.item2.description;
+        const item2H3 = featureItems[1].querySelector('h3');
+        const item2P = featureItems[1].querySelector('p');
+        if (item2H3) item2H3.textContent = t.features.item2.title;
+        if (item2P) item2P.textContent = t.features.item2.description;
         
-        featureItems[2].querySelector('h3').textContent = t.features.item3.title;
-        featureItems[2].querySelector('p').textContent = t.features.item3.description;
-        
-        featureItems[3].querySelector('h3').textContent = t.features.item4.title;
-        featureItems[3].querySelector('p').textContent = t.features.item4.description;
+        const item3H3 = featureItems[2].querySelector('h3');
+        const item3P = featureItems[2].querySelector('p');
+        if (item3H3) item3H3.textContent = t.features.item3.title;
+        if (item3P) item3P.textContent = t.features.item3.description;
     }
     
     // Update works section
