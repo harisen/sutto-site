@@ -4,6 +4,7 @@ const subpageTranslations = {
         // Common navigation and footer (same as main page)
         nav: {
             logo: "スッとサイト",
+            logoSubtitle: "個人から企業まで最速・低価格でホームページ制作",
             service: "サービス",
             pricing: "料金",
             samples: "サンプルサイト",
@@ -416,7 +417,8 @@ const subpageTranslations = {
     en: {
         // Common navigation and footer
         nav: {
-            logo: "LP Creation Service",
+            logo: "Sutto Site",
+            logoSubtitle: "Fast & Affordable Website Creation for Everyone",
             service: "Service",
             pricing: "Pricing",
             samples: "Sample Sites",
@@ -829,7 +831,8 @@ const subpageTranslations = {
     zh: {
         // Common navigation and footer
         nav: {
-            logo: "LP製作服務",
+            logo: "快速網站",
+            logoSubtitle: "為個人和企業提供最快速、低價的網站製作",
             service: "服務",
             pricing: "價格",
             samples: "範例網站",
@@ -1357,15 +1360,20 @@ function updateSubpageLanguage(lang) {
     // Update HTML lang attribute
     document.documentElement.lang = lang === 'zh' ? 'zh-TW' : lang;
     
-    // Update common navigation - only update the main title, preserve subtitle
+    // Update common navigation - update both title and subtitle
     const logo = document.querySelector('.logo');
     if (logo) {
         const logoTitle = logo.querySelector('span:first-child');
+        const logoSubtitle = logo.querySelector('span:last-child');
         if (logoTitle) {
             logoTitle.textContent = t.nav.logo;
         } else {
             // Fallback for pages without the new structure
             logo.textContent = t.nav.logo;
+        }
+        // Update subtitle if it exists
+        if (logoSubtitle && t.nav.logoSubtitle) {
+            logoSubtitle.textContent = t.nav.logoSubtitle;
         }
     }
     

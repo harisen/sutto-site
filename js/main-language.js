@@ -10,6 +10,7 @@ const translations = {
         // Navigation
         nav: {
             logo: "スッとサイト",
+            logoSubtitle: "個人から企業まで最速・低価格でホームページ制作",
             service: "サービス",
             pricing: "料金",
             samples: "サンプルサイト",
@@ -152,6 +153,35 @@ const translations = {
                 cancellation: "キャンセルポリシー"
             },
             copyright: "© 2025 All rights reserved."
+        },
+        
+        // Before/After section
+        beforeAfter: {
+            title: "こんなお悩みありませんか？",
+            before: {
+                title: "よくあるお悩み",
+                items: [
+                    "お店の情報が伝わらない",
+                    "SNSだけでは物足りない",
+                    "ホームページは高そう",
+                    "作るのが難しそう"
+                ]
+            },
+            after: {
+                title: "スッとサイトなら解決！",
+                items: [
+                    "24時間お客様に情報を伝えられます",
+                    "しっかりしたデザインで信頼されます",
+                    "2万円から始められます",
+                    "全部お任せでかんたんです"
+                ]
+            },
+            techIcons: [
+                "きれいな\nデザイン",
+                "スマホでも\n見やすい",
+                "すぐに\n完成",
+                "安心の\n品質"
+            ]
         }
     },
     
@@ -164,7 +194,8 @@ const translations = {
         
         // Navigation
         nav: {
-            logo: "LP Creation Service",
+            logo: "Sutto Site",
+            logoSubtitle: "Fast & Affordable Website Creation for Everyone",
             service: "Service",
             pricing: "Pricing",
             samples: "Sample Sites",
@@ -289,9 +320,9 @@ const translations = {
         
         // Footer
         footer: {
-            companyName: "LP Creation Service",
+            companyName: "Sutto Site",
             description: "High-speed, high-quality<br>landing page creation service utilizing AI technology",
-            aiPowered: "最新技術でお手伝い",
+            aiPowered: "Powered by Latest Technology",
             sections: {
                 service: "Service",
                 contact: "Contact"
@@ -307,6 +338,35 @@ const translations = {
                 cancellation: "Cancellation Policy"
             },
             copyright: "© 2025 All rights reserved."
+        },
+        
+        // Before/After section
+        beforeAfter: {
+            title: "Do You Have These Concerns?",
+            before: {
+                title: "Common Concerns",
+                items: [
+                    "Your store info isn't reaching customers",
+                    "Social media alone isn't enough",
+                    "Websites seem expensive",
+                    "Creating one seems difficult"
+                ]
+            },
+            after: {
+                title: "Sutto Site Solves Everything!",
+                items: [
+                    "Share info with customers 24/7",
+                    "Build trust with professional design",
+                    "Start from just ¥20,000",
+                    "Leave everything to us - it's easy"
+                ]
+            },
+            techIcons: [
+                "Beautiful\nDesign",
+                "Mobile\nFriendly",
+                "Quick\nCompletion",
+                "Quality\nAssurance"
+            ]
         }
     },
     
@@ -319,7 +379,8 @@ const translations = {
         
         // Navigation
         nav: {
-            logo: "LP製作服務",
+            logo: "快速網站",
+            logoSubtitle: "為個人和企業提供最快速、低價的網站製作",
             service: "服務",
             pricing: "價格",
             samples: "範例網站",
@@ -444,9 +505,9 @@ const translations = {
         
         // Footer
         footer: {
-            companyName: "LP製作服務",
+            companyName: "快速網站",
             description: "運用AI技術的高速、高品質<br>登陸頁製作服務",
-            aiPowered: "最新技術でお手伝い",
+            aiPowered: "最新技術支援",
             sections: {
                 service: "服務",
                 contact: "聯絡我們"
@@ -462,6 +523,35 @@ const translations = {
                 cancellation: "取消政策"
             },
             copyright: "© 2025 All rights reserved."
+        },
+        
+        // Before/After section
+        beforeAfter: {
+            title: "您有這些煩惱嗎？",
+            before: {
+                title: "常見的煩惱",
+                items: [
+                    "店鋪資訊無法傳達",
+                    "只有社交媒體不夠",
+                    "網站似乎很貴",
+                    "製作看起來很困難"
+                ]
+            },
+            after: {
+                title: "快速網站幫您解決！",
+                items: [
+                    "24小時向客戶傳達資訊",
+                    "專業設計贏得信任",
+                    "2萬日元起即可開始",
+                    "全部交給我們，超簡單"
+                ]
+            },
+            techIcons: [
+                "精美的\n設計",
+                "手機也\n易讀",
+                "快速\n完成",
+                "安心的\n品質"
+            ]
         }
     }
 };
@@ -591,10 +681,15 @@ function updateLanguage(lang) {
     // Update navigation
     const logo = document.querySelector('.logo');
     if (logo) {
-        // Only update the main title, preserve the subtitle structure
+        // Update the main title
         const logoTitle = logo.querySelector('span:first-child');
         if (logoTitle) {
             logoTitle.textContent = t.nav.logo;
+        }
+        // Update the subtitle
+        const logoSubtitle = logo.querySelector('span:last-child');
+        if (logoSubtitle) {
+            logoSubtitle.textContent = t.nav.logoSubtitle;
         }
     }
     
@@ -799,6 +894,48 @@ function updateLanguage(lang) {
     // Update copyright
     const copyright = document.querySelector('.footer-bottom p');
     if (copyright) copyright.textContent = t.footer.copyright;
+    
+    // Update Before/After section
+    if (t.beforeAfter) {
+        const beforeAfterTitle = document.querySelector('.before-after-section h2');
+        if (beforeAfterTitle) beforeAfterTitle.textContent = t.beforeAfter.title;
+        
+        // Update before box
+        const beforeTitle = document.querySelector('.before-box h3');
+        if (beforeTitle) beforeTitle.textContent = t.beforeAfter.before.title;
+        
+        const beforeItems = document.querySelectorAll('.before-box ul li');
+        if (beforeItems.length >= 4) {
+            beforeItems.forEach((item, index) => {
+                if (t.beforeAfter.before.items[index]) {
+                    item.textContent = t.beforeAfter.before.items[index];
+                }
+            });
+        }
+        
+        // Update after box
+        const afterTitle = document.querySelector('.after-box h3');
+        if (afterTitle) afterTitle.textContent = t.beforeAfter.after.title;
+        
+        const afterItems = document.querySelectorAll('.after-box ul li');
+        if (afterItems.length >= 4) {
+            afterItems.forEach((item, index) => {
+                if (t.beforeAfter.after.items[index]) {
+                    item.textContent = t.beforeAfter.after.items[index];
+                }
+            });
+        }
+        
+        // Update tech icons
+        const techIcons = document.querySelectorAll('.tech-icon');
+        if (techIcons.length >= 4) {
+            techIcons.forEach((icon, index) => {
+                if (t.beforeAfter.techIcons[index]) {
+                    icon.innerHTML = t.beforeAfter.techIcons[index].replace('\n', '<br>');
+                }
+            });
+        }
+    }
     
     // Debug logging
     console.log('Language changed to:', lang);
