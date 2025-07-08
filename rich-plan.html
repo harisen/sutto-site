@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -71,8 +72,6 @@
         }
         
         .logo {
-            font-size: 2rem;
-            font-weight: 700;
             color: #fff;
             text-decoration: none;
         }
@@ -837,6 +836,36 @@
 </head>
 <body>
     
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <span style="font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 2.8rem; font-weight: 900; color: #fff;">スッとサイト</span>
+                    <span style="font-size: 1.1rem; font-weight: 400; color: rgba(255,255,255,0.8); margin-top: -4px; letter-spacing: 0.02em;">個人から企業まで最速・低価格でホームページ制作</span>
+                </div>
+            </a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">サンプルサイト</a>
+                <a href="deployment-guide.html" class="nav-link">公開ガイド</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">サンプルサイト</a>
+            <a href="deployment-guide.html" class="mobile-nav-link">公開ガイド</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+
     <!-- ローディング画面 -->
     <div class="loader">
         <div class="loader-text">LOADING</div>
@@ -1023,7 +1052,10 @@
         <div class="container" style="max-width: 1200px; margin: 0 auto;">
             <div class="footer-content" style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 40px;">
                 <div class="footer-section">
-                    <h4 style="font-size: 2rem; margin-bottom: 16px; color: #fff;">スッとサイト</h4>
+                    <h4 style="display: flex; flex-direction: column; align-items: flex-start;">
+                        <span style="font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 2.8rem; font-weight: 900; color: #fff;">スッとサイト</span>
+                        <span style="font-size: 1.1rem; font-weight: 400; color: rgba(255,255,255,0.8); margin-top: -4px; letter-spacing: 0.02em;">個人から企業まで最速・低価格でホームページ制作</span>
+                    </h4>
                     <p style="color: rgba(255,255,255,0.8); line-height: 1.8;">AI技術を活用した高速・高品質な<br>ランディングページ制作サービス</p>
                     <p style="margin-top: 12px; font-size: 1.2rem; opacity: 0.8; color: rgba(255,255,255,0.6);">🤖 AI Powered Development</p>
                 </div>

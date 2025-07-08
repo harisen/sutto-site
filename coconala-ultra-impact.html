@@ -5,6 +5,7 @@
     <title>ココナラ用ウルトラインパクト広告画像</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap');
         
         body {
             font-family: 'Noto Sans JP', Arial, sans-serif;
@@ -73,9 +74,61 @@
             border-radius: 12px;
             color: #FEF3C7;
         }
+        
+        .header {
+            background: #1a1a1a;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            text-decoration: none;
+        }
+        
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #94A3B8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: #fff;
+        }
     </style>
 </head>
 <body>
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <span style="font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 2.8rem; font-weight: 900; color: #2563eb;">スッとサイト</span>
+                    <span style="font-size: 1.1rem; font-weight: 400; color: #64748b; margin-top: -4px; letter-spacing: 0.02em;">個人から企業まで最速・低価格でホームページ制作</span>
+                </div>
+            </a>
+            <nav>
+                <a href="service.html">サービス</a>
+                <a href="pricing.html">料金</a>
+                <a href="portfolio.html">サンプルサイト</a>
+                <a href="contact.html">お問い合わせ</a>
+            </nav>
+        </div>
+    </header>
     <div class="container">
         <h1>🚀 スッとサイト - ウルトラインパクト版</h1>
         <p>超巨大キャッチコピーで圧倒的な存在感を演出</p>
