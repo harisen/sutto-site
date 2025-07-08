@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ココナラ用ウルトラインパクト広告画像</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans JP', Arial, sans-serif;
+            padding: 20px;
+            background: #0a0a0a;
+            margin: 0;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .canvas-wrapper {
+            display: inline-block;
+            margin: 20px 0;
+            box-shadow: 0 30px 100px rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        #coconalaCanvas {
+            display: block;
+            background: white;
+        }
+        
+        button {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 50%, #1E40AF 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 30px rgba(59, 130, 246, 0.4);
+        }
+        
+        button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.6);
+        }
+        
+        h1 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: 900;
+            font-size: 42px;
+        }
+        
+        p {
+            color: #94A3B8;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        
+        .note {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.1));
+            border-left: 4px solid #FBBF24;
+            padding: 24px;
+            margin: 20px 0;
+            border-radius: 12px;
+            color: #FEF3C7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 スッとサイト - ウルトラインパクト版</h1>
+        <p>超巨大キャッチコピーで圧倒的な存在感を演出</p>
+        
+        <div class="note">
+            <strong>🔥 ウルトラインパクトデザイン</strong><br>
+            キャッチコピーを画面の中心に超巨大表示。一目で伝わる強力なメッセージ設計です。
+        </div>
+        
+        <div class="canvas-wrapper">
+            <canvas id="coconalaCanvas" width="1080" height="1080"></canvas>
+        </div>
+        
+        <div>
+            <button onclick="downloadImage()">超高品質JPGをダウンロード</button>
+            <button onclick="downloadImagePNG()">PNG版をダウンロード（最高品質）</button>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('coconalaCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        async function drawUltraImpactDesign() {
+            // 背景：ダイナミックグラデーション
+            const bgGradient = ctx.createRadialGradient(540, 540, 0, 540, 540, 800);
+            bgGradient.addColorStop(0, '#2563EB');
+            bgGradient.addColorStop(0.5, '#1E40AF');
+            bgGradient.addColorStop(1, '#0F172A');
+            ctx.fillStyle = bgGradient;
+            ctx.fillRect(0, 0, 1080, 1080);
+            
+            // 背景パターン（グリッド）
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < 1080; i += 40) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, 1080);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(1080, i);
+                ctx.stroke();
+            }
+            
+            // 光のエフェクト
+            const lightGradient = ctx.createRadialGradient(540, 400, 0, 540, 400, 600);
+            lightGradient.addColorStop(0, 'rgba(255, 255, 255, 0.2)');
+            lightGradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.05)');
+            lightGradient.addColorStop(1, 'transparent');
+            ctx.fillStyle = lightGradient;
+            ctx.fillRect(0, 0, 1080, 1080);
+            
+            // 価格バッジ（右上に小さく）
+            ctx.save();
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+            ctx.shadowBlur = 20;
+            ctx.shadowOffsetY = 10;
+            
+            const priceGradient = ctx.createLinearGradient(820, 60, 1020, 160);
+            priceGradient.addColorStop(0, '#FFD700');
+            priceGradient.addColorStop(1, '#FFA500');
+            ctx.fillStyle = priceGradient;
+            ctx.beginPath();
+            ctx.arc(920, 110, 80, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 価格テキスト
+            ctx.fillStyle = '#000000';
+            ctx.font = '900 32px "Inter", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('¥20,000〜', 920, 120);
+            ctx.restore();
+            
+            // 超巨大キャッチコピー
+            ctx.save();
+            
+            // AI活用バッジ（左上）
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+            ctx.shadowBlur = 15;
+            ctx.shadowOffsetY = 5;
+            
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.beginPath();
+            ctx.roundRect(60, 60, 140, 50, 25);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '700 24px "Inter", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('AI活用', 130, 92);
+            
+            // メガサイズキャッチコピー
+            ctx.textAlign = 'center';
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+            ctx.shadowBlur = 40;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 10;
+            
+            // 「最速」- さらに大きく
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '900 160px "Noto Sans JP", sans-serif';
+            ctx.fillText('最速', 540, 300);
+            
+            // 「即日納品」- 超超特大＆グラデーション
+            const megaGradient = ctx.createLinearGradient(50, 350, 1030, 550);
+            megaGradient.addColorStop(0, '#60A5FA');
+            megaGradient.addColorStop(0.3, '#34D399');
+            megaGradient.addColorStop(0.6, '#FBBF24');
+            megaGradient.addColorStop(1, '#F59E0B');
+            
+            // まず白いアウトラインを描画
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.lineWidth = 10;
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+            ctx.font = '900 220px "Noto Sans JP", sans-serif';
+            ctx.strokeText('即日納品', 540, 520);
+            
+            // その上にグラデーションテキストを描画（フチを隠す）
+            ctx.fillStyle = megaGradient;
+            ctx.fillText('即日納品', 540, 520);
+            
+            // サブメッセージ
+            ctx.shadowBlur = 20;
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '700 44px "Noto Sans JP", sans-serif';
+            ctx.fillText('スッとサイト', 540, 620);
+            
+            ctx.restore();
+            
+            // 特徴セクション（2×2のグリッド配置）
+            const features = [
+                { icon: '⚡', text: '24時間対応' },
+                { icon: '🎨', text: '9業種実績' },
+                { icon: '✓', text: 'テスト確認' },
+                { icon: '💎', text: 'GSAP対応' }
+            ];
+            
+            ctx.save();
+            features.forEach((feature, index) => {
+                const col = index % 2;
+                const row = Math.floor(index / 2);
+                const x = 280 + col * 280;
+                const y = 720 + row * 90;
+                
+                // アイコン背景
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+                ctx.beginPath();
+                ctx.arc(x, y, 35, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // アイコン
+                ctx.font = '32px Arial';
+                ctx.fillStyle = '#FFFFFF';
+                ctx.textAlign = 'center';
+                ctx.fillText(feature.icon, x, y + 10);
+                
+                // テキスト
+                ctx.font = '600 20px "Noto Sans JP", sans-serif';
+                ctx.fillText(feature.text, x + 100, y + 8);
+            });
+            ctx.restore();
+            
+            // CTA（大きめに中央配置）
+            ctx.save();
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+            ctx.shadowBlur = 30;
+            ctx.shadowOffsetY = 10;
+            
+            const ctaGradient = ctx.createLinearGradient(290, 920, 790, 1000);
+            ctaGradient.addColorStop(0, '#FFFFFF');
+            ctaGradient.addColorStop(1, '#F3F4F6');
+            ctx.fillStyle = ctaGradient;
+            ctx.beginPath();
+            ctx.roundRect(290, 920, 500, 80, 40);
+            ctx.fill();
+            
+            ctx.fillStyle = '#1E40AF';
+            ctx.font = '700 32px "Noto Sans JP", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('今すぐ無料相談 →', 540, 970);
+            ctx.restore();
+            
+            // 信頼性要素（最下部にコンパクトに）
+            ctx.save();
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.font = '400 14px "Noto Sans JP", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('レスポンシブ対応 ・ SEO最適化 ・ 高速表示', 540, 1030);
+            
+            ctx.restore();
+            
+            // 装飾的な要素
+            ctx.save();
+            
+            // 光の粒子エフェクト
+            for (let i = 0; i < 30; i++) {
+                const x = Math.random() * 1080;
+                const y = Math.random() * 600;
+                const size = Math.random() * 3 + 1;
+                const opacity = Math.random() * 0.5 + 0.2;
+                
+                ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            ctx.restore();
+        }
+        
+        // roundRect polyfill
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+                if (width < 2 * radius) radius = width / 2;
+                if (height < 2 * radius) radius = height / 2;
+                this.beginPath();
+                this.moveTo(x + radius, y);
+                this.arcTo(x + width, y, x + width, y + height, radius);
+                this.arcTo(x + width, y + height, x, y + height, radius);
+                this.arcTo(x, y + height, x, y, radius);
+                this.arcTo(x, y, x + width, y, radius);
+                this.closePath();
+                return this;
+            }
+        }
+        
+        // 画像ダウンロード（JPG）
+        function downloadImage() {
+            const canvas = document.getElementById('coconalaCanvas');
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'coconala-ultra-impact-lp.jpg';
+                a.click();
+                URL.revokeObjectURL(url);
+            }, 'image/jpeg', 0.98);
+        }
+        
+        // 画像ダウンロード（PNG）
+        function downloadImagePNG() {
+            const canvas = document.getElementById('coconalaCanvas');
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'coconala-ultra-impact-lp.png';
+                a.click();
+                URL.revokeObjectURL(url);
+            }, 'image/png');
+        }
+        
+        // 初期描画
+        drawUltraImpactDesign();
+    </script>
+</body>
+</html>

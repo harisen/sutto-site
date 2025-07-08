@@ -1,4 +1,4 @@
-# robots.txt for LP制作サービス
+# robots.txt for スッとサイト
 # https://lp-service-site.vercel.app/
 
 User-agent: *

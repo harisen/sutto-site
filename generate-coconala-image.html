@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ココナラ用広告画像生成ツール</title>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .canvas-wrapper {
+            display: inline-block;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        canvas {
+            display: block;
+            background: white;
+        }
+        
+        button {
+            padding: 12px 24px;
+            background: #2563EB;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: #1D4ED8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        h1 {
+            color: #1F2937;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            color: #6B7280;
+            margin-bottom: 30px;
+        }
+        
+        .note {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>スッとサイト - ココナラ用広告画像生成</h1>
+        <p>1080x1080pxの正方形広告画像を生成します。</p>
+        
+        <div class="note">
+            <strong>💡 使用方法：</strong>
+            1. 下の画像を確認して、問題なければダウンロードボタンをクリック<br>
+            2. ココナラのプロフィールやサービス画像としてアップロード<br>
+            3. Instagram等のSNSでも使用可能です
+        </div>
+        
+        <div class="canvas-wrapper">
+            <canvas id="coconalaCanvas" width="1080" height="1080"></canvas>
+        </div>
+        
+        <div>
+            <button onclick="downloadImage()">画像をダウンロード（JPG）</button>
+            <button onclick="downloadImagePNG()">PNG版をダウンロード（透過なし）</button>
+        </div>
+    </div>
+
+    <script>
+        // Webフォント読み込み
+        const link = document.createElement('link');
+        link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap';
+        link.rel = 'stylesheet';
+        document.head.appendChild(link);
+        
+        function drawCoconalaImage() {
+            const canvas = document.getElementById('coconalaCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 背景グラデーション
+            const gradient = ctx.createLinearGradient(0, 0, 1080, 1080);
+            gradient.addColorStop(0, '#2563EB');
+            gradient.addColorStop(1, '#10B981');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 1080, 1080);
+            
+            // 装飾的な円
+            ctx.globalAlpha = 0.05;
+            ctx.fillStyle = '#FFFFFF';
+            ctx.beginPath();
+            ctx.arc(900, 200, 300, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.globalAlpha = 0.03;
+            ctx.beginPath();
+            ctx.arc(200, 880, 250, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.globalAlpha = 1;
+            
+            // メインタイトル
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 64px "Noto Sans JP", sans-serif';
+            ctx.fillText('AI活用で', 80, 140);
+            ctx.fillText('最速即日納品！', 80, 220);
+            
+            // サブタイトル
+            ctx.font = '500 44px "Noto Sans JP", sans-serif';
+            ctx.fillText('プロのLP制作サービス', 80, 290);
+            
+            // 価格バッジ
+            ctx.save();
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+            ctx.shadowBlur = 20;
+            ctx.shadowOffsetY = 8;
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(860, 140, 110, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.restore();
+            
+            // 価格テキスト（光沢効果付き）
+            const priceGradient = ctx.createLinearGradient(760, 90, 960, 190);
+            priceGradient.addColorStop(0, '#333333');
+            priceGradient.addColorStop(0.5, '#1a1a1a');
+            priceGradient.addColorStop(1, '#333333');
+            ctx.fillStyle = priceGradient;
+            ctx.font = 'bold 46px "Noto Sans JP", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('¥20,000〜', 860, 150);
+            ctx.textAlign = 'left';
+            
+            // キーポイント
+            const points = [
+                { icon: '⚡', text: '最速即日納品' },
+                { icon: '✅', text: 'テストサイトで確認後に承認' },
+                { icon: '🎨', text: '9業種のサンプル実績' },
+                { icon: '💰', text: '明確な料金体系' }
+            ];
+            
+            points.forEach((point, index) => {
+                const y = 400 + (index * 90);
+                ctx.font = '52px Arial';
+                ctx.fillStyle = 'white';
+                ctx.fillText(point.icon, 80, y);
+                
+                ctx.font = '700 40px "Noto Sans JP", sans-serif';
+                ctx.fillText(point.text, 160, y + 5);
+            });
+            
+            // デバイスモックアップ
+            ctx.save();
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
+            ctx.shadowBlur = 20;
+            ctx.shadowOffsetY = 10;
+            
+            // ノートPC
+            ctx.fillStyle = '#1F2937';
+            ctx.beginPath();
+            ctx.roundRect(640, 450, 300, 180, 8);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(650, 460, 280, 160);
+            
+            // 画面コンテンツ
+            ctx.fillStyle = '#2563EB';
+            ctx.fillRect(660, 470, 260, 40);
+            
+            ctx.fillStyle = '#E5E7EB';
+            ctx.beginPath();
+            ctx.roundRect(660, 520, 180, 20, 4);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.roundRect(660, 550, 220, 20, 4);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.roundRect(660, 580, 150, 20, 4);
+            ctx.fill();
+            
+            // スタンド
+            ctx.fillStyle = '#374151';
+            ctx.beginPath();
+            ctx.roundRect(620, 630, 340, 10, 5);
+            ctx.fill();
+            
+            // タブレット
+            ctx.fillStyle = '#1F2937';
+            ctx.beginPath();
+            ctx.roundRect(590, 570, 180, 240, 12);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(598, 578, 164, 224);
+            
+            ctx.fillStyle = '#2563EB';
+            ctx.fillRect(606, 586, 148, 36);
+            
+            ctx.fillStyle = '#E5E7EB';
+            ctx.beginPath();
+            ctx.roundRect(606, 630, 100, 16, 4);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.roundRect(606, 654, 130, 16, 4);
+            ctx.fill();
+            
+            // スマートフォン
+            ctx.fillStyle = '#1F2937';
+            ctx.beginPath();
+            ctx.roundRect(540, 650, 100, 180, 12);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(546, 656, 88, 168);
+            
+            ctx.fillStyle = '#2563EB';
+            ctx.fillRect(552, 662, 76, 28);
+            
+            ctx.fillStyle = '#E5E7EB';
+            ctx.beginPath();
+            ctx.roundRect(552, 696, 60, 12, 3);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.roundRect(552, 714, 70, 12, 3);
+            ctx.fill();
+            
+            ctx.restore();
+            
+            // トラストバッジ
+            const badges = ['レスポンシブ対応', 'SEO最適化', 'GSAP対応'];
+            badges.forEach((badge, index) => {
+                const x = 80 + (index * 220);
+                
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+                ctx.beginPath();
+                ctx.roundRect(x, 850, index === 0 ? 200 : 140, 60, 30);
+                ctx.fill();
+                
+                ctx.fillStyle = 'white';
+                ctx.font = '700 24px "Noto Sans JP", sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(badge, x + (index === 0 ? 100 : 70), 885);
+            });
+            
+            ctx.textAlign = 'left';
+            
+            // CTA
+            ctx.save();
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+            ctx.shadowBlur = 15;
+            ctx.shadowOffsetY = 6;
+            
+            ctx.fillStyle = '#000000';
+            ctx.beginPath();
+            ctx.roundRect(680, 950, 320, 90, 45);
+            ctx.fill();
+            
+            ctx.restore();
+            
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 32px "Noto Sans JP", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('まずは無料相談から', 840, 1000);
+            ctx.textAlign = 'left';
+        }
+        
+        // roundRect polyfill
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+                if (width < 2 * radius) radius = width / 2;
+                if (height < 2 * radius) radius = height / 2;
+                this.beginPath();
+                this.moveTo(x + radius, y);
+                this.arcTo(x + width, y, x + width, y + height, radius);
+                this.arcTo(x + width, y + height, x, y + height, radius);
+                this.arcTo(x, y + height, x, y, radius);
+                this.arcTo(x, y, x + width, y, radius);
+                this.closePath();
+                return this;
+            }
+        }
+        
+        // 画像ダウンロード（JPG）
+        function downloadImage() {
+            const canvas = document.getElementById('coconalaCanvas');
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'coconala-lp-service-square.jpg';
+                a.click();
+                URL.revokeObjectURL(url);
+            }, 'image/jpeg', 0.95);
+        }
+        
+        // 画像ダウンロード（PNG）
+        function downloadImagePNG() {
+            const canvas = document.getElementById('coconalaCanvas');
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'coconala-lp-service-square.png';
+                a.click();
+                URL.revokeObjectURL(url);
+            }, 'image/png');
+        }
+        
+        // フォント読み込み後に描画
+        document.fonts.ready.then(() => {
+            drawCoconalaImage();
+        });
+        
+        // フォールバック
+        setTimeout(() => {
+            drawCoconalaImage();
+        }, 1000);
+    </script>
+</body>
+</html>
