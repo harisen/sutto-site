@@ -1,5 +1,16 @@
 /* モダンで洗練されたデザイン */
 
+/* ヘッダーロゴの改善 */
+.header .logo {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s ease;
+}
+
+.header .logo:hover {
+    opacity: 0.8;
+}
+
 /* カラー変数の追加 */
 :root {
     --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
