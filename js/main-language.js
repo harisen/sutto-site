@@ -129,7 +129,7 @@ const translations = {
         contact: {
             title: "ホームページ制作のご相談はお気軽に",
             subtitle: "あなたのニーズに最適なサイトをご提案します。",
-            cta: "お問い合わせはこちら"
+            cta: "無料で相談してみる"
         },
         
         // Footer
@@ -284,7 +284,7 @@ const translations = {
         contact: {
             title: "Feel Free to Consult About LP Creation",
             subtitle: "We'll propose the optimal LP for your business.",
-            cta: "Contact Us"
+            cta: "Get Free Consultation"
         },
         
         // Footer
@@ -439,7 +439,7 @@ const translations = {
         contact: {
             title: "歡迎諮詢LP製作",
             subtitle: "我們將為您的業務提供最佳LP方案。",
-            cta: "聯絡我們"
+            cta: "免費諮詢"
         },
         
         // Footer
@@ -754,7 +754,15 @@ function updateLanguage(lang) {
     if (contactSubtitle) contactSubtitle.textContent = t.contact.subtitle;
     
     const contactCta = document.querySelector('#contact .btn-primary');
-    if (contactCta) contactCta.textContent = t.contact.cta;
+    if (contactCta) {
+        const btnText = contactCta.querySelector('.btn-text');
+        if (btnText) {
+            btnText.textContent = t.contact.cta;
+        } else {
+            // フォールバック: btn-textが見つからない場合
+            contactCta.textContent = t.contact.cta;
+        }
+    }
     
     // Update footer
     const footerLogo = document.querySelector('.footer-logo');
