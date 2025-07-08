@@ -38,8 +38,55 @@ const subpageTranslations = {
             title: "サービス詳細",
             subtitle: "スッとサイトの特徴と提供内容",
             hero: {
-                title: "あなたのビジネスを成功に導く<br>スッとサイト",
-                subtitle: "AI技術を活用した高速・高品質なランディングページ制作"
+                title: "サービス詳細",
+                subtitle: "成果を出すLP制作で、ビジネスの成長をサポート"
+            },
+            intro: {
+                title: "なぜランディングページが必要なのか",
+                description: "ランディングページ（LP）は、特定の目的に特化した1ページ完結型のWebページです。訪問者を確実にコンバージョン（購入・お問い合わせなど）へ導くことに特化しており、通常のWebサイトよりも高い成果が期待できます。",
+                benefits: [
+                    "通常のWebサイトよりも<strong>2〜3倍高いコンバージョン率</strong>",
+                    "商品・サービスの魅力を<strong>効果的に伝える</strong>",
+                    "広告との連携で<strong>ROIを最大化</strong>",
+                    "A/Bテストで<strong>継続的な改善が可能</strong>"
+                ],
+                imageAlt: "スッとサイトの重要性"
+            },
+            services: {
+                title: "提供サービス",
+                subtitle: "お客様のビジネスに最適なLPを制作いたします",
+                items: [
+                    {
+                        icon: "🎯",
+                        title: "ターゲット分析",
+                        description: "お客様のターゲット層を詳細に分析し、心に響くメッセージとデザインを設計します。"
+                    },
+                    {
+                        icon: "🎨",
+                        title: "オリジナルデザイン",
+                        description: "ブランドイメージに合わせた、他社と差別化できるオリジナルデザインを制作します。"
+                    },
+                    {
+                        icon: "📱",
+                        title: "レスポンシブ対応",
+                        description: "PC、タブレット、スマートフォンすべてのデバイスで最適な表示を実現します。"
+                    },
+                    {
+                        icon: "⚡",
+                        title: "高速表示",
+                        description: "ページの読み込み速度を最適化し、離脱率を最小限に抑えます。"
+                    },
+                    {
+                        icon: "🔍",
+                        title: "SEO対策",
+                        description: "検索エンジンに評価されやすい構造で、集客力の高いLPを制作します。"
+                    },
+                    {
+                        icon: "📊",
+                        title: "分析ツール設置",
+                        description: "Google Analyticsなどの分析ツールを設置し、効果測定を可能にします。"
+                    }
+                ]
             },
             features: {
                 title: "サービスの特徴",
@@ -64,31 +111,77 @@ const subpageTranslations = {
             },
             process: {
                 title: "制作の流れ",
+                subtitle: "お問い合わせから納品まで、最速即日で対応可能です",
                 steps: [
                     {
-                        title: "お問い合わせ",
-                        description: "まずはお気軽にご相談ください"
+                        number: "1",
+                        title: "お問い合わせ・ヒアリング",
+                        description: "お客様のご要望を詳しくヒアリングします。<br>アンケートフォームにご回答いただきます。"
                     },
                     {
-                        title: "ヒアリング",
-                        description: "ご要望を詳しくお伺いします"
+                        number: "2",
+                        title: "デザイン・制作",
+                        description: "AI技術を活用して迅速に制作を進めます。<br>最速即日での制作も可能です。"
                     },
                     {
-                        title: "デザイン制作",
-                        description: "AI技術を活用して迅速に制作"
+                        number: "3",
+                        title: "テストサイトでご確認",
+                        description: "完成したLPをテストサイトにアップロード。<br>実際の動作をご確認いただけます。"
                     },
                     {
-                        title: "確認・修正",
-                        description: "ご満足いただけるまで調整"
+                        number: "4",
+                        title: "承認・修正対応",
+                        description: "ご確認後、承認またはキャンセルをお選びいただけます。<br>修正が必要な場合は対応いたします。"
                     },
                     {
-                        title: "納品",
-                        description: "完成したLPをお渡しします"
+                        number: "5",
+                        title: "納品・公開サポート",
+                        description: "承認メール受領後、ファイル一式を納品します。<br>公開方法もサポートいたします。"
+                    },
+                    {
+                        number: "6",
+                        title: "お支払い",
+                        description: "納品後1週間以内にお支払いをお願いします。<br>銀行振込でのお支払いとなります。"
                     }
-                ]
+                ],
+                cancelPolicy: {
+                    title: "安心のキャンセルポリシー",
+                    description: "テストサイト確認前なら無料でキャンセル可能。<br>確認後のキャンセルは一律1万円です。"
+                }
+            },
+            limitations: {
+                title: "制作できない機能について",
+                subtitle: "当サービスは静的なLP（HTML/CSS/JavaScript）の制作に特化しています。<br>以下のようなバックエンド処理が必要な機能は実装できません。",
+                cannotCreate: {
+                    title: "❌ 制作できない機能",
+                    items: [
+                        "決済システムの導入",
+                        "会員登録・ログイン機能",
+                        "データベース連携",
+                        "在庫管理システム",
+                        "予約管理システム",
+                        "自動返信メール"
+                    ]
+                },
+                alternatives: {
+                    title: "✅ 代替案で対応可能",
+                    items: [
+                        "Formspreeでのフォーム送信",
+                        "外部予約サイトへのリンク",
+                        "銀行振込の案内表示",
+                        "静的な商品カタログ",
+                        "PDFダウンロード",
+                        "電話・メールでの受付"
+                    ]
+                },
+                note: {
+                    title: "💡 ご注意",
+                    description: "フォームのデザインは作成可能ですが、実際の送信処理には外部サービス（Formspree等）のご契約が必要です。詳しくはお問い合わせ時にご相談ください。"
+                }
             },
             cta: {
-                title: "今すぐLP制作を始めましょう",
+                title: "スッとサイトのご相談はお気軽に",
+                subtitle: "お客様のビジネスに最適なLPをご提案します。",
                 button: "お問い合わせはこちら"
             },
             priceComparison: {
@@ -143,51 +236,159 @@ const subpageTranslations = {
         // Pricing page
         pricing: {
             title: "料金プラン",
-            subtitle: "お客様のニーズに合わせた最適なプランをご用意",
+            subtitle: "明確な料金体系で安心してご依頼いただけます",
             hero: {
-                title: "シンプルで分かりやすい<br>料金体系",
-                subtitle: "初期費用のみ。月額費用は一切かかりません"
+                title: "料金プラン",
+                subtitle: "明確な料金体系で安心してご依頼いただけます"
             },
-            comparison: {
-                title: "プラン比較表",
-                features: [
-                    "オリジナルデザイン",
-                    "レスポンシブ対応",
-                    "SEO基本設定",
-                    "お問い合わせフォーム",
-                    "GSAPアニメーション",
-                    "パララックス効果",
-                    "インタラクティブ要素",
-                    "プレミアムデザイン",
-                    "納期"
-                ],
-                standard: {
-                    name: "スタンダードプラン",
-                    price: "¥20,000",
-                    features: {
-                        "納期": "最速即日〜"
+            basicPricing: {
+                title: "基本料金",
+                items: {
+                    standard: {
+                        name: "基本プラン",
+                        price: "¥20,000",
+                        features: [
+                            "オリジナルデザイン制作",
+                            "レスポンシブ対応（PC/タブレット/スマートフォン）",
+                            "基本的なSEO対策",
+                            "お問い合わせ先（電話・メール）の表示",
+                            "納期：最速即日〜"
+                        ]
+                    },
+                    rich: {
+                        name: "リッチ版プラン",
+                        price: "¥50,000",
+                        features: [
+                            "GSAP高度アニメーション",
+                            "パララックス効果",
+                            "インタラクティブ要素",
+                            "プレミアムデザイン",
+                            "納期：最速即日〜"
+                        ]
                     }
-                },
-                rich: {
-                    name: "リッチプラン",
-                    price: "¥50,000",
-                    features: {
-                        "納期": "最速即日〜"
+                }
+            },
+            revisionPricing: {
+                title: "修正対応料金（制作期間中）",
+                headers: ["修正回数", "料金", "備考"],
+                items: [
+                    {
+                        count: "1回目",
+                        price: "¥10,000",
+                        note: "軽微な修正（テキスト変更、画像差し替えなど）"
+                    },
+                    {
+                        count: "2〜3回目",
+                        price: "¥10,000",
+                        note: "基本料金と同額"
+                    },
+                    {
+                        count: "4〜5回目",
+                        price: "¥15,000",
+                        note: "2回増えるごとに+¥5,000"
+                    },
+                    {
+                        count: "6回目以降",
+                        price: "¥20,000〜",
+                        note: "修正内容により別途見積もり"
+                    }
+                ],
+                note: "ご注意：大幅なデザイン変更や機能追加など、修正要望が多い場合は別途お見積もりとなる場合があります。\n※上記は制作期間中の修正料金です。納品後の修正は「制作完了後の追加修正」料金（¥20,000〜）が適用されます。"
+            },
+            cancellationPolicy: {
+                title: "キャンセルポリシー",
+                headers: ["キャンセルタイミング", "キャンセル料", "備考"],
+                items: [
+                    {
+                        timing: "テストサイト確認前",
+                        fee: "無料",
+                        note: "制作着手前のキャンセルは料金はかかりません"
+                    },
+                    {
+                        timing: "テストサイト確認後",
+                        fee: "¥10,000",
+                        note: "制作物をご確認いただいた後のキャンセル"
+                    },
+                    {
+                        timing: "承認メール送信後",
+                        fee: "全額（¥20,000〜）",
+                        note: "納品承認後のキャンセルは全額請求となります"
+                    }
+                ]
+            },
+            additionalCosts: {
+                title: "別途必要な費用",
+                note: "ご注意：以下の費用はスッとサイト制作費とは別に必要となります。詳しくは公開ガイドをご参照ください。",
+                items: {
+                    sitePublication: {
+                        name: "サイト公開代行",
+                        price: "年額 ¥20,000",
+                        features: [
+                            "ドメイン取得代行（.com/.net）",
+                            "サーバー設定・公開作業",
+                            "SSL証明書設定",
+                            "Google Search Console登録",
+                            "※ドメイン代込み・追加料金なし"
+                        ]
+                    },
+                    additionalPages: {
+                        name: "追加ページ制作",
+                        price: "¥8,000〜/ページ",
+                        features: [
+                            "プライバシーポリシー",
+                            "特定商取引法ページ",
+                            "その他追加ページ"
+                        ]
+                    },
+                    multilingual: {
+                        name: "多言語対応",
+                        price: "¥15,000〜/言語",
+                        features: [
+                            "英語、中国語など",
+                            "言語切り替え機能",
+                            "翻訳は別途"
+                        ]
+                    },
+                    postDeliveryRevisions: {
+                        name: "制作完了後の追加修正",
+                        price: "¥20,000〜",
+                        features: [
+                            "新規セクション追加",
+                            "大幅なデザイン変更",
+                            "機能追加"
+                        ]
                     }
                 }
             },
             faq: {
-                title: "料金に関するよくある質問",
+                title: "よくあるご質問",
                 items: [
                     {
-                        question: "追加料金はかかりますか？",
-                        answer: "基本的にはプラン料金のみで、追加料金はかかりません。ただし、大幅な仕様変更や追加機能のご要望がある場合は、別途お見積りをさせていただきます。"
+                        question: "制作期間はどのくらいかかりますか？",
+                        answer: "通常、ご発注から約2週間で納品いたします。ただし、修正回数や内容により前後する場合があります。お急ぎの場合は別途ご相談ください。"
                     },
                     {
-                        question: "支払い方法は？",
-                        answer: "銀行振込またはクレジットカード決済に対応しています。詳細はお問い合わせ時にご案内いたします。"
+                        question: "支払い方法を教えてください",
+                        answer: "銀行振込をお願いしております。納品後1週間以内のお支払いとなります。詳細はお問い合わせ時にご案内いたします。"
+                    },
+                    {
+                        question: "キャンセルは可能ですか？",
+                        answer: "テストサイト確認前であればキャンセル料は発生しません。テストサイト確認後のキャンセルは一律1万円のキャンセル料をいただきます。承認後の納品キャンセルは全額請求となります。"
+                    },
+                    {
+                        question: "納品後のサポートはありますか？",
+                        answer: "納品後1週間は無料で軽微な修正に対応いたします。それ以降の修正は修正対応料金表に基づいて対応させていただきます。"
+                    },
+                    {
+                        question: "サンプルサイトを見ることはできますか？",
+                        answer: "はい、サンプルサイトページでサンプルをご覧いただけます。実際の制作事例については、お問い合わせ時に詳しくご紹介いたします。"
                     }
                 ]
+            },
+            estimate: {
+                title: "お見積もりは無料です",
+                description: "まずはお気軽にご相談ください。お客様のご要望に合わせて最適なプランをご提案いたします。",
+                cta: "無料でお見積もり"
             }
         },
         
@@ -616,8 +817,55 @@ const subpageTranslations = {
             title: "Service Details",
             subtitle: "Features and offerings of our LP creation service",
             hero: {
-                title: "LP Creation Service to<br>Lead Your Business to Success",
-                subtitle: "High-speed, high-quality landing page creation utilizing AI technology"
+                title: "Service Details",
+                subtitle: "Supporting your business growth with result-oriented LP creation"
+            },
+            intro: {
+                title: "Why Do You Need a Landing Page?",
+                description: "A landing page (LP) is a single-page website designed for a specific purpose. It is specialized in guiding visitors to conversions (purchases, inquiries, etc.) and can deliver higher results than regular websites.",
+                benefits: [
+                    "<strong>2-3 times higher conversion rate</strong> than regular websites",
+                    "<strong>Effectively communicate</strong> product/service appeal",
+                    "<strong>Maximize ROI</strong> through ad integration",
+                    "<strong>Continuous improvement possible</strong> through A/B testing"
+                ],
+                imageAlt: "Importance of Landing Pages"
+            },
+            services: {
+                title: "Our Services",
+                subtitle: "We create the optimal LP for your business",
+                items: [
+                    {
+                        icon: "🎯",
+                        title: "Target Analysis",
+                        description: "We analyze your target audience in detail and design messages and designs that resonate."
+                    },
+                    {
+                        icon: "🎨",
+                        title: "Original Design",
+                        description: "We create original designs that match your brand image and differentiate from competitors."
+                    },
+                    {
+                        icon: "📱",
+                        title: "Responsive Design",
+                        description: "Optimal display on all devices including PC, tablet, and smartphone."
+                    },
+                    {
+                        icon: "⚡",
+                        title: "Fast Loading",
+                        description: "We optimize page loading speed to minimize bounce rates."
+                    },
+                    {
+                        icon: "🔍",
+                        title: "SEO Optimization",
+                        description: "We create LPs with high traffic potential through search engine-friendly structure."
+                    },
+                    {
+                        icon: "📊",
+                        title: "Analytics Setup",
+                        description: "We set up analytics tools like Google Analytics for performance measurement."
+                    }
+                ]
             },
             features: {
                 title: "Service Features",
@@ -642,31 +890,77 @@ const subpageTranslations = {
             },
             process: {
                 title: "Production Flow",
+                subtitle: "From inquiry to delivery, we can respond as fast as same day",
                 steps: [
                     {
-                        title: "Inquiry",
-                        description: "Please feel free to contact us"
+                        number: "1",
+                        title: "Inquiry & Consultation",
+                        description: "We'll listen to your requirements in detail.<br>Please fill out our questionnaire form."
                     },
                     {
-                        title: "Consultation",
-                        description: "We'll listen to your requirements in detail"
+                        number: "2",
+                        title: "Design & Production",
+                        description: "Quick production using AI technology.<br>Same-day production is possible."
                     },
                     {
-                        title: "Design Production",
-                        description: "Quick production using AI technology"
+                        number: "3",
+                        title: "Test Site Review",
+                        description: "We upload the completed LP to a test site.<br>You can check the actual functionality."
                     },
                     {
-                        title: "Review & Revision",
-                        description: "Adjustments until you're satisfied"
+                        number: "4",
+                        title: "Approval & Revisions",
+                        description: "After review, you can choose to approve or cancel.<br>We'll make revisions if needed."
                     },
                     {
-                        title: "Delivery",
-                        description: "We deliver the completed LP"
+                        number: "5",
+                        title: "Delivery & Launch Support",
+                        description: "After receiving approval email, we deliver all files.<br>We also support the launch process."
+                    },
+                    {
+                        number: "6",
+                        title: "Payment",
+                        description: "Please make payment within 1 week after delivery.<br>Payment by bank transfer."
                     }
-                ]
+                ],
+                cancelPolicy: {
+                    title: "Worry-Free Cancellation Policy",
+                    description: "Free cancellation before test site review.<br>Flat fee of ¥10,000 for cancellation after review."
+                }
+            },
+            limitations: {
+                title: "Features We Cannot Implement",
+                subtitle: "Our service specializes in static LP (HTML/CSS/JavaScript) creation.<br>We cannot implement features requiring backend processing as listed below.",
+                cannotCreate: {
+                    title: "❌ Features We Cannot Create",
+                    items: [
+                        "Payment system integration",
+                        "Member registration/login features",
+                        "Database integration",
+                        "Inventory management system",
+                        "Reservation management system",
+                        "Automated email responses"
+                    ]
+                },
+                alternatives: {
+                    title: "✅ Alternative Solutions Available",
+                    items: [
+                        "Form submission via Formspree",
+                        "Links to external booking sites",
+                        "Bank transfer instructions",
+                        "Static product catalog",
+                        "PDF downloads",
+                        "Phone/email reception"
+                    ]
+                },
+                note: {
+                    title: "💡 Please Note",
+                    description: "We can create form designs, but actual submission requires external service (like Formspree) subscription. Please consult us for details."
+                }
             },
             cta: {
-                title: "Start Your LP Creation Now",
+                title: "Feel Free to Consult About Sutto Site",
+                subtitle: "We'll propose the optimal LP for your business.",
                 button: "Contact Us"
             },
             priceComparison: {
@@ -721,51 +1015,159 @@ const subpageTranslations = {
         // Pricing page
         pricing: {
             title: "Pricing Plans",
-            subtitle: "We offer optimal plans tailored to your needs",
+            subtitle: "Clear pricing structure for peace of mind",
             hero: {
-                title: "Simple and Clear<br>Pricing Structure",
-                subtitle: "One-time fee only. No monthly charges"
+                title: "Pricing Plans",
+                subtitle: "Clear pricing structure for peace of mind"
             },
-            comparison: {
-                title: "Plan Comparison",
-                features: [
-                    "Original Design",
-                    "Responsive Design",
-                    "Basic SEO Settings",
-                    "Contact Form",
-                    "GSAP Animations",
-                    "Parallax Effects",
-                    "Interactive Elements",
-                    "Premium Design",
-                    "Delivery Time"
-                ],
-                standard: {
-                    name: "Standard Plan",
-                    price: "¥20,000",
-                    features: {
-                        "Delivery Time": "From Same Day"
+            basicPricing: {
+                title: "Basic Pricing",
+                items: {
+                    standard: {
+                        name: "Basic Plan",
+                        price: "¥20,000",
+                        features: [
+                            "Original design creation",
+                            "Responsive design (PC/Tablet/Smartphone)",
+                            "Basic SEO optimization",
+                            "Contact information display (phone/email)",
+                            "Delivery: From same day"
+                        ]
+                    },
+                    rich: {
+                        name: "Rich Plan",
+                        price: "¥50,000",
+                        features: [
+                            "Advanced GSAP animations",
+                            "Parallax effects",
+                            "Interactive elements",
+                            "Premium design",
+                            "Delivery: From same day"
+                        ]
                     }
-                },
-                rich: {
-                    name: "Rich Plan",
-                    price: "¥50,000",
-                    features: {
-                        "Delivery Time": "From Same Day"
+                }
+            },
+            revisionPricing: {
+                title: "Revision Fees (During Production)",
+                headers: ["Revision Count", "Fee", "Notes"],
+                items: [
+                    {
+                        count: "1st revision",
+                        price: "¥10,000",
+                        note: "Minor revisions (text changes, image replacements, etc.)"
+                    },
+                    {
+                        count: "2nd-3rd revision",
+                        price: "¥10,000",
+                        note: "Same as base fee"
+                    },
+                    {
+                        count: "4th-5th revision",
+                        price: "¥15,000",
+                        note: "+¥5,000 for every 2 revisions"
+                    },
+                    {
+                        count: "6th revision onwards",
+                        price: "¥20,000+",
+                        note: "Separate quote based on content"
+                    }
+                ],
+                note: "Note: For major design changes or feature additions, separate quotes may apply.\n* These are revision fees during production. Post-delivery revisions are charged at 'Post-Completion Additional Revision' rates (¥20,000+)."
+            },
+            cancellationPolicy: {
+                title: "Cancellation Policy",
+                headers: ["Cancellation Timing", "Cancellation Fee", "Notes"],
+                items: [
+                    {
+                        timing: "Before test site review",
+                        fee: "Free",
+                        note: "No charge for cancellation before production starts"
+                    },
+                    {
+                        timing: "After test site review",
+                        fee: "¥10,000",
+                        note: "Cancellation after reviewing the product"
+                    },
+                    {
+                        timing: "After approval email sent",
+                        fee: "Full amount (¥20,000+)",
+                        note: "Full payment required for cancellation after delivery approval"
+                    }
+                ]
+            },
+            additionalCosts: {
+                title: "Additional Costs",
+                note: "Note: The following costs are separate from Sutto Site production fees. Please refer to the publishing guide for details.",
+                items: {
+                    sitePublication: {
+                        name: "Site Publishing Service",
+                        price: "Annual ¥20,000",
+                        features: [
+                            "Domain registration (.com/.net)",
+                            "Server setup and publishing",
+                            "SSL certificate setup",
+                            "Google Search Console registration",
+                            "* Domain fee included, no additional charges"
+                        ]
+                    },
+                    additionalPages: {
+                        name: "Additional Page Creation",
+                        price: "¥8,000+/page",
+                        features: [
+                            "Privacy Policy",
+                            "Legal Notices",
+                            "Other additional pages"
+                        ]
+                    },
+                    multilingual: {
+                        name: "Multilingual Support",
+                        price: "¥15,000+/language",
+                        features: [
+                            "English, Chinese, etc.",
+                            "Language switching functionality",
+                            "Translation services separate"
+                        ]
+                    },
+                    postDeliveryRevisions: {
+                        name: "Post-Completion Revisions",
+                        price: "¥20,000+",
+                        features: [
+                            "New section additions",
+                            "Major design changes",
+                            "Feature additions"
+                        ]
                     }
                 }
             },
             faq: {
-                title: "Frequently Asked Questions About Pricing",
+                title: "Frequently Asked Questions",
                 items: [
                     {
-                        question: "Are there any additional charges?",
-                        answer: "Basically, only the plan fee is charged, with no additional fees. However, for major specification changes or additional feature requests, we will provide a separate quote."
+                        question: "How long does production take?",
+                        answer: "Usually, we deliver within about 2 weeks from order. However, this may vary depending on the number and content of revisions. Please consult us if you need urgent delivery."
                     },
                     {
                         question: "What payment methods are available?",
-                        answer: "We accept bank transfer or credit card payment. Details will be provided when you contact us."
+                        answer: "We accept bank transfer. Payment is due within 1 week after delivery. Details will be provided when you contact us."
+                    },
+                    {
+                        question: "Is cancellation possible?",
+                        answer: "No cancellation fee before test site review. A flat fee of ¥10,000 applies for cancellation after test site review. Full payment is required for cancellation after approval."
+                    },
+                    {
+                        question: "Is there post-delivery support?",
+                        answer: "We provide free minor revision support for 1 week after delivery. Subsequent revisions are handled according to the revision fee schedule."
+                    },
+                    {
+                        question: "Can I see sample sites?",
+                        answer: "Yes, you can view samples on our sample sites page. We'll provide more detailed examples when you contact us."
                     }
                 ]
+            },
+            estimate: {
+                title: "Free Estimates Available",
+                description: "Feel free to contact us. We'll propose the optimal plan based on your requirements.",
+                cta: "Get Free Estimate"
             }
         },
         
@@ -1194,8 +1596,55 @@ const subpageTranslations = {
             title: "服務詳情",
             subtitle: "LP製作服務的特色與提供內容",
             hero: {
-                title: "引領您的業務邁向成功的<br>LP製作服務",
-                subtitle: "運用AI技術的高速、高品質登陸頁製作"
+                title: "服務詳情",
+                subtitle: "以成果導向的LP製作支持您的業務成長"
+            },
+            intro: {
+                title: "為什麼需要登陸頁？",
+                description: "登陸頁（LP）是針對特定目的設計的單頁網站。它專門引導訪客進行轉換（購買、諮詢等），可以提供比一般網站更高的成果。",
+                benefits: [
+                    "比一般網站<strong>高2-3倍的轉換率</strong>",
+                    "<strong>有效傳達</strong>產品・服務的魅力",
+                    "透過廣告整合<strong>最大化ROI</strong>",
+                    "透過A/B測試<strong>持續改善</strong>"
+                ],
+                imageAlt: "登陸頁的重要性"
+            },
+            services: {
+                title: "提供服務",
+                subtitle: "我們為您的業務製作最佳LP",
+                items: [
+                    {
+                        icon: "🎯",
+                        title: "目標分析",
+                        description: "詳細分析您的目標客群，設計能夠打動人心的訊息和設計。"
+                    },
+                    {
+                        icon: "🎨",
+                        title: "原創設計",
+                        description: "配合您的品牌形象，製作能夠與競爭對手區別的原創設計。"
+                    },
+                    {
+                        icon: "📱",
+                        title: "響應式設計",
+                        description: "在PC、平板、智慧型手機所有裝置上實現最佳顯示。"
+                    },
+                    {
+                        icon: "⚡",
+                        title: "高速顯示",
+                        description: "優化頁面載入速度，將跳出率降到最低。"
+                    },
+                    {
+                        icon: "🔍",
+                        title: "SEO對策",
+                        description: "以搜尋引擎友善的結構製作高流量潛力的LP。"
+                    },
+                    {
+                        icon: "📊",
+                        title: "分析工具設置",
+                        description: "設置Google Analytics等分析工具，使效果測量成為可能。"
+                    }
+                ]
             },
             features: {
                 title: "服務特色",
@@ -1220,31 +1669,77 @@ const subpageTranslations = {
             },
             process: {
                 title: "製作流程",
+                subtitle: "從諮詢到交付，最快當日可完成",
                 steps: [
                     {
-                        title: "諮詢",
-                        description: "請隨時與我們聯絡"
+                        number: "1",
+                        title: "諮詢・需求訪談",
+                        description: "詳細了解您的需求。<br>請填寫我們的問卷表單。"
                     },
                     {
-                        title: "需求訪談",
-                        description: "詳細了解您的需求"
+                        number: "2",
+                        title: "設計・製作",
+                        description: "運用AI技術快速製作。<br>可以當日完成。"
                     },
                     {
-                        title: "設計製作",
-                        description: "運用AI技術快速製作"
+                        number: "3",
+                        title: "測試網站確認",
+                        description: "將完成的LP上傳到測試網站。<br>您可以確認實際功能。"
                     },
                     {
-                        title: "確認、修改",
-                        description: "調整至您滿意為止"
+                        number: "4",
+                        title: "批准・修改",
+                        description: "確認後，您可以選擇批准或取消。<br>如需修改，我們會處理。"
                     },
                     {
-                        title: "交付",
-                        description: "交付完成的LP"
+                        number: "5",
+                        title: "交付・發布支持",
+                        description: "收到批准郵件後，交付所有檔案。<br>我們也支持發布流程。"
+                    },
+                    {
+                        number: "6",
+                        title: "付款",
+                        description: "請在交付後1週內付款。<br>通過銀行轉帳付款。"
                     }
-                ]
+                ],
+                cancelPolicy: {
+                    title: "安心的取消政策",
+                    description: "測試網站確認前可免費取消。<br>確認後取消需支付¥10,000。"
+                }
+            },
+            limitations: {
+                title: "無法製作的功能",
+                subtitle: "我們的服務專門製作靜態LP（HTML/CSS/JavaScript）。<br>以下需要後端處理的功能無法實現。",
+                cannotCreate: {
+                    title: "❌ 無法製作的功能",
+                    items: [
+                        "付款系統整合",
+                        "會員註冊/登入功能",
+                        "資料庫整合",
+                        "庫存管理系統",
+                        "預約管理系統",
+                        "自動回覆郵件"
+                    ]
+                },
+                alternatives: {
+                    title: "✅ 可以替代方案",
+                    items: [
+                        "透過Formspree提交表單",
+                        "鏈接到外部預訂網站",
+                        "銀行轉帳說明",
+                        "靜態產品目錄",
+                        "PDF下載",
+                        "電話/郵件接受"
+                    ]
+                },
+                note: {
+                    title: "💡 請注意",
+                    description: "我們可以製作表單設計，但實際提交需要外部服務（如Formspree）訂閱。請諮詢我們以獲得詳細資訊。"
+                }
             },
             cta: {
-                title: "立即開始LP製作",
+                title: "隨時諮詢快速網站",
+                subtitle: "我們將為您的業務提供最佳LP。",
                 button: "聯絡我們"
             },
             priceComparison: {
@@ -1299,51 +1794,159 @@ const subpageTranslations = {
         // Pricing page
         pricing: {
             title: "價格方案",
-            subtitle: "我們提供符合客戶需求的最佳方案",
+            subtitle: "明確的價格體系讓您安心委託",
             hero: {
-                title: "簡單明瞭的<br>價格體系",
-                subtitle: "僅需初期費用。無任何月費"
+                title: "價格方案",
+                subtitle: "明確的價格體系讓您安心委託"
             },
-            comparison: {
-                title: "方案比較表",
-                features: [
-                    "原創設計",
-                    "響應式設計",
-                    "基本SEO設定",
-                    "聯絡表單",
-                    "GSAP動畫",
-                    "視差效果",
-                    "互動元素",
-                    "頂級設計",
-                    "交期"
-                ],
-                standard: {
-                    name: "標準方案",
-                    price: "¥20,000",
-                    features: {
-                        "交期": "最快當日～"
+            basicPricing: {
+                title: "基本價格",
+                items: {
+                    standard: {
+                        name: "基本方案",
+                        price: "¥20,000",
+                        features: [
+                            "原創設計製作",
+                            "響應式設計（PC/平板/智慧型手機）",
+                            "基本SEO對策",
+                            "聯絡方式顯示（電話・電子郵件）",
+                            "交期：最快當日～"
+                        ]
+                    },
+                    rich: {
+                        name: "豪華版方案",
+                        price: "¥50,000",
+                        features: [
+                            "GSAP高級動畫",
+                            "視差效果",
+                            "互動元素",
+                            "頂級設計",
+                            "交期：最快當日～"
+                        ]
                     }
-                },
-                rich: {
-                    name: "豪華方案",
-                    price: "¥50,000",
-                    features: {
-                        "交期": "最快當日～"
+                }
+            },
+            revisionPricing: {
+                title: "修改對應費用（製作期間中）",
+                headers: ["修改次數", "費用", "備註"],
+                items: [
+                    {
+                        count: "第1次",
+                        price: "¥10,000",
+                        note: "輕微修改（文字變更、圖片替換等）"
+                    },
+                    {
+                        count: "第2～3次",
+                        price: "¥10,000",
+                        note: "與基本費用相同"
+                    },
+                    {
+                        count: "第4～5次",
+                        price: "¥15,000",
+                        note: "每增加2次+¥5,000"
+                    },
+                    {
+                        count: "第6次以後",
+                        price: "¥20,000～",
+                        note: "根據修改內容另行報價"
+                    }
+                ],
+                note: "注意：如有重大設計變更或功能追加等大量修改需求，可能需要另行報價。\n※以上為製作期間中的修改費用。交付後的修改適用「製作完成後的追加修改」費用（¥20,000～）。"
+            },
+            cancellationPolicy: {
+                title: "取消政策",
+                headers: ["取消時機", "取消費用", "備註"],
+                items: [
+                    {
+                        timing: "測試網站確認前",
+                        fee: "免費",
+                        note: "製作開始前取消不收取費用"
+                    },
+                    {
+                        timing: "測試網站確認後",
+                        fee: "¥10,000",
+                        note: "確認製作物後的取消"
+                    },
+                    {
+                        timing: "核准郵件發送後",
+                        fee: "全額（¥20,000～）",
+                        note: "交付核准後取消需支付全額"
+                    }
+                ]
+            },
+            additionalCosts: {
+                title: "另需費用",
+                note: "注意：以下費用與快速網站製作費分開計算。詳情請參考公開指南。",
+                items: {
+                    sitePublication: {
+                        name: "網站公開代行",
+                        price: "年費 ¥20,000",
+                        features: [
+                            "網域取得代行（.com/.net）",
+                            "伺服器設定・公開作業",
+                            "SSL憑證設定",
+                            "Google Search Console註冊",
+                            "※包含網域費用・無追加費用"
+                        ]
+                    },
+                    additionalPages: {
+                        name: "追加頁面製作",
+                        price: "¥8,000～/頁",
+                        features: [
+                            "隱私政策",
+                            "特定商業交易法頁面",
+                            "其他追加頁面"
+                        ]
+                    },
+                    multilingual: {
+                        name: "多語言對應",
+                        price: "¥15,000～/語言",
+                        features: [
+                            "英語、中文等",
+                            "語言切換功能",
+                            "翻譯另計"
+                        ]
+                    },
+                    postDeliveryRevisions: {
+                        name: "製作完成後的追加修改",
+                        price: "¥20,000～",
+                        features: [
+                            "新增區塊",
+                            "大幅設計變更",
+                            "功能追加"
+                        ]
                     }
                 }
             },
             faq: {
-                title: "關於價格的常見問題",
+                title: "常見問題",
                 items: [
                     {
-                        question: "是否有額外費用？",
-                        answer: "基本上只收取方案費用，無額外費用。但如有重大規格變更或額外功能需求，將另行報價。"
+                        question: "製作期間需要多久？",
+                        answer: "通常從下單到交付約需2週。但根據修改次數和內容可能有所變動。如需急件請另行商議。"
                     },
                     {
-                        question: "付款方式有哪些？",
-                        answer: "我們接受銀行轉帳或信用卡付款。詳情將在諮詢時說明。"
+                        question: "請問付款方式",
+                        answer: "請使用銀行轉帳。交付後1週內付款。詳情將在諮詢時說明。"
+                    },
+                    {
+                        question: "可以取消嗎？",
+                        answer: "測試網站確認前可免費取消。測試網站確認後取消需支付¥10,000取消費。核准後取消需支付全額。"
+                    },
+                    {
+                        question: "交付後有支援嗎？",
+                        answer: "交付後1週內免費提供輕微修改支援。之後的修改將根據修改對應費用表收費。"
+                    },
+                    {
+                        question: "可以看範例網站嗎？",
+                        answer: "是的，您可以在範例網站頁面查看範例。諮詢時我們將詳細介紹實際製作案例。"
                     }
                 ]
+            },
+            estimate: {
+                title: "免費報價",
+                description: "歡迎隨時諮詢。我們將根據您的需求提供最佳方案。",
+                cta: "免費報價"
             }
         },
         
@@ -1992,50 +2595,147 @@ function updateServicePage(t) {
     if (pageTitle) pageTitle.textContent = t.title + ' | ' + subpageTranslations[currentLang].nav.logo;
     
     // Update hero
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) heroTitle.innerHTML = t.hero.title;
+    const heroTitle = document.querySelector('.service-hero h1');
+    if (heroTitle) heroTitle.textContent = t.hero.title;
     
-    const heroSubtitle = document.querySelector('.hero-subtitle');
+    const heroSubtitle = document.querySelector('.service-hero p');
     if (heroSubtitle) heroSubtitle.textContent = t.hero.subtitle;
     
-    // Update features section
-    const featuresTitle = document.querySelector('.features-section h2');
-    if (featuresTitle) featuresTitle.textContent = t.features.title;
+    // Update intro section
+    const introTitle = document.querySelector('.service-intro h2');
+    if (introTitle) introTitle.textContent = t.intro.title;
     
-    const featureItems = document.querySelectorAll('.feature-item');
-    if (featureItems.length >= 4) {
-        featureItems.forEach((item, index) => {
-            if (t.features.items[index]) {
-                const title = item.querySelector('h3');
-                const description = item.querySelector('p');
-                if (title) title.textContent = t.features.items[index].title;
-                if (description) description.textContent = t.features.items[index].description;
+    const introDescription = document.querySelector('.service-intro > div > p');
+    if (introDescription) introDescription.textContent = t.intro.description;
+    
+    const introBenefits = document.querySelectorAll('.service-intro ul li');
+    if (introBenefits.length >= 4) {
+        introBenefits.forEach((li, index) => {
+            if (t.intro.benefits[index]) {
+                li.innerHTML = '✓ ' + t.intro.benefits[index];
             }
         });
+    }
+    
+    const introImage = document.querySelector('.service-intro img');
+    if (introImage) introImage.alt = t.intro.imageAlt;
+    
+    // Update services section
+    const servicesSection = document.querySelector('section[style*="background-color: var(--bg-light)"]');
+    if (servicesSection) {
+        const servicesTitle = servicesSection.querySelector('h2');
+        if (servicesTitle) servicesTitle.textContent = t.services.title;
+        
+        const servicesSubtitle = servicesSection.querySelector('p');
+        if (servicesSubtitle) servicesSubtitle.textContent = t.services.subtitle;
+        
+        const benefitCards = document.querySelectorAll('.benefit-card');
+        if (benefitCards.length >= 6) {
+            benefitCards.forEach((card, index) => {
+                if (t.services.items[index]) {
+                    const icon = card.querySelector('.benefit-icon');
+                    const title = card.querySelector('h3');
+                    const description = card.querySelector('p');
+                    
+                    if (icon) icon.textContent = t.services.items[index].icon;
+                    if (title) title.textContent = t.services.items[index].title;
+                    if (description) description.textContent = t.services.items[index].description;
+                }
+            });
+        }
     }
     
     // Update process section
-    const processTitle = document.querySelector('.process-section h2');
-    if (processTitle) processTitle.textContent = t.process.title;
-    
-    const processSteps = document.querySelectorAll('.process-step');
-    if (processSteps.length >= 5) {
-        processSteps.forEach((step, index) => {
-            if (t.process.steps[index]) {
-                const title = step.querySelector('h3');
-                const description = step.querySelector('p');
-                if (title) title.textContent = t.process.steps[index].title;
-                if (description) description.textContent = t.process.steps[index].description;
+    const processSection = document.querySelector('.section:has(.process-timeline)');
+    if (processSection && t.process) {
+        const processTitle = processSection.querySelector('h2');
+        if (processTitle) processTitle.textContent = t.process.title;
+        
+        const processSubtitle = processSection.querySelector('p');
+        if (processSubtitle) processSubtitle.textContent = t.process.subtitle;
+        
+        const processItems = document.querySelectorAll('.process-item');
+        if (processItems.length >= 6) {
+            processItems.forEach((item, index) => {
+                if (t.process.steps[index]) {
+                    const number = item.querySelector('.process-number');
+                    const title = item.querySelector('h3');
+                    const description = item.querySelector('p');
+                    
+                    if (number) number.textContent = t.process.steps[index].number;
+                    if (title) title.textContent = t.process.steps[index].title;
+                    if (description) description.innerHTML = t.process.steps[index].description;
+                }
+            });
+        }
+        
+        // Update cancel policy
+        const cancelPolicyBox = processSection.querySelector('div[style*="background: #E0F2FE"]');
+        if (cancelPolicyBox && t.process.cancelPolicy) {
+            const cancelTitle = cancelPolicyBox.querySelector('strong');
+            if (cancelTitle) cancelTitle.textContent = t.process.cancelPolicy.title;
+            
+            const cancelDescription = cancelPolicyBox.querySelector('p');
+            if (cancelDescription) {
+                cancelDescription.innerHTML = `<strong>${t.process.cancelPolicy.title}</strong><br>${t.process.cancelPolicy.description}`;
             }
-        });
+        }
     }
     
-    // Update CTA
-    const ctaTitle = document.querySelector('.cta-section h2');
-    if (ctaTitle) ctaTitle.textContent = t.cta.title;
+    // Update limitations section
+    const limitationsSection = document.querySelector('section[style*="background-color: #FFF3CD"]');
+    if (limitationsSection && t.limitations) {
+        const limitTitle = limitationsSection.querySelector('h2');
+        if (limitTitle) limitTitle.textContent = t.limitations.title;
+        
+        const limitSubtitle = limitationsSection.querySelector('p:first-of-type');
+        if (limitSubtitle) limitSubtitle.innerHTML = t.limitations.subtitle;
+        
+        // Cannot create section
+        const cannotTitle = limitationsSection.querySelector('h4[style*="color: #DC3545"]');
+        if (cannotTitle) cannotTitle.textContent = t.limitations.cannotCreate.title;
+        
+        const cannotItems = limitationsSection.querySelectorAll('div:first-child ul li');
+        if (cannotItems.length >= 6) {
+            cannotItems.forEach((li, index) => {
+                if (t.limitations.cannotCreate.items[index]) {
+                    li.textContent = '・' + t.limitations.cannotCreate.items[index];
+                }
+            });
+        }
+        
+        // Alternatives section
+        const altTitle = limitationsSection.querySelector('h4[style*="color: #28A745"]');
+        if (altTitle) altTitle.textContent = t.limitations.alternatives.title;
+        
+        const altItems = limitationsSection.querySelectorAll('div:nth-child(2) ul li');
+        if (altItems.length >= 6) {
+            altItems.forEach((li, index) => {
+                if (t.limitations.alternatives.items[index]) {
+                    li.textContent = '・' + t.limitations.alternatives.items[index];
+                }
+            });
+        }
+        
+        // Note section
+        const noteBox = limitationsSection.querySelector('p[style*="background: #F8F9FA"]');
+        if (noteBox && t.limitations.note) {
+            noteBox.innerHTML = `<strong>${t.limitations.note.title}</strong><br>${t.limitations.note.description}`;
+        }
+    }
     
-    const ctaButton = document.querySelector('.cta-section .btn-primary');
-    if (ctaButton) ctaButton.textContent = t.cta.button;
+    // Update final CTA section
+    const finalCTASection = document.querySelector('.section:last-of-type:not(.footer)');
+    if (finalCTASection && t.cta) {
+        const ctaTitle = finalCTASection.querySelector('h2');
+        if (ctaTitle) ctaTitle.textContent = t.cta.title;
+        
+        const ctaSubtitle = finalCTASection.querySelector('p');
+        if (ctaSubtitle) ctaSubtitle.textContent = t.cta.subtitle;
+        
+        const ctaButton = finalCTASection.querySelector('.btn-primary');
+        if (ctaButton) ctaButton.textContent = t.cta.button;
+    }
     
     // Update Price Comparison section
     if (t.priceComparison) {
@@ -2169,48 +2869,182 @@ function updatePricingPage(t) {
     const pageTitle = document.querySelector('title');
     if (pageTitle) pageTitle.textContent = t.title + ' | ' + subpageTranslations[currentLang].nav.logo;
     
-    // Update hero
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) heroTitle.innerHTML = t.hero.title;
+    // Update hero section
+    const heroTitle = document.querySelector('.pricing-hero h1');
+    if (heroTitle) heroTitle.textContent = t.hero.title;
     
-    const heroSubtitle = document.querySelector('.hero-subtitle');
+    const heroSubtitle = document.querySelector('.pricing-hero p');
     if (heroSubtitle) heroSubtitle.textContent = t.hero.subtitle;
     
-    // Update comparison table
-    const comparisonTitle = document.querySelector('.comparison-section h2');
-    if (comparisonTitle) comparisonTitle.textContent = t.comparison.title;
-    
-    // Update plan names and prices
-    const standardPlan = document.querySelector('.plan-column.standard');
-    if (standardPlan) {
-        const name = standardPlan.querySelector('h3');
-        const price = standardPlan.querySelector('.price');
-        if (name) name.textContent = t.comparison.standard.name;
-        if (price) price.textContent = t.comparison.standard.price;
+    // Update basic pricing section
+    const basicPricingTitle = document.querySelector('.section h2');
+    if (basicPricingTitle && basicPricingTitle.textContent.includes('基本料金')) {
+        basicPricingTitle.textContent = t.basicPricing.title;
     }
     
-    const richPlan = document.querySelector('.plan-column.rich');
-    if (richPlan) {
-        const name = richPlan.querySelector('h3');
-        const price = richPlan.querySelector('.price');
-        if (name) name.textContent = t.comparison.rich.name;
-        if (price) price.textContent = t.comparison.rich.price;
+    // Update pricing table for standard and rich plans
+    const pricingTables = document.querySelectorAll('.pricing-table');
+    if (pricingTables.length > 0) {
+        const firstTable = pricingTables[0];
+        const tableRows = firstTable.querySelectorAll('tbody tr');
+        
+        // Update headers
+        const headers = firstTable.querySelectorAll('th');
+        if (headers.length >= 3) {
+            headers[0].textContent = currentLang === 'ja' ? '項目' : currentLang === 'en' ? 'Item' : '項目';
+            headers[1].textContent = currentLang === 'ja' ? '料金' : currentLang === 'en' ? 'Price' : '價格';
+            headers[2].textContent = currentLang === 'ja' ? '内容' : currentLang === 'en' ? 'Features' : '內容';
+        }
+        
+        // Update standard plan row
+        if (tableRows[0]) {
+            const cells = tableRows[0].querySelectorAll('td');
+            if (cells[0]) cells[0].querySelector('strong').textContent = t.basicPricing.items.standard.name;
+            if (cells[1]) cells[1].querySelector('span').textContent = t.basicPricing.items.standard.price;
+            if (cells[2]) {
+                const featureList = cells[2].querySelector('ul');
+                if (featureList) {
+                    const features = featureList.querySelectorAll('li');
+                    t.basicPricing.items.standard.features.forEach((feature, index) => {
+                        if (features[index]) features[index].textContent = feature;
+                    });
+                }
+            }
+        }
+        
+        // Update rich plan row
+        if (tableRows[1]) {
+            const cells = tableRows[1].querySelectorAll('td');
+            if (cells[0]) cells[0].querySelector('strong').textContent = t.basicPricing.items.rich.name;
+            if (cells[1]) cells[1].querySelector('span').textContent = t.basicPricing.items.rich.price;
+            if (cells[2]) {
+                const featureList = cells[2].querySelector('ul');
+                if (featureList) {
+                    const features = featureList.querySelectorAll('li');
+                    t.basicPricing.items.rich.features.forEach((feature, index) => {
+                        if (features[index]) features[index].textContent = feature;
+                    });
+                }
+            }
+        }
     }
+    
+    // Update revision pricing section
+    const revisionTitle = document.querySelector('h3[style*="margin-top: 60px"]');
+    if (revisionTitle) revisionTitle.textContent = t.revisionPricing.title;
+    
+    if (pricingTables.length > 1) {
+        const revisionTable = pricingTables[1];
+        const revisionHeaders = revisionTable.querySelectorAll('th');
+        if (revisionHeaders.length >= 3) {
+            revisionHeaders.forEach((header, index) => {
+                if (t.revisionPricing.headers[index]) {
+                    header.textContent = t.revisionPricing.headers[index];
+                }
+            });
+        }
+        
+        const revisionRows = revisionTable.querySelectorAll('tbody tr');
+        revisionRows.forEach((row, index) => {
+            if (t.revisionPricing.items[index]) {
+                const cells = row.querySelectorAll('td');
+                if (cells[0]) cells[0].textContent = t.revisionPricing.items[index].count;
+                if (cells[1]) cells[1].textContent = t.revisionPricing.items[index].price;
+                if (cells[2]) cells[2].textContent = t.revisionPricing.items[index].note;
+            }
+        });
+    }
+    
+    const revisionNote = document.querySelector('.pricing-note:first-of-type');
+    if (revisionNote) {
+        const lines = t.revisionPricing.note.split('\n');
+        revisionNote.innerHTML = `<strong>${currentLang === 'ja' ? 'ご注意' : currentLang === 'en' ? 'Note' : '注意'}：</strong>${lines[0]}<br>${lines[1] || ''}`;
+    }
+    
+    // Update cancellation policy section
+    const cancellationTitle = document.querySelector('h2[style*="margin-top: 80px"]');
+    if (cancellationTitle) cancellationTitle.textContent = t.cancellationPolicy.title;
+    
+    if (pricingTables.length > 2) {
+        const cancellationTable = pricingTables[2];
+        const cancellationHeaders = cancellationTable.querySelectorAll('th');
+        if (cancellationHeaders.length >= 3) {
+            cancellationHeaders.forEach((header, index) => {
+                if (t.cancellationPolicy.headers[index]) {
+                    header.textContent = t.cancellationPolicy.headers[index];
+                }
+            });
+        }
+        
+        const cancellationRows = cancellationTable.querySelectorAll('tbody tr');
+        cancellationRows.forEach((row, index) => {
+            if (t.cancellationPolicy.items[index]) {
+                const cells = row.querySelectorAll('td');
+                if (cells[0]) cells[0].textContent = t.cancellationPolicy.items[index].timing;
+                if (cells[1]) cells[1].textContent = t.cancellationPolicy.items[index].fee;
+                if (cells[2]) cells[2].textContent = t.cancellationPolicy.items[index].note;
+            }
+        });
+    }
+    
+    // Update additional costs section
+    const additionalCostsTitle = Array.from(document.querySelectorAll('h2')).find(h2 => 
+        h2.textContent.includes('別途必要な費用')
+    );
+    if (additionalCostsTitle) additionalCostsTitle.textContent = t.additionalCosts.title;
+    
+    const additionalNote = document.querySelector('.pricing-note[style*="background-color: #E0F2FE"]');
+    if (additionalNote) {
+        const linkText = currentLang === 'ja' ? '公開ガイド' : currentLang === 'en' ? 'Publishing Guide' : '公開指南';
+        additionalNote.innerHTML = `<strong>${currentLang === 'ja' ? 'ご注意' : currentLang === 'en' ? 'Note' : '注意'}：</strong>${t.additionalCosts.note.replace('公開ガイド', linkText)}`;
+    }
+    
+    // Update option cards
+    const optionCards = document.querySelectorAll('.option-card');
+    const optionKeys = ['sitePublication', 'additionalPages', 'multilingual', 'postDeliveryRevisions'];
+    
+    optionCards.forEach((card, index) => {
+        if (optionKeys[index] && t.additionalCosts.items[optionKeys[index]]) {
+            const item = t.additionalCosts.items[optionKeys[index]];
+            const title = card.querySelector('h3');
+            const price = card.querySelector('p[style*="color: var(--primary-color)"]');
+            const features = card.querySelectorAll('ul li');
+            
+            if (title) title.textContent = item.name;
+            if (price) price.textContent = item.price;
+            
+            features.forEach((feature, featureIndex) => {
+                if (item.features[featureIndex]) {
+                    feature.textContent = item.features[featureIndex];
+                }
+            });
+        }
+    });
     
     // Update FAQ section
     const faqTitle = document.querySelector('.faq-section h2');
     if (faqTitle) faqTitle.textContent = t.faq.title;
     
     const faqItems = document.querySelectorAll('.faq-item');
-    if (faqItems.length >= 2) {
-        faqItems.forEach((item, index) => {
-            if (t.faq.items[index]) {
-                const question = item.querySelector('.faq-question');
-                const answer = item.querySelector('.faq-answer');
-                if (question) question.textContent = t.faq.items[index].question;
-                if (answer) answer.textContent = t.faq.items[index].answer;
-            }
-        });
+    faqItems.forEach((item, index) => {
+        if (t.faq.items[index]) {
+            const question = item.querySelector('.faq-question span');
+            const answer = item.querySelector('.faq-answer p');
+            if (question) question.textContent = t.faq.items[index].question;
+            if (answer) answer.textContent = t.faq.items[index].answer;
+        }
+    });
+    
+    // Update final estimate section
+    const estimateSection = document.querySelector('section[style*="background-color: var(--bg-light)"]');
+    if (estimateSection) {
+        const estimateTitle = estimateSection.querySelector('h2');
+        const estimateDescription = estimateSection.querySelector('p');
+        const estimateButton = estimateSection.querySelector('.btn-primary');
+        
+        if (estimateTitle) estimateTitle.textContent = t.estimate.title;
+        if (estimateDescription) estimateDescription.textContent = t.estimate.description;
+        if (estimateButton) estimateButton.textContent = t.estimate.cta;
     }
 }
 
@@ -2760,4 +3594,187 @@ function updateQuestionnairePage(t) {
     // Questionnaire page specific translations can be added later
     const pageTitle = document.querySelector('title');
     if (pageTitle) pageTitle.textContent = 'お問い合わせ | ' + subpageTranslations[currentLang].nav.logo;
+}
+
+// Update Pricing page
+function updatePricingPage(t) {
+    if (!t) return;
+    
+    // Update page title
+    const pageTitle = document.querySelector('title');
+    if (pageTitle) pageTitle.textContent = t.title + ' | ' + subpageTranslations[currentLang].nav.logo;
+    
+    // Update hero
+    const heroTitle = document.querySelector('.pricing-hero h1');
+    if (heroTitle) heroTitle.textContent = t.title;
+    
+    const heroSubtitle = document.querySelector('.pricing-hero p');
+    if (heroSubtitle) heroSubtitle.textContent = t.subtitle;
+    
+    // Update basic pricing section
+    if (t.basicPricing) {
+        const basicTitle = document.querySelector('h2');
+        if (basicTitle && basicTitle.textContent.includes('基本料金')) {
+            basicTitle.textContent = t.basicPricing.title;
+        }
+        
+        // Update standard plan
+        const standardRow = document.querySelector('.pricing-table tr:nth-child(2)');
+        if (standardRow && t.basicPricing.items.standard) {
+            const cells = standardRow.querySelectorAll('td');
+            if (cells[0]) cells[0].querySelector('strong').textContent = t.basicPricing.items.standard.name;
+            if (cells[1]) cells[1].querySelector('span').textContent = t.basicPricing.items.standard.price;
+            if (cells[2]) {
+                const ul = cells[2].querySelector('ul');
+                if (ul) {
+                    ul.innerHTML = t.basicPricing.items.standard.features.map(f => `<li>${f}</li>`).join('');
+                }
+            }
+        }
+        
+        // Update rich plan
+        const richRow = document.querySelector('.pricing-table tr:nth-child(3)');
+        if (richRow && t.basicPricing.items.rich) {
+            const cells = richRow.querySelectorAll('td');
+            if (cells[0]) cells[0].querySelector('strong').textContent = t.basicPricing.items.rich.name;
+            if (cells[1]) cells[1].querySelector('span').textContent = t.basicPricing.items.rich.price;
+            if (cells[2]) {
+                const ul = cells[2].querySelector('ul');
+                if (ul) {
+                    ul.innerHTML = t.basicPricing.items.rich.features.map(f => `<li>${f}</li>`).join('');
+                }
+            }
+        }
+    }
+    
+    // Update revision pricing section
+    if (t.revisionPricing) {
+        const revisionTitle = Array.from(document.querySelectorAll('h3')).find(h => h.textContent.includes('修正対応料金'));
+        if (revisionTitle) revisionTitle.textContent = t.revisionPricing.title;
+        
+        // Update table headers
+        const revisionHeaders = document.querySelectorAll('.pricing-table:nth-of-type(2) th');
+        if (revisionHeaders.length >= 3) {
+            revisionHeaders.forEach((th, index) => {
+                if (t.revisionPricing.headers[index]) {
+                    th.textContent = t.revisionPricing.headers[index];
+                }
+            });
+        }
+        
+        // Update table rows
+        const revisionRows = document.querySelectorAll('.pricing-table:nth-of-type(2) tbody tr');
+        revisionRows.forEach((row, index) => {
+            if (t.revisionPricing.items[index]) {
+                const cells = row.querySelectorAll('td');
+                if (cells[0]) cells[0].textContent = t.revisionPricing.items[index].count;
+                if (cells[1]) cells[1].textContent = t.revisionPricing.items[index].price;
+                if (cells[2]) cells[2].textContent = t.revisionPricing.items[index].note;
+            }
+        });
+        
+        // Update note
+        const revisionNote = document.querySelector('.pricing-note');
+        if (revisionNote && t.revisionPricing.note) {
+            const noteText = t.revisionPricing.note.split('\n');
+            revisionNote.innerHTML = `<strong>${noteText[0].split('：')[0]}：</strong>${noteText[0].split('：')[1]}<br>${noteText[1]}`;
+        }
+    }
+    
+    // Update cancellation policy section
+    if (t.cancellationPolicy) {
+        const cancelTitle = Array.from(document.querySelectorAll('h2')).find(h => h.textContent.includes('キャンセルポリシー'));
+        if (cancelTitle) cancelTitle.textContent = t.cancellationPolicy.title;
+        
+        // Update table headers
+        const cancelHeaders = document.querySelectorAll('.pricing-table:nth-of-type(3) th');
+        if (cancelHeaders.length >= 3) {
+            cancelHeaders.forEach((th, index) => {
+                if (t.cancellationPolicy.headers[index]) {
+                    th.textContent = t.cancellationPolicy.headers[index];
+                }
+            });
+        }
+        
+        // Update table rows
+        const cancelRows = document.querySelectorAll('.pricing-table:nth-of-type(3) tbody tr');
+        cancelRows.forEach((row, index) => {
+            if (t.cancellationPolicy.items[index]) {
+                const cells = row.querySelectorAll('td');
+                if (cells[0]) cells[0].textContent = t.cancellationPolicy.items[index].timing;
+                if (cells[1]) cells[1].textContent = t.cancellationPolicy.items[index].fee;
+                if (cells[2]) cells[2].textContent = t.cancellationPolicy.items[index].note;
+            }
+        });
+    }
+    
+    // Update additional costs section
+    if (t.additionalCosts) {
+        const costsTitle = Array.from(document.querySelectorAll('h2')).find(h => h.textContent.includes('別途必要な費用'));
+        if (costsTitle) costsTitle.textContent = t.additionalCosts.title;
+        
+        // Update note
+        const costsNote = document.querySelector('.pricing-note[style*="background-color: #E0F2FE"]');
+        if (costsNote && t.additionalCosts.note) {
+            costsNote.innerHTML = `<strong>${t.additionalCosts.note.split('：')[0]}：</strong>${t.additionalCosts.note.split('：')[1]}`;
+        }
+        
+        // Update option cards
+        const optionCards = document.querySelectorAll('.option-card');
+        const cardKeys = ['sitePublication', 'additionalPages', 'multilingual', 'postDeliveryRevisions'];
+        
+        optionCards.forEach((card, index) => {
+            if (cardKeys[index] && t.additionalCosts.items[cardKeys[index]]) {
+                const item = t.additionalCosts.items[cardKeys[index]];
+                const title = card.querySelector('h3');
+                const price = card.querySelector('p[style*="color: var(--primary-color)"]');
+                const features = card.querySelectorAll('ul li');
+                
+                if (title) title.textContent = item.name;
+                if (price) price.textContent = item.price;
+                if (features) {
+                    features.forEach((li, i) => {
+                        if (item.features[i]) {
+                            li.textContent = item.features[i];
+                            if (item.features[i].startsWith('※')) {
+                                li.style.color = '#16A34A';
+                                li.style.marginTop = '8px';
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
+    
+    // Update FAQ section
+    if (t.faq) {
+        const faqTitle = document.querySelector('.faq-section h2');
+        if (faqTitle) faqTitle.textContent = t.faq.title;
+        
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach((item, index) => {
+            if (t.faq.items[index]) {
+                const question = item.querySelector('.faq-question span:first-child');
+                const answer = item.querySelector('.faq-answer p');
+                
+                if (question) question.textContent = t.faq.items[index].question;
+                if (answer) answer.textContent = t.faq.items[index].answer;
+            }
+        });
+    }
+    
+    // Update estimate section
+    if (t.estimate) {
+        const estimateSection = document.querySelector('.section[style*="background-color: var(--bg-light)"]');
+        if (estimateSection) {
+            const estimateTitle = estimateSection.querySelector('h2');
+            const estimateDesc = estimateSection.querySelector('p');
+            const estimateBtn = estimateSection.querySelector('.btn-primary');
+            
+            if (estimateTitle) estimateTitle.textContent = t.estimate.title;
+            if (estimateDesc) estimateDesc.textContent = t.estimate.description;
+            if (estimateBtn) estimateBtn.textContent = t.estimate.cta;
+        }
+    }
 }
