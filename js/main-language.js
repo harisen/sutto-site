@@ -923,6 +923,50 @@ function updateLanguage(lang) {
         }
     }
     
+    // Update campaign section
+    if (t.campaign) {
+        const campaignBadge = document.querySelector('.campaign-badge');
+        if (campaignBadge) campaignBadge.textContent = t.campaign.badge;
+        
+        const campaignTitle = document.querySelector('.campaign-title');
+        if (campaignTitle) campaignTitle.textContent = t.campaign.title;
+        
+        const campaignSubtitle = document.querySelector('.campaign-subtitle');
+        if (campaignSubtitle) campaignSubtitle.textContent = t.campaign.subtitle;
+        
+        const campaignDeadline = document.querySelector('.campaign-deadline');
+        if (campaignDeadline) campaignDeadline.textContent = t.campaign.deadline;
+        
+        // Update standard plan campaign prices
+        const standardPlanName = document.querySelector('.campaign-price-item:first-child .campaign-plan-name');
+        if (standardPlanName) standardPlanName.textContent = t.campaign.standard.name;
+        
+        const standardOriginalPrice = document.querySelector('.campaign-price-item:first-child .campaign-original-price');
+        if (standardOriginalPrice) standardOriginalPrice.textContent = t.campaign.standard.originalPrice;
+        
+        const standardSalePrice = document.querySelector('.campaign-price-item:first-child .campaign-sale-price');
+        if (standardSalePrice) standardSalePrice.textContent = t.campaign.standard.salePrice;
+        
+        const standardPriceNote = document.querySelector('.campaign-price-item:first-child div[style*="font-size: 1.4rem"]');
+        if (standardPriceNote) standardPriceNote.textContent = t.campaign.standard.priceNote;
+        
+        // Update rich plan campaign prices
+        const richPlanName = document.querySelector('.campaign-price-item:last-child .campaign-plan-name');
+        if (richPlanName) richPlanName.textContent = t.campaign.rich.name;
+        
+        const richOriginalPrice = document.querySelector('.campaign-price-item:last-child .campaign-original-price');
+        if (richOriginalPrice) richOriginalPrice.textContent = t.campaign.rich.originalPrice;
+        
+        const richSalePrice = document.querySelector('.campaign-price-item:last-child .campaign-sale-price');
+        if (richSalePrice) richSalePrice.textContent = t.campaign.rich.salePrice;
+        
+        const richPriceNote = document.querySelector('.campaign-price-item:last-child div[style*="font-size: 1.4rem"]');
+        if (richPriceNote) richPriceNote.textContent = t.campaign.rich.priceNote;
+        
+        const campaignCta = document.querySelector('.campaign-cta');
+        if (campaignCta) campaignCta.textContent = t.campaign.cta;
+    }
+    
     // Update footer
     const footerLogo = document.querySelector('.footer-logo');
     if (footerLogo) footerLogo.textContent = t.footer.companyName;
