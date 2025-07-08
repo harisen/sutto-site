@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ソーシャルメディア画像生成ツール</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            display: block;
+            margin: 20px 0;
+            background: white;
+        }
+        button {
+            padding: 10px 20px;
+            background: #3B82F6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1E40AF;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LP制作サービス - ソーシャルメディア画像生成</h1>
+        <p>このページでTwitter CardとOG画像を生成できます。</p>
+        
+        <h2>Twitter Card画像（1200x630）</h2>
+        <canvas id="twitterCanvas" width="1200" height="630"></canvas>
+        <button onclick="downloadImage('twitterCanvas', 'twitter-card.jpg')">Twitter Card画像をダウンロード</button>
+        
+        <h2>Open Graph画像（1200x630）</h2>
+        <canvas id="ogCanvas" width="1200" height="630"></canvas>
+        <button onclick="downloadImage('ogCanvas', 'og-image.jpg')">OG画像をダウンロード</button>
+    </div>
+
+    <script>
+        // Twitter Card画像を描画
+        function drawTwitterCard() {
+            const canvas = document.getElementById('twitterCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 背景グラデーション
+            const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
+            gradient.addColorStop(0, '#3B82F6');
+            gradient.addColorStop(1, '#1E40AF');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 1200, 630);
+            
+            // 装飾的な円
+            ctx.globalAlpha = 0.3;
+            ctx.fillStyle = '#4F46E5';
+            ctx.beginPath();
+            ctx.arc(1100, 100, 150, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.globalAlpha = 0.2;
+            ctx.fillStyle = '#6366F1';
+            ctx.beginPath();
+            ctx.arc(100, 530, 200, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.globalAlpha = 1;
+            
+            // メインタイトル
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 72px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('LP制作サービス', 600, 200);
+            
+            // サブタイトル
+            ctx.font = '32px Arial';
+            ctx.fillText('高品質なランディングページを最速即日で', 600, 280);
+            
+            // 特徴ポイント
+            const features = [
+                { x: 300, text: '初期費用2万円〜' },
+                { x: 510, text: '最速即日納品' },
+                { x: 720, text: 'AI技術活用' }
+            ];
+            
+            features.forEach(feature => {
+                // 背景
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                ctx.beginPath();
+                ctx.roundRect(feature.x, 380, 180, 60, 30);
+                ctx.fill();
+                
+                // テキスト
+                ctx.fillStyle = '#1E40AF';
+                ctx.font = 'bold 20px Arial';
+                ctx.fillText(feature.text, feature.x + 90, 418);
+            });
+            
+            // URL
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.font = '24px Arial';
+            ctx.fillText('sutto-site.jp', 600, 540);
+        }
+        
+        // Open Graph画像を描画
+        function drawOGImage() {
+            const canvas = document.getElementById('ogCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 背景グラデーション
+            const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
+            gradient.addColorStop(0, '#EBF4FF');
+            gradient.addColorStop(1, '#E0F2FE');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 1200, 630);
+            
+            // 装飾的な円
+            ctx.globalAlpha = 0.1;
+            ctx.fillStyle = '#3B82F6';
+            ctx.beginPath();
+            ctx.arc(1050, 150, 180, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.globalAlpha = 0.08;
+            ctx.fillStyle = '#6366F1';
+            ctx.beginPath();
+            ctx.arc(150, 480, 150, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.globalAlpha = 1;
+            
+            // ロゴ風のアイコン
+            const logoGradient = ctx.createLinearGradient(100, 80, 180, 160);
+            logoGradient.addColorStop(0, '#3B82F6');
+            logoGradient.addColorStop(1, '#1E40AF');
+            ctx.fillStyle = logoGradient;
+            ctx.beginPath();
+            ctx.roundRect(100, 80, 80, 80, 16);
+            ctx.fill();
+            
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 40px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('LP', 140, 135);
+            
+            // メインタイトル
+            ctx.fillStyle = '#1E40AF';
+            ctx.font = 'bold 68px Arial';
+            ctx.fillText('LP制作サービス', 600, 180);
+            
+            // キャッチコピー
+            ctx.fillStyle = '#64748B';
+            ctx.font = '28px Arial';
+            ctx.fillText('あなたのビジネスを加速させる', 600, 240);
+            ctx.fillText('高品質なランディングページを制作', 600, 280);
+            
+            // 特徴カード
+            const cards = [
+                { x: 200, main: '20,000円〜', sub: '初期費用', detail: '豊富なプラン' },
+                { x: 480, main: '最速即日', sub: '納品可能', detail: 'AI技術で高速制作' },
+                { x: 760, main: 'GSAP対応', sub: 'リッチプラン', detail: '50,000円で実現' }
+            ];
+            
+            cards.forEach(card => {
+                // カードの影
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.1)';
+                ctx.shadowBlur = 10;
+                ctx.shadowOffsetY = 2;
+                
+                // カード背景
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.roundRect(card.x, 360, 240, 140, 12);
+                ctx.fill();
+                
+                ctx.shadowColor = 'transparent';
+                
+                // メインテキスト
+                ctx.fillStyle = '#3B82F6';
+                ctx.font = 'bold 36px Arial';
+                ctx.fillText(card.main, card.x + 120, 410);
+                
+                // サブテキスト
+                ctx.fillStyle = '#64748B';
+                ctx.font = '18px Arial';
+                ctx.fillText(card.sub, card.x + 120, 440);
+                
+                // 詳細テキスト
+                ctx.fillStyle = '#94A3B8';
+                ctx.font = '16px Arial';
+                ctx.fillText(card.detail, card.x + 120, 465);
+            });
+            
+            // CTA
+            const ctaGradient = ctx.createLinearGradient(450, 550, 750, 600);
+            ctaGradient.addColorStop(0, '#3B82F6');
+            ctaGradient.addColorStop(1, '#1E40AF');
+            ctx.fillStyle = ctaGradient;
+            ctx.beginPath();
+            ctx.roundRect(450, 550, 300, 50, 25);
+            ctx.fill();
+            
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 20px Arial';
+            ctx.fillText('今すぐチェック！', 600, 580);
+        }
+        
+        // 画像をダウンロード
+        function downloadImage(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                a.click();
+                URL.revokeObjectURL(url);
+            }, 'image/jpeg', 0.95);
+        }
+        
+        // roundRect polyfill (古いブラウザ用)
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+                if (width < 2 * radius) radius = width / 2;
+                if (height < 2 * radius) radius = height / 2;
+                this.beginPath();
+                this.moveTo(x + radius, y);
+                this.arcTo(x + width, y, x + width, y + height, radius);
+                this.arcTo(x + width, y + height, x, y + height, radius);
+                this.arcTo(x, y + height, x, y, radius);
+                this.arcTo(x, y, x + width, y, radius);
+                this.closePath();
+                return this;
+            }
+        }
+        
+        // ページ読み込み時に描画
+        window.onload = function() {
+            drawTwitterCard();
+            drawOGImage();
+        };
+    </script>
+</body>
+</html>
