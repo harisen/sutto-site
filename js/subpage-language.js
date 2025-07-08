@@ -1357,9 +1357,17 @@ function updateSubpageLanguage(lang) {
     // Update HTML lang attribute
     document.documentElement.lang = lang === 'zh' ? 'zh-TW' : lang;
     
-    // Update common navigation
+    // Update common navigation - only update the main title, preserve subtitle
     const logo = document.querySelector('.logo');
-    if (logo) logo.textContent = t.nav.logo;
+    if (logo) {
+        const logoTitle = logo.querySelector('span:first-child');
+        if (logoTitle) {
+            logoTitle.textContent = t.nav.logo;
+        } else {
+            // Fallback for pages without the new structure
+            logo.textContent = t.nav.logo;
+        }
+    }
     
     const navLinks = document.querySelectorAll('.nav-link');
     if (navLinks.length >= 5) {
