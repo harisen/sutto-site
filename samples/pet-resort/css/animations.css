@@ -1,0 +1,363 @@
+/* ===================================
+   GSAP Animation Classes
+   =================================== */
+
+/* Fade In Animations */
+.fade-in {
+    opacity: 0;
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.fade-in-down {
+    opacity: 0;
+    transform: translateY(-40px);
+}
+
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-40px);
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(40px);
+}
+
+/* Scale Animations */
+.scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.scale-in-up {
+    opacity: 0;
+    transform: scale(0.9) translateY(40px);
+}
+
+/* Rotate Animations */
+.rotate-in {
+    opacity: 0;
+    transform: rotate(-10deg);
+}
+
+/* Stagger Children */
+.stagger-children > * {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Hero Text Animation */
+.hero-text-line {
+    overflow: hidden;
+}
+
+.hero-text-line span {
+    display: inline-block;
+    transform: translateY(100%);
+}
+
+/* Counter Animation */
+.counter {
+    display: inline-block;
+}
+
+/* Parallax Elements */
+.parallax {
+    will-change: transform;
+}
+
+.parallax-slow {
+    will-change: transform;
+}
+
+.parallax-fast {
+    will-change: transform;
+}
+
+/* Morph SVG */
+.morph-target {
+    visibility: hidden;
+}
+
+/* Draw SVG Path */
+.draw-svg path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+
+/* Hover Lift */
+.hover-lift {
+    transition: transform var(--duration-normal) var(--ease-default);
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+}
+
+/* Pulse Animation */
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Floating Animation */
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Text Reveal */
+.text-reveal {
+    position: relative;
+    overflow: hidden;
+}
+
+.text-reveal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-gold);
+    transform: translateX(-100%);
+}
+
+/* Image Reveal */
+.image-reveal {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-reveal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-beige);
+    transform-origin: left;
+}
+
+/* Magnetic Button */
+.magnetic {
+    position: relative;
+    transition: transform var(--duration-fast) var(--ease-out);
+}
+
+/* 3D Card Flip */
+.card-3d {
+    transform-style: preserve-3d;
+    transition: transform var(--duration-slow) var(--ease-default);
+}
+
+.card-3d:hover {
+    transform: rotateY(5deg) rotateX(5deg);
+}
+
+/* Gradient Animation */
+.gradient-animate {
+    background: linear-gradient(
+        45deg,
+        var(--color-gold),
+        var(--color-gold-light),
+        var(--color-gold),
+        var(--color-gold-dark)
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 5s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Spotlight Effect */
+.spotlight {
+    position: relative;
+    overflow: hidden;
+}
+
+.spotlight::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.3) 0%,
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-default);
+}
+
+.spotlight:hover::before {
+    opacity: 1;
+}
+
+/* Noise Texture Overlay */
+.noise-overlay {
+    position: relative;
+}
+
+.noise-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgbnVtT2N0YXZlcz0iNCIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==');
+    pointer-events: none;
+}
+
+/* Glitch Effect */
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.glitch:hover::before {
+    animation: glitch-1 0.3s ease-in-out infinite;
+    color: var(--color-gold);
+    opacity: 0.8;
+}
+
+.glitch:hover::after {
+    animation: glitch-2 0.3s ease-in-out infinite;
+    color: var(--color-navy);
+    opacity: 0.8;
+}
+
+@keyframes glitch-1 {
+    0%, 100% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+}
+
+@keyframes glitch-2 {
+    0%, 100% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(2px, -2px);
+    }
+    40% {
+        transform: translate(2px, 2px);
+    }
+    60% {
+        transform: translate(-2px, -2px);
+    }
+    80% {
+        transform: translate(-2px, 2px);
+    }
+}
+
+/* Liquid Button */
+.liquid-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.liquid-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width var(--duration-slow) var(--ease-out),
+                height var(--duration-slow) var(--ease-out);
+}
+
+.liquid-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Smooth Appear */
+.smooth-appear {
+    opacity: 0;
+    filter: blur(10px);
+    transition: opacity var(--duration-slower) var(--ease-out),
+                filter var(--duration-slower) var(--ease-out);
+}
+
+.smooth-appear.appeared {
+    opacity: 1;
+    filter: blur(0);
+}
+
+/* Performance Optimization */
+.will-animate {
+    will-change: transform, opacity;
+}
+
+/* Disable animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

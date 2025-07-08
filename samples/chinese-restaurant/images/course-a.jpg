@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <rect width="300" height="200" fill="#FFF0F5"/>
+  <text x="150" y="40" font-family="serif" font-size="30" text-anchor="middle" fill="#DC143C">梅</text>
+  <circle cx="80" cy="80" r="25" fill="#FFB6C1" opacity="0.8"/>
+  <circle cx="150" cy="80" r="25" fill="#90EE90" opacity="0.8"/>
+  <circle cx="220" cy="80" r="25" fill="#FFD700" opacity="0.8"/>
+  <rect x="60" y="120" width="40" height="40" fill="#F5DEB3" opacity="0.8"/>
+  <rect x="130" y="120" width="40" height="40" fill="#DDA0DD" opacity="0.8"/>
+  <rect x="200" y="120" width="40" height="40" fill="#87CEEB" opacity="0.8"/>
+</svg>

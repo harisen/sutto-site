@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>龍門飯店 | 本格中華料理をご自宅でも</title>
+    <meta name="description" content="創業50年の老舗中華料理店。秘伝のタレと熟練の技で作る本格中華をご堪能ください。テイクアウト・デリバリーも承ります。">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="logo">龍門飯店</h1>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#about">当店について</a></li>
+                    <li><a href="#menu">メニュー</a></li>
+                    <li><a href="#chef">料理長</a></li>
+                    <li><a href="#access">アクセス</a></li>
+                    <li><a href="#reservation" class="cta-button">ご予約</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="メニューを開く">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h2 class="hero-title">
+                <span class="title-line">伝統の味を</span>
+                <span class="title-line">現代に伝える</span>
+            </h2>
+            <p class="hero-subtitle">創業50年の技と心でおもてなし</p>
+            <div class="hero-buttons">
+                <a href="#reservation" class="btn btn-primary">席を予約する</a>
+                <a href="#menu" class="btn btn-secondary">メニューを見る</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>SCROLL</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- 当店について -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-ja">当店について</span>
+                <span class="title-en">About Us</span>
+            </h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>50年の歴史が紡ぐ、本物の中華</h3>
+                    <p>龍門飯店は1975年の創業以来、本場の味を日本の皆様にお届けしてまいりました。</p>
+                    <p>厳選された食材と秘伝の調味料、そして熟練の技が織りなす料理の数々。四川・広東・北京・上海、各地の伝統的な味わいを、日本人の舌に合うようアレンジしながらも、本場の風味は決して失いません。</p>
+                    <div class="features">
+                        <div class="feature-item">
+                            <span class="feature-icon">🔥</span>
+                            <h4>直火の技</h4>
+                            <p>強火で一気に仕上げる本格中華鍋</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🥟</span>
+                            <h4>手作り点心</h4>
+                            <p>毎朝手包みする自慢の点心</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🌿</span>
+                            <h4>厳選食材</h4>
+                            <p>産地直送の新鮮な食材を使用</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=400&fit=crop" alt="龍門飯店の店内">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- メニュー -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-ja">お品書き</span>
+                <span class="title-en">Menu</span>
+            </h2>
+            <div class="menu-tabs">
+                <button class="tab-button active" data-category="popular">人気料理</button>
+                <button class="tab-button" data-category="sichuan">四川料理</button>
+                <button class="tab-button" data-category="cantonese">広東料理</button>
+                <button class="tab-button" data-category="dim-sum">点心</button>
+                <button class="tab-button" data-category="course">コース料理</button>
+            </div>
+            <div class="menu-content">
+                <div class="menu-category active" id="popular">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1617692855027-33b14f061079?w=300&h=200&fit=crop" alt="麻婆豆腐">
+                            <h3>陳麻婆豆腐</h3>
+                            <p class="price">¥1,280</p>
+                            <p class="description">山椒の痺れと唐辛子の辛さが絶妙な本格四川麻婆豆腐</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=300&h=200&fit=crop" alt="エビチリ">
+                            <h3>大海老のチリソース</h3>
+                            <p class="price">¥1,680</p>
+                            <p class="description">プリプリの大海老を特製チリソースで仕上げました</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=300&h=200&fit=crop" alt="黒酢酢豚">
+                            <h3>黒酢の酢豚</h3>
+                            <p class="price">¥1,480</p>
+                            <p class="description">上質な黒酢を使用した、まろやかな酸味の酢豚</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=300&h=200&fit=crop" alt="青椒肉絲">
+                            <h3>青椒肉絲</h3>
+                            <p class="price">¥1,180</p>
+                            <p class="description">細切り豚肉とピーマンの定番炒め物</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-category" id="sichuan">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?w=300&h=200&fit=crop" alt="回鍋肉">
+                            <h3>回鍋肉</h3>
+                            <p class="price">¥1,380</p>
+                            <p class="description">豚バラ肉とキャベツを豆板醤で炒めた四川定番料理</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1604908554793-11fb678cefce?w=300&h=200&fit=crop" alt="魚香茄子">
+                            <h3>魚香茄子</h3>
+                            <p class="price">¥1,180</p>
+                            <p class="description">なすを特製の魚香ソースで炒めた四川風料理</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1603073163308-9654c3fb70b5?w=300&h=200&fit=crop" alt="辣子鶏">
+                            <h3>辣子鶏</h3>
+                            <p class="price">¥1,580</p>
+                            <p class="description">鶏肉を唐辛子と山椒で炒めた激辛料理</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1607330289024-1535c6b4e1c1?w=300&h=200&fit=crop" alt="棒棒鶏">
+                            <h3>棒棒鶏</h3>
+                            <p class="price">¥980</p>
+                            <p class="description">蒸し鶏に特製ゴマダレをかけた前菜</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-category" id="cantonese">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1558030137-a56c1b004fa3?w=300&h=200&fit=crop" alt="叉焼">
+                            <h3>蜜汁叉焼</h3>
+                            <p class="price">¥1,680</p>
+                            <p class="description">甘辛いタレで焼き上げた本格広東式チャーシュー</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=300&h=200&fit=crop" alt="清蒸魚">
+                            <h3>清蒸鮮魚</h3>
+                            <p class="price">¥2,280</p>
+                            <p class="description">新鮮な魚を広東風に蒸し上げた逸品</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=300&h=200&fit=crop" alt="雲呑">
+                            <h3>海老雲呑麺</h3>
+                            <p class="price">¥1,280</p>
+                            <p class="description">プリプリの海老入りワンタンと細麺</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1588347669120-3c7f5a7de9c8?w=300&h=200&fit=crop" alt="焼鴨">
+                            <h3>広東焼鴨</h3>
+                            <p class="price">¥2,480</p>
+                            <p class="description">皮はパリパリ、肉はジューシーな広東ダック</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-category" id="dim-sum">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=300&h=200&fit=crop" alt="焼売">
+                            <h3>海老焼売（4個）</h3>
+                            <p class="price">¥680</p>
+                            <p class="description">海老の旨味たっぷりの手作り焼売</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=300&h=200&fit=crop" alt="餃子">
+                            <h3>手作り餃子（6個）</h3>
+                            <p class="price">¥580</p>
+                            <p class="description">皮から手作りのもちもち餃子</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=300&h=200&fit=crop" alt="春巻">
+                            <h3>海鮮春巻（3本）</h3>
+                            <p class="price">¥780</p>
+                            <p class="description">海老と野菜たっぷりのサクサク春巻</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1563245371-0d54c6aafeb2?w=300&h=200&fit=crop" alt="小籠包">
+                            <h3>小籠包（6個）</h3>
+                            <p class="price">¥880</p>
+                            <p class="description">肉汁たっぷりの本格小籠包</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-category" id="course">
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=300&h=200&fit=crop" alt="梅コース">
+                            <h3>梅コース（2名様より）</h3>
+                            <p class="price">¥3,980/人</p>
+                            <p class="description">前菜3種、スープ、メイン3品、点心、デザート</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1590577976322-3d2d6e2130d5?w=300&h=200&fit=crop" alt="竹コース">
+                            <h3>竹コース（2名様より）</h3>
+                            <p class="price">¥5,980/人</p>
+                            <p class="description">前菜5種、フカヒレスープ、メイン5品、点心、デザート</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&h=200&fit=crop" alt="松コース">
+                            <h3>松コース（2名様より）</h3>
+                            <p class="price">¥8,980/人</p>
+                            <p class="description">特選前菜、フカヒレ姿煮、北京ダック、メイン6品、デザート</p>
+                        </div>
+                        <div class="menu-item">
+                            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=300&h=200&fit=crop" alt="特別コース">
+                            <h3>料理長おまかせコース</h3>
+                            <p class="price">¥12,000/人</p>
+                            <p class="description">季節の最高級食材を使用した特別コース</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-footer">
+                <a href="#" class="btn btn-outline">全メニューを見る（PDF）</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料理長紹介 -->
+    <section id="chef" class="chef">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-ja">料理長</span>
+                <span class="title-en">Master Chef</span>
+            </h2>
+            <div class="chef-content">
+                <div class="chef-image">
+                    <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=400&h=500&fit=crop" alt="料理長 陳建民">
+                </div>
+                <div class="chef-info">
+                    <h3>総料理長　陳 建民</h3>
+                    <p class="chef-title">Chen Jianmin</p>
+                    <div class="chef-bio">
+                        <p>四川省成都出身。15歳より料理の道に入り、本場四川で10年間修行。その後、香港・上海の名店で研鑽を積む。</p>
+                        <p>1995年に来日し、2005年より当店の総料理長に就任。本場の味を大切にしながら、日本の食材の良さを活かした新しい中華料理の創造に挑戦し続けている。</p>
+                        <blockquote>
+                            「料理は心。お客様の笑顔が私の原動力です」
+                        </blockquote>
+                    </div>
+                    <div class="chef-awards">
+                        <h4>受賞歴</h4>
+                        <ul>
+                            <li>2018年 中国料理コンクール金賞</li>
+                            <li>2020年 料理マスターズ受賞</li>
+                            <li>2022年 ミシュランガイド一つ星獲得</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス -->
+    <section id="access" class="access">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-ja">アクセス</span>
+                <span class="title-en">Access</span>
+            </h2>
+            <div class="access-content">
+                <div class="access-info">
+                    <div class="info-item">
+                        <h3>店舗情報</h3>
+                        <dl>
+                            <dt>住所</dt>
+                            <dd>〒100-0000 東京都千代田区銀座1-2-3 中華ビル2F</dd>
+                            <dt>電話番号</dt>
+                            <dd><a href="tel:03-1234-5678">03-1234-5678</a></dd>
+                            <dt>営業時間</dt>
+                            <dd>
+                                ランチ：11:30～14:30（L.O. 14:00）<br>
+                                ディナー：17:30～22:00（L.O. 21:00）
+                            </dd>
+                            <dt>定休日</dt>
+                            <dd>月曜日（祝日の場合は翌日）</dd>
+                            <dt>席数</dt>
+                            <dd>80席（個室3室あり）</dd>
+                        </dl>
+                    </div>
+                    <div class="info-item">
+                        <h3>交通アクセス</h3>
+                        <ul class="access-list">
+                            <li>東京メトロ銀座線「銀座駅」A5出口より徒歩3分</li>
+                            <li>JR山手線「有楽町駅」より徒歩7分</li>
+                            <li>都営浅草線「東銀座駅」より徒歩5分</li>
+                        </ul>
+                        <p class="parking">※提携駐車場あり（2時間無料）</p>
+                    </div>
+                </div>
+                <div class="access-map">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&h=400&fit=crop" alt="龍門飯店への地図">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約・お問い合わせセクション -->
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-ja">ご予約・お問い合わせ</span>
+                <span class="title-en">Reservation & Contact</span>
+            </h2>
+            <div class="reservation-content">
+                <p class="reservation-lead">お電話またはご来店にてご予約を承っております</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3><span class="contact-icon">📞</span>お電話でのご予約</h3>
+                        <a href="tel:03-1234-5678" class="phone-number">03-1234-5678</a>
+                        <p>受付時間：10:00～21:00</p>
+                        <p class="note">※ランチタイムは混雑が予想されますので、お早めのご予約をおすすめします</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3><span class="contact-icon">📧</span>メールでのお問い合わせ</h3>
+                        <a href="mailto:info@ryumon-hanten.jp" class="email-link">info@ryumon-hanten.jp</a>
+                        <p>※ご予約の確定は返信メールをもってお知らせいたします</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3><span class="contact-icon">🏪</span>店頭でのご予約</h3>
+                        <p>営業時間内に直接ご来店いただいてもご予約を承ります</p>
+                        <p>個室のご利用や団体様のご予約もお気軽にご相談ください</p>
+                    </div>
+                </div>
+                <div class="reservation-notes">
+                    <h4>ご予約に関するお願い</h4>
+                    <ul>
+                        <li>キャンセルの場合は前日までにご連絡ください</li>
+                        <li>コース料理は2日前までのご予約をお願いいたします</li>
+                        <li>アレルギーや苦手な食材がございましたら、事前にお知らせください</li>
+                        <li>20名様以上の団体様は貸切も可能です</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>龍門飯店</h3>
+                    <p>伝統の味を現代に伝える</p>
+                </div>
+                <div class="footer-links">
+                    <h4>リンク</h4>
+                    <ul>
+                        <li><a href="#about">当店について</a></li>
+                        <li><a href="#menu">メニュー</a></li>
+                        <li><a href="#chef">料理長</a></li>
+                        <li><a href="#access">アクセス</a></li>
+                    </ul>
+                </div>
+                <div class="footer-info">
+                    <h4>営業時間</h4>
+                    <p>ランチ：11:30～14:30<br>
+                    ディナー：17:30～22:00<br>
+                    定休日：月曜日</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>お問い合わせ</h4>
+                    <p>TEL: <a href="tel:03-1234-5678">03-1234-5678</a><br>
+                    〒100-0000<br>
+                    東京都千代田区銀座1-2-3</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 龍門飯店. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

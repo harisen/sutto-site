@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 背景 -->
+  <rect width="64" height="64" fill="#1e3a5f"/>
+  
+  <!-- Wの文字（ゴールド） -->
+  <text x="32" y="42" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="#d4af37">W</text>
+  
+  <!-- 肉球マーク（右上） -->
+  <g transform="translate(44, 12)">
+    <!-- メインパッド -->
+    <ellipse cx="0" cy="4" rx="5" ry="6" fill="#d4af37" opacity="0.8"/>
+    <!-- 足指パッド -->
+    <circle cx="-4" cy="-2" r="2" fill="#d4af37" opacity="0.8"/>
+    <circle cx="0" cy="-3" r="2" fill="#d4af37" opacity="0.8"/>
+    <circle cx="4" cy="-2" r="2" fill="#d4af37" opacity="0.8"/>
+  </g>
+</svg>

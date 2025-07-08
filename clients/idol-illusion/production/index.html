@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>セブンス チェキ会 | アイドルグループ「セブンス」公式イベント</title>
+    <meta name="description" content="アイドルグループ「セブンス」のチェキ会開催！2026年7月5日秋葉原にて。ミニライブも同時開催。個性豊かなイケメンアイドルたちと至近距離で会える特別なイベント。">
+    
+    <!-- ファビコン -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='90' font-size='90'>7</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* リセットCSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* CSS変数 */
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --light-blue: #dbeafe;
+            --white: #ffffff;
+            --off-white: #f8fafc;
+            --gray: #64748b;
+            --dark-gray: #1e293b;
+            --gold: #fbbf24;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
+        /* 基本スタイル */
+        body {
+            font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.7) 0%, rgba(59, 130, 246, 0.7) 100%),
+                        url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.3);
+            padding: 4rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .event-info {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        .event-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .event-info p {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark-gray);
+            padding: 1.2rem 4rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            margin-top: 2rem;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+
+        /* セクション共通スタイル */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-blue);
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--gold);
+            margin: 1rem auto 0;
+        }
+
+        /* 特徴セクション */
+        .features {
+            background: var(--off-white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card img {
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .feature-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            letter-spacing: 0.03em;
+        }
+
+        /* タイムテーブル */
+        .timetable {
+            background: var(--white);
+        }
+
+        .timetable-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .timetable-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--light-blue);
+            transition: all 0.3s ease;
+        }
+
+        .timetable-item:hover {
+            background: var(--off-white);
+            padding-left: 2rem;
+        }
+
+        .timetable-time {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            min-width: 100px;
+        }
+
+        .timetable-content {
+            font-size: 1.2rem;
+            margin-left: 2rem;
+        }
+
+        /* 料金セクション */
+        .pricing {
+            background: var(--off-white);
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--gold);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: '超人気！';
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: var(--gold);
+            color: var(--dark-gray);
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-amount {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-title {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+
+        .pricing-benefit {
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* お客様の声 */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--off-white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* FAQ */
+        .faq {
+            background: var(--off-white);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--light-blue);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 300px;
+        }
+
+        /* 申し込みフロー */
+        .flow {
+            background: var(--white);
+        }
+
+        .flow-steps {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem;
+        }
+
+        .flow-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            line-height: 60px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .flow-title {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* フッター */
+        footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .social-links {
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+        }
+
+        /* 画像の最適化 */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .event-info {
+                padding: 1.5rem;
+            }
+
+            .flow-steps {
+                flex-direction: column;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .feature-card img {
+                height: 150px;
+            }
+
+            .testimonial-card > div {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .testimonial-card img {
+                margin: 0 auto 1rem;
+            }
+        }
+
+        /* アニメーション */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">アイドルグループ「セブンス」チェキ会</h1>
+                <p class="hero-subtitle">ミニライブも開催！</p>
+                
+                <div class="event-info">
+                    <h3 style="font-family: 'Oswald', sans-serif; letter-spacing: 0.1em;">EVENT INFORMATION</h3>
+                    <p><strong>日程:</strong> 2026年7月5日（土）</p>
+                    <p><strong>時間:</strong> 11:00〜</p>
+                    <p><strong>会場:</strong> 秋葉原</p>
+                    <p style="margin-top: 1rem; font-weight: 700;">頑張っているイケメン達が勢揃い！</p>
+                </div>
+                
+                <a href="https://forms.gle/example" class="cta-button" target="_blank" rel="noopener noreferrer">ENTRY NOW</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特徴セクション -->
+    <section class="features section">
+        <div class="container">
+            <h2 class="section-title fade-in">なぜセブンスのチェキ会が選ばれるのか</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="個性的なアイドル達" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <h3 class="feature-title">個性的なアイドル達が登場</h3>
+                    <p>7人の個性豊かなメンバーが勢揃い。きっとあなたの推しが見つかる！</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="ライブパフォーマンス" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <h3 class="feature-title">推しと1mの距離感で生ライブ！</h3>
+                    <p>ミニライブでは至近距離でパフォーマンスを堪能。息遣いまで感じられる特別な体験。</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="特典プレゼント" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                    <h3 class="feature-title">チェキを複数枚買うと特典が！</h3>
+                    <p>枚数に応じた豪華特典をご用意。推しとの距離がぐっと縮まる！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- タイムテーブル -->
+    <section class="timetable section">
+        <div class="container">
+            <h2 class="section-title fade-in">タイムテーブル</h2>
+            <div class="timetable-list">
+                <div class="timetable-item fade-in">
+                    <div class="timetable-time">11:00〜</div>
+                    <div class="timetable-content">ミニライブ</div>
+                </div>
+                <div class="timetable-item fade-in">
+                    <div class="timetable-time">12:00〜</div>
+                    <div class="timetable-content">お昼モグモグタイム</div>
+                </div>
+                <div class="timetable-item fade-in">
+                    <div class="timetable-time">13:00〜</div>
+                    <div class="timetable-content">チェキ会</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料金・特典 -->
+    <section class="pricing section">
+        <div class="container">
+            <h2 class="section-title fade-in">料金・特典</h2>
+            <p style="text-align: center; font-size: 1.5rem; margin-bottom: 3rem; color: var(--primary-blue);">
+                チェキ1枚 1,000円
+            </p>
+            <div class="pricing-cards">
+                <div class="pricing-card fade-in">
+                    <div class="pricing-header">
+                        <div class="pricing-amount">30枚</div>
+                        <div class="pricing-title">30,000円</div>
+                    </div>
+                    <div class="pricing-benefit">あなただけにASMR</div>
+                </div>
+                <div class="pricing-card featured fade-in">
+                    <div class="pricing-header">
+                        <div class="pricing-amount">50枚</div>
+                        <div class="pricing-title">50,000円</div>
+                    </div>
+                    <div class="pricing-benefit">彼シャツプレゼント</div>
+                </div>
+                <div class="pricing-card fade-in">
+                    <div class="pricing-header">
+                        <div class="pricing-amount">100枚</div>
+                        <div class="pricing-title">100,000円</div>
+                    </div>
+                    <div class="pricing-benefit">あなたと通話1時間</div>
+                </div>
+                <div class="pricing-card fade-in">
+                    <div class="pricing-header">
+                        <div class="pricing-amount">1000枚</div>
+                        <div class="pricing-title">1,000,000円</div>
+                    </div>
+                    <div class="pricing-benefit">1日だけあなたのカレシ</div>
+                </div>
+            </div>
+            <div style="text-align: center; font-size: 1.4rem; color: var(--gold); font-weight: 700; margin-top: 2rem; padding: 1rem; background: rgba(251, 191, 36, 0.1); border: 2px solid var(--gold); border-radius: 8px; display: inline-block; margin: 2rem auto 0;">
+                <span style="font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.1em;">今なら古参になれる！</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声 -->
+    <section class="testimonials section">
+        <div class="container">
+            <h2 class="section-title fade-in">お客様の声</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80" alt="お客様の声1" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                        <div style="flex: 1;">
+                            <p class="testimonial-text">
+                                "初めてのチェキ会でドキドキでしたが、メンバーの皆さんが優しくて最高でした！推しと1mの距離で会えるなんて夢みたい♡"
+                            </p>
+                            <p class="testimonial-author">20代女性・会社員</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80" alt="お客様の声2" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                        <div style="flex: 1;">
+                            <p class="testimonial-text">
+                                "ミニライブのクオリティが本当に高い！こんなに近くでパフォーマンスを見られるなんて贅沢すぎます。"
+                            </p>
+                            <p class="testimonial-author">10代女性・学生</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80" alt="お客様の声3" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                        <div style="flex: 1;">
+                            <p class="testimonial-text">
+                                "特典のASMRが最高でした...推しの声を独り占めできる幸せ。次は彼シャツ目指して頑張ります！"
+                            </p>
+                            <p class="testimonial-author">30代女性・フリーランス</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq section">
+        <div class="container">
+            <h2 class="section-title fade-in">よくある質問</h2>
+            <div class="faq-list">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">チェキの枚数に制限はありますか？</div>
+                    <div class="faq-answer">
+                        制限はございません！好きなだけ推しとの思い出を作ってください。在庫がなくなり次第終了となりますので、お早めにお求めください。
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">どんなアイドルがいますか？</div>
+                    <div class="faq-answer">
+                        セブンスは7人組のアイドルグループです。クールな王子様系から可愛い系まで、個性豊かなメンバーが揃っています。公式SNSで各メンバーの情報をチェックしてくださいね！
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">推しと交流は可能ですか？</div>
+                    <div class="faq-answer">
+                        チェキ撮影時に少しお話しすることができます。また、特典によってはASMRや通話など、より深い交流が可能です！
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">イベント外でのサービスはありますか？</div>
+                    <div class="faq-answer">
+                        定期的にオンラインイベントやSNSでの交流企画を実施しています。公式X（@tuyotuyoikemen）をフォローして最新情報をゲット！
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <div class="faq-question">キャンセルはできますか？</div>
+                    <div class="faq-answer">
+                        お申し込み後のキャンセルは原則お受けできません。やむを得ない事情がある場合は、お早めにご連絡ください。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 申し込みフロー -->
+    <section class="flow section" id="apply">
+        <div class="container">
+            <h2 class="section-title fade-in">お申し込みの流れ</h2>
+            <div class="flow-steps">
+                <div class="flow-step fade-in">
+                    <div class="flow-number" style="font-family: 'Oswald', sans-serif;">1</div>
+                    <h3 class="flow-title" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.05em;">お申し込み</h3>
+                    <p>下記フォームからお申し込みください</p>
+                </div>
+                <div class="flow-step fade-in">
+                    <div class="flow-number" style="font-family: 'Oswald', sans-serif;">2</div>
+                    <h3 class="flow-title" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.05em;">入場料のお支払い</h3>
+                    <p>事前決済で並ばずスムーズに入場</p>
+                </div>
+                <div class="flow-step fade-in">
+                    <div class="flow-number" style="font-family: 'Oswald', sans-serif;">3</div>
+                    <h3 class="flow-title" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.05em;">チェキ購入</h3>
+                    <p>会場でチケットを購入して推しと撮影</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://forms.gle/example" class="cta-button" target="_blank" rel="noopener noreferrer">ENTRY NOW</a>
+                <p style="margin-top: 1rem; color: var(--gray);">※Googleフォームが開きます</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="menu.html">料金表・メニュー</a>
+                <a href="terms.html">利用規約</a>
+                <a href="privacy.html">プライバシーポリシー</a>
+                <a href="transaction.html">特定商取引法に基づく表記</a>
+            </div>
+            <div class="social-links">
+                <a href="https://twitter.com/tuyotuyoikemen" target="_blank" rel="noopener noreferrer">
+                    X: @tuyotuyoikemen
+                </a>
+            </div>
+            <p>お問い合わせ</p>
+            <p style="font-size: 1.1rem;">
+                <span style="font-weight: 700;">MAIL:</span> ikemen@tuyotuyo | 
+                <span style="font-weight: 700;">TEL:</span> 00000000
+            </p>
+            <p style="margin-top: 2rem; font-family: 'Oswald', sans-serif; letter-spacing: 0.05em;">&copy;ikemenidolippai</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQアコーディオン
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // スクロールアニメーション
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // スムーズスクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

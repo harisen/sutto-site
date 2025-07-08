@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <rect width="1920" height="1080" fill="#2C1810"/>
+  <pattern id="pattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+    <circle cx="100" cy="100" r="50" fill="#DC143C" opacity="0.1"/>
+    <text x="100" y="100" font-family="serif" font-size="40" text-anchor="middle" alignment-baseline="middle" fill="#FFD700" opacity="0.2">龍</text>
+  </pattern>
+  <rect width="1920" height="1080" fill="url(#pattern)"/>
+</svg>

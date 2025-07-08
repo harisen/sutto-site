@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スタッフ情報 | デンジャラスホーム</title>
+    <style>
+        :root {
+            --rainbow-1: #FF0000;
+            --rainbow-2: #FF7F00;
+            --rainbow-3: #FFFF00;
+            --rainbow-4: #00FF00;
+            --rainbow-5: #0000FF;
+            --rainbow-6: #4B0082;
+            --rainbow-7: #9400D3;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(45deg, #FFF5F5, #F5FFF5, #F5F5FF);
+        }
+        
+        header {
+            background: linear-gradient(90deg, var(--rainbow-1), var(--rainbow-2), var(--rainbow-3), var(--rainbow-4), var(--rainbow-5), var(--rainbow-6), var(--rainbow-7));
+            padding: 1rem;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.95);
+            padding: 0.5rem 2rem;
+            border-radius: 50px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--rainbow-1), var(--rainbow-3), var(--rainbow-5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            background: linear-gradient(90deg, var(--rainbow-1), var(--rainbow-7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-hero {
+            padding: 4rem 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0,0,255,0.1), rgba(148,0,211,0.1));
+        }
+        
+        .page-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--rainbow-1), var(--rainbow-7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+        
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .staff-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .staff-image {
+            height: 300px;
+            background: linear-gradient(135deg, var(--rainbow-1), var(--rainbow-7));
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .staff-avatar {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .staff-info {
+            padding: 2rem;
+        }
+        
+        .staff-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--rainbow-5);
+        }
+        
+        .staff-title {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .staff-bio {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .staff-qualifications {
+            background: linear-gradient(135deg, rgba(255,255,0,0.1), rgba(0,255,0,0.1));
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+        
+        .qualification-item {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+        }
+        
+        .qualification-item::before {
+            content: "✓";
+            color: var(--rainbow-4);
+            font-weight: bold;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .team-message {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .team-message h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--rainbow-1), var(--rainbow-7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--rainbow-1), var(--rainbow-7));
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 2rem;
+            transition: transform 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="dangerous-home.html" class="logo">デンジャラスホーム</a>
+            <nav>
+                <a href="dangerous-home.html">ホーム</a>
+                <a href="about.html">会社概要</a>
+                <a href="pricing.html">料金表</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-hero">
+        <h1>スタッフ情報</h1>
+        <p>2人体制で手厚くサポートします</p>
+    </div>
+
+    <div class="main-content">
+        <div class="staff-grid">
+            <div class="staff-card">
+                <div class="staff-image">
+                    <div class="staff-avatar">👨‍⚕️</div>
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">健康 太郎</h3>
+                    <p class="staff-title">チーフヘルスコーディネーター</p>
+                    <p class="staff-bio">
+                        元プロゲーマーから健康指導員へ転身。ゲーム依存症からの脱却経験を活かし、
+                        同じ悩みを持つ方々を全力でサポートします。
+                    </p>
+                    <div class="staff-qualifications">
+                        <p style="font-weight: bold; margin-bottom: 0.5rem;">保有資格</p>
+                        <div class="qualification-item">学芸員資格</div>
+                        <div class="qualification-item">健康管理士一般指導員</div>
+                        <div class="qualification-item">メンタルヘルスケア</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card">
+                <div class="staff-image">
+                    <div class="staff-avatar">👩‍⚕️</div>
+                </div>
+                <div class="staff-info">
+                    <h3 class="staff-name">元気 花子</h3>
+                    <p class="staff-title">ライフスタイルアドバイザー</p>
+                    <p class="staff-bio">
+                        10年間の不健康生活から奇跡の復活を遂げた経験者。
+                        「楽しく健康に」をモットーに、一人ひとりに寄り添います。
+                    </p>
+                    <div class="staff-qualifications">
+                        <p style="font-weight: bold; margin-bottom: 0.5rem;">保有資格</p>
+                        <div class="qualification-item">学芸員資格</div>
+                        <div class="qualification-item">栄養士</div>
+                        <div class="qualification-item">フィットネストレーナー</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-message">
+            <h2>スタッフからのメッセージ</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8; margin-top: 1rem;">
+                私たちは、あなたの健康を本気で考えています。<br>
+                10年という長い時間をかけて、じっくりと向き合い、<br>
+                確実に健康な身体と心を手に入れていただきます。<br><br>
+                エアコン完備の快適な環境で、<br>
+                チュッパチャップスを楽しみながら、<br>
+                一緒に新しい人生をスタートしましょう！
+            </p>
+            <a href="dangerous-home.html#contact" class="cta-button">スタッフに相談する</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 デンジャラスホーム. All rights reserved.</p>
+    </footer>
+</body>
+</html>

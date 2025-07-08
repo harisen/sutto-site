@@ -30,7 +30,10 @@ yarn-error.log*
 
 # Misc
 .vercel
+.vercel/
 *.bak
+*.tmp
+*.temp
 
 # Dashboard - NEVER DEPLOY
 dashboard.html

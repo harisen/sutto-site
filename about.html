@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会社概要 | デンジャラスホーム</title>
+    <style>
+        :root {
+            --rainbow-1: #FF0000;
+            --rainbow-2: #FF7F00;
+            --rainbow-3: #FFFF00;
+            --rainbow-4: #00FF00;
+            --rainbow-5: #0000FF;
+            --rainbow-6: #4B0082;
+            --rainbow-7: #9400D3;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(45deg, #FFF5F5, #F5FFF5, #F5F5FF);
+        }
+        
+        header {
+            background: linear-gradient(90deg, var(--rainbow-1), var(--rainbow-2), var(--rainbow-3), var(--rainbow-4), var(--rainbow-5), var(--rainbow-6), var(--rainbow-7));
+            padding: 1rem;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.95);
+            padding: 0.5rem 2rem;
+            border-radius: 50px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--rainbow-1), var(--rainbow-3), var(--rainbow-5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            background: linear-gradient(90deg, var(--rainbow-1), var(--rainbow-7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-hero {
+            padding: 4rem 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255,0,0,0.1), rgba(148,0,211,0.1));
+        }
+        
+        .page-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--rainbow-1), var(--rainbow-7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1rem;
+        }
+        
+        .company-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .company-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        
+        .company-table tr {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .company-table th {
+            background: linear-gradient(135deg, rgba(255,255,0,0.1), rgba(0,255,0,0.1));
+            padding: 1rem;
+            text-align: left;
+            width: 30%;
+            font-weight: bold;
+        }
+        
+        .company-table td {
+            padding: 1rem;
+        }
+        
+        .mission-section {
+            text-align: center;
+            margin: 4rem 0;
+        }
+        
+        .mission-box {
+            background: linear-gradient(135deg, rgba(255,0,0,0.05), rgba(148,0,211,0.05));
+            padding: 3rem;
+            border-radius: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .mission-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--rainbow-1), var(--rainbow-7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--rainbow-1), var(--rainbow-7));
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+            text-align: right;
+            padding-right: 50%;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+            padding-left: 50%;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            max-width: 400px;
+            position: relative;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--rainbow-5);
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="dangerous-home.html" class="logo">デンジャラスホーム</a>
+            <nav>
+                <a href="dangerous-home.html">ホーム</a>
+                <a href="staff.html">スタッフ</a>
+                <a href="pricing.html">料金表</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-hero">
+        <h1>会社概要</h1>
+        <p>創業3分の革新的健康サービス</p>
+    </div>
+
+    <div class="main-content">
+        <section class="company-section">
+            <h2 style="font-size: 1.8rem; margin-bottom: 1rem;">会社情報</h2>
+            <table class="company-table">
+                <tr>
+                    <th>会社名</th>
+                    <td>デンジャラスホーム</td>
+                </tr>
+                <tr>
+                    <th>代表者</th>
+                    <td>fumika</td>
+                </tr>
+                <tr>
+                    <th>設立</th>
+                    <td>創業3分（令和最新）</td>
+                </tr>
+                <tr>
+                    <th>所在地</th>
+                    <td>愛知県（家から2時間）</td>
+                </tr>
+                <tr>
+                    <th>事業内容</th>
+                    <td>不健康矯正健康ホーム運営</td>
+                </tr>
+                <tr>
+                    <th>従業員数</th>
+                    <td>2名（学芸員資格保有）</td>
+                </tr>
+                <tr>
+                    <th>営業時間</th>
+                    <td>24時間・年中無休（GWを除く）</td>
+                </tr>
+                <tr>
+                    <th>連絡先</th>
+                    <td>手紙 / chakopen_mugi@qc.commufa.jp</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="mission-section">
+            <div class="mission-box">
+                <h2 class="mission-title">私たちのミッション</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    「たった15年で健康になれる」<br><br>
+                    不健康な生活から抜け出せない全ての人々に、<br>
+                    確実で楽しい健康改善の道を提供します。<br>
+                    エアコン完備の快適な環境で、<br>
+                    最高の令和最新サービスをお届けします。
+                </p>
+            </div>
+        </section>
+
+        <section class="company-section">
+            <h2 style="font-size: 1.8rem; text-align: center; margin-bottom: 2rem;">沿革</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>創業3分前</h3>
+                        <p>不健康な人々を救いたいという思いが芽生える</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>創業</h3>
+                        <p>デンジャラスホーム設立</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>創業1分後</h3>
+                        <p>エアコン完備完了</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>創業2分後</h3>
+                        <p>スタッフ2名体制確立</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>創業3分後（現在）</h3>
+                        <p>先着1000万名様募集開始</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 4rem;">
+            <h2 style="font-size: 1.8rem; text-align: center; margin-bottom: 3rem;">私たちの価値観</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🌈</div>
+                    <h3>多様性</h3>
+                    <p>10代から50代まで、全ての不健康な人を受け入れます</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🏠</div>
+                    <h3>快適性</h3>
+                    <p>エアコン完備で365日快適な環境を提供</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3>確実性</h3>
+                    <p>10年間の滞在で確実に健康を実現</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🍭</div>
+                    <h3>楽しさ</h3>
+                    <p>チュッパチャップスで楽しく健康改善</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="company-section" style="margin-top: 4rem; text-align: center;">
+            <h2 style="font-size: 1.8rem; margin-bottom: 2rem;">アクセス</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8;">
+                愛知県の自然豊かな場所<br>
+                「家から2時間」の絶妙な立地<br><br>
+                詳細な住所は、お申し込み後にご案内いたします
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 デンジャラスホーム. All rights reserved.</p>
+    </footer>
+    <script src="js/subpage-language.js"></script>
+</body>
+</html>

@@ -136,7 +136,7 @@ const translations = {
         footer: {
             companyName: "スッとサイト",
             description: "AI技術を活用した高速・高品質な<br>ランディングページ制作サービス",
-            aiPowered: "🤖 AI Powered Development",
+            aiPowered: "最新技術でお手伝い",
             sections: {
                 service: "サービス",
                 contact: "お問い合わせ"
@@ -291,7 +291,7 @@ const translations = {
         footer: {
             companyName: "LP Creation Service",
             description: "High-speed, high-quality<br>landing page creation service utilizing AI technology",
-            aiPowered: "🤖 AI Powered Development",
+            aiPowered: "最新技術でお手伝い",
             sections: {
                 service: "Service",
                 contact: "Contact"
@@ -446,7 +446,7 @@ const translations = {
         footer: {
             companyName: "LP製作服務",
             description: "運用AI技術的高速、高品質<br>登陸頁製作服務",
-            aiPowered: "🤖 AI Powered Development",
+            aiPowered: "最新技術でお手伝い",
             sections: {
                 service: "服務",
                 contact: "聯絡我們"

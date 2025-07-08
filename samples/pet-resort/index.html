@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ペットリゾートWANCO | 横浜みなとみらいの高級ペットホテル</title>
+    <meta name="description" content="横浜みなとみらいの完全個室型ペットリゾート。24時間獣医師連携、専属スタッフによる手厚いケアで、大切な家族に最高のホテルステイを。施設見学予約受付中。">
+    
+    <!-- OGP -->
+    <meta property="og:title" content="ペットリゾートWANCO | 横浜みなとみらいの高級ペットホテル">
+    <meta property="og:description" content="横浜みなとみらいの完全個室型ペットリゾート。24時間獣医師連携、専属スタッフによる手厚いケアで、大切な家族に最高のホテルステイを。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pet-resort-wanco.com">
+    <meta property="og:image" content="https://picsum.photos/1200/630?random=23">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for fallback icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    
+    <!-- Fallback Styles -->
+    <style>
+        /* テキストロゴスタイル */
+        .text-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            color: var(--color-navy);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .text-logo.text-white {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .text-logo {
+                font-size: 2rem;
+                letter-spacing: 0.2em;
+            }
+        }
+        
+        /* アイコンフォールバック */
+        .icon-fallback {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 6rem;
+            height: 6rem;
+            font-size: 3rem;
+            color: var(--color-gold);
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+        }
+        
+        /* 動画代替スライドショー */
+        .video-slideshow {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            margin: 8rem 0;
+        }
+        
+        .video-slideshow .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .video-slideshow .swiper-slide {
+            position: relative;
+        }
+        
+        .video-slideshow img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-slideshow-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 10;
+        }
+        
+        .video-slideshow-title {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .video-slideshow-text {
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .video-slideshow-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .video-slideshow {
+                height: 400px;
+                margin: 4rem 0;
+            }
+            
+            .video-slideshow-title {
+                font-size: 2.5rem;
+            }
+            
+            .video-slideshow-text {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "ペットリゾートWANCO",
+        "description": "横浜みなとみらいの完全個室型ペットリゾート",
+        "url": "https://pet-resort-wanco.com",
+        "telephone": "045-987-6543",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "みなとみらい1-1-1",
+            "addressLocality": "横浜市西区",
+            "addressRegion": "神奈川県",
+            "postalCode": "220-0012",
+            "addressCountry": "JP"
+        },
+        "openingHours": "Mo-Su 07:00-20:00"
+    }
+    </script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading">
+        <div class="loading-inner">
+            <div class="loading-logo">WANCO</div>
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="header-inner">
+            <div class="header-logo">
+                <a href="#top" class="text-logo">WANCO</a>
+            </div>
+            <nav class="header-nav">
+                <ul class="nav-list">
+                    <li><a href="#concept">コンセプト</a></li>
+                    <li><a href="#facility">施設案内</a></li>
+                    <li><a href="#service">サービス</a></li>
+                    <li><a href="#price">料金</a></li>
+                    <li><a href="#access">アクセス</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#contact" class="btn btn-primary">お問い合わせ</a>
+                <a href="tel:045-987-6543" class="header-tel">
+                    <i class="fas fa-phone"></i>
+                    <span>045-987-6543</span>
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="メニューを開く">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-slider swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/1920/1080?random=1" alt="ペットリゾートWANCO 外観" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/1920/1080?random=2" alt="ペットリゾートWANCO スイートルーム" loading="lazy">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/1920/1080?random=3" alt="ペットリゾートWANCO ドッグラン" loading="lazy">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-title-main">ペットリゾート</span>
+                <span class="hero-title-sub">WANCO</span>
+            </h1>
+            <p class="hero-text">
+                横浜みなとみらいで、最高のおもてなしを。<br>
+                大切な家族に、特別な時間を。
+            </p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary btn-large">お問い合わせ</a>
+                <a href="#concept" class="btn btn-outline btn-large">詳しく見る</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section id="concept" class="concept section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Concept</h2>
+                <p class="section-subtitle">ペットリゾートWANCOの想い</p>
+            </div>
+            <div class="concept-content">
+                <div class="concept-text">
+                    <h3 class="concept-title">「家族」として、最高のおもてなしを</h3>
+                    <p class="concept-description">
+                        ペットは大切な家族の一員。<br>
+                        だからこそ、人間と同じように<br>
+                        快適で上質な時間を過ごしていただきたい。
+                    </p>
+                    <p class="concept-description">
+                        横浜みなとみらいの洗練された環境で、<br>
+                        24時間体制の手厚いケアと<br>
+                        獣医師との連携による安心のサポート。
+                    </p>
+                    <p class="concept-description">
+                        ペットリゾートWANCOは<br>
+                        すべてのペットに「特別な体験」を<br>
+                        ご提供いたします。
+                    </p>
+                </div>
+                <div class="concept-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock icon-fallback"></i>
+                        </div>
+                        <h4 class="feature-title">24時間体制</h4>
+                        <p class="feature-text">専属スタッフが24時間常駐し、きめ細やかなケアを提供</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-md icon-fallback"></i>
+                        </div>
+                        <h4 class="feature-title">獣医師連携</h4>
+                        <p class="feature-text">提携獣医師による健康管理と緊急時の迅速な対応</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-bed icon-fallback"></i>
+                        </div>
+                        <h4 class="feature-title">完全個室</h4>
+                        <p class="feature-text">プライベート空間でストレスフリーな滞在を実現</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facility Section -->
+    <section id="facility" class="facility section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Facility</h2>
+                <p class="section-subtitle">充実の施設・設備</p>
+            </div>
+            <div class="facility-gallery">
+                <div class="gallery-main">
+                    <img src="https://picsum.photos/800/600?random=4" alt="スイートルーム" class="gallery-image active" data-room="suite">
+                    <img src="https://picsum.photos/800/600?random=5" alt="スタンダードルーム" class="gallery-image" data-room="standard">
+                    <img src="https://picsum.photos/800/600?random=6" alt="ドッグラン" class="gallery-image" data-room="dogrun">
+                    <img src="https://picsum.photos/800/600?random=7" alt="グルーミングルーム" class="gallery-image" data-room="grooming">
+                </div>
+                <div class="gallery-thumbs">
+                    <button class="gallery-thumb active" data-room="suite">
+                        <img src="https://picsum.photos/200/150?random=8" alt="スイートルーム">
+                    </button>
+                    <button class="gallery-thumb" data-room="standard">
+                        <img src="https://picsum.photos/200/150?random=9" alt="スタンダードルーム">
+                    </button>
+                    <button class="gallery-thumb" data-room="dogrun">
+                        <img src="https://picsum.photos/200/150?random=10" alt="ドッグラン">
+                    </button>
+                    <button class="gallery-thumb" data-room="grooming">
+                        <img src="https://picsum.photos/200/150?random=11" alt="グルーミングルーム">
+                    </button>
+                </div>
+                <div class="gallery-info">
+                    <div class="room-info active" data-room="suite">
+                        <h3 class="room-title">スイートルーム</h3>
+                        <p class="room-description">広々とした完全個室で、大型犬も快適に過ごせる贅沢な空間。専用のプレイエリアと高級ベッドを完備。</p>
+                    </div>
+                    <div class="room-info" data-room="standard">
+                        <h3 class="room-title">スタンダードルーム</h3>
+                        <p class="room-description">小型犬・中型犬に最適な、落ち着いた雰囲気の個室。24時間空調管理で快適な環境を維持。</p>
+                    </div>
+                    <div class="room-info" data-room="dogrun">
+                        <h3 class="room-title">ドッグラン</h3>
+                        <p class="room-description">天然芝の広大なドッグラン。雨天対応の屋内運動場も完備し、天候に関わらず運動が可能。</p>
+                    </div>
+                    <div class="room-info" data-room="grooming">
+                        <h3 class="room-title">グルーミングルーム</h3>
+                        <p class="room-description">プロのトリマーが常駐する清潔なグルーミングルーム。最新設備で愛犬を美しく。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Slideshow Section (動画の代替) -->
+    <section class="video-slideshow">
+        <div class="video-slideshow-overlay"></div>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/1920/600?random=12" alt="ペットリゾート体験1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/1920/600?random=13" alt="ペットリゾート体験2">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/1920/600?random=14" alt="ペットリゾート体験3">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://picsum.photos/1920/600?random=15" alt="ペットリゾート体験4">
+                </div>
+            </div>
+        </div>
+        <div class="video-slideshow-content">
+            <h2 class="video-slideshow-title">特別な体験を、大切な家族に</h2>
+            <p class="video-slideshow-text">WANCOでの1日をご紹介</p>
+        </div>
+    </section>
+
+    <!-- Service Section -->
+    <section id="service" class="service section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Service</h2>
+                <p class="section-subtitle">充実のサービス</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://picsum.photos/400/300?random=16" alt="宿泊サービス" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">宿泊サービス</h3>
+                        <p class="service-description">
+                            完全個室でストレスフリーな滞在。
+                            24時間スタッフ常駐で安心のケア。
+                        </p>
+                        <ul class="service-features">
+                            <li>朝夕2回のお散歩</li>
+                            <li>食事管理・投薬対応</li>
+                            <li>毎日の健康チェック</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://picsum.photos/400/300?random=17" alt="デイケアサービス" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">デイケア</h3>
+                        <p class="service-description">
+                            日中のお預かりサービス。
+                            社会性を育む他のペットとの交流も。
+                        </p>
+                        <ul class="service-features">
+                            <li>7:00-20:00対応</li>
+                            <li>運動プログラム</li>
+                            <li>おやつタイム付き</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://picsum.photos/400/300?random=18" alt="トリミングサービス" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">トリミング</h3>
+                        <p class="service-description">
+                            経験豊富なトリマーによる
+                            プロフェッショナルなケア。
+                        </p>
+                        <ul class="service-features">
+                            <li>シャンプー・カット</li>
+                            <li>爪切り・耳掃除</li>
+                            <li>オプションメニュー充実</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://picsum.photos/400/300?random=19" alt="送迎サービス" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">送迎サービス</h3>
+                        <p class="service-description">
+                            専用車でご自宅まで
+                            安全・快適にお迎えいたします。
+                        </p>
+                        <ul class="service-features">
+                            <li>横浜市内全域対応</li>
+                            <li>エアコン完備車両</li>
+                            <li>ケージ・シートベルト完備</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Section -->
+    <section id="price" class="price section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Price</h2>
+                <p class="section-subtitle">料金プラン</p>
+            </div>
+            <div class="price-tables">
+                <div class="price-table">
+                    <h3 class="price-category">宿泊料金</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>サイズ</th>
+                                <th>スタンダード</th>
+                                <th>スイート</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>小型犬（〜10kg）</td>
+                                <td>¥5,000/泊</td>
+                                <td>¥8,000/泊</td>
+                            </tr>
+                            <tr>
+                                <td>中型犬（10〜25kg）</td>
+                                <td>¥7,000/泊</td>
+                                <td>¥10,000/泊</td>
+                            </tr>
+                            <tr>
+                                <td>大型犬（25kg〜）</td>
+                                <td>¥9,000/泊</td>
+                                <td>¥12,000/泊</td>
+                            </tr>
+                            <tr>
+                                <td>猫</td>
+                                <td>¥4,000/泊</td>
+                                <td>¥6,000/泊</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="price-table">
+                    <h3 class="price-category">デイケア料金</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>サイズ</th>
+                                <th>半日（4時間）</th>
+                                <th>1日（8時間）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>小型犬</td>
+                                <td>¥2,500</td>
+                                <td>¥4,000</td>
+                            </tr>
+                            <tr>
+                                <td>中型犬</td>
+                                <td>¥3,500</td>
+                                <td>¥5,500</td>
+                            </tr>
+                            <tr>
+                                <td>大型犬</td>
+                                <td>¥4,500</td>
+                                <td>¥7,000</td>
+                            </tr>
+                            <tr>
+                                <td>猫</td>
+                                <td>¥2,000</td>
+                                <td>¥3,500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="price-cta">
+                <p class="price-note">※長期割引、多頭割引もございます。詳しくはお問い合わせください。</p>
+                <button class="btn btn-primary btn-large" id="openSimulator">料金シミュレーター</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voice Section -->
+    <section id="voice" class="voice section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Voice</h2>
+                <p class="section-subtitle">お客様の声</p>
+            </div>
+            <div class="voice-slider swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="voice-card">
+                            <div class="voice-header">
+                                <img src="https://picsum.photos/100/100?random=20" alt="山田様" class="voice-avatar">
+                                <div class="voice-info">
+                                    <h4 class="voice-name">山田 様</h4>
+                                    <p class="voice-pet">トイプードル（5歳）</p>
+                                </div>
+                            </div>
+                            <div class="voice-content">
+                                <div class="voice-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="voice-text">
+                                    初めての利用でしたが、スタッフの方々がとても親切で安心してお任せできました。
+                                    毎日の様子を写真で送ってくださるのも嬉しいサービスです。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="voice-card">
+                            <div class="voice-header">
+                                <img src="https://picsum.photos/100/100?random=21" alt="佐藤様" class="voice-avatar">
+                                <div class="voice-info">
+                                    <h4 class="voice-name">佐藤 様</h4>
+                                    <p class="voice-pet">ゴールデンレトリバー（3歳）</p>
+                                </div>
+                            </div>
+                            <div class="voice-content">
+                                <div class="voice-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="voice-text">
+                                    大型犬でも広々とした個室で過ごせるので、ストレスなく滞在できているようです。
+                                    獣医師との連携も安心材料の一つです。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="voice-card">
+                            <div class="voice-header">
+                                <img src="https://picsum.photos/100/100?random=22" alt="鈴木様" class="voice-avatar">
+                                <div class="voice-info">
+                                    <h4 class="voice-name">鈴木 様</h4>
+                                    <p class="voice-pet">ラグドール（2歳）</p>
+                                </div>
+                            </div>
+                            <div class="voice-content">
+                                <div class="voice-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="voice-text">
+                                    猫専用の静かなエリアがあるのが良いですね。
+                                    清潔感もあり、安心して預けられます。リピート確定です！
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access" class="access section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Access</h2>
+                <p class="section-subtitle">アクセス情報</p>
+            </div>
+            <div class="access-content">
+                <div class="access-info">
+                    <h3 class="access-title">ペットリゾートWANCO</h3>
+                    <dl class="access-list">
+                        <dt>住所</dt>
+                        <dd>〒220-0012<br>神奈川県横浜市西区みなとみらい1-1-1</dd>
+                        <dt>電話番号</dt>
+                        <dd><a href="tel:045-987-6543">045-987-6543</a></dd>
+                        <dt>営業時間</dt>
+                        <dd>7:00 - 20:00（年中無休）</dd>
+                        <dt>アクセス</dt>
+                        <dd>
+                            みなとみらい線「みなとみらい駅」徒歩5分<br>
+                            JR「桜木町駅」徒歩10分
+                        </dd>
+                    </dl>
+                    <div class="access-buttons">
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-outline">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Google Mapで見る
+                        </a>
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-phone"></i>
+                            お問い合わせ
+                        </a>
+                    </div>
+                </div>
+                <div class="access-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3249.9998837620747!2d139.63175931525862!3d35.45506868023883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185ce3e1a5f5f7%3A0x2c827d2070b6b2a5!2z44G_44Gq44Go44G_44KJ44GE!5e0!3m2!1sja!2sjp!4v1234567890123" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact</h2>
+                <p class="section-subtitle">お問い合わせ</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 class="contact-title">施設見学・ご予約について</h3>
+                    <p class="contact-description">
+                        ペットリゾートWANCOへのお問い合わせ、施設見学のご予約は<br>
+                        お電話またはメールにてお気軽にご連絡ください。
+                    </p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>お電話でのお問い合わせ</h4>
+                                <p class="contact-number">045-987-6543</p>
+                                <p class="contact-hours">受付時間：7:00 - 20:00（年中無休）</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>メールでのお問い合わせ</h4>
+                                <p class="contact-email">info@pet-resort-wanco.com</p>
+                                <p class="contact-note">24時間受付（返信は営業時間内）</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-cta">
+                        <p class="contact-message">
+                            大切な家族のための特別な空間。<br>
+                            まずは施設見学にお越しください。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#top" class="text-logo text-white">WANCO</a>
+                </div>
+                <div class="footer-info">
+                    <p>〒220-0012 神奈川県横浜市西区みなとみらい1-1-1</p>
+                    <p>TEL: <a href="tel:045-987-6543">045-987-6543</a></p>
+                    <p>営業時間: 7:00 - 20:00（年中無休）</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Pet Resort WANCO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Price Simulator Modal -->
+    <div id="priceSimulator" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">料金シミュレーター</h3>
+                <button class="modal-close" aria-label="閉じる">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="simulatorForm">
+                    <div class="form-group">
+                        <label for="sim-service">サービス</label>
+                        <select id="sim-service" name="service">
+                            <option value="stay">宿泊</option>
+                            <option value="daycare">デイケア</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sim-pet">ペットの種類・サイズ</label>
+                        <select id="sim-pet" name="pet">
+                            <option value="dog-small">小型犬（〜10kg）</option>
+                            <option value="dog-medium">中型犬（10〜25kg）</option>
+                            <option value="dog-large">大型犬（25kg〜）</option>
+                            <option value="cat">猫</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sim-room">ルームタイプ</label>
+                        <select id="sim-room" name="room">
+                            <option value="standard">スタンダード</option>
+                            <option value="suite">スイート</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="sim-duration-group">
+                        <label for="sim-duration">宿泊数</label>
+                        <input type="number" id="sim-duration" name="duration" min="1" value="1">
+                    </div>
+                    <div class="form-group" id="sim-daycare-group" style="display:none;">
+                        <label for="sim-daycare-type">デイケアタイプ</label>
+                        <select id="sim-daycare-type" name="daycare-type">
+                            <option value="half">半日（4時間）</option>
+                            <option value="full">1日（8時間）</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sim-options">オプション</label>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" name="options" value="trimming">
+                                トリミング（+¥3,000〜）
+                            </label>
+                            <label>
+                                <input type="checkbox" name="options" value="transport">
+                                送迎サービス（+¥2,000〜）
+                            </label>
+                        </div>
+                    </div>
+                </form>
+                <div class="simulator-result">
+                    <h4>概算料金</h4>
+                    <p class="simulator-price">¥<span id="totalPrice">0</span></p>
+                    <p class="simulator-note">※正確な料金は、お問い合わせください。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Video Slideshow Script -->
+    <script>
+        // 動画代替スライドショーの初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            new Swiper('.video-slideshow .swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                speed: 1000
+            });
+        });
+    </script>
+</body>
+</html>
