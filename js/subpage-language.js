@@ -458,6 +458,123 @@ const subpageTranslations = {
                     content: "If you wish to cancel, please contact us by email as soon as possible."
                 }
             }
+        },
+        
+        // Deployment Guide page
+        deploymentGuide: {
+            title: "納品後のサイト公開ガイド",
+            subtitle: "納品されたファイルを使って、実際にWebサイトを公開する方法をご案内します",
+            deliveryFiles: {
+                title: "納品ファイルについて",
+                description: "納品時には、以下のファイルが含まれたZIPファイルをお渡しします：",
+                files: [
+                    "HTML ファイル（index.html など）",
+                    "CSS ファイル（スタイルシート）",
+                    "JavaScript ファイル（動的機能）",
+                    "画像素材（images フォルダ）",
+                    "設置マニュアル（README.txt）"
+                ]
+            },
+            steps: [
+                {
+                    number: "1",
+                    title: "ドメインを取得する",
+                    subtitle: "あなたのサイトのアドレス（URL）を決めます",
+                    description: "ドメインとは「example.com」のようなWebサイトのアドレスです。以下のサービスで取得できます：",
+                    services: [
+                        {
+                            name: "お名前.com",
+                            description: "国内最大級のドメイン登録サービス",
+                            price: "年額 1,000円〜"
+                        },
+                        {
+                            name: "ムームードメイン",
+                            description: "初心者に優しい管理画面",
+                            price: "年額 1,200円〜"
+                        },
+                        {
+                            name: "Google Domains",
+                            description: "Googleが提供するシンプルなサービス",
+                            price: "年額 1,400円〜"
+                        }
+                    ]
+                },
+                {
+                    number: "2",
+                    title: "サーバーを用意する",
+                    subtitle: "ファイルを置く場所を決めます",
+                    description: "サーバーとは、あなたのサイトのファイルを保管し、インターネットに公開するためのコンピュータです。"
+                },
+                {
+                    number: "3",
+                    title: "ファイルをアップロードする",
+                    subtitle: "納品ファイルをサーバーに転送します",
+                    description: "FTPソフトやサーバーの管理画面を使って、ファイルをアップロードします。"
+                }
+            ],
+            serverOptions: {
+                rental: {
+                    title: "レンタルサーバー",
+                    description: "初心者におすすめ！管理が簡単"
+                },
+                wordpress: {
+                    title: "WordPressマネージド",
+                    description: "更新が多いサイトに最適"
+                },
+                cloud: {
+                    title: "クラウドサービス",
+                    description: "手軽に始められる最新サービス"
+                }
+            },
+            uploadMethods: {
+                ftp: {
+                    title: "FTPソフトを使う方法",
+                    description: "FileZillaなどの無料ソフトを使ってアップロード"
+                },
+                admin: {
+                    title: "管理画面からアップロード",
+                    description: "サーバーの管理画面から直接アップロード"
+                },
+                cloud: {
+                    title: "クラウドサービスの専用ツール",
+                    description: "NetlifyやVercelの専用ツールを使用"
+                }
+            },
+            recommended: {
+                title: "おすすめの組み合わせ",
+                combination: "お名前.com（ドメイン）+ エックスサーバー（サーバー）",
+                reason: "初心者でも管理が簡単で、サポートも充実しています。"
+            },
+            faq: {
+                title: "よくある質問",
+                items: [
+                    {
+                        question: "ドメインとサーバーの違いは？",
+                        answer: "ドメインは「住所」、サーバーは「土地」のようなものです。ドメインはインターネット上のアドレスで、サーバーは実際にファイルを置く場所です。"
+                    },
+                    {
+                        question: "費用はどのくらいかかりますか？",
+                        answer: "ドメインは年額1,000〜3,000円、サーバーは月額500〜2,000円程度が一般的です。合計で月額1,000〜2,500円程度で運用できます。"
+                    },
+                    {
+                        question: "自分で設定するのは難しいですか？",
+                        answer: "最近のサービスは初心者向けに作られているので、マニュアルに従えば簡単に設定できます。不安な場合は、各サービスのサポートを活用しましょう。"
+                    },
+                    {
+                        question: "納品後のサポートはありますか？",
+                        answer: "はい、公開作業に関するサポートも行っております。不明な点があればお気軽にお問い合わせください。（別途費用がかかる場合があります）"
+                    },
+                    {
+                        question: "SSL証明書は必要ですか？",
+                        answer: "はい、必須です。SSL証明書はサイトのセキュリティを保護し、訪問者に安心感を与えます。多くのサーバーでは無料のSSL証明書が提供されています。"
+                    }
+                ]
+            },
+            support: {
+                title: "困ったときは",
+                description: "公開作業でお困りの際は、お気軽にお問い合わせください。",
+                cta: "お問い合わせはこちら"
+            }
         }
     },
     
@@ -918,6 +1035,123 @@ const subpageTranslations = {
                     title: "キャンセルのご連絡",
                     content: "キャンセルをご希望の場合は、お早めにメールにてご連絡ください。"
                 }
+            }
+        },
+        
+        // Deployment Guide page
+        deploymentGuide: {
+            title: "Site Publishing Guide After Delivery",
+            subtitle: "Learn how to publish your website using the delivered files",
+            deliveryFiles: {
+                title: "About Delivery Files",
+                description: "Upon delivery, you will receive a ZIP file containing:",
+                files: [
+                    "HTML files (index.html, etc.)",
+                    "CSS files (stylesheets)",
+                    "JavaScript files (dynamic features)",
+                    "Image assets (images folder)",
+                    "Installation manual (README.txt)"
+                ]
+            },
+            steps: [
+                {
+                    number: "1",
+                    title: "Get a Domain",
+                    subtitle: "Choose your site's address (URL)",
+                    description: "A domain is your website's address like 'example.com'. You can obtain one from these services:",
+                    services: [
+                        {
+                            name: "Namecheap",
+                            description: "Popular international domain registrar",
+                            price: "From $8.88/year"
+                        },
+                        {
+                            name: "GoDaddy",
+                            description: "World's largest domain registrar",
+                            price: "From $11.99/year"
+                        },
+                        {
+                            name: "Google Domains",
+                            description: "Simple service by Google",
+                            price: "From $12/year"
+                        }
+                    ]
+                },
+                {
+                    number: "2",
+                    title: "Set Up Hosting",
+                    subtitle: "Choose where to store your files",
+                    description: "A server is a computer that stores your site files and makes them available on the internet."
+                },
+                {
+                    number: "3",
+                    title: "Upload Your Files",
+                    subtitle: "Transfer the delivered files to your server",
+                    description: "Use FTP software or your server's control panel to upload the files."
+                }
+            ],
+            serverOptions: {
+                rental: {
+                    title: "Web Hosting",
+                    description: "Recommended for beginners! Easy to manage"
+                },
+                wordpress: {
+                    title: "WordPress Managed",
+                    description: "Perfect for frequently updated sites"
+                },
+                cloud: {
+                    title: "Cloud Services",
+                    description: "Modern services to get started easily"
+                }
+            },
+            uploadMethods: {
+                ftp: {
+                    title: "Using FTP Software",
+                    description: "Upload using free software like FileZilla"
+                },
+                admin: {
+                    title: "Upload via Control Panel",
+                    description: "Upload directly from your server's control panel"
+                },
+                cloud: {
+                    title: "Cloud Service Tools",
+                    description: "Use dedicated tools from Netlify or Vercel"
+                }
+            },
+            recommended: {
+                title: "Recommended Combination",
+                combination: "Namecheap (Domain) + SiteGround (Hosting)",
+                reason: "Easy to manage for beginners with excellent support."
+            },
+            faq: {
+                title: "Frequently Asked Questions",
+                items: [
+                    {
+                        question: "What's the difference between domain and hosting?",
+                        answer: "Think of domain as your 'address' and hosting as your 'land'. The domain is your internet address, while hosting is where you actually store your files."
+                    },
+                    {
+                        question: "How much does it cost?",
+                        answer: "Domains typically cost $10-30/year, and hosting costs $5-20/month. In total, you can run your site for about $10-25/month."
+                    },
+                    {
+                        question: "Is it difficult to set up myself?",
+                        answer: "Modern services are designed for beginners, so you can easily set up by following the manual. If you're unsure, utilize each service's support."
+                    },
+                    {
+                        question: "Is there support after delivery?",
+                        answer: "Yes, we offer support for publishing work. Please feel free to contact us if you have any questions. (Additional fees may apply)"
+                    },
+                    {
+                        question: "Do I need an SSL certificate?",
+                        answer: "Yes, it's essential. SSL certificates protect your site's security and give visitors peace of mind. Many hosting services provide free SSL certificates."
+                    }
+                ]
+            },
+            support: {
+                title: "Need Help?",
+                description: "If you have trouble with the publishing process, please feel free to contact us.",
+                cta: "Contact Us"
             }
         }
     },
@@ -1380,6 +1614,123 @@ const subpageTranslations = {
                     content: "如希望取消，請儘早透過電子郵件聯絡我們。"
                 }
             }
+        },
+        
+        // Deployment Guide page
+        deploymentGuide: {
+            title: "交付後的網站發布指南",
+            subtitle: "了解如何使用交付的檔案發布您的網站",
+            deliveryFiles: {
+                title: "關於交付檔案",
+                description: "交付時，您將收到包含以下檔案的ZIP檔案：",
+                files: [
+                    "HTML 檔案（index.html 等）",
+                    "CSS 檔案（樣式表）",
+                    "JavaScript 檔案（動態功能）",
+                    "圖片素材（images 資料夾）",
+                    "設置手冊（README.txt）"
+                ]
+            },
+            steps: [
+                {
+                    number: "1",
+                    title: "取得網域",
+                    subtitle: "決定您網站的地址（URL）",
+                    description: "網域是像「example.com」這樣的網站地址。您可以從以下服務取得：",
+                    services: [
+                        {
+                            name: "Gandi",
+                            description: "國際知名的網域註冊商",
+                            price: "年費 NT$400起"
+                        },
+                        {
+                            name: "PChome",
+                            description: "台灣本地服務商",
+                            price: "年費 NT$800起"
+                        },
+                        {
+                            name: "Google Domains",
+                            description: "Google提供的簡單服務",
+                            price: "年費 NT$360起"
+                        }
+                    ]
+                },
+                {
+                    number: "2",
+                    title: "準備伺服器",
+                    subtitle: "決定放置檔案的地方",
+                    description: "伺服器是保存您網站檔案並在網路上公開的電腦。"
+                },
+                {
+                    number: "3",
+                    title: "上傳檔案",
+                    subtitle: "將交付檔案傳輸到伺服器",
+                    description: "使用FTP軟體或伺服器的管理畫面上傳檔案。"
+                }
+            ],
+            serverOptions: {
+                rental: {
+                    title: "虛擬主機",
+                    description: "推薦初學者！管理簡單"
+                },
+                wordpress: {
+                    title: "WordPress託管",
+                    description: "適合經常更新的網站"
+                },
+                cloud: {
+                    title: "雲端服務",
+                    description: "輕鬆開始的最新服務"
+                }
+            },
+            uploadMethods: {
+                ftp: {
+                    title: "使用FTP軟體的方法",
+                    description: "使用FileZilla等免費軟體上傳"
+                },
+                admin: {
+                    title: "從管理畫面上傳",
+                    description: "從伺服器的管理畫面直接上傳"
+                },
+                cloud: {
+                    title: "雲端服務的專用工具",
+                    description: "使用Netlify或Vercel的專用工具"
+                }
+            },
+            recommended: {
+                title: "推薦的組合",
+                combination: "Gandi（網域）+ 遠振資訊（伺服器）",
+                reason: "初學者也能輕鬆管理，支援服務完善。"
+            },
+            faq: {
+                title: "常見問題",
+                items: [
+                    {
+                        question: "網域和伺服器的差別是什麼？",
+                        answer: "網域就像「地址」，伺服器就像「土地」。網域是網路上的地址，伺服器是實際放置檔案的地方。"
+                    },
+                    {
+                        question: "費用大概多少？",
+                        answer: "網域年費約NT$400～1,200，伺服器月費約NT$150～600。總計每月約NT$200～700即可運作。"
+                    },
+                    {
+                        question: "自己設定困難嗎？",
+                        answer: "最近的服務都是為初學者設計的，按照手冊操作就能輕鬆設定。如有疑慮，可以活用各服務的支援。"
+                    },
+                    {
+                        question: "交付後有支援嗎？",
+                        answer: "是的，我們也提供發布作業的相關支援。如有不明之處請隨時聯絡我們。（可能產生額外費用）"
+                    },
+                    {
+                        question: "需要SSL證書嗎？",
+                        answer: "是的，這是必需的。SSL證書保護網站的安全性，讓訪客安心。許多伺服器都提供免費的SSL證書。"
+                    }
+                ]
+            },
+            support: {
+                title: "遇到困難時",
+                description: "如果在發布作業中遇到困難，請隨時聯絡我們。",
+                cta: "聯絡我們"
+            }
         }
     }
 };
@@ -1587,6 +1938,7 @@ function detectCurrentPage() {
     if (path.includes('terms.html')) return 'terms';
     if (path.includes('law.html')) return 'law';
     if (path.includes('cancellation-policy.html')) return 'cancellationPolicy';
+    if (path.includes('deployment-guide.html')) return 'deploymentGuide';
     if (path.includes('questionnaire.html')) return 'questionnaire';
     return 'unknown';
 }
@@ -1623,6 +1975,9 @@ function updatePageSpecificContent(pageName, t) {
             break;
         case 'cancellationPolicy':
             updateCancellationPolicyPage(t.cancellationPolicy);
+            break;
+        case 'deploymentGuide':
+            updateDeploymentGuidePage(t.deploymentGuide);
             break;
         case 'questionnaire':
             updateQuestionnairePage(t.questionnaire || {});
@@ -2264,6 +2619,140 @@ function updateCancellationPolicyPage(t) {
             }
         }
     });
+}
+
+// Update Deployment Guide page
+function updateDeploymentGuidePage(t) {
+    if (!t) return;
+    
+    // Update page title
+    const pageTitle = document.querySelector('title');
+    if (pageTitle) pageTitle.textContent = t.title + ' | ' + subpageTranslations[currentLang].nav.logo;
+    
+    // Update hero
+    const heroTitle = document.querySelector('.guide-hero h1');
+    if (heroTitle) heroTitle.textContent = t.title;
+    
+    const heroSubtitle = document.querySelector('.guide-hero p');
+    if (heroSubtitle) heroSubtitle.textContent = t.subtitle;
+    
+    // Update delivery files section
+    const deliveryTitle = document.querySelector('.guide-intro h2');
+    if (deliveryTitle) deliveryTitle.textContent = t.deliveryFiles.title;
+    
+    const deliveryDesc = document.querySelector('.guide-intro > p');
+    if (deliveryDesc) deliveryDesc.textContent = t.deliveryFiles.description;
+    
+    const filesList = document.querySelectorAll('.guide-intro ul li');
+    if (filesList.length >= 5) {
+        filesList.forEach((li, index) => {
+            if (t.deliveryFiles.files[index]) {
+                li.textContent = '• ' + t.deliveryFiles.files[index];
+            }
+        });
+    }
+    
+    // Update steps
+    const steps = document.querySelectorAll('.guide-step');
+    steps.forEach((step, index) => {
+        if (t.steps[index]) {
+            const stepData = t.steps[index];
+            
+            const stepNumber = step.querySelector('.step-number');
+            if (stepNumber) stepNumber.textContent = stepData.number;
+            
+            const stepTitle = step.querySelector('.step-title h3');
+            if (stepTitle) stepTitle.textContent = stepData.title;
+            
+            const stepSubtitle = step.querySelector('.step-title p');
+            if (stepSubtitle) stepSubtitle.textContent = stepData.subtitle;
+            
+            const stepDesc = step.querySelector('.guide-step > p');
+            if (stepDesc && stepData.description) stepDesc.textContent = stepData.description;
+            
+            // Update services list for step 1
+            if (index === 0 && stepData.services) {
+                const serviceItems = step.querySelectorAll('.service-list li');
+                serviceItems.forEach((item, i) => {
+                    if (stepData.services[i]) {
+                        const serviceName = item.querySelector('strong');
+                        if (serviceName) serviceName.textContent = stepData.services[i].name;
+                        
+                        const serviceDesc = item.querySelector('span[style*="color: var(--text-light)"]');
+                        if (serviceDesc) serviceDesc.textContent = stepData.services[i].description;
+                        
+                        const servicePrice = item.querySelector('.price');
+                        if (servicePrice) servicePrice.textContent = stepData.services[i].price;
+                    }
+                });
+            }
+            
+            // Update server options for step 2
+            if (index === 1) {
+                const optionCards = step.querySelectorAll('.option-card');
+                const optionKeys = ['rental', 'wordpress', 'cloud'];
+                optionCards.forEach((card, i) => {
+                    if (optionKeys[i] && t.serverOptions[optionKeys[i]]) {
+                        const optionTitle = card.querySelector('h4');
+                        if (optionTitle) optionTitle.textContent = t.serverOptions[optionKeys[i]].title;
+                        
+                        const optionDesc = card.querySelector('p');
+                        if (optionDesc) optionDesc.textContent = t.serverOptions[optionKeys[i]].description;
+                    }
+                });
+            }
+            
+            // Update upload methods for step 3
+            if (index === 2) {
+                const uploadOptions = step.querySelectorAll('.upload-option');
+                const uploadKeys = ['ftp', 'admin', 'cloud'];
+                uploadOptions.forEach((option, i) => {
+                    if (uploadKeys[i] && t.uploadMethods[uploadKeys[i]]) {
+                        const uploadTitle = option.querySelector('strong');
+                        if (uploadTitle) uploadTitle.textContent = t.uploadMethods[uploadKeys[i]].title;
+                        
+                        const uploadDesc = option.querySelector('span');
+                        if (uploadDesc) uploadDesc.textContent = t.uploadMethods[uploadKeys[i]].description;
+                    }
+                });
+            }
+        }
+    });
+    
+    // Update recommended section
+    const recommendedTitle = document.querySelector('.recommend-box h3');
+    if (recommendedTitle) recommendedTitle.textContent = t.recommended.title;
+    
+    const recommendedCombination = document.querySelector('.recommend-box p strong');
+    if (recommendedCombination) recommendedCombination.textContent = t.recommended.combination;
+    
+    const recommendedReason = document.querySelector('.recommend-box p:last-child');
+    if (recommendedReason) recommendedReason.textContent = t.recommended.reason;
+    
+    // Update FAQ section
+    const faqTitle = document.querySelector('.guide-faq h2');
+    if (faqTitle) faqTitle.textContent = t.faq.title;
+    
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach((item, index) => {
+        if (t.faq.items[index]) {
+            const question = item.querySelector('.faq-question');
+            if (question) question.textContent = t.faq.items[index].question;
+            
+            const answer = item.querySelector('.faq-answer p');
+            if (answer) answer.textContent = t.faq.items[index].answer;
+        }
+    });
+    
+    // Update support section
+    const supportTitle = document.querySelector('.guide-cta h2');
+    if (supportTitle) supportTitle.textContent = t.support.title;
+    
+    const supportDesc = document.querySelector('.guide-cta p');
+    if (supportDesc) supportDesc.textContent = t.support.description;
+    
+    const supportCta = document.querySelector('.guide-cta .btn-primary');
+    if (supportCta) supportCta.textContent = t.support.cta;
 }
 
 // Update Questionnaire page (placeholder for now)
