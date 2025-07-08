@@ -39,7 +39,7 @@ const translations = {
             standard: {
                 name: "スタンダードプラン",
                 price: "¥20,000",
-                priceNote: "（税込）",
+                priceNote: "（税別）",
                 description: "シンプルで効果的なLP制作<br>基本機能をしっかり押さえた設計",
                 features: [
                     "オリジナルデザイン",
@@ -55,7 +55,7 @@ const translations = {
                 badge: "新登場",
                 name: "リッチプラン",
                 price: "¥50,000",
-                priceNote: "（税込）",
+                priceNote: "（税別）",
                 description: "GSAPアニメーションで魅せる<br>プレミアムなLP体験を提供",
                 features: [
                     "GSAP高度アニメーション",
@@ -131,6 +131,27 @@ const translations = {
             title: "ホームページ制作のご相談はお気軽に",
             subtitle: "あなたのニーズに最適なサイトをご提案します。",
             cta: "無料で相談してみる"
+        },
+        
+        // Campaign section
+        campaign: {
+            badge: "初回限定キャンペーン",
+            title: "今なら全プラン30%OFF！",
+            subtitle: "プロ品質のホームページが特別価格で",
+            deadline: "2025年7月31日まで",
+            standard: {
+                name: "スタンダードプラン",
+                originalPrice: "¥20,000",
+                salePrice: "¥14,000",
+                priceNote: "（税別）"
+            },
+            rich: {
+                name: "リッチプラン",
+                originalPrice: "¥50,000",
+                salePrice: "¥35,000",
+                priceNote: "（税別）"
+            },
+            cta: "今すぐ申し込む"
         },
         
         // Footer
@@ -224,7 +245,7 @@ const translations = {
             standard: {
                 name: "Standard Plan",
                 price: "¥20,000",
-                priceNote: "(incl. tax)",
+                priceNote: "(excl. tax)",
                 description: "Simple and effective LP creation<br>Design that covers all the basics",
                 features: [
                     "Original Design",
@@ -240,7 +261,7 @@ const translations = {
                 badge: "New",
                 name: "Rich Plan",
                 price: "¥50,000",
-                priceNote: "(incl. tax)",
+                priceNote: "(excl. tax)",
                 description: "Captivating with GSAP animations<br>Providing premium LP experience",
                 features: [
                     "GSAP Advanced Animations",
@@ -316,6 +337,27 @@ const translations = {
             title: "Feel Free to Consult About LP Creation",
             subtitle: "We'll propose the optimal LP for your business.",
             cta: "Get Free Consultation"
+        },
+        
+        // Campaign section
+        campaign: {
+            badge: "First-Time Limited Campaign",
+            title: "All Plans 30% OFF Now!",
+            subtitle: "Professional Website at Special Price",
+            deadline: "Until July 31, 2025",
+            standard: {
+                name: "Standard Plan",
+                originalPrice: "¥20,000",
+                salePrice: "¥14,000",
+                priceNote: "(excl. tax)"
+            },
+            rich: {
+                name: "Rich Plan",
+                originalPrice: "¥50,000",
+                salePrice: "¥35,000",
+                priceNote: "(excl. tax)"
+            },
+            cta: "Apply Now"
         },
         
         // Footer
@@ -409,7 +451,7 @@ const translations = {
             standard: {
                 name: "標準方案",
                 price: "¥20,000",
-                priceNote: "（含稅）",
+                priceNote: "（不含稅）",
                 description: "簡單有效的LP製作<br>穩固掌握基本功能的設計",
                 features: [
                     "原創設計",
@@ -425,7 +467,7 @@ const translations = {
                 badge: "新登場",
                 name: "豪華方案",
                 price: "¥50,000",
-                priceNote: "（含稅）",
+                priceNote: "（不含稅）",
                 description: "以GSAP動畫呈現<br>提供頂級LP體驗",
                 features: [
                     "GSAP高級動畫",
@@ -501,6 +543,27 @@ const translations = {
             title: "歡迎諮詢LP製作",
             subtitle: "我們將為您的業務提供最佳LP方案。",
             cta: "免費諮詢"
+        },
+        
+        // Campaign section
+        campaign: {
+            badge: "首次限定優惠",
+            title: "現在全方案享30%折扣！",
+            subtitle: "專業品質的網站特惠價",
+            deadline: "截止日期：2025年7月31日",
+            standard: {
+                name: "標準方案",
+                originalPrice: "¥20,000",
+                salePrice: "¥14,000",
+                priceNote: "（不含稅）"
+            },
+            rich: {
+                name: "豪華方案",
+                originalPrice: "¥50,000",
+                salePrice: "¥35,000",
+                priceNote: "（不含稅）"
+            },
+            cta: "立即申請"
         },
         
         // Footer

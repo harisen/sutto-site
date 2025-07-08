@@ -1,0 +1,211 @@
+/* Campaign Banner Styles */
+.campaign-banner {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+}
+
+.campaign-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.1) 10px,
+        rgba(255, 255, 255, 0.1) 20px
+    );
+    animation: stripe-animation 20s linear infinite;
+}
+
+@keyframes stripe-animation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(50px);
+    }
+}
+
+.campaign-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.campaign-badge {
+    display: inline-block;
+    background: #FF0000;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.campaign-title {
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: #333;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.campaign-subtitle {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.campaign-deadline {
+    font-size: 1.8rem;
+    color: #FF0000;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.campaign-prices {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.campaign-price-item {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.campaign-plan-name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.campaign-price-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.campaign-original-price {
+    font-size: 2.4rem;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.campaign-arrow {
+    font-size: 2.4rem;
+    color: #FF0000;
+}
+
+.campaign-sale-price {
+    font-size: 3.6rem;
+    font-weight: 900;
+    color: #FF0000;
+}
+
+.campaign-cta {
+    display: inline-block;
+    background: #FF0000;
+    color: white;
+    padding: 18px 50px;
+    border-radius: 50px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);
+}
+
+.campaign-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 0, 0, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .campaign-title {
+        font-size: 2.4rem;
+    }
+    
+    .campaign-subtitle {
+        font-size: 1.6rem;
+    }
+    
+    .campaign-prices {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .campaign-price-item {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .campaign-sale-price {
+        font-size: 3rem;
+    }
+}
+
+/* Campaign price badge for pricing cards */
+.pricing-campaign-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: #FF0000;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    transform: rotate(-5deg);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.pricing-campaign-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.pricing-original-price {
+    font-size: 3.6rem;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.pricing-sale-price {
+    font-size: 5.6rem;
+    font-weight: 900;
+    color: #FF0000;
+}

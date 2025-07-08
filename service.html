@@ -100,9 +100,217 @@
             margin-bottom: 16px;
         }
         
+        /* 価格比較セクションのスタイル */
+        .price-comparison-section {
+            background-color: #F8F9FA;
+        }
+        
+        .comparison-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .comparison-title {
+            font-size: 2.4rem;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+        }
+        
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 16px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .comparison-table th {
+            background-color: #F3F4F6;
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+        
+        .comparison-table tr.our-service {
+            background-color: #EBF5FF;
+        }
+        
+        .highlight-column {
+            background-color: #FEF3C7;
+        }
+        
+        .highlight-cell {
+            background-color: #FEF3C7;
+            font-weight: 700;
+        }
+        
+        .highlight-cell.savings {
+            color: #DC2626;
+        }
+        
+        .table-note {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+        
+        /* スコア比較のスタイル */
+        .score-comparison {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .score-grid {
+            display: grid;
+            gap: 32px;
+            margin-top: 24px;
+        }
+        
+        .score-item h4 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .score-bars {
+            margin-bottom: 20px;
+        }
+        
+        .score-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .score-row span {
+            width: 80px;
+            font-size: 1.4rem;
+        }
+        
+        .score-bar {
+            flex: 1;
+            height: 30px;
+            background-color: #E5E7EB;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-left: 16px;
+        }
+        
+        .score-fill {
+            height: 100%;
+            background: linear-gradient(to right, #3B82F6, #2563EB);
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-size: 1.2rem;
+            white-space: nowrap;
+        }
+        
+        .total-score {
+            text-align: center;
+            font-size: 2.4rem;
+            color: var(--text-dark);
+            padding: 20px;
+            background-color: #F3F4F6;
+            border-radius: 8px;
+        }
+        
+        /* 特典テーブルのスタイル */
+        .benefits-section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .benefits-table-wrapper {
+            overflow-x: auto;
+            margin-top: 24px;
+        }
+        
+        .benefits-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+        
+        .benefits-table th,
+        .benefits-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .benefits-table th {
+            background-color: #F3F4F6;
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+        
+        .benefits-table .total-row {
+            background-color: #F3F4F6;
+            font-size: 1.6rem;
+        }
+        
         @media (max-width: 767px) {
             .service-intro {
                 grid-template-columns: 1fr;
+            }
+            
+            /* 価格比較セクションのモバイル対応 */
+            .comparison-card {
+                padding: 20px;
+            }
+            
+            .comparison-title {
+                font-size: 2rem;
+            }
+            
+            .comparison-table {
+                font-size: 1.2rem;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 8px;
+            }
+            
+            .score-row span {
+                width: 60px;
+                font-size: 1.2rem;
+            }
+            
+            .score-fill {
+                font-size: 1rem;
+            }
+            
+            .total-score {
+                font-size: 2rem;
+            }
+            
+            .benefits-table {
+                font-size: 1.2rem;
+            }
+            
+            .benefits-table th,
+            .benefits-table td {
+                padding: 8px;
             }
             
             .process-item {
@@ -226,6 +434,185 @@
                     <div class="benefit-icon">📊</div>
                     <h3>分析ツール設置</h3>
                     <p>Google Analyticsなどの分析ツールを設置し、効果測定を可能にします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 価格比較セクション -->
+    <section class="section price-comparison-section">
+        <div class="container">
+            <h2 class="text-center">どれだけお得？一目でわかる比較表</h2>
+            <p class="text-center" style="margin-bottom: 40px;">他社サービスと比較して、スッとサイトがどれだけお得かご確認ください</p>
+            
+            <!-- スタンダードプラン比較 -->
+            <div class="comparison-card">
+                <h3 class="comparison-title">🎯 スタンダードプラン（¥20,000）の場合</h3>
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>選択肢</th>
+                                <th>費用</th>
+                                <th>納期</th>
+                                <th class="highlight-column">あなたの節約額</th>
+                                <th>時間の節約</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="our-service">
+                                <td><strong>スッとサイト</strong></td>
+                                <td><strong>¥20,000</strong></td>
+                                <td><strong>最短即日</strong></td>
+                                <td class="highlight-cell">-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>自分で作る（ノーコード）</td>
+                                <td>¥0〜¥3,000/月 + あなたの時間40時間</td>
+                                <td>1週間〜</td>
+                                <td class="highlight-cell savings">実質¥80,000お得 ※1</td>
+                                <td>40時間の節約</td>
+                            </tr>
+                            <tr>
+                                <td>フリーランスに頼む</td>
+                                <td>¥50,000〜¥300,000</td>
+                                <td>1〜3週間</td>
+                                <td class="highlight-cell savings">¥30,000〜¥280,000お得</td>
+                                <td>6〜20日の短縮</td>
+                            </tr>
+                            <tr>
+                                <td>制作会社に頼む</td>
+                                <td>¥300,000〜¥600,000</td>
+                                <td>3週間〜2ヶ月</td>
+                                <td class="highlight-cell savings">¥280,000〜¥580,000お得</td>
+                                <td>20〜59日の短縮</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="table-note">※1: 時給¥2,500で計算</p>
+                </div>
+            </div>
+
+            <!-- リッチプラン比較 -->
+            <div class="comparison-card">
+                <h3 class="comparison-title">🌟 リッチプラン（¥50,000）の場合</h3>
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>選択肢</th>
+                                <th>費用</th>
+                                <th>納期</th>
+                                <th class="highlight-column">あなたの節約額</th>
+                                <th>時間の節約</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="our-service">
+                                <td><strong>スッとサイト</strong></td>
+                                <td><strong>¥50,000</strong></td>
+                                <td><strong>最短即日</strong></td>
+                                <td class="highlight-cell">-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>自分で作る（不可能）</td>
+                                <td colspan="4" style="text-align: center;">アニメーション実装は専門知識必要</td>
+                            </tr>
+                            <tr>
+                                <td>フリーランスに頼む</td>
+                                <td>¥200,000〜¥500,000</td>
+                                <td>2〜4週間</td>
+                                <td class="highlight-cell savings">¥150,000〜¥450,000お得</td>
+                                <td>13〜27日の短縮</td>
+                            </tr>
+                            <tr>
+                                <td>制作会社に頼む</td>
+                                <td>¥600,000〜¥1,000,000</td>
+                                <td>1〜2ヶ月</td>
+                                <td class="highlight-cell savings">¥550,000〜¥950,000お得</td>
+                                <td>29〜59日の短縮</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 総合比較スコア -->
+            <div class="score-comparison">
+                <h3 class="text-center">📊 総合比較スコア（100点満点）</h3>
+                <div class="score-grid">
+                    <div class="score-item">
+                        <h4>スッとサイト</h4>
+                        <div class="score-bars">
+                            <div class="score-row">
+                                <span>コスパ</span>
+                                <div class="score-bar"><div class="score-fill" style="width: 95%">⭐⭐⭐⭐⭐ (95点)</div></div>
+                            </div>
+                            <div class="score-row">
+                                <span>スピード</span>
+                                <div class="score-bar"><div class="score-fill" style="width: 100%">⭐⭐⭐⭐⭐ (100点)</div></div>
+                            </div>
+                            <div class="score-row">
+                                <span>品質</span>
+                                <div class="score-bar"><div class="score-fill" style="width: 85%">⭐⭐⭐⭐ (85点)</div></div>
+                            </div>
+                            <div class="score-row">
+                                <span>手軽さ</span>
+                                <div class="score-bar"><div class="score-fill" style="width: 95%">⭐⭐⭐⭐⭐ (95点)</div></div>
+                            </div>
+                        </div>
+                        <div class="total-score">総合評価: <strong>94点</strong> 🏆</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- スッとサイトだけの特典 -->
+            <div class="benefits-section">
+                <h3 class="text-center">🎁 スッとサイトだけの特典</h3>
+                <div class="benefits-table-wrapper">
+                    <table class="benefits-table">
+                        <thead>
+                            <tr>
+                                <th>特典</th>
+                                <th>内容</th>
+                                <th>通常価格</th>
+                                <th class="highlight-column">あなたのお得額</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SEO対策</td>
+                                <td>基本SEO設定込み</td>
+                                <td>¥30,000相当</td>
+                                <td class="highlight-cell savings">¥30,000お得</td>
+                            </tr>
+                            <tr>
+                                <td>スマホ対応</td>
+                                <td>完全レスポンシブデザイン</td>
+                                <td>¥50,000相当</td>
+                                <td class="highlight-cell savings">¥50,000お得</td>
+                            </tr>
+                            <tr>
+                                <td>高速化対策</td>
+                                <td>画像最適化・キャッシュ設定</td>
+                                <td>¥20,000相当</td>
+                                <td class="highlight-cell savings">¥20,000お得</td>
+                            </tr>
+                            <tr>
+                                <td>お問い合わせフォーム</td>
+                                <td>メール送信機能付き</td>
+                                <td>¥30,000相当</td>
+                                <td class="highlight-cell savings">¥30,000お得</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td colspan="2"><strong>合計特典価値</strong></td>
+                                <td><strong>¥130,000相当</strong></td>
+                                <td class="highlight-cell"><strong>すべて無料！</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -90,6 +90,53 @@ const subpageTranslations = {
             cta: {
                 title: "今すぐLP制作を始めましょう",
                 button: "お問い合わせはこちら"
+            },
+            priceComparison: {
+                title: "どれだけお得？一目でわかる比較表",
+                subtitle: "他社サービスと比較して、スッとサイトがどれだけお得かご確認ください",
+                standard: {
+                    title: "🎯 スタンダードプラン（¥20,000）の場合",
+                    headers: ["選択肢", "費用", "納期", "あなたの節約額", "時間の節約"],
+                    rows: [
+                        ["スッとサイト", "¥20,000", "最短即日", "-", "-"],
+                        ["自分で作る（ノーコード）", "¥0〜¥3,000/月 + あなたの時間40時間", "1週間〜", "実質¥80,000お得 ※1", "40時間の節約"],
+                        ["フリーランスに頼む", "¥50,000〜¥300,000", "1〜3週間", "¥30,000〜¥280,000お得", "6〜20日の短縮"],
+                        ["制作会社に頼む", "¥300,000〜¥600,000", "3週間〜2ヶ月", "¥280,000〜¥580,000お得", "20〜59日の短縮"]
+                    ],
+                    note: "※1: 時給¥2,500で計算"
+                },
+                rich: {
+                    title: "🌟 リッチプラン（¥50,000）の場合",
+                    headers: ["選択肢", "費用", "納期", "あなたの節約額", "時間の節約"],
+                    rows: [
+                        ["スッとサイト", "¥50,000", "最短即日", "-", "-"],
+                        ["自分で作る（不可能）", "アニメーション実装は専門知識必要", "", "", ""],
+                        ["フリーランスに頼む", "¥200,000〜¥500,000", "2〜4週間", "¥150,000〜¥450,000お得", "13〜27日の短縮"],
+                        ["制作会社に頼む", "¥600,000〜¥1,000,000", "1〜2ヶ月", "¥550,000〜¥950,000お得", "29〜59日の短縮"]
+                    ]
+                },
+                scoreComparison: {
+                    title: "📊 総合比較スコア（100点満点）",
+                    ourService: "スッとサイト",
+                    metrics: {
+                        costPerformance: "コスパ",
+                        speed: "スピード",
+                        quality: "品質",
+                        ease: "手軽さ"
+                    },
+                    totalScore: "総合評価"
+                },
+                benefits: {
+                    title: "🎁 スッとサイトだけの特典",
+                    headers: ["特典", "内容", "通常価格", "あなたのお得額"],
+                    rows: [
+                        ["SEO対策", "基本SEO設定込み", "¥30,000相当", "¥30,000お得"],
+                        ["スマホ対応", "完全レスポンシブデザイン", "¥50,000相当", "¥50,000お得"],
+                        ["高速化対策", "画像最適化・キャッシュ設定", "¥20,000相当", "¥20,000お得"],
+                        ["お問い合わせフォーム", "メール送信機能付き", "¥30,000相当", "¥30,000お得"]
+                    ],
+                    totalRow: ["合計特典価値", "", "¥130,000相当", "すべて無料！"]
+                }
             }
         },
         
@@ -504,6 +551,53 @@ const subpageTranslations = {
             cta: {
                 title: "Start Your LP Creation Now",
                 button: "Contact Us"
+            },
+            priceComparison: {
+                title: "How Much Can You Save? See at a Glance",
+                subtitle: "Compare with other services to see how much you can save with Sutto Site",
+                standard: {
+                    title: "🎯 Standard Plan (¥20,000) Comparison",
+                    headers: ["Option", "Cost", "Delivery Time", "Your Savings", "Time Saved"],
+                    rows: [
+                        ["Sutto Site", "¥20,000", "Same Day", "-", "-"],
+                        ["DIY (No-Code)", "¥0-¥3,000/month + 40 hours of your time", "1 week+", "Save ¥80,000 effectively *1", "Save 40 hours"],
+                        ["Freelancer", "¥50,000-¥300,000", "1-3 weeks", "Save ¥30,000-¥280,000", "6-20 days faster"],
+                        ["Agency", "¥300,000-¥600,000", "3 weeks-2 months", "Save ¥280,000-¥580,000", "20-59 days faster"]
+                    ],
+                    note: "*1: Calculated at ¥2,500/hour"
+                },
+                rich: {
+                    title: "🌟 Rich Plan (¥50,000) Comparison",
+                    headers: ["Option", "Cost", "Delivery Time", "Your Savings", "Time Saved"],
+                    rows: [
+                        ["Sutto Site", "¥50,000", "Same Day", "-", "-"],
+                        ["DIY (Impossible)", "Animation requires expertise", "", "", ""],
+                        ["Freelancer", "¥200,000-¥500,000", "2-4 weeks", "Save ¥150,000-¥450,000", "13-27 days faster"],
+                        ["Agency", "¥600,000-¥1,000,000", "1-2 months", "Save ¥550,000-¥950,000", "29-59 days faster"]
+                    ]
+                },
+                scoreComparison: {
+                    title: "📊 Overall Comparison Score (Out of 100)",
+                    ourService: "Sutto Site",
+                    metrics: {
+                        costPerformance: "Value",
+                        speed: "Speed",
+                        quality: "Quality",
+                        ease: "Ease of Use"
+                    },
+                    totalScore: "Total Score"
+                },
+                benefits: {
+                    title: "🎁 Exclusive Sutto Site Benefits",
+                    headers: ["Benefit", "Description", "Regular Price", "Your Savings"],
+                    rows: [
+                        ["SEO Setup", "Basic SEO configuration included", "¥30,000 value", "Save ¥30,000"],
+                        ["Mobile-Friendly", "Fully responsive design", "¥50,000 value", "Save ¥50,000"],
+                        ["Speed Optimization", "Image optimization & caching", "¥20,000 value", "Save ¥20,000"],
+                        ["Contact Form", "Email functionality included", "¥30,000 value", "Save ¥30,000"]
+                    ],
+                    totalRow: ["Total Benefit Value", "", "¥130,000 value", "All Free!"]
+                }
             }
         },
         
@@ -918,6 +1012,53 @@ const subpageTranslations = {
             cta: {
                 title: "立即開始LP製作",
                 button: "聯絡我們"
+            },
+            priceComparison: {
+                title: "能省多少錢？一目瞭然的比較表",
+                subtitle: "與其他服務比較，看看快速網站能為您節省多少",
+                standard: {
+                    title: "🎯 標準方案（¥20,000）的情況",
+                    headers: ["選擇", "費用", "交期", "您的節省額", "時間節省"],
+                    rows: [
+                        ["快速網站", "¥20,000", "最快當日", "-", "-"],
+                        ["自己製作（無代碼）", "¥0～¥3,000/月 + 您的40小時時間", "1週～", "實際節省¥80,000 ※1", "節省40小時"],
+                        ["找自由工作者", "¥50,000～¥300,000", "1～3週", "節省¥30,000～¥280,000", "快6～20天"],
+                        ["找製作公司", "¥300,000～¥600,000", "3週～2個月", "節省¥280,000～¥580,000", "快20～59天"]
+                    ],
+                    note: "※1: 以時薪¥2,500計算"
+                },
+                rich: {
+                    title: "🌟 豪華方案（¥50,000）的情況",
+                    headers: ["選擇", "費用", "交期", "您的節省額", "時間節省"],
+                    rows: [
+                        ["快速網站", "¥50,000", "最快當日", "-", "-"],
+                        ["自己製作（不可能）", "動畫實現需要專業知識", "", "", ""],
+                        ["找自由工作者", "¥200,000～¥500,000", "2～4週", "節省¥150,000～¥450,000", "快13～27天"],
+                        ["找製作公司", "¥600,000～¥1,000,000", "1～2個月", "節省¥550,000～¥950,000", "快29～59天"]
+                    ]
+                },
+                scoreComparison: {
+                    title: "📊 綜合比較評分（滿分100分）",
+                    ourService: "快速網站",
+                    metrics: {
+                        costPerformance: "性價比",
+                        speed: "速度",
+                        quality: "品質",
+                        ease: "便利性"
+                    },
+                    totalScore: "總評分"
+                },
+                benefits: {
+                    title: "🎁 快速網站獨家優惠",
+                    headers: ["優惠", "內容", "一般價格", "您的節省額"],
+                    rows: [
+                        ["SEO對策", "基本SEO設定包含在內", "¥30,000相當", "節省¥30,000"],
+                        ["手機對應", "完全響應式設計", "¥50,000相當", "節省¥50,000"],
+                        ["高速化對策", "圖片優化・快取設定", "¥20,000相當", "節省¥20,000"],
+                        ["聯絡表單", "附郵件發送功能", "¥30,000相當", "節省¥30,000"]
+                    ],
+                    totalRow: ["總優惠價值", "", "¥130,000相當", "全部免費！"]
+                }
             }
         },
         
@@ -1540,6 +1681,131 @@ function updateServicePage(t) {
     
     const ctaButton = document.querySelector('.cta-section .btn-primary');
     if (ctaButton) ctaButton.textContent = t.cta.button;
+    
+    // Update Price Comparison section
+    if (t.priceComparison) {
+        // Main title and subtitle
+        const comparisonTitle = document.querySelector('.price-comparison-section h2');
+        if (comparisonTitle) comparisonTitle.textContent = t.priceComparison.title;
+        
+        const comparisonSubtitle = document.querySelector('.price-comparison-section > .container > p');
+        if (comparisonSubtitle) comparisonSubtitle.textContent = t.priceComparison.subtitle;
+        
+        // Standard plan comparison
+        const standardTitle = document.querySelector('.comparison-card:first-child .comparison-title');
+        if (standardTitle) standardTitle.textContent = t.priceComparison.standard.title;
+        
+        const standardHeaders = document.querySelectorAll('.comparison-card:first-child th');
+        if (standardHeaders.length >= 5) {
+            standardHeaders.forEach((th, index) => {
+                if (t.priceComparison.standard.headers[index]) {
+                    th.textContent = t.priceComparison.standard.headers[index];
+                }
+            });
+        }
+        
+        const standardRows = document.querySelectorAll('.comparison-card:first-child tbody tr');
+        standardRows.forEach((row, rowIndex) => {
+            const cells = row.querySelectorAll('td');
+            cells.forEach((cell, cellIndex) => {
+                if (t.priceComparison.standard.rows[rowIndex] && t.priceComparison.standard.rows[rowIndex][cellIndex]) {
+                    cell.textContent = t.priceComparison.standard.rows[rowIndex][cellIndex];
+                }
+            });
+        });
+        
+        const standardNote = document.querySelector('.comparison-card:first-child .table-note');
+        if (standardNote) standardNote.textContent = t.priceComparison.standard.note;
+        
+        // Rich plan comparison
+        const richTitle = document.querySelector('.comparison-card:nth-child(2) .comparison-title');
+        if (richTitle) richTitle.textContent = t.priceComparison.rich.title;
+        
+        const richHeaders = document.querySelectorAll('.comparison-card:nth-child(2) th');
+        if (richHeaders.length >= 5) {
+            richHeaders.forEach((th, index) => {
+                if (t.priceComparison.rich.headers[index]) {
+                    th.textContent = t.priceComparison.rich.headers[index];
+                }
+            });
+        }
+        
+        const richRows = document.querySelectorAll('.comparison-card:nth-child(2) tbody tr');
+        richRows.forEach((row, rowIndex) => {
+            if (rowIndex === 1 && t.priceComparison.rich.rows[rowIndex][1]) {
+                // Special handling for the "impossible" row
+                const td = row.querySelector('td[colspan="4"]');
+                if (td) td.textContent = t.priceComparison.rich.rows[rowIndex][1];
+            } else {
+                const cells = row.querySelectorAll('td');
+                cells.forEach((cell, cellIndex) => {
+                    if (t.priceComparison.rich.rows[rowIndex] && t.priceComparison.rich.rows[rowIndex][cellIndex]) {
+                        cell.textContent = t.priceComparison.rich.rows[rowIndex][cellIndex];
+                    }
+                });
+            }
+        });
+        
+        // Score comparison
+        const scoreTitle = document.querySelector('.score-comparison h3');
+        if (scoreTitle) scoreTitle.textContent = t.priceComparison.scoreComparison.title;
+        
+        const scoreServiceName = document.querySelector('.score-item h4');
+        if (scoreServiceName) scoreServiceName.textContent = t.priceComparison.scoreComparison.ourService;
+        
+        const scoreMetrics = document.querySelectorAll('.score-row span:first-child');
+        const metricKeys = ['costPerformance', 'speed', 'quality', 'ease'];
+        scoreMetrics.forEach((metric, index) => {
+            if (metricKeys[index] && t.priceComparison.scoreComparison.metrics[metricKeys[index]]) {
+                metric.textContent = t.priceComparison.scoreComparison.metrics[metricKeys[index]];
+            }
+        });
+        
+        const totalScoreText = document.querySelector('.total-score');
+        if (totalScoreText) {
+            const score = totalScoreText.querySelector('strong').textContent;
+            totalScoreText.innerHTML = `${t.priceComparison.scoreComparison.totalScore}: <strong>${score}</strong> 🏆`;
+        }
+        
+        // Benefits section
+        const benefitsTitle = document.querySelector('.benefits-section h3');
+        if (benefitsTitle) benefitsTitle.textContent = t.priceComparison.benefits.title;
+        
+        const benefitsHeaders = document.querySelectorAll('.benefits-table th');
+        if (benefitsHeaders.length >= 4) {
+            benefitsHeaders.forEach((th, index) => {
+                if (t.priceComparison.benefits.headers[index]) {
+                    th.textContent = t.priceComparison.benefits.headers[index];
+                }
+            });
+        }
+        
+        const benefitsRows = document.querySelectorAll('.benefits-table tbody tr:not(.total-row)');
+        benefitsRows.forEach((row, rowIndex) => {
+            const cells = row.querySelectorAll('td');
+            cells.forEach((cell, cellIndex) => {
+                if (t.priceComparison.benefits.rows[rowIndex] && t.priceComparison.benefits.rows[rowIndex][cellIndex]) {
+                    cell.textContent = t.priceComparison.benefits.rows[rowIndex][cellIndex];
+                }
+            });
+        });
+        
+        const totalRow = document.querySelector('.benefits-table .total-row');
+        if (totalRow) {
+            const cells = totalRow.querySelectorAll('td');
+            cells.forEach((cell, cellIndex) => {
+                if (t.priceComparison.benefits.totalRow[cellIndex]) {
+                    if (cellIndex === 0) {
+                        cell.innerHTML = `<strong>${t.priceComparison.benefits.totalRow[cellIndex]}</strong>`;
+                    } else {
+                        cell.innerHTML = cellIndex === 3 
+                            ? `<strong>${t.priceComparison.benefits.totalRow[cellIndex]}</strong>`
+                            : t.priceComparison.benefits.totalRow[cellIndex];
+                    }
+                }
+            });
+        }
+    }
 }
 
 // Update Pricing page
