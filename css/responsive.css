@@ -87,7 +87,9 @@
   /* Hero */
   .hero {
     margin-top: 60px;
-    padding: 80px 0;
+    height: calc(100vh - 60px);
+    min-height: 450px;
+    max-height: 700px;
   }
 
   .hero-title {
@@ -96,6 +98,21 @@
 
   .hero-subtitle {
     font-size: 1.8rem;
+  }
+
+  /* Hero Slideshow Mobile Optimization */
+  .hero-slideshow img {
+    object-position: center center;
+    /* モバイルでは中央寄せの方が見やすい */
+  }
+
+  .slideshow-indicators {
+    bottom: 20px;
+  }
+
+  .slideshow-indicators .indicator {
+    width: 10px;
+    height: 10px;
   }
 
   /* Section */
