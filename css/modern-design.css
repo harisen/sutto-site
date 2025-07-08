@@ -276,14 +276,17 @@
 }
 
 #contact .btn-primary {
-    background: white;
-    color: #2563eb;
+    background: white !important;
+    color: #2563eb !important;
     font-size: 1.8rem;
     padding: 20px 50px;
     border-radius: 50px;
     transition: all 0.3s ease;
     font-weight: 600;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
 }
 
 #contact .btn-primary:hover {
