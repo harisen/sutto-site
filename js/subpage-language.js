@@ -1590,12 +1590,11 @@ function updatePortfolioPage(t) {
     const heroSubtitle = document.querySelector('.hero-subtitle');
     if (heroSubtitle) heroSubtitle.textContent = t.hero.subtitle;
     
-    // Update filter buttons
+    // Update filter buttons - only update the 'all' button
     const filterButtons = document.querySelectorAll('.filter-btn');
-    if (filterButtons.length >= 3) {
+    if (filterButtons.length >= 1) {
         filterButtons[0].textContent = t.filter.all;
-        filterButtons[1].textContent = t.filter.standard;
-        filterButtons[2].textContent = t.filter.rich;
+        // Do not update other filter buttons as they are category-specific
     }
     
     // Update portfolio categories
