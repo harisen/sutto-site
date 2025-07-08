@@ -590,7 +590,13 @@ function updateLanguage(lang) {
     
     // Update navigation
     const logo = document.querySelector('.logo');
-    if (logo) logo.textContent = t.nav.logo;
+    if (logo) {
+        // Only update the main title, preserve the subtitle structure
+        const logoTitle = logo.querySelector('span:first-child');
+        if (logoTitle) {
+            logoTitle.textContent = t.nav.logo;
+        }
+    }
     
     const navLinks = document.querySelectorAll('.nav-link');
     if (navLinks.length >= 5) {
