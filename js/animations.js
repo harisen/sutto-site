@@ -71,28 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // 価格のカウントアップアニメーション
-    const priceElements = document.querySelectorAll('.pricing-price');
-    priceElements.forEach(priceEl => {
-        const finalPrice = priceEl.textContent.match(/\d+,\d+/)[0].replace(',', '');
-        const counter = { value: 0 };
-        
-        ScrollTrigger.create({
-            trigger: priceEl,
-            start: 'top 80%',
-            onEnter: () => {
-                gsap.to(counter, {
-                    value: finalPrice,
-                    duration: 2,
-                    ease: 'power2.out',
-                    onUpdate: () => {
-                        const formatted = Math.floor(counter.value).toLocaleString();
-                        priceEl.innerHTML = `¥${formatted}<span style="font-size: 2.4rem;">（税込）</span>`;
-                    }
-                });
-            }
-        });
-    });
+    // 価格のカウントアップアニメーションを削除
     
     // パーティクル背景の生成
     function createParticles() {

@@ -66,6 +66,7 @@
 /* 料金カードの洗練 */
 .pricing-cards {
     gap: 40px;
+    margin-top: 80px;
 }
 
 .pricing-card {
@@ -74,6 +75,8 @@
     padding: 50px 40px;
     box-shadow: var(--soft-shadow);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: visible !important;
 }
 
 .pricing-card:hover {
@@ -85,6 +88,27 @@
     font-size: 4.8rem;
     margin: 30px 0;
     font-weight: 700;
+}
+
+/* 新登場バッジ専用スタイル */
+.pricing-badge {
+    position: absolute !important;
+    top: -20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: #FFD700 !important;
+    color: #333 !important;
+    padding: 10px 30px !important;
+    border-radius: 25px !important;
+    font-weight: 700 !important;
+    font-size: 1.6rem !important;
+    z-index: 10 !important;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-card-featured {
+    margin-top: 20px;
 }
 
 /* ビフォーアフターセクションの全面改善 */
