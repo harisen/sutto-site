@@ -48,6 +48,16 @@
   .nav {
     display: none;
   }
+  
+  /* Hero adjustments for mobile */
+  .hero {
+    min-height: 400px;
+    height: calc(100vh - 60px);
+  }
+  
+  .hero-slideshow img {
+    object-position: center center;
+  }
 
   .mobile-menu-btn {
     display: block;
