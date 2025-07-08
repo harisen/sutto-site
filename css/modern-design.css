@@ -1,0 +1,348 @@
+/* モダンで洗練されたデザイン */
+
+/* カラー変数の追加 */
+:root {
+    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --soft-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ヒーローセクションの改善 */
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 5rem;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.hero-subtitle {
+    font-size: 2rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.hero-note {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    font-size: 1.6rem;
+}
+
+/* バッジの改善 */
+.hero-badges {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
+.badge {
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border-radius: 50px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    box-shadow: var(--soft-shadow);
+}
+
+/* セクションの余白調整 */
+.section {
+    padding: 100px 0;
+}
+
+/* 料金カードの洗練 */
+.pricing-cards {
+    gap: 40px;
+}
+
+.pricing-card {
+    background: white;
+    border-radius: 24px;
+    padding: 50px 40px;
+    box-shadow: var(--soft-shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
+}
+
+.pricing-price {
+    font-size: 4.8rem;
+    margin: 30px 0;
+    font-weight: 700;
+}
+
+/* ビフォーアフターセクションの全面改善 */
+.before-after-section {
+    background: #f8f9fa;
+    padding: 120px 0;
+}
+
+.before-after-container {
+    max-width: 1000px;
+    margin: 80px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: stretch;
+}
+
+.before-box, .after-box {
+    background: white;
+    border-radius: 24px;
+    padding: 50px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.before-box {
+    border: 2px solid #e0e0e0;
+}
+
+.before-box h3 {
+    color: #666;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.after-box {
+    background: var(--gradient-3);
+    color: white;
+    border: none;
+    transform: scale(1.05);
+}
+
+.after-box h3 {
+    color: white;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.before-box ul, .after-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.before-box li, .after-box li {
+    font-size: 1.8rem;
+    line-height: 2;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.after-box li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.before-box li:last-child, .after-box li:last-child {
+    border-bottom: none;
+}
+
+/* アイコンセクションの改善 */
+.tech-icons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 600px;
+    margin: 60px auto 0;
+}
+
+.tech-icon {
+    background: white;
+    border-radius: 24px;
+    padding: 30px 20px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    line-height: 1.6;
+    box-shadow: var(--soft-shadow);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.tech-icon:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+    border-color: var(--primary-color);
+}
+
+/* AIセクションの改善 */
+.ai-development {
+    background: white;
+}
+
+.ai-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.ai-text h2 {
+    font-size: 3.6rem;
+    line-height: 1.3;
+    margin-bottom: 30px;
+}
+
+.ai-features {
+    margin-top: 40px;
+}
+
+.ai-feature {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    font-size: 1.6rem;
+}
+
+/* CTAセクションの改善 */
+#contact {
+    background: var(--gradient-1);
+    color: white;
+    padding: 120px 0;
+}
+
+#contact h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+#contact p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#contact .btn-primary {
+    background: white;
+    color: #333;
+    font-size: 1.8rem;
+    padding: 20px 50px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+#contact .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ボタンの改善 */
+.btn {
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
+}
+
+/* 作品例セクションの改善 */
+.portfolio {
+    background: #f8f9fa;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.portfolio-item {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--soft-shadow);
+    transition: all 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--hover-shadow);
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.portfolio-content {
+    padding: 30px;
+}
+
+.portfolio-category {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #e3f2fd;
+    color: #1976d2;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.portfolio-content h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.portfolio-content p {
+    font-size: 1.4rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* レスポンシブ改善 */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .before-after-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .after-box {
+        transform: scale(1);
+    }
+    
+    .tech-icons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .ai-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .pricing-cards {
+        grid-template-columns: 1fr;
+    }
+}
