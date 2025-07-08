@@ -251,32 +251,45 @@
 
 /* CTAセクションの改善 */
 #contact {
-    background: var(--gradient-1);
-    color: white;
     padding: 120px 0;
+    position: relative;
+}
+
+#contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><circle cx="100" cy="100" r="80" fill="rgba(255,255,255,0.05)"/><circle cx="1100" cy="500" r="100" fill="rgba(255,255,255,0.05)"/><circle cx="600" cy="300" r="120" fill="rgba(255,255,255,0.03)"/></svg>');
+    opacity: 0.5;
 }
 
 #contact h2 {
-    color: white;
+    color: white !important;
     margin-bottom: 20px;
 }
 
 #contact p {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 #contact .btn-primary {
     background: white;
-    color: #333;
+    color: #2563eb;
     font-size: 1.8rem;
     padding: 20px 50px;
     border-radius: 50px;
     transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 #contact .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background: #f8f9fa;
 }
 
 /* ボタンの改善 */

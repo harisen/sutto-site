@@ -127,8 +127,8 @@ const translations = {
         
         // Contact section
         contact: {
-            title: "LP制作のご相談はお気軽に",
-            subtitle: "あなたのビジネスに最適なLPをご提案します。",
+            title: "ホームページ制作のご相談はお気軽に",
+            subtitle: "あなたのニーズに最適なサイトをご提案します。",
             cta: "お問い合わせはこちら"
         },
         
