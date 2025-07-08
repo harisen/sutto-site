@@ -753,14 +753,15 @@ function updateLanguage(lang) {
     const contactSubtitle = document.querySelector('#contact p');
     if (contactSubtitle) contactSubtitle.textContent = t.contact.subtitle;
     
-    const contactCta = document.querySelector('#contact .btn-primary');
+    // Update CTA button - try multiple selectors
+    const contactCta = document.querySelector('#contact .cta-button-white') || 
+                      document.querySelector('#contact .btn-primary') ||
+                      document.querySelector('#contact a[href="contact.html"]');
     if (contactCta) {
-        const btnText = contactCta.querySelector('.btn-text');
+        const btnText = contactCta.querySelector('.cta-button-text') || 
+                       contactCta.querySelector('.btn-text');
         if (btnText) {
             btnText.textContent = t.contact.cta;
-        } else {
-            // フォールバック: btn-textが見つからない場合
-            contactCta.textContent = t.contact.cta;
         }
     }
     

@@ -249,6 +249,46 @@
     font-size: 1.6rem;
 }
 
+/* CTAボタン専用スタイル */
+.cta-button-white {
+    background: white !important;
+    color: #2563eb !important;
+    font-size: 1.8rem !important;
+    padding: 20px 50px !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    text-decoration: none !important;
+    border: none !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.cta-button-white .cta-button-text,
+.cta-button-white .cta-button-arrow {
+    color: #2563eb !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.cta-button-white .cta-button-arrow {
+    transition: transform 0.3s ease !important;
+}
+
+.cta-button-white:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+    background: #f8f9fa !important;
+}
+
+.cta-button-white:hover .cta-button-arrow {
+    transform: translateX(5px) !important;
+}
+
 /* CTAセクションの改善 */
 #contact {
     padding: 120px 0;
