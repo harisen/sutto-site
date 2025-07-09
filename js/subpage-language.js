@@ -328,7 +328,8 @@ const subpageTranslations = {
                             "サーバー設定・公開作業",
                             "SSL証明書設定",
                             "Google Search Console登録",
-                            "※ドメイン代込み・追加料金なし"
+                            "※ドメイン代込み・追加料金なし",
+                            "※更新案内は期限の30日前に送付"
                         ]
                     },
                     additionalPages: {
@@ -1204,7 +1205,8 @@ const subpageTranslations = {
                             "Server setup and publishing",
                             "SSL certificate setup",
                             "Google Search Console registration",
-                            "* Domain fee included, no additional charges"
+                            "* Domain fee included, no additional charges",
+                            "* Renewal notices sent 30 days before expiry"
                         ]
                     },
                     additionalPages: {
@@ -1483,65 +1485,160 @@ const subpageTranslations = {
         
         // Privacy Policy page
         privacyPolicy: {
-            title: "プライバシーポリシー",
-            subtitle: "個人情報の取り扱いについて",
-            lastUpdated: "最終更新日",
+            title: "Privacy Policy",
+            subtitle: "How we handle your personal information",
+            lastUpdated: "Last Updated",
             sections: {
-                intro: "スッとサイト（以下「当社」といいます。）は、お客様の個人情報の保護に努めております。本プライバシーポリシーは、当社がお客様から収集する個人情報の取り扱いについて説明するものです。",
+                intro: "Sutto Site (hereinafter referred to as 'we' or 'our') is committed to protecting our customers' personal information. This Privacy Policy explains how we collect and handle personal information from our customers.",
                 article1: {
-                    title: "第1条（個人情報の定義）",
-                    content: "本プライバシーポリシーにおいて「個人情報」とは、個人情報保護法に定める個人情報を指します。"
+                    title: "Article 1 (Definition of Personal Information)",
+                    content: "In this Privacy Policy, 'personal information' refers to personal information as defined by the Personal Information Protection Act."
                 },
                 article2: {
-                    title: "第2条（収集する情報）",
-                    content: "当社は、以下の情報を収集することがあります。",
-                    items: ["氏名", "メールアドレス", "会社名", "お問い合わせ内容", "その他お客様から提供いただく情報"]
+                    title: "Article 2 (Information We Collect)",
+                    content: "We may collect the following information:",
+                    items: ["Name", "Email address", "Company name", "Inquiry details", "Other information provided by customers"]
                 },
                 article3: {
-                    title: "第3条（利用目的）",
-                    content: "収集した個人情報は、以下の目的で利用します。",
-                    items: ["サービスの提供・運営", "お問い合わせへの対応", "サービスの改善・新サービスの開発", "その他上記に付随する業務"]
+                    title: "Article 3 (Purpose of Use)",
+                    content: "We use the collected personal information for the following purposes:",
+                    items: ["Service provision and operation", "Responding to inquiries", "Service improvement and new service development", "Other related operations"]
                 },
                 article4: {
-                    title: "第4条（第三者提供）",
-                    content: "当社は、法令に基づく場合を除き、お客様の同意なく個人情報を第三者に提供することはありません。"
+                    title: "Article 4 (Third-Party Disclosure)",
+                    content: "We will not provide personal information to third parties without customer consent, except as required by law."
                 },
                 article5: {
-                    title: "第5条（安全管理）",
-                    content: "当社は、個人情報の漏洩・紛失・破損等を防止するため、適切な安全管理措置を講じます。"
+                    title: "Article 5 (Security Management)",
+                    content: "We implement appropriate security measures to prevent leakage, loss, or damage of personal information."
                 },
-                contactTitle: "お問い合わせ窓口",
-                contactEmail: "メールアドレス"
+                article6: {
+                    title: "Article 6 (Disclosure, Correction, and Deletion)",
+                    content: "Customers may request disclosure, correction, or deletion of their personal information. We may require identity verification documents when processing such requests."
+                },
+                article7: {
+                    title: "Article 7 (Use of Cookies)",
+                    content: "Our website may use cookies to improve user convenience. Cookies can identify your computer but cannot identify you personally."
+                },
+                article8: {
+                    title: "Article 8 (Access Analysis Tools)",
+                    content: "Our website may use access analysis tools such as Google Analytics. These tools use cookies to collect access information but do not collect personally identifiable information."
+                },
+                article9: {
+                    title: "Article 9 (Privacy Policy Changes)",
+                    content: "We may update this policy as required by law or necessity. The updated Privacy Policy will take effect when posted on our website."
+                },
+                article10: {
+                    title: "Article 10 (Contact Information)",
+                    content: "For inquiries regarding this policy, please contact us using the information below."
+                },
+                contactTitle: "Contact Information",
+                contactEmail: "Email Address"
             }
         },
         
         // Terms of Service page
         terms: {
-            title: "利用規約",
-            subtitle: "本サービスのご利用にあたって",
-            lastUpdated: "最終更新日",
+            title: "Terms of Service",
+            subtitle: "For Using Our Service",
+            lastUpdated: "Last Updated",
             sections: {
-                intro: "本利用規約（以下「本規約」といいます。）は、スッとサイト（以下「当社」といいます。）が提供するスッとサイト（以下「本サービス」といいます。）の利用条件を定めるものです。",
+                intro: "These Terms of Service (hereinafter referred to as 'Terms') set forth the conditions for using Sutto Site (hereinafter referred to as 'Service') provided by Sutto Site (hereinafter referred to as 'we' or 'our').",
                 article1: {
-                    title: "第1条（適用）",
-                    content: "本規約は、お客様と当社との間の本サービスの利用に関わる一切の関係に適用されるものとします。"
+                    title: "Article 1 (Application)",
+                    content: "These Terms shall apply to all relationships between customers and us regarding the use of the Service."
                 },
                 article2: {
-                    title: "第2条（利用登録）",
-                    content: "本サービスの利用を希望する方は、本規約に同意の上、当社の定める方法によって利用登録を申請するものとします。"
+                    title: "Article 2 (Service Content)",
+                    content: "We provide the following services:",
+                    subsections: [
+                        {
+                            title: "2-1. Services Provided",
+                            content: "Landing page (LP) design and creation, HTML/CSS/JavaScript coding, responsive design support, basic SEO optimization, test site confirmation environment"
+                        },
+                        {
+                            title: "2-2. Service Limitations",
+                            content: "We do not provide: payment system integration, member registration/login features, database integration, inventory management systems, reservation management systems, automated email responses"
+                        }
+                    ]
                 },
                 article3: {
-                    title: "第3条（料金および支払方法）",
-                    content: "お客様は、本サービスの利用対価として、当社が別途定める料金を、当社が指定する方法により支払うものとします。"
+                    title: "Article 3 (Contract Formation)",
+                    content: "A contract based on these Terms is formed when the customer submits our questionnaire form and we receive it."
                 },
                 article4: {
-                    title: "第4条（禁止事項）",
-                    content: "お客様は、本サービスの利用にあたり、以下の行為をしてはなりません。",
-                    items: ["法令または公序良俗に違反する行為", "犯罪行為に関連する行為", "当社のサービスの運営を妨害するおそれのある行為", "その他、当社が不適切と判断する行為"]
+                    title: "Article 4 (Production Process)",
+                    content: "The production process includes: 1. Receipt of customer questionnaire, 2. Our production work, 3. Upload to test site and confirmation request, 4. Customer approval or cancellation choice, 5. If approved: delivery and payment"
                 },
                 article5: {
-                    title: "第5条（免責事項）",
-                    content: "当社は、本サービスに関して、お客様に生じた損害について、当社の故意または重過失による場合を除き、一切の責任を負わないものとします。"
+                    title: "Article 5 (Fees and Payment)",
+                    content: "Fee plans and payment methods follow our separately defined fee schedule.",
+                    subsections: [
+                        {
+                            title: "5-1. Fees",
+                            content: "Standard Plan: ¥20,000 (tax included), Rich Plan: ¥50,000 (tax included)"
+                        },
+                        {
+                            title: "5-2. Payment Timing",
+                            content: "Please make payment within 1 week after delivery."
+                        },
+                        {
+                            title: "5-3. Payment Method",
+                            content: "Bank transfer"
+                        }
+                    ]
+                },
+                article6: {
+                    title: "Article 6 (Cancellation Policy)",
+                    content: "Important: Cancellation fees - Before test site review: Free cancellation, After test site review: ¥10,000 cancellation fee, After approval email sent: Full payment required (no cancellation)"
+                },
+                article7: {
+                    title: "Article 7 (Deliverables)",
+                    content: "Delivery format: ZIP file containing HTML, CSS, JavaScript, and image files. Post-delivery support: Free minor revisions for 1 week after delivery. Additional revision fees apply thereafter."
+                },
+                article8: {
+                    title: "Article 8 (Intellectual Property Rights)",
+                    content: "Copyright of deliverables transfers to the customer after payment completion. However, we retain the right to showcase the work as part of our portfolio."
+                },
+                article9: {
+                    title: "Article 9 (Prohibited Actions)",
+                    content: "Customers must not:",
+                    items: ["Request LP creation that violates laws or public order and morals", "Request creation that infringes third-party rights", "Provide false information", "Interfere with our service operations"]
+                },
+                article10: {
+                    title: "Article 10 (Disclaimer)",
+                    content: "We do not guarantee sales improvements from using deliverables. We are not responsible for issues arising from customer-provided materials or third-party services (servers, domains, etc.)."
+                },
+                article11: {
+                    title: "Article 11 (Confidentiality)",
+                    content: "We will not disclose customer information obtained during production to third parties without customer consent."
+                },
+                article12: {
+                    title: "Article 12 (Terms Modification)",
+                    content: "We may modify these Terms without notice to customers when deemed necessary."
+                },
+                article13: {
+                    title: "Article 13 (Governing Law and Jurisdiction)",
+                    content: "These Terms shall be governed by Japanese law. Any disputes regarding the Service shall be under the exclusive jurisdiction of the court having jurisdiction over our head office location."
+                },
+                article14: {
+                    title: "",
+                    content: ""
+                }
+            }
+        },
+                },
+                article12: {
+                    title: "第12条（規約の変更）",
+                    content: "当社は、必要に応じて本規約を変更することができるものとします。"
+                },
+                article13: {
+                    title: "第13条（準拠法・管轄）",
+                    content: "本規約の解釈にあたっては、日本法を準拠法とします。"
+                },
+                article14: {
+                    title: "第14条（その他）",
+                    content: "本規約に定めのない事項については、お客様と当社が協議の上、決定するものとします。"
                 }
             }
         },
@@ -2499,7 +2596,8 @@ const subpageTranslations = {
                             "伺服器設定・公開作業",
                             "SSL憑證設定",
                             "Google Search Console註冊",
-                            "※包含網域費用・無追加費用"
+                            "※包含網域費用・無追加費用",
+                            "※更新通知於期限前30天發送"
                         ]
                     },
                     additionalPages: {
@@ -2804,6 +2902,26 @@ const subpageTranslations = {
                 article5: {
                     title: "第5條（安全管理）",
                     content: "本公司採取適當的安全管理措施，防止個人資訊的洩露、遺失或損壞。"
+                },
+                article6: {
+                    title: "第6條（個人資訊的公開、更正、刪除）",
+                    content: "客戶可以要求本公司公開、更正或刪除自己的個人資訊。請求時可能需要提供身份確認文件。"
+                },
+                article7: {
+                    title: "第7條（關於Cookie的使用）",
+                    content: "本公司的網站可能使用Cookie以提升用戶便利性。Cookie可以識別您的電腦，但無法識別您個人。"
+                },
+                article8: {
+                    title: "第8條（關於存取分析工具）",
+                    content: "本公司的網站可能使用Google Analytics等存取分析工具。這些工具使用Cookie收集存取資訊，但不收集可識別個人的資訊。"
+                },
+                article9: {
+                    title: "第9條（隱私政策的變更）",
+                    content: "本公司可能根據法令變更或需要修改本政策。更新後的隱私政策將在本公司網站上發佈時生效。"
+                },
+                article10: {
+                    title: "第10條（聯絡窗口）",
+                    content: "關於本政策的諮詢，請聯絡以下窗口。"
                 },
                 contactTitle: "聯絡窗口",
                 contactEmail: "電子郵件地址"
@@ -5020,5 +5138,384 @@ function updateDeploymentGuidePage(t) {
                 if (answer) answer.textContent = t.faq.items[index].answer;
             }
         });
+    }
+}
+
+// Update Rich Plan page
+function updateRichPlanPage(t) {
+    // Update page title
+    const pageTitle = document.querySelector('title');
+    if (pageTitle) pageTitle.textContent = t.title + ' | ' + subpageTranslations[currentLang].nav.logo;
+    
+    // Update loading text
+    const loaderText = document.querySelector('.loader-text');
+    if (loaderText) loaderText.textContent = t.loading.text;
+    
+    // Update hero section
+    const heroTitleSpans = document.querySelectorAll('.hero-title span');
+    if (heroTitleSpans.length >= 4 && t.hero.title.length >= 3) {
+        // For Japanese and Chinese, use the title array
+        if (currentLang === 'ja' || currentLang === 'zh') {
+            heroTitleSpans[0].textContent = t.hero.title[0];
+            heroTitleSpans[1].textContent = t.hero.title[1];
+            heroTitleSpans[2].textContent = '';
+            heroTitleSpans[3].textContent = t.hero.title[2];
+        } else {
+            // For English, keep the original structure
+            heroTitleSpans[0].textContent = 'NEXT';
+            heroTitleSpans[1].textContent = 'LEVEL';
+            heroTitleSpans[2].textContent = 'WEB';
+            heroTitleSpans[3].textContent = 'DESIGN';
+        }
+    }
+    
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    if (heroSubtitle) {
+        if (currentLang === 'ja') {
+            heroSubtitle.innerHTML = 'リッチプランのご紹介<br>AIとクリエイティビティが融合する新時代のLP制作';
+        } else {
+            heroSubtitle.innerHTML = t.hero.subtitle + '<br>' + t.hero.description;
+        }
+    }
+    
+    // Update scroll indicator
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) scrollIndicator.textContent = 'SCROLL';
+    
+    // Update parallax section
+    const parallaxTitle = document.querySelector('.parallax-content .section-title');
+    if (parallaxTitle) {
+        const spans = parallaxTitle.querySelectorAll('span');
+        if (spans.length >= 2) {
+            spans[0].textContent = t.parallax.title;
+            spans[1].textContent = t.parallax.subtitle;
+        }
+    }
+    
+    const parallaxText = document.querySelector('.parallax-text');
+    if (parallaxText) {
+        parallaxText.innerHTML = t.parallax.content + '<br>' +
+            '<span style="font-size: 1.4rem; color: #666; margin-top: 20px; display: inline-block;">' +
+            (currentLang === 'ja' ? 'AI技術により<strong style="color: #ff6b6b;">コストパフォーマンスに優れた価格</strong>を実現' :
+             currentLang === 'en' ? 'Achieving <strong style="color: #ff6b6b;">excellent cost performance</strong> through AI technology' :
+             '透過AI技術實現<strong style="color: #ff6b6b;">優異的性價比</strong>') +
+            '</span>';
+    }
+    
+    // Update text animation section (words will be animated differently)
+    const animatedText = document.querySelector('.animated-text');
+    if (animatedText && currentLang !== 'ja') {
+        // For non-Japanese languages, update the highlighted words
+        const highlights = animatedText.querySelectorAll('.highlight');
+        if (highlights.length >= 4 && t.textAnimation.words.length >= 4) {
+            highlights[0].textContent = currentLang === 'en' ? 'AI technology' : 'AI技術';
+            highlights[1].textContent = currentLang === 'en' ? 'human creativity' : '人類創意';
+            highlights[2].textContent = currentLang === 'en' ? 'innovative web design' : '創新網頁設計';
+            highlights[3].textContent = currentLang === 'en' ? 'new discoveries' : '新發現';
+        }
+    }
+    
+    // Update cards
+    const cards = document.querySelectorAll('.card');
+    const cardKeys = ['scroll', 'interaction', 'performance'];
+    cards.forEach((card, index) => {
+        if (index < 3 && cardKeys[index] && t.cards[cardKeys[index]]) {
+            const cardData = t.cards[cardKeys[index]];
+            
+            const icon = card.querySelector('.card-icon');
+            const title = card.querySelector('.card-title');
+            const desc = card.querySelector('p');
+            
+            if (icon) icon.textContent = cardData.icon;
+            if (title) title.textContent = cardData.title;
+            if (desc) desc.textContent = cardData.description;
+        } else if (index >= 3) {
+            // Price-related cards
+            const title = card.querySelector('.card-title');
+            const desc = card.querySelector('p');
+            
+            if (index === 3 && title) {
+                title.textContent = currentLang === 'ja' ? '圧倒的な低価格' :
+                                   currentLang === 'en' ? 'Overwhelmingly Low Price' :
+                                   '壓倒性的低價格';
+            }
+            if (index === 3 && desc) {
+                desc.textContent = currentLang === 'ja' ? 'GSAPアニメーションを使用した高品質なサイトを5万円で実現。AI技術による効率化。' :
+                                  currentLang === 'en' ? 'High-quality sites with GSAP animations for ¥50,000. Efficiency through AI technology.' :
+                                  '使用GSAP動畫的高品質網站5萬日圓實現。透過AI技術提高效率。';
+            }
+            
+            if (index === 4 && title) {
+                title.textContent = currentLang === 'ja' ? '最速即日納品' :
+                                   currentLang === 'en' ? 'Same-Day Delivery' :
+                                   '最快當日交付';
+            }
+            if (index === 4 && desc) {
+                desc.textContent = currentLang === 'ja' ? '通常1〜2ヶ月かかる制作期間を大幅短縮。ビジネスチャンスを逃しません。' :
+                                  currentLang === 'en' ? 'Drastically shortened production time from 1-2 months. Never miss business opportunities.' :
+                                  '大幅縮短通常需要1～2個月的製作期間。不錯過商機。';
+            }
+            
+            if (index === 5 && title) {
+                title.textContent = currentLang === 'ja' ? 'プロ級のアニメーション' :
+                                   currentLang === 'en' ? 'Professional Animations' :
+                                   '專業級動畫';
+            }
+            if (index === 5 && desc) {
+                desc.textContent = currentLang === 'ja' ? 'GSAPを活用した滑らかで印象的なアニメーションで、競合との差別化を実現。' :
+                                  currentLang === 'en' ? 'Smooth and impressive animations using GSAP to differentiate from competitors.' :
+                                  '使用GSAP的流暢且令人印象深刻的動畫，實現與競爭對手的差異化。';
+            }
+        }
+    });
+    
+    // Update horizontal section title
+    const horizontalSectionTitle = document.querySelector('.horizontal-section .section-title span');
+    if (horizontalSectionTitle) horizontalSectionTitle.textContent = t.portfolio.title;
+    
+    const horizontalSectionSubtitle = document.querySelector('.horizontal-section p');
+    if (horizontalSectionSubtitle) {
+        horizontalSectionSubtitle.textContent = currentLang === 'ja' ? '様々な業界で、ブランドの世界観を最大限に表現' :
+                                               currentLang === 'en' ? 'Maximizing brand worldview expression across various industries' :
+                                               '在各行業中最大限度地表現品牌世界觀';
+    }
+    
+    // Update portfolio items
+    const portfolioItems = document.querySelectorAll('.horizontal-item');
+    portfolioItems.forEach((item, index) => {
+        if (index < 4 && t.portfolio.items[index]) {
+            const itemData = t.portfolio.items[index];
+            
+            const category = item.querySelector('.horizontal-item-category');
+            const title = item.querySelector('.horizontal-item-title');
+            const desc = item.querySelector('.horizontal-item-desc');
+            
+            if (title) title.textContent = itemData.title;
+            if (desc) desc.textContent = itemData.description;
+        }
+    });
+    
+    // Update SVG section title
+    const svgSectionTitle = document.querySelector('.svg-section .section-title span');
+    if (svgSectionTitle) {
+        svgSectionTitle.textContent = currentLang === 'ja' ? '圧倒的なコストパフォーマンス' :
+                                     currentLang === 'en' ? 'Overwhelming Cost Performance' :
+                                     '壓倒性的性價比';
+    }
+    
+    // Update SVG cards
+    const svgCards = document.querySelectorAll('.svg-card');
+    svgCards.forEach((card, index) => {
+        const number = card.querySelector('.svg-number');
+        const label = card.querySelector('.svg-label');
+        const note = card.querySelector('.svg-note');
+        
+        if (index === 0) {
+            if (number) number.textContent = '¥50,000';
+            if (label) label.textContent = currentLang === 'ja' ? '初期費用' :
+                                          currentLang === 'en' ? 'Initial Cost' :
+                                          '初期費用';
+            if (note) note.innerHTML = currentLang === 'ja' ? '通常の制作費<br>30〜50万円から<br>大幅コストダウン' :
+                                      currentLang === 'en' ? 'Significant cost<br>reduction from typical<br>¥300,000-¥500,000' :
+                                      '從一般製作費<br>30～50萬日圓<br>大幅降低成本';
+        } else if (index === 1) {
+            if (number) number.textContent = currentLang === 'ja' ? '即日' :
+                                           currentLang === 'en' ? 'Same Day' :
+                                           '當日';
+            if (label) label.textContent = currentLang === 'ja' ? '最速納期' :
+                                          currentLang === 'en' ? 'Fastest Delivery' :
+                                          '最快交期';
+            if (note) note.innerHTML = currentLang === 'ja' ? 'AI技術による<br>超高速制作で<br>ビジネスを加速' :
+                                      currentLang === 'en' ? 'Accelerate business<br>with ultra-fast<br>AI-powered production' :
+                                      '透過AI技術的<br>超高速製作<br>加速業務';
+        } else if (index === 2) {
+            if (number) number.textContent = currentLang === 'ja' ? '低価格' :
+                                           currentLang === 'en' ? 'Low Cost' :
+                                           '低價格';
+            if (label) label.textContent = currentLang === 'ja' ? 'コストパフォーマンス' :
+                                          currentLang === 'en' ? 'Cost Performance' :
+                                          '性價比';
+            if (note) note.innerHTML = currentLang === 'ja' ? 'AI技術を活用し<br>高品質を<br>手頃な価格で' :
+                                      currentLang === 'en' ? 'High quality at<br>affordable prices<br>using AI technology' :
+                                      '運用AI技術<br>以實惠價格<br>提供高品質';
+        }
+    });
+    
+    // Update CTA section
+    const ctaTitle = document.querySelector('.footer-title');
+    if (ctaTitle) ctaTitle.textContent = t.cta.title;
+    
+    const ctaDesc = document.querySelector('.footer p[style*="font-size: 1.6rem"]');
+    if (ctaDesc) {
+        if (currentLang === 'ja') {
+            ctaDesc.innerHTML = 'リッチプラン初期費用 ¥50,000（税別）で、<br>プロ級のGSAPアニメーションサイトを最速即日で';
+        } else {
+            ctaDesc.innerHTML = t.cta.subtitle + '<br>' +
+                               (currentLang === 'en' ? 'Rich Plan initial cost ¥50,000 (tax not included)' :
+                                '豪華方案初期費用 ¥50,000（不含稅）');
+        }
+    }
+    
+    const ctaButton = document.querySelector('.footer-cta');
+    if (ctaButton) ctaButton.textContent = t.cta.button;
+}
+
+// Update Privacy Policy page
+function updatePrivacyPage(t) {
+    // Update page title
+    const pageTitle = document.querySelector('title');
+    if (pageTitle) pageTitle.textContent = t.title + ' | ' + subpageTranslations[currentLang].nav.logo;
+    
+    // Update hero
+    const heroTitle = document.querySelector('.privacy-hero h1');
+    if (heroTitle) heroTitle.textContent = t.title;
+    
+    // Update effective date
+    const effectiveDate = document.querySelector('.effective-date');
+    if (effectiveDate) {
+        effectiveDate.textContent = currentLang === 'ja' ? '制定日：2025年1月1日' :
+                                   currentLang === 'en' ? 'Effective Date: January 1, 2025' :
+                                   '生效日期：2025年1月1日';
+    }
+    
+    // Update intro paragraph
+    const introSection = document.querySelector('.privacy-section:first-of-type p');
+    if (introSection && t.sections.intro) {
+        introSection.textContent = t.sections.intro;
+    }
+    
+    // Update all sections
+    const sections = document.querySelectorAll('.privacy-section');
+    const sectionMap = {
+        1: 'article1', // 個人情報の定義
+        2: 'article2', // 個人情報の収集
+        3: 'article3', // 個人情報の利用目的
+        4: 'article4', // 個人情報の第三者提供
+        5: 'article5', // 個人情報の安全管理
+        6: 'article6', // 個人情報の開示・訂正・削除
+        7: 'article7', // Cookieの使用について
+        8: 'article8', // アクセス解析ツールについて
+        9: 'article9', // プライバシーポリシーの変更
+        10: 'article10' // お問い合わせ窓口
+    };
+    
+    sections.forEach((section, index) => {
+        if (index === 0) return; // Skip intro section
+        
+        const sectionKey = sectionMap[index];
+        if (!sectionKey || !t.sections[sectionKey]) return;
+        
+        const sectionData = t.sections[sectionKey];
+        const title = section.querySelector('h2');
+        
+        if (title) {
+            title.textContent = sectionData.title;
+        }
+        
+        // Update content based on section type
+        if (sectionData.content) {
+            const firstP = section.querySelector('p');
+            if (firstP) firstP.textContent = sectionData.content;
+        }
+        
+        if (sectionData.items) {
+            const ul = section.querySelector('ul');
+            if (ul) {
+                ul.innerHTML = sectionData.items.map(item => `<li>${item}</li>`).join('');
+            }
+        }
+    });
+    
+    // Update contact section
+    const contactBox = document.querySelector('.contact-info-box');
+    if (contactBox && t.sections.contactTitle) {
+        const contactTitle = contactBox.querySelector('h4');
+        if (contactTitle) {
+            contactTitle.textContent = currentLang === 'ja' ? 'スッとサイト プライバシーポリシーに関するお問い合わせ' :
+                                      currentLang === 'en' ? 'Sutto Site Privacy Policy Inquiries' :
+                                      '快速網站 隱私政策諮詢';
+        }
+        
+        const emailLabel = contactBox.querySelector('p');
+        if (emailLabel) {
+            emailLabel.innerHTML = t.sections.contactEmail + '：sutto.apps@gmail.com';
+        }
+    }
+}
+
+// Update Terms of Service page
+function updateTermsPage(t) {
+    // Update page title
+    const pageTitle = document.querySelector('title');
+    if (pageTitle) pageTitle.textContent = t.title + ' | ' + subpageTranslations[currentLang].nav.logo;
+    
+    // Update hero
+    const heroTitle = document.querySelector('.terms-hero h1');
+    if (heroTitle) heroTitle.textContent = t.title;
+    
+    const heroSubtitle = document.querySelector('.terms-hero p');
+    if (heroSubtitle) heroSubtitle.textContent = t.subtitle;
+    
+    // Update sections
+    const sections = document.querySelectorAll('.terms-section');
+    const sectionMap = {
+        0: 'article1', // 適用
+        1: 'article2', // サービス内容
+        2: 'article3', // 契約の成立
+        3: 'article4', // 制作プロセス
+        4: 'article5', // 料金および支払い
+        5: 'article6', // キャンセルポリシー
+        6: 'article7', // 納品物の権利
+        7: 'article8', // 知的財産権
+        8: 'article9', // 禁止事項
+        9: 'article10', // 免責事項
+        10: 'article11', // 損害賠償
+        11: 'article12', // 規約の変更
+        12: 'article13', // 準拠法・管轄
+        13: 'article14' // その他
+    };
+    
+    sections.forEach((section, index) => {
+        const sectionKey = sectionMap[index];
+        if (!sectionKey || !t.sections[sectionKey]) return;
+        
+        const sectionData = t.sections[sectionKey];
+        const title = section.querySelector('h2');
+        
+        if (title) {
+            title.textContent = sectionData.title;
+        }
+        
+        // Update content based on section type
+        if (sectionData.content) {
+            const firstP = section.querySelector('p');
+            if (firstP) firstP.textContent = sectionData.content;
+        }
+        
+        if (sectionData.items) {
+            const ul = section.querySelector('ul');
+            if (ul) {
+                ul.innerHTML = sectionData.items.map(item => `<li>${item}</li>`).join('');
+            }
+        }
+        
+        // Handle subsections
+        if (sectionData.subsections) {
+            const h3Elements = section.querySelectorAll('h3');
+            h3Elements.forEach((h3, subIndex) => {
+                if (sectionData.subsections[subIndex]) {
+                    h3.textContent = sectionData.subsections[subIndex].title;
+                }
+            });
+        }
+    });
+    
+    // Update last updated date
+    const lastUpdated = document.querySelector('.last-updated');
+    if (lastUpdated && t.lastUpdated) {
+        lastUpdated.textContent = t.lastUpdated + ': ' + 
+                                 (currentLang === 'ja' ? '2025年1月1日' :
+                                  currentLang === 'en' ? 'January 1, 2025' :
+                                  '2025年1月1日');
     }
 }
