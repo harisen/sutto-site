@@ -2929,6 +2929,92 @@ const subpageTranslations = {
             }
         },
         
+        // Rich Plan page
+        richPlan: {
+            title: "豪華方案",
+            loading: {
+                text: "載入中..."
+            },
+            hero: {
+                title: ["美麗的網站", "打動用戶", "的心"],
+                subtitle: "使用先進的GSAP動畫創造迷人的體驗",
+                description: "一般網站製作公司需要30～50萬日圓的動畫實現，透過AI技術以5萬日圓提供"
+            },
+            parallax: {
+                title: "視差效果展示",
+                subtitle: "深度表現",
+                content: "隨著滾動以不同速度移動的元素，創造立體且令人印象深刻的視覺效果。"
+            },
+            textAnimation: {
+                words: ["創新的", "吸引人的", "印象深刻的", "有效的"]
+            },
+            cards: {
+                scroll: {
+                    icon: "🎯",
+                    title: "滾動觸發",
+                    description: "元素隨著用戶滾動流暢地動畫化"
+                },
+                interaction: {
+                    icon: "🎨",
+                    title: "互動式",
+                    description: "對滑鼠動作有反應的吸引人互動設計"
+                },
+                performance: {
+                    icon: "⚡",
+                    title: "高性能",
+                    description: "優化的程式碼確保流暢的動畫性能"
+                }
+            },
+            portfolio: {
+                title: "作品集",
+                items: [
+                    {
+                        title: "企業網站",
+                        category: "商業用",
+                        description: "給人專業印象的精緻設計"
+                    },
+                    {
+                        title: "電商網站",
+                        category: "線上商店",
+                        description: "最大化產品吸引力的視覺表現"
+                    },
+                    {
+                        title: "品牌網站",
+                        category: "品牌形象",
+                        description: "體現品牌世界觀的沉浸式設計"
+                    },
+                    {
+                        title: "活動網站",
+                        category: "推廣",
+                        description: "具有動態效果吸引注意力的設計"
+                    }
+                ]
+            },
+            stats: {
+                users: {
+                    value: "300%",
+                    label: "參與度提升"
+                },
+                conversion: {
+                    value: "250%",
+                    label: "轉換率改善"
+                },
+                satisfaction: {
+                    value: "98%",
+                    label: "客戶滿意度"
+                },
+                speed: {
+                    value: "0.5秒",
+                    label: "平均載入時間"
+                }
+            },
+            cta: {
+                title: "將您的業務提升到新層次",
+                subtitle: "使用GSAP動畫與競爭對手差異化",
+                button: "選擇豪華方案製作"
+            }
+        },
+        
         // Deployment Guide page
         deploymentGuide: {
             title: "交付後的網站發布指南",
@@ -3253,6 +3339,7 @@ function detectCurrentPage() {
     if (path.includes('cancellation-policy.html')) return 'cancellationPolicy';
     if (path.includes('deployment-guide.html')) return 'deploymentGuide';
     if (path.includes('questionnaire.html')) return 'questionnaire';
+    if (path.includes('rich-plan.html')) return 'richPlan';
     return 'unknown';
 }
 
@@ -3294,6 +3381,9 @@ function updatePageSpecificContent(pageName, t) {
             break;
         case 'questionnaire':
             updateQuestionnairePage(t.questionnaire || {});
+            break;
+        case 'richPlan':
+            updateRichPlanPage(t.richPlan);
             break;
     }
 }
