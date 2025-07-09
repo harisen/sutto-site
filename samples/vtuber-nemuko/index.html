@@ -15,7 +15,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&family=Kiwi+Maru:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -43,12 +43,13 @@
         }
         
         body {
-            font-family: 'M PLUS Rounded 1c', 'Kiwi Maru', sans-serif;
+            font-family: 'Zen Maru Gothic', sans-serif;
             background-color: var(--bg-cream);
             color: var(--text-dark);
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.8;
             position: relative;
+            font-weight: 400;
         }
         
         /* ローディング画面 */
@@ -333,11 +334,13 @@
         }
         
         .hero-title {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 900;
             color: var(--primary-orange);
             margin-bottom: 20px;
             line-height: 1.2;
+            font-family: 'Shippori Mincho', serif;
+            letter-spacing: 0.08em;
         }
         
         .hero-subtitle {
@@ -345,6 +348,7 @@
             color: var(--text-dark);
             margin-bottom: 30px;
             font-weight: 500;
+            letter-spacing: 0.05em;
         }
         
         .hero-description {
@@ -363,13 +367,14 @@
             padding: 15px 40px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 500;
+            font-size: 1rem;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 10px;
             box-shadow: 0 4px 15px var(--shadow);
+            letter-spacing: 0.08em;
         }
         
         .btn-primary {
@@ -425,9 +430,11 @@
         .schedule-title {
             font-size: 2.5rem;
             color: var(--white);
-            font-weight: 900;
+            font-weight: 700;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-family: 'Shippori Mincho', serif;
+            letter-spacing: 0.08em;
         }
         
         .schedule-time {
@@ -469,10 +476,12 @@
             text-align: center;
             color: var(--primary-orange);
             margin-bottom: 60px;
-            font-weight: 900;
+            font-weight: 700;
             position: relative;
             display: inline-block;
             width: 100%;
+            font-family: 'Shippori Mincho', serif;
+            letter-spacing: 0.1em;
         }
         
         .section-title::before,
@@ -527,6 +536,9 @@
             font-size: 1.8rem;
             color: var(--primary-orange);
             margin-bottom: 20px;
+            font-weight: 600;
+            font-family: 'Shippori Mincho', serif;
+            letter-spacing: 0.05em;
         }
         
         .profile-detail {
@@ -543,7 +555,7 @@
         .footer {
             background: var(--secondary-brown);
             color: var(--white);
-            padding: 40px 20px;
+            padding: 30px 20px;
             text-align: center;
         }
         
@@ -556,13 +568,15 @@
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-bottom: 20px;
         }
         
         .social-link {
             color: var(--white);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             transition: color 0.3s ease;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.05em;
         }
         
         .social-link:hover {
@@ -848,7 +862,6 @@
                     <li><a href="#profile" class="nav-link">プロフィール</a></li>
                     <li><a href="#schedule" class="nav-link">配信情報</a></li>
                     <li><a href="#content" class="nav-link">コンテンツ</a></li>
-                    <li><a href="#contact" class="nav-link">お問い合わせ</a></li>
                 </ul>
             </nav>
             <div class="hamburger" id="hamburger" role="button" aria-label="メニューを開く" aria-expanded="false">
@@ -870,9 +883,6 @@
             </li>
             <li class="mobile-menu-item">
                 <a href="#content" class="mobile-menu-link">コンテンツ</a>
-            </li>
-            <li class="mobile-menu-item">
-                <a href="#contact" class="mobile-menu-link">お問い合わせ</a>
             </li>
         </ul>
     </div>
@@ -957,7 +967,6 @@
                 <a href="https://twitter.com/" class="social-link" target="_blank">Twitter</a>
                 <a href="https://www.youtube.com/" class="social-link" target="_blank">YouTube</a>
             </div>
-            <p>&copy; 2024 百実ねむこ. All rights reserved.</p>
         </div>
     </footer>
     
