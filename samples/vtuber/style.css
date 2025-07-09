@@ -1,5 +1,18 @@
 /* VTuber Astra Kisaragi - Additional Styles */
 
+/* 音楽セクション基本スタイル */
+.music-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.music-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 /* カスタムアニメーション */
 .cyber-grid {
     position: fixed;
@@ -80,6 +93,12 @@
 .music-item:hover {
     border-color: var(--primary-color);
     transform: translateX(10px);
+}
+
+@media (max-width: 768px) {
+    .music-item:hover {
+        transform: translateX(0);
+    }
 }
 
 .music-cover {
@@ -426,9 +445,32 @@
         display: block;
     }
     
+    /* 音楽セクションのモバイル対応 */
+    .music-section {
+        padding: 0;
+    }
+    
+    .music-list {
+        width: 100%;
+    }
+    
     .music-item {
         flex-direction: column;
         text-align: center;
+        padding: 20px;
+        margin: 0 0 20px 0;
+    }
+    
+    .music-cover {
+        margin: 0 auto 15px;
+    }
+    
+    .music-info {
+        width: 100%;
+    }
+    
+    .music-links {
+        justify-content: center;
     }
     
     .goods-grid {
