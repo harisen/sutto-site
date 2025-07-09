@@ -862,6 +862,46 @@
             transform: translateY(0);
         }
         
+        /* 報酬画像表示 */
+        .reward-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10003;
+            cursor: pointer;
+        }
+        
+        .reward-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        
+        .reward-overlay.show {
+            display: flex;
+        }
+        
+        .reward-overlay.show .reward-image {
+            animation: rewardAppear 0.6s ease-out forwards;
+        }
+        
+        @keyframes rewardAppear {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
         /* レスポンシブ */
         @media (max-width: 768px) {
             .logo {
@@ -1069,7 +1109,7 @@
     
     <!-- どんぐりコレクションカウンター -->
     <div class="collection-counter" id="collectionCounter">
-        どんぐり: <span id="acornCount">0</span>/5 | ゴールデン: <span id="goldenCount">0</span>/7
+        どんぐり: <span id="acornCount">0</span>/5 | ゴールデン: <span id="goldenCount">0</span>/10
     </div>
     
     <!-- コレクション完了ポップアップ -->
@@ -1077,6 +1117,11 @@
         <h3>🎉 おめでとう！ 🎉</h3>
         <p>全てのどんぐりを集めました！<br>ねむこがとても喜んでいます♪</p>
         <button class="btn btn-primary" onclick="closeCollectionPopup()" aria-label="ポップアップを閉じる">閉じる</button>
+    </div>
+    
+    <!-- 報酬画像オーバーレイ -->
+    <div class="reward-overlay" id="rewardOverlay" onclick="hideReward()">
+        <img src="" alt="報酬画像" class="reward-image" id="rewardImage">
     </div>
     
     <!-- ヘッダー -->

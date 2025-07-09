@@ -738,7 +738,7 @@ function initializeAcornCollection() {
         { section: 2, bottom: '20%', left: '8%' }
     ];
     
-    // Golden acorn positions - more hidden and spread across the page
+    // Golden acorn positions - 10 total, more hidden and spread across the page
     const goldenAcornPositions = [
         { section: 'hero', top: '5%', right: '5%', hidden: true },
         { section: 'header', bottom: '10px', left: '300px', hidden: true },
@@ -746,7 +746,10 @@ function initializeAcornCollection() {
         { section: 'profile', bottom: '50px', left: '20px', hidden: true },
         { section: 'footer', top: '10px', right: '50px', hidden: true },
         { section: 'hero', bottom: '10%', left: '2%', hidden: true },
-        { section: 'profile', top: '60%', right: '3%', hidden: false }
+        { section: 'profile', top: '60%', right: '3%', hidden: false },
+        { section: 'schedule-banner', bottom: '20px', left: '100px', hidden: true },
+        { section: 'hero', top: '50%', left: '10px', hidden: true },
+        { section: 'footer', bottom: '20px', left: '40%', hidden: true }
     ];
     
     let collectedCount = 0;
@@ -866,8 +869,9 @@ function initializeAcornCollection() {
         createAcornParticles(e.clientX, e.clientY);
         
         // Check if all normal acorns collected
-        if (collectedCount === totalAcorns && goldenCollectedCount < totalGoldenAcorns) {
-            revealGoldenAcorns();
+        if (collectedCount === totalAcorns && goldenCollectedCount === 0) {
+            showReward('images/reward4.png', 'すべてのどんぐりを集めました！');
+            setTimeout(revealGoldenAcorns, 3000);
         }
         
         // Check if all collected
@@ -928,9 +932,14 @@ function initializeAcornCollection() {
         // Golden particle effect
         createGoldenParticles(e.clientX, e.clientY);
         
-        // Check if all collected
-        if (collectedCount === totalAcorns && goldenCollectedCount === totalGoldenAcorns) {
-            setTimeout(showCompletionPopup, 500);
+        // Show rewards at milestones
+        if (goldenCollectedCount === 1) {
+            showReward('images/reward1.png', '初めてのゴールデンどんぐり！');
+        } else if (goldenCollectedCount === 5) {
+            showReward('images/reward2.png', 'ゴールデンどんぐり5個達成！');
+        } else if (goldenCollectedCount === 10) {
+            showReward('images/reward3.png', '完全制覇！すべてのゴールデンどんぐりをゲット！');
+            setTimeout(showCompletionPopup, 3000);
         }
     }
     
@@ -1053,6 +1062,62 @@ function initializeAcornCollection() {
             createCelebrationEffect();
         }
     }
+}
+
+// Show reward image
+function showReward(imagePath, message) {
+    const overlay = document.getElementById('rewardOverlay');
+    const image = document.getElementById('rewardImage');
+    
+    image.src = imagePath;
+    overlay.classList.add('show');
+    
+    // Show message
+    const messageDiv = document.createElement('div');
+    messageDiv.style.cssText = `
+        position: fixed;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px 40px;
+        border-radius: 30px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        z-index: 10004;
+        text-align: center;
+        font-size: 1.5rem;
+        color: var(--primary-orange);
+        font-weight: 700;
+    `;
+    messageDiv.textContent = message;
+    document.body.appendChild(messageDiv);
+    
+    gsap.fromTo(messageDiv, {
+        scale: 0,
+        opacity: 0
+    }, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.5,
+        ease: 'back.out(1.7)'
+    });
+    
+    // Auto hide after 5 seconds
+    setTimeout(() => {
+        hideReward();
+        gsap.to(messageDiv, {
+            scale: 0,
+            opacity: 0,
+            duration: 0.3,
+            onComplete: () => messageDiv.remove()
+        });
+    }, 5000);
+}
+
+// Hide reward overlay
+window.hideReward = function() {
+    const overlay = document.getElementById('rewardOverlay');
+    overlay.classList.remove('show');
 }
 
 // Close collection popup
