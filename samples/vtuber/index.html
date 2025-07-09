@@ -955,44 +955,30 @@
                 text-align: center;
             }
             
-            /* ロゴと立ち絵を横並びに */
+            /* モバイルではロゴのみ表示 */
             .hero-top-section {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 20px;
-                margin-bottom: 30px;
+                display: none; /* JavaScriptで作成されるhero-top-sectionを非表示 */
             }
             
             .hero-logo-container {
                 position: relative;
-                flex-shrink: 0;
+                margin: 0 auto 30px;
             }
             
             .hero-logo {
-                height: 120px;
-                width: 120px;
-                flex-shrink: 0;
+                height: 200px;
+                width: 200px;
+                margin: 0 auto;
+                display: block;
             }
             
             .logo-particles {
                 display: none; /* モバイルではパーティクルを非表示 */
             }
             
+            /* 立ち絵は非表示 */
             .hero-character-container {
-                flex: 0 0 auto;
-                height: 200px;
-                position: relative;
-                overflow: visible;
-            }
-            
-            .hero-character {
-                height: 100%;
-                width: auto;
-                max-width: 200px;
-                object-fit: contain;
-                object-position: center;
-                transform: scale(1); /* モバイルでは拡大しない */
+                display: none !important;
             }
             
             .subtitle-text {
@@ -1087,17 +1073,9 @@
         
         /* 小型モバイル (480px) */
         @media (max-width: 480px) {
-            .hero-top-section {
-                gap: 15px;
-            }
-            
             .hero-logo {
-                height: 100px;
-                width: 100px;
-            }
-            
-            .hero-character-container {
                 height: 150px;
+                width: 150px;
             }
             
             .subtitle-text {
