@@ -418,7 +418,9 @@ const subpageTranslations = {
                 realestate: "不動産",
                 apparel: "アパレル",
                 travel: "旅行",
-                npo: "NPO"
+                npo: "NPO",
+                professional: "士業",
+                pet: "ペット関連"
             }
         },
         
@@ -464,13 +466,108 @@ const subpageTranslations = {
         faq: {
             title: "よくある質問",
             subtitle: "お客様からよくいただくご質問にお答えします",
-            categories: {
-                general: "一般的な質問",
-                production: "制作について",
-                pricing: "料金について",
-                support: "サポートについて"
+            hero: {
+                title: "よくある質問",
+                subtitle: "お客様からよくいただく質問をまとめました"
             },
-            backToTop: "トップに戻る"
+            categories: {
+                all: "すべて",
+                price: "料金について",
+                process: "制作プロセス",
+                delivery: "納期・納品",
+                support: "サポート"
+            },
+            sections: {
+                price: {
+                    title: "料金について",
+                    icon: "💰",
+                    items: [
+                        {
+                            question: "制作期間はどのくらいかかりますか？",
+                            answer: "基本プラン：最速即日〜5営業日\nリッチプラン：最速即日〜7営業日\n\n素材や情報が揃っている場合は最速での納品が可能です。修正回数や内容により変動する場合があります。"
+                        },
+                        {
+                            question: "初期費用以外に追加料金はかかりますか？",
+                            answer: "基本的に初期費用のみで制作いたします。ただし、以下の場合は追加料金が発生する場合があります：\n• 大幅な仕様変更や追加ページの制作\n• 特殊な機能の実装（予約システム、決済機能など）\n• 急ぎの納期対応（特急料金）\n追加料金が発生する場合は、必ず事前にお見積もりをご提示し、ご了承いただいてから作業を進めます。"
+                        },
+                        {
+                            question: "リッチプラン（5万円）は通常プラン（2万円）と何が違いますか？",
+                            answer: "リッチプランは、GSAPを活用した高度なアニメーションが特徴です：\n• スクロールに連動した動きのあるアニメーション\n• パララックス効果による奥行き感のある演出\n• マウスの動きに反応するインタラクティブな要素\n• 画面遷移時の滑らかなトランジション\n通常のWebサイト制作会社では30〜50万円相当のアニメーション実装を、AI技術により5万円でご提供しています。"
+                        },
+                        {
+                            question: "支払い方法と支払いタイミングを教えてください",
+                            answer: "お支払いは以下の方法に対応しています：\n• 銀行振込\n• クレジットカード決済（VISA、MasterCard、JCB、AMEX）\n\nお支払いタイミング：\n1. 制作完了後、テストページをご確認いただきます\n2. ご承諾のメールをいただいた時点で納品いたします\n3. 納品後1週間以内にお支払いをお願いいたします"
+                        },
+                        {
+                            question: "キャンセルは可能ですか？",
+                            answer: "キャンセルのタイミングにより以下の通りとなります。\n• テストサイト確認前：キャンセル料無料\n• テストサイト確認後：キャンセル料1万円\n• 承認メール送信後：全額請求（キャンセル不可）\n\n※テストサイトで実際の仕上がりをご確認いただけるため、安心してご依頼いただけます。"
+                        }
+                    ]
+                },
+                process: {
+                    title: "制作プロセス",
+                    icon: "🚀",
+                    items: [
+                        {
+                            question: "AI技術を使った制作とはどういうものですか？",
+                            answer: "最新のAI技術を活用してコーディング作業を効率化しています：\n• デザインからHTMLへの変換を高速化\n• レスポンシブ対応の自動最適化\n• SEO最適化されたコード生成\n• ブラウザ互換性の自動チェック\nただし、デザインの企画や最終的な品質チェックは人間が行い、高品質を保証しています。"
+                        },
+                        {
+                            question: "制作の流れを教えてください",
+                            answer: "1. お問い合わせ・ヒアリング（1日目）\nお客様のビジネスや目的をお聞きし、最適なプランをご提案します。\n\n2. 制作開始（1-2日目）\nAI技術と人間のクリエイティビティを組み合わせて高速制作します。\n\n3. テストサイトで確認\n完成したLPをテストサイトにアップロードし、実際の動作をご確認いただきます。\n\n4. 承認またはキャンセル\nテストサイトをご確認後、承認またはキャンセルをお選びいただけます。\n\n5. 納品・お支払い\n承認メール受領後、データを納品いたします。納品後1週間以内にお支払いをお願いします。"
+                        },
+                        {
+                            question: "どんな情報を準備すればいいですか？",
+                            answer: "以下の情報があるとスムーズに制作を進められます：\n• 会社・サービスの概要資料\n• ロゴデータ（あれば）\n• 使用したい写真や画像\n• 参考にしたいWebサイトのURL\n• ターゲット層の情報\n• 強みや差別化ポイント\n\n素材がない場合は、商用利用可能な素材をこちらでご用意することも可能です。"
+                        },
+                        {
+                            question: "サンプルサイトを見ることはできますか？",
+                            answer: "はい、サンプルサイトページで様々な業界のLP制作例をご覧いただけます。実際の制作においては、お客様のビジネスに合わせてカスタマイズいたします。"
+                        }
+                    ]
+                },
+                delivery: {
+                    title: "納期・納品",
+                    icon: "📅",
+                    items: [
+                        {
+                            question: "本当に即日で納品できるのですか？",
+                            answer: "最速即日での納品が可能な場合もございますが、これは確約するものではありません。以下の条件が必要です：\n• 必要な素材や情報が全て揃っている\n• 標準的な構成での制作\n• 営業日での計算（土日祝を除く）\n• 修正がない場合（一発OKの場合）\n\n※即日納品は修正がない場合の最速納期です。\n通常、お客様のフィードバックと修正作業を含めると2〜5営業日程度かかります。\n具体的な納期は、ヒアリング後に個別にお伝えいたします。"
+                        },
+                        {
+                            question: "納品形式を教えてください",
+                            answer: "以下の形式で納品いたします：\n• HTML、CSS、JavaScriptファイル一式\n• 画像ファイル（最適化済み）\n• ファイル構成説明書（テキストファイル）\n納品はZIPファイルでのダウンロード形式となります。"
+                        },
+                        {
+                            question: "サーバーやドメインの準備は必要ですか？",
+                            answer: "納品時点では不要ですが、公開には以下が必要です：\n• ドメイン：年間1,000〜5,000円程度\n• サーバー：月額500〜2,000円程度\n\n※弊社ではサーバー・ドメインの取得代行やアップロード作業は行っておりません。公開方法については別途ガイドページをご参照ください。"
+                        }
+                    ]
+                },
+                support: {
+                    title: "サポート",
+                    icon: "🛠️",
+                    items: [
+                        {
+                            question: "納品後のサポートはありますか？",
+                            answer: "基本的にファイル納品をもって弊社のサービスは完了となりますが、以下の対応は可能です：\n• 納品後1週間は表示不具合に関する相談を無料で受付\n• ファイルの再ダウンロード（1ヶ月間）\n• 有料での修正・更新作業"
+                        },
+                        {
+                            question: "自分で内容を更新することはできますか？",
+                            answer: "納品したHTMLファイルはテキストエディタで編集可能です。ただし、HTMLやCSSの知識が必要となります。\n\nご自身での更新が難しい場合は、別途有料で修正作業を承ることも可能です。"
+                        },
+                        {
+                            question: "SEO対策は含まれていますか？",
+                            answer: "基本的なSEO対策は標準で含まれています：\n• 適切なHTMLタグの使用\n• メタタグの最適化\n• 画像のalt属性設定\n• ページ読み込み速度の最適化\n• モバイルフレンドリー対応\n※コンテンツSEOや被リンク対策などの運用面でのSEO対策は含まれません。"
+                        }
+                    ]
+                }
+            },
+            cta: {
+                title: "ご不明な点はお気軽にお問い合わせください",
+                description: "こちらに掲載されていないご質問も、お気軽にお問い合わせください。\n専門スタッフが丁寧にお答えいたします。",
+                button: "お問い合わせはこちら"
+            }
         },
         
         // About page
@@ -1197,7 +1294,9 @@ const subpageTranslations = {
                 realestate: "Real Estate",
                 apparel: "Apparel",
                 travel: "Travel",
-                npo: "NPO"
+                npo: "NPO",
+                professional: "Professional",
+                pet: "Pet Services"
             }
         },
         
@@ -1243,13 +1342,108 @@ const subpageTranslations = {
         faq: {
             title: "Frequently Asked Questions",
             subtitle: "Answers to questions we often receive from customers",
-            categories: {
-                general: "General Questions",
-                production: "About Production",
-                pricing: "About Pricing",
-                support: "About Support"
+            hero: {
+                title: "Frequently Asked Questions",
+                subtitle: "We've compiled answers to common questions from our customers"
             },
-            backToTop: "Back to Top"
+            categories: {
+                all: "All",
+                price: "About Pricing",
+                process: "Production Process",
+                delivery: "Delivery & Timeline",
+                support: "Support"
+            },
+            sections: {
+                price: {
+                    title: "About Pricing",
+                    icon: "💰",
+                    items: [
+                        {
+                            question: "How long does production take?",
+                            answer: "Basic Plan: As fast as same day - 5 business days\nRich Plan: As fast as same day - 7 business days\n\nSame-day delivery is possible when all materials and information are ready. Timeline may vary depending on the number and content of revisions."
+                        },
+                        {
+                            question: "Are there any additional charges besides the initial fee?",
+                            answer: "Generally, only the initial fee is required. However, additional charges may apply in the following cases:\n• Major specification changes or additional page creation\n• Implementation of special features (reservation systems, payment functions, etc.)\n• Rush delivery (express charges)\nIf additional charges apply, we will provide an estimate in advance and proceed only after your approval."
+                        },
+                        {
+                            question: "What's the difference between the Rich Plan (¥50,000) and Standard Plan (¥20,000)?",
+                            answer: "The Rich Plan features advanced animations using GSAP:\n• Scroll-triggered animations\n• Parallax effects for depth\n• Interactive elements that respond to mouse movement\n• Smooth transitions between screens\nAnimation implementation that would typically cost ¥300,000-¥500,000 at regular web agencies is available for ¥50,000 through our AI technology."
+                        },
+                        {
+                            question: "What are the payment methods and timing?",
+                            answer: "We accept the following payment methods:\n• Bank transfer\n• Credit card (VISA, MasterCard, JCB, AMEX)\n\nPayment timing:\n1. Review the test page after production completion\n2. We deliver upon receiving your approval email\n3. Please make payment within 1 week after delivery"
+                        },
+                        {
+                            question: "Is cancellation possible?",
+                            answer: "Cancellation terms vary by timing:\n• Before test site review: Free cancellation\n• After test site review: ¥10,000 cancellation fee\n• After approval email sent: Full payment required (no cancellation)\n\n* You can review the actual result on the test site, ensuring peace of mind when ordering."
+                        }
+                    ]
+                },
+                process: {
+                    title: "Production Process",
+                    icon: "🚀",
+                    items: [
+                        {
+                            question: "What does AI-powered production mean?",
+                            answer: "We use the latest AI technology to streamline coding work:\n• Accelerated conversion from design to HTML\n• Automated responsive optimization\n• SEO-optimized code generation\n• Automated browser compatibility checks\nHowever, design planning and final quality checks are performed by humans to ensure high quality."
+                        },
+                        {
+                            question: "What is the production flow?",
+                            answer: "1. Inquiry & Consultation (Day 1)\nWe listen to your business needs and objectives, proposing the optimal plan.\n\n2. Production Start (Day 1-2)\nCombining AI technology with human creativity for rapid production.\n\n3. Test Site Review\nWe upload the completed LP to a test site for you to check actual functionality.\n\n4. Approval or Cancellation\nAfter reviewing the test site, you can choose to approve or cancel.\n\n5. Delivery & Payment\nAfter receiving your approval email, we deliver the data. Please make payment within 1 week."
+                        },
+                        {
+                            question: "What information should I prepare?",
+                            answer: "The following information helps smooth production:\n• Company/service overview materials\n• Logo data (if available)\n• Photos or images you want to use\n• Reference website URLs\n• Target audience information\n• Strengths and differentiation points\n\nIf you don't have materials, we can prepare commercially available materials."
+                        },
+                        {
+                            question: "Can I see sample sites?",
+                            answer: "Yes, you can view LP creation examples for various industries on our sample sites page. In actual production, we customize according to your business needs."
+                        }
+                    ]
+                },
+                delivery: {
+                    title: "Delivery & Timeline",
+                    icon: "📅",
+                    items: [
+                        {
+                            question: "Can you really deliver same day?",
+                            answer: "Same-day delivery may be possible in some cases, but this is not guaranteed. The following conditions are required:\n• All necessary materials and information are ready\n• Standard configuration production\n• Business day calculation (excluding weekends and holidays)\n• No revisions needed (approved on first submission)\n\n* Same-day delivery is the fastest timeline when no revisions are needed.\nTypically, including customer feedback and revision work, it takes about 2-5 business days.\nSpecific timeline will be communicated individually after consultation."
+                        },
+                        {
+                            question: "What is the delivery format?",
+                            answer: "We deliver in the following formats:\n• Complete set of HTML, CSS, JavaScript files\n• Image files (optimized)\n• File structure documentation (text file)\nDelivery is in ZIP file download format."
+                        },
+                        {
+                            question: "Do I need to prepare a server or domain?",
+                            answer: "Not required at delivery, but the following are needed for publication:\n• Domain: About ¥1,000-¥5,000 per year\n• Server: About ¥500-¥2,000 per month\n\n* We do not provide server/domain registration or upload services. Please refer to our separate guide page for publication methods."
+                        }
+                    ]
+                },
+                support: {
+                    title: "Support",
+                    icon: "🛠️",
+                    items: [
+                        {
+                            question: "Is there support after delivery?",
+                            answer: "Our service basically completes with file delivery, but the following support is available:\n• Free consultation for display issues within 1 week after delivery\n• File re-download (for 1 month)\n• Paid revision and update work"
+                        },
+                        {
+                            question: "Can I update the content myself?",
+                            answer: "The delivered HTML files can be edited with a text editor. However, knowledge of HTML and CSS is required.\n\nIf self-updating is difficult, we can provide paid revision services."
+                        },
+                        {
+                            question: "Is SEO optimization included?",
+                            answer: "Basic SEO optimization is included as standard:\n• Proper HTML tag usage\n• Meta tag optimization\n• Image alt attribute settings\n• Page loading speed optimization\n• Mobile-friendly support\n* Content SEO and backlink strategies for operational aspects are not included."
+                        }
+                    ]
+                }
+            },
+            cta: {
+                title: "Feel free to contact us with any questions",
+                description: "Please feel free to contact us with questions not listed here.\nOur professional staff will respond carefully.",
+                button: "Contact Us"
+            }
         },
         
         // About page
@@ -1393,6 +1587,155 @@ const subpageTranslations = {
                     label: "お問い合わせ",
                     value: "お問い合わせフォームよりご連絡ください"
                 }
+            }
+        },
+        
+        // Deployment Guide page
+        deploymentGuide: {
+            title: "納品後のサイト公開ガイド",
+            subtitle: "納品されたファイルを使って、実際にWebサイトを公開する方法をご案内します",
+            hero: {
+                title: "納品後のサイト公開ガイド",
+                subtitle: "納品されたファイルを使って、実際にWebサイトを公開する方法をご案内します"
+            },
+            intro: {
+                title: "納品ファイルについて",
+                description: "納品時には、以下のファイルが含まれたZIPファイルをお渡しします：",
+                files: [
+                    "HTML ファイル（index.html など）",
+                    "CSS ファイル（スタイルシート）",
+                    "JavaScript ファイル（動的機能）",
+                    "画像素材（images フォルダ）",
+                    "設置マニュアル（README.txt）"
+                ]
+            },
+            steps: {
+                step1: {
+                    number: "1",
+                    title: "ドメインを取得する",
+                    subtitle: "あなたのサイトのアドレス（URL）を決めます",
+                    description: "ドメインとは「example.com」のようなWebサイトのアドレスです。以下のサービスで取得できます：",
+                    services: [
+                        {
+                            name: "お名前.com",
+                            description: "国内最大級のドメイン登録サービス",
+                            price: "年額 1,000円〜"
+                        },
+                        {
+                            name: "ムームードメイン",
+                            description: "初心者に優しい管理画面",
+                            price: "年額 1,200円〜"
+                        },
+                        {
+                            name: "バリュードメイン",
+                            description: "豊富な種類のドメイン",
+                            price: "年額 1,000円〜"
+                        }
+                    ],
+                    tip: {
+                        title: "ドメイン選びのポイント",
+                        points: [
+                            "短くて覚えやすい名前を選ぶ",
+                            "ビジネス名やサービス名を含める",
+                            ".com / .jp / .net などの一般的な拡張子がおすすめ"
+                        ]
+                    }
+                },
+                step2: {
+                    number: "2",
+                    title: "サーバーを選ぶ",
+                    subtitle: "ファイルを置いて公開する場所を用意します",
+                    description: "Webサーバーは、あなたのサイトのファイルを保管し、インターネット上で公開する場所です。目的や技術レベルに応じて選びましょう。",
+                    options: [
+                        {
+                            title: "レンタルサーバー",
+                            difficulty: "初心者向け",
+                            description: "管理画面から簡単にファイルをアップロードできます。サポートも充実。",
+                            services: [
+                                "エックスサーバー - 月額990円〜",
+                                "ロリポップ - 月額220円〜",
+                                "さくらインターネット - 月額524円〜"
+                            ]
+                        },
+                        {
+                            title: "WordPress運用代行",
+                            difficulty: "初心者向け",
+                            description: "ココナラなどで、サーバー設定からファイルアップロードまで代行してもらえます。",
+                            services: [
+                                "設定代行費用：5,000円〜20,000円",
+                                "月額運用費：3,000円〜10,000円",
+                                "更新作業も依頼可能"
+                            ]
+                        },
+                        {
+                            title: "クラウドサービス",
+                            difficulty: "中級者向け",
+                            description: "無料〜低価格で始められ、アクセス数に応じて拡張可能。",
+                            services: [
+                                "Netlify - 無料〜",
+                                "Vercel - 無料〜",
+                                "GitHub Pages - 無料"
+                            ]
+                        }
+                    ],
+                    warning: {
+                        title: "ご注意",
+                        message: "当サービスでは、ドメイン取得やサーバー契約の代行、運用管理は承っておりません。\n上記のサービスをご自身でご契約いただくか、運用代行サービスのご利用をご検討ください。"
+                    }
+                },
+                step3: {
+                    number: "3",
+                    title: "ファイルをアップロードする",
+                    subtitle: "納品ファイルをサーバーに設置します",
+                    rentalServer: {
+                        title: "レンタルサーバーの場合",
+                        steps: [
+                            "サーバーの管理画面にログイン",
+                            "ファイルマネージャーを開く",
+                            "public_html（またはwww）フォルダを開く",
+                            "納品されたファイルをすべてアップロード",
+                            "ドメインの設定を行う"
+                        ]
+                    },
+                    agency: {
+                        title: "運用代行サービスの場合",
+                        steps: [
+                            "ココナラ等で「LP設置代行」「サイト公開代行」を検索",
+                            "評価の高い出品者を選択",
+                            "納品ファイルと希望ドメインを伝える",
+                            "代行業者がすべて設定"
+                        ]
+                    },
+                    fileStructure: {
+                        title: "納品ファイルの構成",
+                        structure: "your-site/\n├── index.html（トップページ）\n├── css/\n│   ├── style.css\n│   └── responsive.css\n├── js/\n│   └── main.js\n├── images/\n│   └── （画像ファイル）\n└── README.txt（設置マニュアル）"
+                    }
+                }
+            },
+            faq: {
+                title: "よくある質問",
+                items: [
+                    {
+                        question: "自分でサーバーにアップロードするのは難しいですか？",
+                        answer: "レンタルサーバーのファイルマネージャーを使えば、ドラッグ&ドロップで簡単にアップロードできます。多くのサーバーには詳しいマニュアルも用意されています。不安な場合は、ココナラなどで設置代行サービス（5,000円程度〜）を利用するのがおすすめです。"
+                    },
+                    {
+                        question: "公開後の更新や修正はどうすればいいですか？",
+                        answer: "HTMLファイルをテキストエディタで編集し、再度サーバーにアップロードすることで更新できます。当サービスでは更新作業も承っています（修正料金：20,000円〜）。また、定期的な更新が必要な場合は、WordPress化や運用代行サービスの利用もご検討ください。"
+                    },
+                    {
+                        question: "無料でサイトを公開する方法はありますか？",
+                        answer: "GitHub Pages、Netlify、Vercelなどの無料サービスを利用できます。ただし、これらは一定の技術知識が必要です。また、独自ドメインを使用する場合は、ドメイン代（年額1,000円程度〜）は別途必要になります。"
+                    },
+                    {
+                        question: "SSL証明書（https）の設定は必要ですか？",
+                        answer: "はい、セキュリティとSEOの観点から必須です。多くのレンタルサーバーでは無料のSSL証明書（Let's Encrypt）を簡単に設定できます。管理画面から数クリックで設定可能です。"
+                    },
+                    {
+                        question: "メールアドレスも作成できますか？",
+                        answer: "独自ドメインを取得し、レンタルサーバーを契約すれば、info@あなたのドメイン.com のようなメールアドレスを作成できます。多くのレンタルサーバーでは無制限にメールアドレスを作成可能です。"
+                    }
+                ]
             }
         },
         
@@ -1976,7 +2319,9 @@ const subpageTranslations = {
                 realestate: "房地產",
                 apparel: "服飾",
                 travel: "旅遊",
-                npo: "非營利組織"
+                npo: "非營利組織",
+                professional: "專業服務",
+                pet: "寵物相關"
             }
         },
         
@@ -2022,13 +2367,108 @@ const subpageTranslations = {
         faq: {
             title: "常見問題",
             subtitle: "回答客戶經常提出的問題",
-            categories: {
-                general: "一般問題",
-                production: "關於製作",
-                pricing: "關於價格",
-                support: "關於支援"
+            hero: {
+                title: "常見問題",
+                subtitle: "我們整理了客戶經常提出的問題"
             },
-            backToTop: "回到頂部"
+            categories: {
+                all: "全部",
+                price: "關於價格",
+                process: "製作流程",
+                delivery: "交期・交付",
+                support: "支援"
+            },
+            sections: {
+                price: {
+                    title: "關於價格",
+                    icon: "💰",
+                    items: [
+                        {
+                            question: "製作期間需要多久？",
+                            answer: "基本方案：最快當日～5個工作日\n豪華方案：最快當日～7個工作日\n\n如果素材和資訊齊全，可以最快交付。根據修改次數和內容可能會有所變動。"
+                        },
+                        {
+                            question: "除了初期費用外還有其他費用嗎？",
+                            answer: "基本上只需初期費用即可製作。但以下情況可能產生額外費用：\n• 大幅規格變更或追加頁面製作\n• 特殊功能實現（預約系統、支付功能等）\n• 急件處理（特急費用）\n如產生額外費用，我們會事先提供報價，獲得您的同意後才進行作業。"
+                        },
+                        {
+                            question: "豪華方案（5萬日圓）與標準方案（2萬日圓）有什麼不同？",
+                            answer: "豪華方案的特色是使用GSAP的高級動畫：\n• 與滾動連動的動態動畫\n• 視差效果帶來的立體感演出\n• 對滑鼠動作有反應的互動元素\n• 畫面切換時的流暢過渡\n一般網站製作公司需要30～50萬日圓的動畫實現，透過AI技術以5萬日圓提供。"
+                        },
+                        {
+                            question: "付款方式和付款時間是？",
+                            answer: "我們接受以下付款方式：\n• 銀行轉帳\n• 信用卡支付（VISA、MasterCard、JCB、AMEX）\n\n付款時間：\n1. 製作完成後，請確認測試頁面\n2. 收到您的核准郵件後交付\n3. 請在交付後1週內付款"
+                        },
+                        {
+                            question: "可以取消嗎？",
+                            answer: "根據取消時間有以下規定：\n• 測試網站確認前：免費取消\n• 測試網站確認後：取消費1萬日圓\n• 發送核准郵件後：需支付全額（無法取消）\n\n※您可以在測試網站確認實際成品，安心下單。"
+                        }
+                    ]
+                },
+                process: {
+                    title: "製作流程",
+                    icon: "🚀",
+                    items: [
+                        {
+                            question: "使用AI技術的製作是什麼？",
+                            answer: "利用最新AI技術提高編碼工作效率：\n• 加速從設計到HTML的轉換\n• 自動最佳化響應式設計\n• 生成SEO優化的程式碼\n• 自動檢查瀏覽器相容性\n但是，設計企劃和最終品質檢查由人工進行，確保高品質。"
+                        },
+                        {
+                            question: "製作流程是怎樣的？",
+                            answer: "1. 諮詢・需求訪談（第1天）\n了解您的業務和目的，提出最佳方案。\n\n2. 開始製作（第1-2天）\n結合AI技術和人類創意快速製作。\n\n3. 在測試網站確認\n將完成的LP上傳到測試網站，您可以確認實際功能。\n\n4. 核准或取消\n確認測試網站後，您可以選擇核准或取消。\n\n5. 交付・付款\n收到核准郵件後交付數據。請在交付後1週內付款。"
+                        },
+                        {
+                            question: "需要準備什麼資訊？",
+                            answer: "有以下資訊可以順利進行製作：\n• 公司・服務概要資料\n• 標誌數據（如有）\n• 想使用的照片或圖片\n• 參考網站URL\n• 目標客群資訊\n• 優勢和差異化要點\n\n如果沒有素材，我們也可以準備商用素材。"
+                        },
+                        {
+                            question: "可以看範例網站嗎？",
+                            answer: "是的，您可以在範例網站頁面查看各行業的LP製作範例。實際製作時，我們會根據您的業務需求進行客製化。"
+                        }
+                    ]
+                },
+                delivery: {
+                    title: "交期・交付",
+                    icon: "📅",
+                    items: [
+                        {
+                            question: "真的可以當日交付嗎？",
+                            answer: "在某些情況下可能實現最快當日交付，但這不是保證。需要以下條件：\n• 所有必要素材和資訊齊全\n• 標準配置的製作\n• 工作日計算（不含週末和假日）\n• 無需修改（一次通過）\n\n※當日交付是無需修改時的最快交期。\n通常包含客戶反饋和修改作業，約需2～5個工作日。\n具體交期將在諮詢後個別告知。"
+                        },
+                        {
+                            question: "交付格式是什麼？",
+                            answer: "以下列格式交付：\n• HTML、CSS、JavaScript檔案一套\n• 圖片檔案（已優化）\n• 檔案結構說明書（文字檔案）\n交付為ZIP檔案下載格式。"
+                        },
+                        {
+                            question: "需要準備伺服器或網域嗎？",
+                            answer: "交付時不需要，但發布需要以下：\n• 網域：每年約1,000～5,000日圓\n• 伺服器：每月約500～2,000日圓\n\n※本公司不提供伺服器・網域取得代理或上傳作業。發布方法請參考另外的指南頁面。"
+                        }
+                    ]
+                },
+                support: {
+                    title: "支援",
+                    icon: "🛠️",
+                    items: [
+                        {
+                            question: "交付後有支援嗎？",
+                            answer: "基本上檔案交付即完成本公司的服務，但可提供以下支援：\n• 交付後1週內免費接受顯示問題諮詢\n• 檔案重新下載（1個月內）\n• 付費修改・更新作業"
+                        },
+                        {
+                            question: "可以自己更新內容嗎？",
+                            answer: "交付的HTML檔案可以用文字編輯器編輯。但需要HTML和CSS知識。\n\n如果自行更新有困難，我們也可以提供付費修改服務。"
+                        },
+                        {
+                            question: "包含SEO對策嗎？",
+                            answer: "標準包含基本SEO對策：\n• 適當的HTML標籤使用\n• Meta標籤優化\n• 圖片alt屬性設定\n• 頁面載入速度優化\n• 行動裝置友善對應\n※不包含內容SEO和反向連結等營運面的SEO對策。"
+                        }
+                    ]
+                }
+            },
+            cta: {
+                title: "有任何疑問歡迎隨時諮詢",
+                description: "如有未列出的問題，歡迎隨時諮詢。\n專業人員將細心回答。",
+                button: "立即諮詢"
+            }
         },
         
         // About page
@@ -3054,18 +3494,18 @@ function updatePortfolioPage(t) {
     const pageTitle = document.querySelector('title');
     if (pageTitle) pageTitle.textContent = t.title + ' | ' + subpageTranslations[currentLang].nav.logo;
     
-    // Update hero
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) heroTitle.textContent = t.hero.title;
+    // Update hero section
+    const heroTitle = document.querySelector('.portfolio-hero h1');
+    if (heroTitle) heroTitle.textContent = t.title;
     
-    const heroSubtitle = document.querySelector('.hero-subtitle');
-    if (heroSubtitle) heroSubtitle.textContent = t.hero.subtitle;
+    const heroSubtitle = document.querySelector('.portfolio-hero p');
+    if (heroSubtitle) heroSubtitle.textContent = t.subtitle;
     
-    // Update filter buttons - only update the 'all' button
+    // Update filter buttons
     const filterButtons = document.querySelectorAll('.filter-btn');
     if (filterButtons.length >= 1) {
         filterButtons[0].textContent = t.filter.all;
-        // Do not update other filter buttons as they are category-specific
+        // Keep other filter buttons in Japanese as they are category names
     }
     
     // Update portfolio categories
@@ -3076,16 +3516,23 @@ function updatePortfolioPage(t) {
         const categoryMap = {
             '美容院': 'beauty',
             '飲食店': 'restaurant',
+            '健康食品': 'ec',
             'EC': 'ec',
+            '化粧品': 'ec',
             'フィットネス': 'fitness',
             '教育': 'education',
             '医療': 'medical',
             'テクノロジー': 'tech',
             'イベント': 'event',
+            'ウェディング': 'event',
             '不動産': 'realestate',
             'アパレル': 'apparel',
             '旅行': 'travel',
-            'NPO': 'npo'
+            'NPO': 'npo',
+            '中華料理店': 'restaurant',
+            '税理士': 'professional',
+            '士業': 'professional',
+            'ペット関連': 'pet'
         };
         
         const categoryKey = categoryMap[categoryText];
@@ -3094,13 +3541,80 @@ function updatePortfolioPage(t) {
         }
     });
     
-    // Update "View Site" buttons
-    const viewSiteButtons = document.querySelectorAll('.portfolio-link');
-    viewSiteButtons.forEach(button => {
-        if (button.textContent.includes('サイトを見る')) {
-            button.textContent = t.viewSite;
+    // Update demo badges
+    const demoBadges = document.querySelectorAll('.demo-badge');
+    demoBadges.forEach(badge => {
+        if (badge.textContent === 'サンプル') {
+            badge.textContent = currentLang === 'ja' ? 'サンプル' : currentLang === 'en' ? 'Sample' : '範例';
+        } else if (badge.textContent === 'リッチ版' || badge.classList.contains('rich-badge')) {
+            badge.textContent = currentLang === 'ja' ? 'リッチ版' : currentLang === 'en' ? 'Rich Version' : '豪華版';
         }
     });
+    
+    // Update portfolio meta items (target descriptions)
+    const metaItems = document.querySelectorAll('.portfolio-meta-item span');
+    metaItems.forEach(item => {
+        const text = item.textContent.trim();
+        const translations = {
+            '新規顧客獲得': currentLang === 'ja' ? '新規顧客獲得' : currentLang === 'en' ? 'New Customer Acquisition' : '新客戶獲取',
+            'レスポンシブ対応': currentLang === 'ja' ? 'レスポンシブ対応' : currentLang === 'en' ? 'Responsive Design' : '響應式設計',
+            '予約促進': currentLang === 'ja' ? '予約促進' : currentLang === 'en' ? 'Booking Promotion' : '預約促進',
+            '写真重視': currentLang === 'ja' ? '写真重視' : currentLang === 'en' ? 'Photo-Focused' : '重視照片',
+            '商品販売': currentLang === 'ja' ? '商品販売' : currentLang === 'en' ? 'Product Sales' : '商品銷售',
+            '電話注文': currentLang === 'ja' ? '電話注文' : currentLang === 'en' ? 'Phone Orders' : '電話訂購',
+            '参加者募集': currentLang === 'ja' ? '参加者募集' : currentLang === 'en' ? 'Participant Recruitment' : '參加者募集',
+            'カウントダウン': currentLang === 'ja' ? 'カウントダウン' : currentLang === 'en' ? 'Countdown' : '倒數計時',
+            'チケット販売': currentLang === 'ja' ? 'チケット販売' : currentLang === 'en' ? 'Ticket Sales' : '售票',
+            'プレミアム演出': currentLang === 'ja' ? 'プレミアム演出' : currentLang === 'en' ? 'Premium Effects' : '高級效果',
+            '相談獲得': currentLang === 'ja' ? '相談獲得' : currentLang === 'en' ? 'Consultation Acquisition' : '諮詢獲取',
+            '信頼性重視': currentLang === 'ja' ? '信頼性重視' : currentLang === 'en' ? 'Trust-Focused' : '重視信任',
+            '体験申込': currentLang === 'ja' ? '体験申込' : currentLang === 'en' ? 'Trial Registration' : '體驗申請',
+            'Before/After': currentLang === 'ja' ? 'Before/After' : currentLang === 'en' ? 'Before/After' : '使用前後',
+            '定期購入': currentLang === 'ja' ? '定期購入' : currentLang === 'en' ? 'Subscription' : '定期購買',
+            '成分訴求': currentLang === 'ja' ? '成分訴求' : currentLang === 'en' ? 'Ingredient Appeal' : '成分訴求',
+            '料金明瞭': currentLang === 'ja' ? '料金明瞭' : currentLang === 'en' ? 'Clear Pricing' : '價格明確',
+            '来場促進': currentLang === 'ja' ? '来場促進' : currentLang === 'en' ? 'Visit Promotion' : '到場促進',
+            '特典訴求': currentLang === 'ja' ? '特典訴求' : currentLang === 'en' ? 'Benefit Appeal' : '特典訴求',
+            '料金計算機能': currentLang === 'ja' ? '料金計算機能' : currentLang === 'en' ? 'Price Calculator' : '價格計算功能',
+            'GSAPアニメーション': currentLang === 'ja' ? 'GSAPアニメーション' : currentLang === 'en' ? 'GSAP Animation' : 'GSAP動畫',
+            'パララックス効果': currentLang === 'ja' ? 'パララックス効果' : currentLang === 'en' ? 'Parallax Effects' : '視差效果',
+            'マウスインタラクション': currentLang === 'ja' ? 'マウスインタラクション' : currentLang === 'en' ? 'Mouse Interaction' : '滑鼠互動',
+            'スクロールトリガー': currentLang === 'ja' ? 'スクロールトリガー' : currentLang === 'en' ? 'Scroll Trigger' : '滾動觸發'
+        };
+        
+        if (translations[text]) {
+            item.textContent = translations[text];
+        }
+    });
+    
+    // Update CTA section
+    const ctaTitle = document.querySelector('.cta-box h2');
+    if (ctaTitle) {
+        ctaTitle.textContent = currentLang === 'ja' ? 'あなたのビジネスに最適なLPを制作します' 
+                             : currentLang === 'en' ? 'We create the perfect LP for your business'
+                             : '為您的業務製作最佳LP';
+    }
+    
+    const ctaText1 = document.querySelector('.cta-box p:nth-of-type(1)');
+    if (ctaText1) {
+        ctaText1.innerHTML = currentLang === 'ja' ? 'ここでご紹介したのは制作可能なLPの一例です。<br>お客様のビジネスに合わせて、オーダーメイドのLPを制作いたします。'
+                           : currentLang === 'en' ? 'These are just examples of the LPs we can create.<br>We create custom-made LPs tailored to your business.'
+                           : '這裡介紹的只是我們可以製作的LP範例。<br>我們會根據您的業務需求，製作客製化的LP。';
+    }
+    
+    const ctaText2 = document.querySelector('.cta-box p:nth-of-type(2)');
+    if (ctaText2) {
+        ctaText2.textContent = currentLang === 'ja' ? 'あなたのビジネスの課題や目標をお聞かせください。'
+                             : currentLang === 'en' ? 'Tell us about your business challenges and goals.'
+                             : '請告訴我們您的業務挑戰和目標。';
+    }
+    
+    const ctaButton = document.querySelector('.cta-box .btn-primary');
+    if (ctaButton) {
+        ctaButton.textContent = currentLang === 'ja' ? 'お問い合わせはこちら'
+                              : currentLang === 'en' ? 'Contact Us'
+                              : '聯絡我們';
+    }
 }
 
 // Update Contact page
@@ -3110,60 +3624,146 @@ function updateContactPage(t) {
     if (pageTitle) pageTitle.textContent = t.title + ' | ' + subpageTranslations[currentLang].nav.logo;
     
     // Update hero
-    const heroTitle = document.querySelector('.hero h1');
-    if (heroTitle) heroTitle.textContent = t.hero.title;
+    const heroTitle = document.querySelector('.page-hero h1');
+    if (heroTitle) heroTitle.textContent = t.title;
     
-    const heroSubtitle = document.querySelector('.hero p');
-    if (heroSubtitle) heroSubtitle.textContent = t.hero.subtitle;
+    const heroSubtitle = document.querySelector('.page-hero p');
+    if (heroSubtitle) heroSubtitle.textContent = t.subtitle;
     
-    // Update form labels
-    const formLabels = {
-        'お名前': t.form.name,
-        'メールアドレス': t.form.email,
-        '会社名（任意）': t.form.company,
-        'ご興味のあるプラン': t.form.plan,
-        'お問い合わせ内容': t.form.message
-    };
+    // Update step cards
+    const stepCards = document.querySelectorAll('.step-card');
+    const stepTranslations = [
+        {
+            title: currentLang === 'ja' ? 'アンケート記入' : currentLang === 'en' ? 'Fill Out Survey' : '填寫問卷',
+            desc: currentLang === 'ja' ? '詳細なアンケートでご要望をお聞かせください' : currentLang === 'en' ? 'Tell us your requirements through a detailed survey' : '通過詳細問卷告訴我們您的需求'
+        },
+        {
+            title: currentLang === 'ja' ? '制作開始' : currentLang === 'en' ? 'Start Production' : '開始製作',
+            desc: currentLang === 'ja' ? 'アンケート内容を基に制作を開始します' : currentLang === 'en' ? 'We start production based on your survey' : '根據問卷內容開始製作'
+        },
+        {
+            title: currentLang === 'ja' ? 'テストページ確認・納品' : currentLang === 'en' ? 'Review & Delivery' : '確認測試頁面・交付',
+            desc: currentLang === 'ja' ? '制作したテストページをご確認後、各種データを納品' : currentLang === 'en' ? 'Review the test page and receive all data' : '確認製作的測試頁面後，交付各種數據'
+        },
+        {
+            title: currentLang === 'ja' ? 'お支払い' : currentLang === 'en' ? 'Payment' : '付款',
+            desc: currentLang === 'ja' ? 'ご承諾後納品、1週間以内にお支払い' : currentLang === 'en' ? 'Payment within 1 week after approval' : '核准後交付，1週內付款'
+        },
+        {
+            title: currentLang === 'ja' ? '修正対応' : currentLang === 'en' ? 'Revisions' : '修改對應',
+            desc: currentLang === 'ja' ? '必要に応じて修正対応・追加お支払い' : currentLang === 'en' ? 'Revisions and additional payment if needed' : '根據需要進行修改對應・追加付款'
+        }
+    ];
     
-    document.querySelectorAll('.form-group label').forEach(label => {
-        const labelText = label.textContent.replace('*', '').trim();
-        if (formLabels[labelText]) {
-            const required = label.textContent.includes('*');
-            label.innerHTML = formLabels[labelText] + (required ? `<span class="required">*</span>` : '');
+    stepCards.forEach((card, index) => {
+        if (stepTranslations[index]) {
+            const title = card.querySelector('h3');
+            const desc = card.querySelector('p');
+            if (title) {
+                const small = title.querySelector('small');
+                title.innerHTML = stepTranslations[index].title;
+                if (small && index === 4) {
+                    title.innerHTML += `<small style="display: block; font-size: 1.2rem; font-weight: normal; margin-top: 4px;">${currentLang === 'ja' ? '（必要に応じて）' : currentLang === 'en' ? '(If needed)' : '（如有需要）'}</small>`;
+                }
+            }
+            if (desc) desc.innerHTML = stepTranslations[index].desc;
         }
     });
     
-    // Update placeholders
-    const namePlaceholder = document.querySelector('input[name="name"]');
-    if (namePlaceholder) namePlaceholder.placeholder = t.form.namePlaceholder;
+    // Update main content title
+    const mainTitle = document.querySelector('.contact-main h2');
+    if (mainTitle) mainTitle.textContent = currentLang === 'ja' ? 'LP制作のお申し込み' : currentLang === 'en' ? 'LP Production Application' : 'LP製作申請';
     
-    const emailPlaceholder = document.querySelector('input[name="email"]');
-    if (emailPlaceholder) emailPlaceholder.placeholder = t.form.emailPlaceholder;
+    // Update CTA card
+    const ctaTitle = document.querySelector('.cta-card h3');
+    if (ctaTitle) ctaTitle.textContent = currentLang === 'ja' ? '詳細アンケートフォームへ' : currentLang === 'en' ? 'To Detailed Survey Form' : '前往詳細問卷表單';
     
-    const companyPlaceholder = document.querySelector('input[name="company"]');
-    if (companyPlaceholder) companyPlaceholder.placeholder = t.form.companyPlaceholder;
+    const ctaDesc = document.querySelector('.cta-card p');
+    if (ctaDesc) ctaDesc.innerHTML = currentLang === 'ja' ? 'お客様のビジネスに最適なLPを制作するために、<br>詳しい情報をお聞かせください。' 
+                                  : currentLang === 'en' ? 'To create the perfect LP for your business,<br>please provide us with detailed information.'
+                                  : '為了製作最適合您業務的LP，<br>請提供詳細信息。';
     
-    const messagePlaceholder = document.querySelector('textarea[name="message"]');
-    if (messagePlaceholder) messagePlaceholder.placeholder = t.form.messagePlaceholder;
+    const ctaButton = document.querySelector('.btn-cta');
+    if (ctaButton) ctaButton.textContent = currentLang === 'ja' ? 'アンケートを開始する →' : currentLang === 'en' ? 'Start Survey →' : '開始問卷 →';
     
-    // Update select options
-    const planSelect = document.querySelector('select[name="plan"]');
-    if (planSelect) {
-        planSelect.options[0].textContent = t.form.planOptions.select;
-        planSelect.options[1].textContent = t.form.planOptions.standard;
-        planSelect.options[2].textContent = t.form.planOptions.rich;
-        planSelect.options[3].textContent = t.form.planOptions.undecided;
+    // Update notice box
+    const noticeBox = document.querySelector('.notice-box');
+    if (noticeBox) {
+        noticeBox.innerHTML = currentLang === 'ja' ? '<strong>アンケートについて：</strong>7つのステップに分かれた詳細なアンケートです。所要時間は約10〜15分です。わからない項目は空欄でも構いません。'
+                           : currentLang === 'en' ? '<strong>About the Survey:</strong> A detailed survey divided into 7 steps. Takes about 10-15 minutes. You can leave items blank if unsure.'
+                           : '<strong>關於問卷：</strong>分為7個步驟的詳細問卷。需時約10〜15分鐘。不確定的項目可以留空。';
     }
     
-    // Update submit button
-    const submitButton = document.querySelector('.submit-btn');
-    if (submitButton && !submitButton.disabled) {
-        submitButton.textContent = t.form.submit;
+    // Update survey content title
+    const surveyContentTitle = document.querySelector('.contact-main h3');
+    if (surveyContentTitle) surveyContentTitle.textContent = currentLang === 'ja' ? 'アンケートの内容' : currentLang === 'en' ? 'Survey Contents' : '問卷內容';
+    
+    // Update survey items
+    const surveyItems = document.querySelectorAll('.features-list li');
+    const surveyItemTranslations = [
+        currentLang === 'ja' ? '基本情報（お名前、会社名、連絡先など）' : currentLang === 'en' ? 'Basic Information (Name, Company, Contact)' : '基本信息（姓名、公司名、聯絡方式等）',
+        currentLang === 'ja' ? 'プロジェクト詳細（プラン選択、業種、目的など）' : currentLang === 'en' ? 'Project Details (Plan, Industry, Purpose)' : '項目詳情（方案選擇、行業、目的等）',
+        currentLang === 'ja' ? 'ターゲット情報（年齢層、性別、詳細な特徴）' : currentLang === 'en' ? 'Target Information (Age, Gender, Details)' : '目標信息（年齡層、性別、詳細特徵）',
+        currentLang === 'ja' ? 'デザイン要望（キャッチコピー、デザイントーン、色など）' : currentLang === 'en' ? 'Design Requirements (Copy, Tone, Colors)' : '設計需求（標語、設計風格、顏色等）',
+        currentLang === 'ja' ? '必要なコンテンツ（含めたいセクション、フォーム項目）' : currentLang === 'en' ? 'Required Content (Sections, Form Fields)' : '所需內容（想包含的部分、表單項目）',
+        currentLang === 'ja' ? '素材・技術要件（ロゴ、画像素材の有無など）' : currentLang === 'en' ? 'Materials & Technical (Logo, Images)' : '素材・技術要求（Logo、圖片素材有無等）',
+        currentLang === 'ja' ? 'スケジュール・その他（納期、予算、追加要望）' : currentLang === 'en' ? 'Schedule & Other (Deadline, Budget, Requests)' : '時程・其他（交期、預算、追加需求）'
+    ];
+    
+    surveyItems.forEach((item, index) => {
+        if (surveyItemTranslations[index]) {
+            item.textContent = surveyItemTranslations[index];
+        }
+    });
+    
+    // Update contact methods
+    const emailMethodTitle = document.querySelector('.method-card:first-child h4');
+    if (emailMethodTitle) emailMethodTitle.textContent = currentLang === 'ja' ? 'メールでのお問い合わせ' : currentLang === 'en' ? 'Email Inquiries' : '電子郵件諮詢';
+    
+    const emailMethodDesc = document.querySelector('.method-card:first-child p');
+    if (emailMethodDesc) emailMethodDesc.innerHTML = currentLang === 'ja' ? 'LP制作以外のご質問は<br>sutto.apps@gmail.com' 
+                                                   : currentLang === 'en' ? 'For non-LP production questions<br>sutto.apps@gmail.com'
+                                                   : '關於LP製作以外的問題<br>sutto.apps@gmail.com';
+    
+    const faqMethodTitle = document.querySelector('.method-card:last-child h4');
+    if (faqMethodTitle) faqMethodTitle.textContent = currentLang === 'ja' ? 'よくある質問' : currentLang === 'en' ? 'FAQ' : '常見問題';
+    
+    const faqMethodDesc = document.querySelector('.method-card:last-child p');
+    if (faqMethodDesc) {
+        const link = faqMethodDesc.querySelector('a');
+        faqMethodDesc.innerHTML = currentLang === 'ja' ? 'お問い合わせ前に<br><a href="faq.html" style="color: var(--primary-color);">FAQ</a>もご確認ください'
+                               : currentLang === 'en' ? 'Please check our<br><a href="faq.html" style="color: var(--primary-color);">FAQ</a> before contacting'
+                               : '聯絡前請先查看<br><a href="faq.html" style="color: var(--primary-color);">FAQ</a>';
     }
     
-    // Update required text
-    const requiredText = document.querySelector('.required');
-    if (requiredText) requiredText.textContent = t.form.required;
+    // Update contact info section
+    const infoTitle = document.querySelector('.contact-info h3');
+    if (infoTitle) infoTitle.textContent = currentLang === 'ja' ? 'お問い合わせ情報' : currentLang === 'en' ? 'Contact Information' : '聯絡信息';
+    
+    // Update info items
+    const infoIcons = document.querySelectorAll('.info-icon');
+    infoIcons.forEach((icon, index) => {
+        if (index === 0) icon.textContent = currentLang === 'ja' ? '📧 メール' : currentLang === 'en' ? '📧 Email' : '📧 電子郵件';
+        if (index === 1) icon.textContent = currentLang === 'ja' ? '⏰ 営業時間' : currentLang === 'en' ? '⏰ Business Hours' : '⏰ 營業時間';
+        if (index === 2) icon.textContent = currentLang === 'ja' ? '💬 返信について' : currentLang === 'en' ? '💬 Response Time' : '💬 關於回覆';
+    });
+    
+    const businessHours = document.querySelectorAll('.info-item p')[1];
+    if (businessHours) businessHours.innerHTML = currentLang === 'ja' ? '平日 10:00〜18:00<br>（土日祝日休み）' 
+                                              : currentLang === 'en' ? 'Weekdays 10:00-18:00<br>(Closed weekends & holidays)'
+                                              : '平日 10:00〜18:00<br>（週末及假日休息）';
+    
+    const responseTime = document.querySelectorAll('.info-item p')[2];
+    if (responseTime) responseTime.textContent = currentLang === 'ja' ? 'お問い合わせから2営業日以内にご返信いたします' 
+                                               : currentLang === 'en' ? 'We will reply within 2 business days'
+                                               : '我們將在2個工作日內回覆';
+    
+    // Update flow link
+    const flowTitle = document.querySelector('.contact-info h4');
+    if (flowTitle) flowTitle.textContent = currentLang === 'ja' ? '制作の流れ' : currentLang === 'en' ? 'Production Flow' : '製作流程';
+    
+    const flowLink = document.querySelector('.contact-info a[href="service.html#flow"]');
+    if (flowLink) flowLink.textContent = currentLang === 'ja' ? '詳しい制作フローはこちら' : currentLang === 'en' ? 'See detailed production flow' : '查看詳細製作流程';
 }
 
 // Update FAQ page
@@ -3776,5 +4376,289 @@ function updatePricingPage(t) {
             if (estimateDesc) estimateDesc.textContent = t.estimate.description;
             if (estimateBtn) estimateBtn.textContent = t.estimate.cta;
         }
+    }
+}
+
+// Update FAQ page
+function updateFAQPage(t) {
+    // Update page title
+    const pageTitle = document.querySelector('title');
+    if (pageTitle) pageTitle.textContent = t.title + ' | ' + subpageTranslations[currentLang].nav.logo;
+    
+    // Update hero
+    const heroTitle = document.querySelector('.faq-hero h1');
+    if (heroTitle) heroTitle.textContent = t.hero.title;
+    
+    const heroSubtitle = document.querySelector('.faq-hero p');
+    if (heroSubtitle) heroSubtitle.textContent = t.hero.subtitle;
+    
+    // Update category buttons
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    if (categoryButtons.length >= 5) {
+        categoryButtons[0].textContent = t.categories.all;
+        categoryButtons[1].textContent = t.categories.price;
+        categoryButtons[2].textContent = t.categories.process;
+        categoryButtons[3].textContent = t.categories.delivery;
+        categoryButtons[4].textContent = t.categories.support;
+    }
+    
+    // Update FAQ sections
+    const faqCategories = document.querySelectorAll('.faq-category');
+    const sectionKeys = ['price', 'process', 'delivery', 'support'];
+    
+    faqCategories.forEach((category, index) => {
+        if (sectionKeys[index] && t.sections[sectionKeys[index]]) {
+            const section = t.sections[sectionKeys[index]];
+            
+            // Update section title
+            const titleElement = category.querySelector('.faq-category-title');
+            if (titleElement) {
+                const icon = titleElement.querySelector('.faq-category-icon');
+                const textNode = titleElement.childNodes[titleElement.childNodes.length - 1];
+                if (icon) icon.textContent = section.icon;
+                if (textNode) textNode.textContent = section.title;
+            }
+            
+            // Update FAQ items
+            const faqItems = category.querySelectorAll('.faq-item');
+            faqItems.forEach((item, itemIndex) => {
+                if (section.items[itemIndex]) {
+                    const question = item.querySelector('.faq-question h3');
+                    const answer = item.querySelector('.faq-answer-content');
+                    
+                    if (question) question.textContent = section.items[itemIndex].question;
+                    if (answer) {
+                        // Handle answers with line breaks and bullet points
+                        const answerText = section.items[itemIndex].answer;
+                        const lines = answerText.split('\n');
+                        let formattedAnswer = '';
+                        let inList = false;
+                        
+                        lines.forEach(line => {
+                            if (line.startsWith('•')) {
+                                if (!inList) {
+                                    formattedAnswer += '<ul>';
+                                    inList = true;
+                                }
+                                formattedAnswer += `<li>${line.substring(1).trim()}</li>`;
+                            } else {
+                                if (inList) {
+                                    formattedAnswer += '</ul>';
+                                    inList = false;
+                                }
+                                if (line.includes('：')) {
+                                    const parts = line.split('：');
+                                    formattedAnswer += `<strong>${parts[0]}：</strong>${parts.slice(1).join('：')}<br>`;
+                                } else if (line.trim()) {
+                                    formattedAnswer += line + '<br>';
+                                }
+                            }
+                        });
+                        
+                        if (inList) {
+                            formattedAnswer += '</ul>';
+                        }
+                        
+                        // Handle highlight boxes
+                        if (answerText.includes('※')) {
+                            const parts = formattedAnswer.split('※');
+                            if (parts.length > 1) {
+                                formattedAnswer = parts[0] + '<div class="highlight-box">※' + parts[1].replace(/<br>$/, '') + '</div>';
+                            }
+                        }
+                        
+                        answer.innerHTML = formattedAnswer.replace(/<br>$/, '');
+                    }
+                }
+            });
+        }
+    });
+    
+    // Update CTA section
+    if (t.cta) {
+        const ctaTitle = document.querySelector('.cta-box h2');
+        if (ctaTitle) ctaTitle.textContent = t.cta.title;
+        
+        const ctaDescription = document.querySelector('.cta-box p');
+        if (ctaDescription) {
+            const descLines = t.cta.description.split('\n');
+            ctaDescription.innerHTML = descLines.join('<br>');
+        }
+        
+        const ctaButton = document.querySelector('.cta-box .btn-primary');
+        if (ctaButton) ctaButton.textContent = t.cta.button;
+    }
+}
+
+// Update Deployment Guide page
+function updateDeploymentGuidePage(t) {
+    // Update page title
+    const pageTitle = document.querySelector('title');
+    if (pageTitle) pageTitle.textContent = t.title + ' | ' + subpageTranslations[currentLang].nav.logo;
+    
+    // Update hero
+    const heroTitle = document.querySelector('.guide-hero h1');
+    if (heroTitle) heroTitle.textContent = t.hero.title;
+    
+    const heroSubtitle = document.querySelector('.guide-hero p');
+    if (heroSubtitle) heroSubtitle.textContent = t.hero.subtitle;
+    
+    // Update intro section
+    const introSection = document.querySelector('.guide-intro');
+    if (introSection && t.intro) {
+        const introTitle = introSection.querySelector('h2');
+        if (introTitle) introTitle.textContent = t.intro.title;
+        
+        const introDesc = introSection.querySelector('p');
+        if (introDesc) introDesc.textContent = t.intro.description;
+        
+        const fileList = introSection.querySelector('ul');
+        if (fileList && t.intro.files) {
+            fileList.innerHTML = t.intro.files.map(file => `<li>• ${file}</li>`).join('');
+        }
+    }
+    
+    // Update steps
+    const guideSteps = document.querySelectorAll('.guide-step');
+    const stepKeys = ['step1', 'step2', 'step3'];
+    
+    guideSteps.forEach((step, index) => {
+        if (stepKeys[index] && t.steps[stepKeys[index]]) {
+            const stepData = t.steps[stepKeys[index]];
+            
+            // Update step number and title
+            const stepNumber = step.querySelector('.step-number');
+            if (stepNumber) stepNumber.textContent = stepData.number;
+            
+            const stepTitle = step.querySelector('.step-title h3');
+            if (stepTitle) stepTitle.textContent = stepData.title;
+            
+            const stepSubtitle = step.querySelector('.step-title p');
+            if (stepSubtitle) stepSubtitle.textContent = stepData.subtitle;
+            
+            // Update step description
+            const stepDesc = step.querySelector('p:not([style])');
+            if (stepDesc && stepData.description) stepDesc.textContent = stepData.description;
+            
+            // Handle step-specific content
+            if (index === 0 && stepData.services) {
+                // Step 1: Domain services
+                const serviceList = step.querySelector('.service-list');
+                if (serviceList) {
+                    serviceList.innerHTML = stepData.services.map(service => `
+                        <li>
+                            <div>
+                                <strong>${service.name}</strong>
+                                <span style="color: var(--text-light); margin-left: 12px;">${service.description}</span>
+                            </div>
+                            <span class="price">${service.price}</span>
+                        </li>
+                    `).join('');
+                }
+                
+                // Update tip box
+                const infoBox = step.querySelector('.info-box');
+                if (infoBox && stepData.tip) {
+                    const tipTitle = infoBox.querySelector('h4');
+                    if (tipTitle) tipTitle.textContent = '💡 ' + stepData.tip.title;
+                    
+                    const tipContent = infoBox.querySelector('p');
+                    if (tipContent) {
+                        tipContent.innerHTML = stepData.tip.points.map(point => point).join('<br>');
+                    }
+                }
+            } else if (index === 1 && stepData.options) {
+                // Step 2: Server options
+                const optionCards = step.querySelectorAll('.option-card');
+                optionCards.forEach((card, cardIndex) => {
+                    if (stepData.options[cardIndex]) {
+                        const option = stepData.options[cardIndex];
+                        
+                        const title = card.querySelector('h4');
+                        if (title) {
+                            const iconElement = title.firstChild;
+                            const difficultyElement = title.querySelector('.difficulty');
+                            title.innerHTML = '';
+                            if (iconElement) title.appendChild(iconElement);
+                            title.appendChild(document.createTextNode(' ' + option.title + ' '));
+                            if (difficultyElement) {
+                                difficultyElement.textContent = option.difficulty;
+                                title.appendChild(difficultyElement);
+                            }
+                        }
+                        
+                        const desc = card.querySelector('p');
+                        if (desc) desc.textContent = option.description;
+                        
+                        const serviceList = card.querySelector('ul');
+                        if (serviceList && option.services) {
+                            serviceList.innerHTML = option.services.map(service => `<li>• ${service}</li>`).join('');
+                        }
+                    }
+                });
+                
+                // Update warning box
+                const warningBox = step.querySelector('.warning-box');
+                if (warningBox && stepData.warning) {
+                    const warningTitle = warningBox.querySelector('h4');
+                    if (warningTitle) warningTitle.textContent = '⚠️ ' + stepData.warning.title;
+                    
+                    const warningContent = warningBox.querySelector('p');
+                    if (warningContent) warningContent.textContent = stepData.warning.message;
+                }
+            } else if (index === 2) {
+                // Step 3: Upload methods
+                if (stepData.rentalServer) {
+                    const rentalTitle = step.querySelector('h4');
+                    if (rentalTitle) rentalTitle.textContent = stepData.rentalServer.title;
+                    
+                    const rentalSteps = step.querySelector('ol');
+                    if (rentalSteps) {
+                        rentalSteps.innerHTML = stepData.rentalServer.steps.map((s, i) => 
+                            `<li>${i + 1}. ${s}</li>`
+                        ).join('');
+                    }
+                }
+                
+                if (stepData.agency) {
+                    const agencyTitle = step.querySelectorAll('h4')[1];
+                    if (agencyTitle) agencyTitle.textContent = stepData.agency.title;
+                    
+                    const agencySteps = step.querySelectorAll('ol')[1];
+                    if (agencySteps) {
+                        agencySteps.innerHTML = stepData.agency.steps.map((s, i) => 
+                            `<li>${i + 1}. ${s}</li>`
+                        ).join('');
+                    }
+                }
+                
+                // Update file structure
+                const infoBox = step.querySelector('.info-box');
+                if (infoBox && stepData.fileStructure) {
+                    const structureTitle = infoBox.querySelector('h4');
+                    if (structureTitle) structureTitle.textContent = '📁 ' + stepData.fileStructure.title;
+                    
+                    const pre = infoBox.querySelector('pre');
+                    if (pre) pre.textContent = stepData.fileStructure.structure;
+                }
+            }
+        }
+    });
+    
+    // Update FAQ section
+    if (t.faq) {
+        const faqTitle = document.querySelector('.faq-section').previousElementSibling;
+        if (faqTitle && faqTitle.tagName === 'H2') faqTitle.textContent = t.faq.title;
+        
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach((item, index) => {
+            if (t.faq.items[index]) {
+                const question = item.querySelector('.faq-question span');
+                const answer = item.querySelector('.faq-answer p');
+                
+                if (question) question.textContent = t.faq.items[index].question;
+                if (answer) answer.textContent = t.faq.items[index].answer;
+            }
+        });
     }
 }
