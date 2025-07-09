@@ -1,0 +1,520 @@
+/* VTuber Astra Kisaragi - Additional Styles */
+
+/* カスタムアニメーション */
+.cyber-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -3;
+    animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(50px, 50px);
+    }
+}
+
+/* ホログラムエフェクト */
+.hologram {
+    position: relative;
+    display: inline-block;
+}
+
+.hologram::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--primary-color);
+    z-index: -1;
+    filter: blur(3px);
+    opacity: 0.7;
+    animation: hologram-flicker 3s infinite;
+}
+
+@keyframes hologram-flicker {
+    0%, 100% {
+        opacity: 0.7;
+        transform: translate(2px, 2px);
+    }
+    50% {
+        opacity: 0.3;
+        transform: translate(-2px, -2px);
+    }
+}
+
+/* ミュージックセクション */
+.music-section {
+    background: linear-gradient(135deg, var(--bg-medium) 0%, rgba(255, 0, 255, 0.1) 100%);
+    border-radius: 20px;
+    padding: 60px;
+    margin-top: 100px;
+}
+
+.music-list {
+    display: grid;
+    gap: 30px;
+}
+
+.music-item {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.music-item:hover {
+    border-color: var(--primary-color);
+    transform: translateX(10px);
+}
+
+.music-cover {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.music-info {
+    flex: 1;
+}
+
+.music-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 10px;
+}
+
+.music-description {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.music-links {
+    display: flex;
+    gap: 15px;
+}
+
+.music-link {
+    padding: 8px 20px;
+    background: rgba(0, 212, 255, 0.2);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.music-link:hover {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+}
+
+/* グッズセクション */
+.goods-section {
+    margin-top: 100px;
+}
+
+.goods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.goods-item {
+    background: var(--bg-medium);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.goods-item:hover {
+    transform: translateY(-10px) rotateZ(-2deg);
+    box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+}
+
+.goods-image {
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(255, 0, 255, 0.3));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+.goods-info {
+    padding: 20px;
+}
+
+.goods-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 10px;
+}
+
+.goods-price {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.goods-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--accent-color);
+    color: var(--bg-dark);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* ファンアートギャラリー */
+.fanart-section {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.fanart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.fanart-item {
+    background: var(--bg-medium);
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fanart-item:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.fanart-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, rgba(0, 212, 255, 0.2), rgba(255, 0, 255, 0.2));
+    color: var(--primary-color);
+    font-size: 3rem;
+}
+
+/* インタラクティブ要素 */
+.interactive-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--text-white);
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 212, 255, 0.5);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.interactive-button:hover {
+    transform: scale(1.1) rotate(180deg);
+}
+
+/* チャットボックススタイル */
+.chat-box {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    height: 500px;
+    background: rgba(26, 26, 46, 0.95);
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    display: none;
+    flex-direction: column;
+    z-index: 998;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.chat-header {
+    padding: 20px;
+    background: var(--primary-color);
+    color: var(--bg-dark);
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 18px 18px 0 0;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.chat-message {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.chat-input {
+    padding: 20px;
+    border-top: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.chat-input input {
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    color: var(--text-light);
+    outline: none;
+}
+
+/* SDキャラナビゲーター */
+.sd-navigator {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 900;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sd-character {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 15px rgba(0, 212, 255, 0.5));
+    animation: float-sd 3s ease-in-out infinite;
+}
+
+@keyframes float-sd {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg); 
+    }
+    25% { 
+        transform: translateY(-10px) rotate(-5deg); 
+    }
+    75% { 
+        transform: translateY(-10px) rotate(5deg); 
+    }
+}
+
+.sd-bubble {
+    position: absolute;
+    bottom: 90px;
+    right: 0;
+    background: rgba(26, 26, 46, 0.95);
+    color: var(--text-light);
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: 2px solid var(--primary-color);
+    min-width: 150px;
+    opacity: 0;
+    transform: scale(0.8) translateY(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.sd-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 30px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--primary-color);
+}
+
+.sd-navigator:hover .sd-bubble {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* メニューが開いている時はバブルを非表示 */
+.sd-navigator.menu-open .sd-bubble {
+    opacity: 0 !important;
+    transform: scale(0.8) translateY(10px) !important;
+}
+
+.sd-navigator:hover .sd-character {
+    animation-play-state: paused;
+    transform: scale(1.1);
+}
+
+/* SDナビゲーターのスクロール連動 */
+.sd-navigator.scrolled {
+    transform: scale(0.8);
+}
+
+/* モバイルメニュー */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* タブレット対応 */
+@media (max-width: 1024px) {
+    .sd-navigator {
+        bottom: 30px;
+        right: 30px;
+    }
+    
+    .sd-character {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .music-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .goods-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .chat-box {
+        width: calc(100% - 40px);
+        right: 20px;
+        left: 20px;
+    }
+    
+    /* SDナビゲーター モバイル対応 */
+    .sd-navigator {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .sd-character {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .sd-bubble {
+        font-size: 0.8rem;
+        padding: 10px 15px;
+        min-width: 120px;
+        bottom: 70px;
+    }
+    
+    .sd-bubble::after {
+        bottom: -8px;
+        right: 20px;
+        border-top-width: 8px;
+        border-left-width: 8px;
+        border-right-width: 8px;
+    }
+    
+    /* メニューも調整 */
+    .sd-nav-menu {
+        bottom: 80px !important;
+        min-width: 140px !important;
+        padding: 8px !important;
+    }
+}
+
+/* 小型モバイル対応 */
+@media (max-width: 480px) {
+    .sd-navigator {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .sd-character {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .sd-bubble {
+        font-size: 0.75rem;
+        padding: 8px 12px;
+        min-width: 100px;
+        bottom: 60px;
+    }
+    
+    .sd-nav-menu {
+        bottom: 70px !important;
+        min-width: 120px !important;
+        font-size: 0.85rem;
+    }
+}
+
+/* SDナビゲーションメニュー */
+.sd-nav-item {
+    display: block;
+    padding: 10px 20px;
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.sd-nav-item:hover {
+    background: rgba(0, 212, 255, 0.2);
+    color: var(--primary-color);
+    transform: translateX(-5px);
+}
