@@ -6,6 +6,7 @@ let isLoading = true;
 let miniCharacter = null;
 let characterSprite = null;
 let isMoving = false;
+let characterDirection = 1; // 1 for right, -1 for left
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -71,6 +72,9 @@ function initializeMiniCharacter() {
         yPercent: -50
     });
     
+    // Set initial direction
+    characterSprite.style.transform = `scaleX(${characterDirection})`;
+    
     // Add click event to document
     document.addEventListener('click', handleCharacterMovement);
     document.addEventListener('touchend', handleCharacterMovement);
@@ -95,13 +99,24 @@ function handleCharacterMovement(e) {
     const charX = charRect.left + charRect.width / 2;
     const charY = charRect.top + charRect.height / 2;
     
-    // Determine direction and set appropriate sprite
+    // Determine vertical direction and set appropriate sprite
     if (y < charY) {
         // Moving up - use back sprite
         characterSprite.src = 'images/walk_back.gif';
     } else {
         // Moving down - use front sprite
         characterSprite.src = 'images/walk_front.gif';
+    }
+    
+    // Determine horizontal direction and flip sprite if needed
+    if (x < charX) {
+        // Moving left - flip the sprite
+        characterDirection = -1;
+        characterSprite.style.transform = 'scaleX(-1)';
+    } else {
+        // Moving right - normal orientation
+        characterDirection = 1;
+        characterSprite.style.transform = 'scaleX(1)';
     }
     
     // Calculate distance and duration
@@ -117,8 +132,9 @@ function handleCharacterMovement(e) {
         duration: duration,
         ease: 'power2.inOut',
         onComplete: () => {
-            // Return to idle animation
+            // Return to idle animation with preserved direction
             characterSprite.src = 'images/idle.gif';
+            characterSprite.style.transform = `scaleX(${characterDirection})`;
             isMoving = false;
             
             // Create leaf particles at destination
