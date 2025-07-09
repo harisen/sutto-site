@@ -738,10 +738,24 @@ function initializeAcornCollection() {
         { section: 2, bottom: '20%', left: '8%' }
     ];
     
+    // Golden acorn positions - more hidden and spread across the page
+    const goldenAcornPositions = [
+        { section: 'hero', top: '5%', right: '5%', hidden: true },
+        { section: 'header', bottom: '10px', left: '300px', hidden: true },
+        { section: 'schedule-banner', top: '10px', right: '200px', hidden: false },
+        { section: 'profile', bottom: '50px', left: '20px', hidden: true },
+        { section: 'footer', top: '10px', right: '50px', hidden: true },
+        { section: 'hero', bottom: '10%', left: '2%', hidden: true },
+        { section: 'profile', top: '60%', right: '3%', hidden: false }
+    ];
+    
     let collectedCount = 0;
+    let goldenCollectedCount = 0;
     const totalAcorns = acornPositions.length;
+    const totalGoldenAcorns = goldenAcornPositions.length;
     const counter = document.getElementById('collectionCounter');
     const countSpan = document.getElementById('acornCount');
+    const goldenCountSpan = document.getElementById('goldenCount');
     
     // Create hidden acorns
     acornPositions.forEach((pos, index) => {
@@ -781,6 +795,47 @@ function initializeAcornCollection() {
         }
     });
     
+    // Create golden acorns (initially hidden)
+    goldenAcornPositions.forEach((pos, index) => {
+        let section;
+        if (pos.section === 'hero') {
+            section = document.querySelector('.hero');
+        } else if (pos.section === 'header') {
+            section = document.querySelector('.header');
+        } else if (pos.section === 'schedule-banner') {
+            section = document.querySelector('.schedule-banner');
+        } else if (pos.section === 'profile') {
+            section = document.querySelector('#profile');
+        } else if (pos.section === 'footer') {
+            section = document.querySelector('.footer');
+        }
+        
+        if (section) {
+            const goldenAcorn = document.createElement('div');
+            goldenAcorn.className = 'golden-acorn';
+            goldenAcorn.dataset.index = index;
+            
+            // Set position
+            Object.keys(pos).forEach(key => {
+                if (key !== 'section' && key !== 'hidden') {
+                    goldenAcorn.style[key] = pos[key];
+                }
+            });
+            
+            // Add click handler
+            goldenAcorn.addEventListener('click', collectGoldenAcorn);
+            
+            // Add to section
+            section.style.position = 'relative';
+            section.appendChild(goldenAcorn);
+            
+            // Show some golden acorns from the start
+            if (!pos.hidden) {
+                goldenAcorn.classList.add('revealed');
+            }
+        }
+    });
+    
     function collectAcorn(e) {
         const acorn = e.target;
         if (acorn.classList.contains('collected')) return;
@@ -810,8 +865,13 @@ function initializeAcornCollection() {
         // Particle effect at collection point
         createAcornParticles(e.clientX, e.clientY);
         
+        // Check if all normal acorns collected
+        if (collectedCount === totalAcorns && goldenCollectedCount < totalGoldenAcorns) {
+            revealGoldenAcorns();
+        }
+        
         // Check if all collected
-        if (collectedCount === totalAcorns) {
+        if (collectedCount === totalAcorns && goldenCollectedCount === totalGoldenAcorns) {
             setTimeout(showCompletionPopup, 500);
         }
     }
@@ -842,9 +902,132 @@ function initializeAcornCollection() {
         }
     }
     
+    function collectGoldenAcorn(e) {
+        const goldenAcorn = e.target;
+        if (goldenAcorn.classList.contains('collected')) return;
+        
+        // Mark as collected
+        goldenAcorn.classList.add('collected');
+        goldenCollectedCount++;
+        
+        // Update counter
+        goldenCountSpan.textContent = goldenCollectedCount;
+        
+        // Collection animation - more spectacular for golden acorns
+        gsap.to(goldenAcorn, {
+            scale: 2,
+            rotation: 720,
+            opacity: 0,
+            duration: 1.2,
+            ease: 'power2.inOut',
+            onComplete: () => {
+                goldenAcorn.style.display = 'none';
+            }
+        });
+        
+        // Golden particle effect
+        createGoldenParticles(e.clientX, e.clientY);
+        
+        // Check if all collected
+        if (collectedCount === totalAcorns && goldenCollectedCount === totalGoldenAcorns) {
+            setTimeout(showCompletionPopup, 500);
+        }
+    }
+    
+    function createGoldenParticles(x, y) {
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '15px';
+            particle.style.height = '15px';
+            particle.style.backgroundColor = '#FFD700';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '9999';
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.boxShadow = '0 0 10px rgba(255, 215, 0, 0.8)';
+            
+            document.body.appendChild(particle);
+            
+            gsap.to(particle, {
+                x: (Math.random() - 0.5) * 200,
+                y: (Math.random() - 0.5) * 200,
+                scale: 0,
+                rotation: Math.random() * 360,
+                duration: 1.5,
+                ease: 'power2.out',
+                onComplete: () => particle.remove()
+            });
+        }
+    }
+    
+    function revealGoldenAcorns() {
+        // Show message
+        const message = document.createElement('div');
+        message.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 10002;
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+            font-weight: 700;
+        `;
+        message.innerHTML = '✨ ゴールデンどんぐりが現れた！ ✨<br><small>ページのどこかに隠れているよ！</small>';
+        document.body.appendChild(message);
+        
+        gsap.fromTo(message, {
+            scale: 0,
+            opacity: 0
+        }, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.5,
+            ease: 'back.out(1.7)',
+            onComplete: () => {
+                setTimeout(() => {
+                    gsap.to(message, {
+                        scale: 0,
+                        opacity: 0,
+                        duration: 0.3,
+                        onComplete: () => message.remove()
+                    });
+                }, 3000);
+            }
+        });
+        
+        // Reveal all hidden golden acorns
+        document.querySelectorAll('.golden-acorn:not(.revealed)').forEach((acorn, index) => {
+            setTimeout(() => {
+                acorn.classList.add('revealed');
+                gsap.fromTo(acorn, {
+                    scale: 0,
+                    rotation: -180
+                }, {
+                    scale: 1,
+                    rotation: 0,
+                    duration: 0.8,
+                    ease: 'elastic.out(1, 0.5)'
+                });
+            }, index * 200);
+        });
+    }
+    
     function showCompletionPopup() {
         const popup = document.getElementById('collectionPopup');
         popup.style.display = 'block';
+        
+        // Update message for golden acorns
+        if (goldenCollectedCount === totalGoldenAcorns) {
+            popup.querySelector('p').innerHTML = '全てのどんぐりとゴールデンどんぐりを集めました！<br>ねむこが特別に喜んでいます♪✨';
+        }
         
         gsap.fromTo(popup, {
             scale: 0,
@@ -864,6 +1047,11 @@ function initializeAcornCollection() {
             ease: 'power2.inOut',
             repeat: 2
         });
+        
+        // Extra celebration for golden completion
+        if (goldenCollectedCount === totalGoldenAcorns) {
+            createCelebrationEffect();
+        }
     }
 }
 

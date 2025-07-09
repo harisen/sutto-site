@@ -787,6 +787,41 @@
             pointer-events: none;
         }
         
+        /* ゴールデンどんぐり */
+        .golden-acorn {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('images/golden-acorn.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 15;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+            animation: goldenGlow 2s ease-in-out infinite;
+        }
+        
+        .golden-acorn.revealed {
+            opacity: 0.8;
+        }
+        
+        .golden-acorn:hover {
+            opacity: 1 !important;
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9));
+        }
+        
+        .golden-acorn.collected {
+            pointer-events: none;
+        }
+        
+        @keyframes goldenGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1)); }
+        }
+        
         .collection-popup {
             position: fixed;
             top: 50%;
@@ -961,9 +996,15 @@
                 height: 35px;
             }
             
+            .golden-acorn {
+                width: 40px;
+                height: 40px;
+            }
+            
             .collection-counter {
-                font-size: 0.9rem;
-                padding: 8px 15px;
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                right: 10px;
             }
             
             .mouse-follower {
@@ -1028,7 +1069,7 @@
     
     <!-- どんぐりコレクションカウンター -->
     <div class="collection-counter" id="collectionCounter">
-        どんぐり: <span id="acornCount">0</span>/5
+        どんぐり: <span id="acornCount">0</span>/5 | ゴールデン: <span id="goldenCount">0</span>/7
     </div>
     
     <!-- コレクション完了ポップアップ -->
