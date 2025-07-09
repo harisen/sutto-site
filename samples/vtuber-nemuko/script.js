@@ -6,7 +6,7 @@ let isLoading = true;
 let miniCharacter = null;
 let characterSprite = null;
 let isMoving = false;
-let characterDirection = 1; // 1 for right, -1 for left
+let characterDirection = 1; // 1 for normal, -1 for flipped
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -99,6 +99,17 @@ function handleCharacterMovement(e) {
     const charX = charRect.left + charRect.width / 2;
     const charY = charRect.top + charRect.height / 2;
     
+    // Determine horizontal direction first for sprite flipping
+    if (x < charX) {
+        // Moving left - normal orientation for left movement
+        characterDirection = 1;
+        characterSprite.style.transform = 'scaleX(1)';
+    } else {
+        // Moving right - flip the sprite for right movement
+        characterDirection = -1;
+        characterSprite.style.transform = 'scaleX(-1)';
+    }
+    
     // Determine vertical direction and set appropriate sprite
     if (y < charY) {
         // Moving up - use back sprite
@@ -106,17 +117,6 @@ function handleCharacterMovement(e) {
     } else {
         // Moving down - use front sprite
         characterSprite.src = 'images/walk_front.gif';
-    }
-    
-    // Determine horizontal direction and flip sprite if needed
-    if (x < charX) {
-        // Moving left - flip the sprite
-        characterDirection = -1;
-        characterSprite.style.transform = 'scaleX(-1)';
-    } else {
-        // Moving right - normal orientation
-        characterDirection = 1;
-        characterSprite.style.transform = 'scaleX(1)';
     }
     
     // Calculate distance and duration
