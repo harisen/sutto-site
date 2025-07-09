@@ -84,7 +84,7 @@
         .nav-link {
             color: #fff;
             text-decoration: none;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 500;
             transition: opacity 0.3s ease;
         }
@@ -838,7 +838,7 @@
     
     <!-- ヘッダー -->
     <header class="header">
-        <div class="container header-container">
+        <div class="header-container">
             <a href="index.html" class="logo">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
                     <span style="font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 2.8rem; font-weight: 900; color: #fff;">スッとサイト</span>
@@ -1089,6 +1089,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/subpage-language.js"></script>
 
     <script>
@@ -1347,23 +1348,6 @@
             yoyo: true,
             ease: 'power1.inOut'
         });
-        
-        // モバイルメニューのトグル
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileNav = document.getElementById('mobileNav');
-        
-        if (mobileMenuBtn && mobileNav) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileNav.classList.toggle('active');
-            });
-            
-            // モバイルメニューのリンクをクリックしたら閉じる
-            document.querySelectorAll('.mobile-nav-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileNav.classList.remove('active');
-                });
-            });
-        }
     </script>
 </body>
 </html>

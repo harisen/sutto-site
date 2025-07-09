@@ -1590,6 +1590,92 @@ const subpageTranslations = {
             }
         },
         
+        // Rich Plan page
+        richPlan: {
+            title: "リッチプラン",
+            loading: {
+                text: "LOADING..."
+            },
+            hero: {
+                title: ["美しいWEBサイトは", "ユーザーの心を", "動かします"],
+                subtitle: "GSAPを活用した高度なアニメーションで、訪問者を魅了する体験を",
+                description: "通常のWebサイト制作会社では30〜50万円相当のアニメーション実装を、AI技術により5万円でご提供"
+            },
+            parallax: {
+                title: "パララックス効果で魅せる",
+                subtitle: "奥行きのある表現",
+                content: "スクロールに合わせて異なる速度で動く要素が、立体的で印象的な視覚効果を生み出します。"
+            },
+            textAnimation: {
+                words: ["革新的", "魅力的", "印象的", "効果的"]
+            },
+            cards: {
+                scroll: {
+                    icon: "🎯",
+                    title: "スクロール連動",
+                    description: "ユーザーのスクロールに合わせて、要素が滑らかにアニメーション"
+                },
+                interaction: {
+                    icon: "🎨",
+                    title: "インタラクティブ",
+                    description: "マウスの動きに反応する、魅力的なインタラクションデザイン"
+                },
+                performance: {
+                    icon: "⚡",
+                    title: "高速パフォーマンス",
+                    description: "最適化されたコードで、アニメーションも軽快に動作"
+                }
+            },
+            portfolio: {
+                title: "作品ギャラリー",
+                items: [
+                    {
+                        title: "コーポレートサイト",
+                        category: "企業向け",
+                        description: "プロフェッショナルな印象を与える洗練されたデザイン"
+                    },
+                    {
+                        title: "ECサイト",
+                        category: "通販向け",
+                        description: "商品の魅力を最大限に引き出すビジュアル表現"
+                    },
+                    {
+                        title: "ブランドサイト",
+                        category: "ブランディング",
+                        description: "ブランドの世界観を体現する没入型デザイン"
+                    },
+                    {
+                        title: "キャンペーンサイト",
+                        category: "プロモーション",
+                        description: "注目を集める動きのあるインパクトデザイン"
+                    }
+                ]
+            },
+            stats: {
+                users: {
+                    value: "300%",
+                    label: "エンゲージメント向上"
+                },
+                conversion: {
+                    value: "250%",
+                    label: "コンバージョン率改善"
+                },
+                satisfaction: {
+                    value: "98%",
+                    label: "顧客満足度"
+                },
+                speed: {
+                    value: "0.5s",
+                    label: "平均読み込み時間"
+                }
+            },
+            cta: {
+                title: "あなたのビジネスを、次のレベルへ",
+                subtitle: "GSAPアニメーションで競合他社と差別化を図りませんか？",
+                button: "リッチプランで制作を依頼"
+            }
+        },
+        
         // Deployment Guide page
         deploymentGuide: {
             title: "納品後のサイト公開ガイド",
@@ -1878,6 +1964,92 @@ const subpageTranslations = {
                     title: "キャンセルのご連絡",
                     content: "キャンセルをご希望の場合は、お早めにメールにてご連絡ください。"
                 }
+            }
+        },
+        
+        // Rich Plan page
+        richPlan: {
+            title: "Rich Plan",
+            loading: {
+                text: "LOADING..."
+            },
+            hero: {
+                title: ["Beautiful websites", "move people's", "hearts"],
+                subtitle: "Create captivating experiences with advanced GSAP animations",
+                description: "Animation implementations worth ¥300,000-¥500,000 at typical web agencies, available for ¥50,000 through AI technology"
+            },
+            parallax: {
+                title: "Showcase with Parallax",
+                subtitle: "Depth Expression",
+                content: "Elements moving at different speeds with scrolling create three-dimensional and impressive visual effects."
+            },
+            textAnimation: {
+                words: ["Innovative", "Attractive", "Impressive", "Effective"]
+            },
+            cards: {
+                scroll: {
+                    icon: "🎯",
+                    title: "Scroll-Triggered",
+                    description: "Elements animate smoothly in sync with user scrolling"
+                },
+                interaction: {
+                    icon: "🎨",
+                    title: "Interactive",
+                    description: "Attractive interaction design that responds to mouse movement"
+                },
+                performance: {
+                    icon: "⚡",
+                    title: "High Performance",
+                    description: "Optimized code ensures smooth animation performance"
+                }
+            },
+            portfolio: {
+                title: "Work Gallery",
+                items: [
+                    {
+                        title: "Corporate Site",
+                        category: "For Business",
+                        description: "Sophisticated design that gives a professional impression"
+                    },
+                    {
+                        title: "E-Commerce Site",
+                        category: "For Online Store",
+                        description: "Visual expression that maximizes product appeal"
+                    },
+                    {
+                        title: "Brand Site",
+                        category: "Branding",
+                        description: "Immersive design that embodies brand worldview"
+                    },
+                    {
+                        title: "Campaign Site",
+                        category: "Promotion",
+                        description: "Impact design with motion that captures attention"
+                    }
+                ]
+            },
+            stats: {
+                users: {
+                    value: "300%",
+                    label: "Engagement Increase"
+                },
+                conversion: {
+                    value: "250%",
+                    label: "Conversion Rate Improvement"
+                },
+                satisfaction: {
+                    value: "98%",
+                    label: "Customer Satisfaction"
+                },
+                speed: {
+                    value: "0.5s",
+                    label: "Average Load Time"
+                }
+            },
+            cta: {
+                title: "Take Your Business to the Next Level",
+                subtitle: "Differentiate from competitors with GSAP animations",
+                button: "Order with Rich Plan"
             }
         },
         
