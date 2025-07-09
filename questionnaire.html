@@ -1074,6 +1074,65 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="form-label">
+                                追加オプションサービス
+                            </label>
+                            <p class="form-description">LP制作と合わせてご利用いただけるオプションサービスです（複数選択可）</p>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="option-site-publish" name="additional-options" value="サイト公開代行">
+                                    <label for="option-site-publish">サイト公開代行（年額 ¥20,000）</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="option-additional-pages" name="additional-options" value="追加ページ制作">
+                                    <label for="option-additional-pages">追加ページ制作（¥8,000〜/ページ）</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="option-multilingual" name="additional-options" value="多言語対応">
+                                    <label for="option-multilingual">多言語対応（¥15,000〜/言語）</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="option-post-revisions" name="additional-options" value="制作完了後の追加修正">
+                                    <label for="option-post-revisions">制作完了後の追加修正（¥20,000〜）</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 追加ページ制作の詳細（条件付き表示） -->
+                        <div class="form-group" id="additional-pages-detail" style="display: none; margin-left: 20px; padding: 20px; background: #f3f4f6; border-radius: 8px;">
+                            <label class="form-label">
+                                追加ページの内容
+                            </label>
+                            <p class="form-description">制作を希望するページをお選びください（複数選択可）</p>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="add-page-privacy" name="additional-pages-content" value="プライバシーポリシー">
+                                    <label for="add-page-privacy">プライバシーポリシー</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="add-page-terms" name="additional-pages-content" value="利用規約">
+                                    <label for="add-page-terms">利用規約</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="add-page-transaction" name="additional-pages-content" value="特定商取引法ページ">
+                                    <label for="add-page-transaction">特定商取引法に基づく表記</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="add-page-company" name="additional-pages-content" value="会社概要ページ">
+                                    <label for="add-page-company">会社概要ページ</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="add-page-other" name="additional-pages-content" value="その他">
+                                    <label for="add-page-other">その他のページ</label>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-top: 15px;">
+                                <label for="additional-pages-other" class="form-label">その他のページの内容</label>
+                                <textarea id="additional-pages-other" name="additional-pages-other" class="form-textarea" placeholder="例：採用情報ページ、よくある質問ページ、など"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="analytics-tracking" class="form-label">
                                 アクセス解析・広告タグ
                             </label>
@@ -1416,6 +1475,9 @@
                         { label: 'コピーライト表記', name: 'copyright-text' },
                         { label: '必要なページ・情報', name: 'required-pages', isArray: true },
                         { label: '必ず含めたい情報・要素', name: 'essential-content' },
+                        { label: '追加オプションサービス', name: 'additional-options', isArray: true },
+                        { label: '追加ページの内容', name: 'additional-pages-content', isArray: true },
+                        { label: 'その他のページの内容', name: 'additional-pages-other' },
                         { label: 'アクセス解析・広告タグ', name: 'analytics-tracking' },
                         { label: '公開予定のドメイン', name: 'domain-status' },
                         { label: '公開予定時期', name: 'launch-timing' },
@@ -1556,6 +1618,9 @@
                             formData['copyright-text'] ? `コピーライト: ${formData['copyright-text']}` : '',
                             formData['required-pages']?.length ? `必要なページ: ${formData['required-pages'].join(', ')}` : '',
                             formData['essential-content'] ? `必須要素: ${formData['essential-content']}` : '',
+                            formData['additional-options']?.length ? `追加オプションサービス: ${formData['additional-options'].join(', ')}` : '',
+                            formData['additional-pages-content']?.length ? `追加ページの内容: ${formData['additional-pages-content'].join(', ')}` : '',
+                            formData['additional-pages-other'] ? `その他のページ: ${formData['additional-pages-other']}` : '',
                             formData['analytics-tracking'] ? `解析タグ: ${formData['analytics-tracking']}` : '',
                             formData['competitor-sites'] ? `競合・差別化: ${formData['competitor-sites']}` : '',
                             formData['maintenance-update'] ? `更新・運用: ${formData['maintenance-update']}` : '',
@@ -1664,6 +1729,25 @@
 
         // 初期化
         updateStep(currentStep);
+
+        // 追加ページ制作オプションの条件付き表示
+        const additionalPagesCheckbox = document.getElementById('option-additional-pages');
+        const additionalPagesDetail = document.getElementById('additional-pages-detail');
+
+        if (additionalPagesCheckbox) {
+            additionalPagesCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    additionalPagesDetail.style.display = 'block';
+                } else {
+                    additionalPagesDetail.style.display = 'none';
+                    // チェックが外れたら、詳細の選択もクリア
+                    const detailCheckboxes = additionalPagesDetail.querySelectorAll('input[type="checkbox"]');
+                    detailCheckboxes.forEach(cb => cb.checked = false);
+                    const detailTextarea = additionalPagesDetail.querySelector('textarea');
+                    if (detailTextarea) detailTextarea.value = '';
+                }
+            });
+        }
     </script>
     <script src="js/subpage-language.js"></script>
 </body>

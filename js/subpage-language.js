@@ -1739,6 +1739,104 @@ const subpageTranslations = {
             }
         },
         
+        // Rich Plan page
+        richPlan: {
+            title: "リッチプラン | スッとサイト - GSAPアニメーション",
+            loading: "LOADING",
+            hero: {
+                title: ["NEXT", "LEVEL", "WEB", "DESIGN"],
+                subtitle: "リッチプランのご紹介",
+                description: "AIとクリエイティビティが融合する新時代のLP制作",
+                scroll: "SCROLL"
+            },
+            parallax: {
+                title: ["最速即日で、", "想像を超える体験を。"],
+                description: "GSAPの力で、訪問者の心を動かすインタラクティブなWebサイトを創造します。",
+                note: "AI技術によりコストパフォーマンスに優れた価格を実現"
+            },
+            textAnimation: {
+                text: "私たちは<span>AI技術</span>と<span>人間の創造性</span>を組み合わせ、<span>革新的なWebデザイン</span>を実現します。スクロールするたびに<span>新しい発見</span>がある、そんなWebサイトを作りませんか？"
+            },
+            cards: [
+                {
+                    icon: "💰",
+                    title: "圧倒的な低価格",
+                    description: "GSAPアニメーションを使用した高品質なサイトを5万円で実現。AI技術による効率化。"
+                },
+                {
+                    icon: "⚡",
+                    title: "最速即日納品",
+                    description: "通常1〜2ヶ月かかる制作期間を大幅短縮。ビジネスチャンスを逃しません。"
+                },
+                {
+                    icon: "✨",
+                    title: "プロ級のアニメーション",
+                    description: "GSAPを活用した滑らかで印象的なアニメーションで、競合との差別化を実現。"
+                }
+            ],
+            portfolio: {
+                title: "制作事例",
+                subtitle: "様々な業界で、ブランドの世界観を最大限に表現",
+                items: [
+                    {
+                        category: "BEAUTY",
+                        title: "Hair Salon LUXE - Rich",
+                        description: "GSAPアニメーションで魅せる高級美容院のLP"
+                    },
+                    {
+                        category: "RESTAURANT",
+                        title: "Italian Restaurant Dolce - Rich",
+                        description: "料理写真が動き出すような演出で食欲をそそるLP"
+                    },
+                    {
+                        category: "E-COMMERCE",
+                        title: "健康サプリメント販売 - Rich",
+                        description: "商品の効果を視覚的に表現するアニメーションLP"
+                    },
+                    {
+                        category: "PET HOTEL",
+                        title: "ペットリゾートWANCO - Rich",
+                        description: "高級感とGSAPアニメーションで魅せるペットホテルLP"
+                    },
+                    {
+                        category: "MORE",
+                        title: "その他のサンプル",
+                        description: "さらに多くのリッチ版サンプルをご覧ください"
+                    },
+                    {
+                        category: "ALL SAMPLES",
+                        title: "サンプル一覧",
+                        description: "リッチ版を含むすべての制作事例をご覧ください"
+                    }
+                ]
+            },
+            stats: {
+                title: "圧倒的なコストパフォーマンス",
+                items: [
+                    {
+                        number: "¥50,000",
+                        label: "初期費用",
+                        note: "通常の制作費\n30〜50万円から\n大幅コストダウン"
+                    },
+                    {
+                        number: "即日",
+                        label: "最速納期",
+                        note: "AI技術による\n超高速制作で\nビジネスを加速"
+                    },
+                    {
+                        number: "低価格",
+                        label: "コストパフォーマンス",
+                        note: "AI技術を活用し\n高品質を\n手頃な価格で"
+                    }
+                ]
+            },
+            cta: {
+                title: "準備はいいですか？",
+                description: "リッチプラン初期費用 ¥50,000（税別）で、\nプロ級のGSAPアニメーションサイトを最速即日で",
+                button: "お問い合わせはこちら"
+            }
+        },
+        
         // Cancellation Policy page
         cancellationPolicy: {
             title: "キャンセルポリシー",
