@@ -37,8 +37,12 @@ yarn-error.log*
 
 # Dashboard - NEVER DEPLOY
 dashboard.html
-data/clients.json
+dashboard-customer-management.html
 data/
+google-apps-script/
 
 # Test sites - temporary
 test-sites/
+
+# Documentation archives
+docs/archive/

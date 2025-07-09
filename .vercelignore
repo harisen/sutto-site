@@ -1,7 +1,10 @@
 # Dashboard files - NEVER DEPLOY
 dashboard.html
+dashboard-customer-management.html
 data/
 data/clients.json
+data/customers.json
+google-apps-script/
 
 # Development files
 *.log

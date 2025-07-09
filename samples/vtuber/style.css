@@ -490,15 +490,15 @@
     }
     
     .sd-character {
-        width: 72px;
-        height: 72px;
+        width: 86px;
+        height: 86px;
     }
     
     .sd-bubble {
         font-size: 0.8rem;
         padding: 10px 15px;
         min-width: 120px;
-        bottom: 80px;
+        bottom: 96px;
     }
     
     .sd-bubble::after {
@@ -511,7 +511,7 @@
     
     /* メニューも調整 */
     .sd-nav-menu {
-        bottom: 90px !important;
+        bottom: 106px !important;
         min-width: 140px !important;
         padding: 8px !important;
     }
@@ -525,19 +525,19 @@
     }
     
     .sd-character {
-        width: 60px;
-        height: 60px;
+        width: 72px;
+        height: 72px;
     }
     
     .sd-bubble {
         font-size: 0.75rem;
         padding: 8px 12px;
         min-width: 100px;
-        bottom: 60px;
+        bottom: 82px;
     }
     
     .sd-nav-menu {
-        bottom: 70px !important;
+        bottom: 92px !important;
         min-width: 120px !important;
         font-size: 0.85rem;
     }

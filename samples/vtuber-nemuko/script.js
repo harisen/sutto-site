@@ -254,20 +254,53 @@ function initializeAnimations() {
         }
     });
     
-    // Clock icon swing animation
+    // Clock icon swing animation with more bounce
     gsap.to('.clock-icon', {
-        rotation: 15,
+        rotation: 20,
         duration: 2,
         repeat: -1,
         yoyo: true,
+        ease: 'elastic.out(1, 0.5)',
+        transformOrigin: '50% 10%'
+    });
+    
+    // Floating acorns parallax
+    gsap.to('.floating-acorn', {
+        y: -20,
+        x: 10,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
         ease: 'power1.inOut',
-        transformOrigin: '50% 0%'
+        stagger: {
+            each: 0.5,
+            from: 'random'
+        }
     });
 }
 
 // Countdown timer for stream time
 function initializeCountdown() {
-    const countdownElement = document.getElementById('countdown');
+    const hoursElement = document.getElementById('hours');
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
+    let prevHours = -1;
+    let prevMinutes = -1;
+    let prevSeconds = -1;
+    
+    function animateDigitChange(element, newValue) {
+        gsap.fromTo(element, {
+            scale: 1.2,
+            rotationX: -90,
+            opacity: 0.5
+        }, {
+            scale: 1,
+            rotationX: 0,
+            opacity: 1,
+            duration: 0.4,
+            ease: 'back.out(1.7)'
+        });
+    }
     
     function updateCountdown() {
         const now = new Date();
@@ -292,16 +325,94 @@ function initializeCountdown() {
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
         
-        countdownElement.textContent = `次の配信まで: ${hours}時間${minutes}分${seconds}秒`;
+        // Format with leading zeros
+        const formattedHours = String(hours).padStart(2, '0');
+        const formattedMinutes = String(minutes).padStart(2, '0');
+        const formattedSeconds = String(seconds).padStart(2, '0');
+        
+        // Update and animate only changed digits
+        if (hours !== prevHours) {
+            hoursElement.textContent = formattedHours;
+            animateDigitChange(hoursElement, formattedHours);
+            prevHours = hours;
+        }
+        
+        if (minutes !== prevMinutes) {
+            minutesElement.textContent = formattedMinutes;
+            animateDigitChange(minutesElement, formattedMinutes);
+            prevMinutes = minutes;
+        }
+        
+        if (seconds !== prevSeconds) {
+            secondsElement.textContent = formattedSeconds;
+            animateDigitChange(secondsElement, formattedSeconds);
+            prevSeconds = seconds;
+        }
         
         // Special effect at stream time
         if (hours === 0 && minutes === 0 && seconds === 0) {
             createCelebrationEffect();
+            showStreamStartAnimation();
         }
     }
     
+    // Initial animation for countdown container
+    gsap.fromTo('.countdown-container', {
+        scale: 0,
+        rotation: -10,
+        opacity: 0
+    }, {
+        scale: 1,
+        rotation: 0,
+        opacity: 1,
+        duration: 1,
+        delay: 0.5,
+        ease: 'elastic.out(1, 0.5)',
+        scrollTrigger: {
+            trigger: '.countdown-container',
+            start: 'top 80%',
+            once: true
+        }
+    });
+    
+    // Continuous bounce animation for digits
+    gsap.to('.countdown-digit', {
+        y: -5,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
+        stagger: 0.2
+    });
+    
     updateCountdown();
     setInterval(updateCountdown, 1000);
+}
+
+// Stream start animation
+function showStreamStartAnimation() {
+    const container = document.querySelector('.countdown-container');
+    
+    gsap.to(container, {
+        scale: 1.2,
+        duration: 0.5,
+        ease: 'power2.out',
+        onComplete: () => {
+            container.innerHTML = '<div style="font-size: 3rem; color: var(--primary-orange); font-weight: 900;">配信開始！🎉</div>';
+            
+            gsap.fromTo(container, {
+                scale: 1.2,
+                rotation: -5
+            }, {
+                scale: 1,
+                rotation: 5,
+                duration: 0.5,
+                repeat: 5,
+                yoyo: true,
+                ease: 'power1.inOut'
+            });
+        }
+    });
 }
 
 // Celebration effect for stream time

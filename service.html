@@ -6,6 +6,24 @@
     <title>サービス詳細 | スッとサイト</title>
     <meta name="description" content="スッとサイトの詳細をご紹介。高品質なランディングページ制作で、あなたのビジネスの成果を最大化します。">
     
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sutto-site.jp/service.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="サービス詳細 | スッとサイト">
+    <meta property="og:description" content="AI技術を活用した高速LP制作サービス。ターゲット分析からSEO対策まで、成果を出すLP制作でビジネスの成長をサポートします。">
+    <meta property="og:url" content="https://sutto-site.jp/service.html">
+    <meta property="og:image" content="https://sutto-site.jp/images/og-image.jpg">
+    <meta property="og:site_name" content="スッとサイト">
+    <meta property="og:locale" content="ja_JP">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="サービス詳細 | スッとサイト">
+    <meta name="twitter:description" content="AI技術を活用した高速LP制作サービス。ターゲット分析からSEO対策まで、成果を出すLP制作でビジネスの成長をサポートします。">
+    <meta name="twitter:image" content="https://sutto-site.jp/images/twitter-card.jpg">
+    
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <!-- Google Fonts -->
@@ -334,6 +352,77 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W2NSTXJNG"></script>
     <script src="/js/analytics.js"></script>
+    
+    <!-- 構造化データ (Service Schema) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "ランディングページ制作サービス",
+        "provider": {
+            "@type": "Organization",
+            "name": "スッとサイト"
+        },
+        "serviceType": "Webデザイン・制作",
+        "description": "AI技術を活用した高速・高品質なランディングページ制作サービス。ターゲット分析、オリジナルデザイン、レスポンシブ対応、SEO対策まで包括的にサポート。",
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "スタンダードプラン",
+                "price": "20000",
+                "priceCurrency": "JPY",
+                "description": "シンプルで効果的なLP制作。基本機能をしっかり押さえた設計。"
+            },
+            {
+                "@type": "Offer",
+                "name": "リッチプラン",
+                "price": "50000",
+                "priceCurrency": "JPY",
+                "description": "GSAPアニメーションで魅せるプレミアムなLP体験を提供。"
+            }
+        ],
+        "areaServed": {
+            "@type": "Country",
+            "name": "日本"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "LP制作プラン",
+            "itemListElement": [
+                {
+                    "@type": "Service",
+                    "name": "ターゲット分析",
+                    "description": "お客様のターゲット層を詳細に分析し、心に響くメッセージとデザインを設計"
+                },
+                {
+                    "@type": "Service",
+                    "name": "オリジナルデザイン",
+                    "description": "ブランドイメージに合わせた、他社と差別化できるオリジナルデザイン"
+                },
+                {
+                    "@type": "Service",
+                    "name": "レスポンシブ対応",
+                    "description": "PC、タブレット、スマートフォンすべてのデバイスで最適な表示"
+                },
+                {
+                    "@type": "Service",
+                    "name": "高速表示",
+                    "description": "ページの読み込み速度を最適化し、離脱率を最小限に抑制"
+                },
+                {
+                    "@type": "Service",
+                    "name": "SEO対策",
+                    "description": "検索エンジンに評価されやすい構造で、集客力の高いLP制作"
+                },
+                {
+                    "@type": "Service",
+                    "name": "分析ツール設置",
+                    "description": "Google Analyticsなどの分析ツールを設置し、効果測定を可能に"
+                }
+            ]
+        }
+    }
+    </script>
 </head>
 <body>
     <header class="header">
@@ -388,7 +477,7 @@
                     </ul>
                 </div>
                 <div>
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="スッとサイトの重要性" class="service-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="スッとサイトの重要性" class="service-image" loading="lazy">
                 </div>
             </div>
         </div>

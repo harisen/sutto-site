@@ -957,7 +957,9 @@
             
             /* モバイルではロゴのみ表示 */
             .hero-top-section {
-                display: none; /* JavaScriptで作成されるhero-top-sectionを非表示 */
+                display: block; /* モバイルでもロゴを表示 */
+                text-align: center;
+                margin-bottom: 20px;
             }
             
             .hero-logo-container {
@@ -966,10 +968,16 @@
             }
             
             .hero-logo {
-                height: 200px;
-                width: 200px;
+                height: 240px;
+                width: 240px;
                 margin: 0 auto;
                 display: block;
+            }
+            
+            /* モバイルでは大きいロゴクラスも調整 */
+            .hero-logo-large {
+                width: 240px;
+                height: 240px;
             }
             
             .logo-particles {
@@ -1074,8 +1082,13 @@
         /* 小型モバイル (480px) */
         @media (max-width: 480px) {
             .hero-logo {
-                height: 150px;
-                width: 150px;
+                height: 192px;
+                width: 192px;
+            }
+            
+            .hero-logo-large {
+                width: 192px;
+                height: 192px;
             }
             
             .subtitle-text {
@@ -1745,41 +1758,8 @@
         
         // モバイル表示の調整
         function adjustMobileLayout() {
-            if (window.innerWidth <= 768) {
-                // hero-top-sectionが存在しない場合は作成
-                if (!document.querySelector('.hero-top-section')) {
-                    const heroContent = document.querySelector('.hero-content');
-                    const heroTopSection = document.createElement('div');
-                    heroTopSection.className = 'hero-top-section';
-                    
-                    // ロゴコンテナと立ち絵コンテナを移動
-                    const logoContainer = document.querySelector('.hero-logo-container');
-                    const characterContainer = document.querySelector('.hero-character-container');
-                    
-                    if (logoContainer && characterContainer) {
-                        heroTopSection.appendChild(logoContainer);
-                        heroTopSection.appendChild(characterContainer);
-                        heroContent.insertBefore(heroTopSection, heroContent.firstChild);
-                    }
-                }
-            } else {
-                // デスクトップ表示に戻す
-                const heroTopSection = document.querySelector('.hero-top-section');
-                if (heroTopSection) {
-                    const heroContent = document.querySelector('.hero-content');
-                    const heroWrapper = document.querySelector('.hero-wrapper');
-                    const logoContainer = document.querySelector('.hero-logo-container');
-                    const characterContainer = document.querySelector('.hero-character-container');
-                    
-                    if (logoContainer) {
-                        heroContent.insertBefore(logoContainer, heroContent.firstChild.nextSibling);
-                    }
-                    if (characterContainer) {
-                        heroWrapper.appendChild(characterContainer);
-                    }
-                    heroTopSection.remove();
-                }
-            }
+            // モバイルでは特別な処理は不要に（CSSで対応）
+            // この関数は将来の拡張のために残しておく
         }
         
         // 初期化時とリサイズ時に実行

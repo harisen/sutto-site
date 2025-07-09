@@ -1,42 +1,41 @@
 # ローカルサーバー起動ガイド
 
-dashboard.htmlをローカルで正しく動作させるためのガイドです。
-
-## CORS エラーについて
-
-ブラウザのセキュリティ制限により、`file://` プロトコルでHTMLファイルを開くと、JSONファイルの読み込みがブロックされます。
+## 問題
+`file://` プロトコルで直接HTMLファイルを開くと、JavaScriptのfetch APIがCORSポリシーにより動作しません。
 
 ## 解決方法
 
-### 方法1: Python を使用（推奨）
-
+### 方法1: Python HTTPサーバー（推奨）
 ```bash
 # Python 3の場合
-python -m http.server 8000
+python3 -m http.server 8000
 
-# Python 2の場合
-python -m SimpleHTTPServer 8000
+# Windows環境でpython3コマンドが使えない場合
+python -m http.server 8000
 ```
 
-その後、ブラウザで `http://localhost:8000/dashboard.html` にアクセス
+その後、ブラウザで以下にアクセス：
+http://localhost:8000/dashboard-customer-management.html
 
-### 方法2: Node.js を使用
-
+### 方法2: Node.js http-server
 ```bash
-# http-serverをインストール
+# グローバルインストール
 npm install -g http-server
 
-# サーバーを起動
+# サーバー起動
 http-server -p 8000
 ```
 
-### 方法3: VS Code の Live Server 拡張機能
+### 方法3: VSCode Live Server拡張機能
+1. VSCodeで「Live Server」拡張機能をインストール
+2. HTMLファイルを右クリック → 「Open with Live Server」
 
-1. VS Code で Live Server 拡張機能をインストール
-2. dashboard.html を右クリック
-3. "Open with Live Server" を選択
+### 方法4: PHP内蔵サーバー
+```bash
+php -S localhost:8000
+```
 
-## フォールバックデータ
-
-ローカルで直接ファイルを開いた場合でも、サンプルデータが表示されるようになっています。
-実際のデータを使用するには、上記のいずれかの方法でローカルサーバーを起動してください。
+## 注意事項
+- ローカルサーバーで起動することで、fetch APIが正常に動作します
+- 顧客データの更新・再読み込みが可能になります
+- セキュリティのため、このダッシュボードは必ずローカル環境でのみ使用してください

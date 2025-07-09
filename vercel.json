@@ -4,7 +4,7 @@
       "maxDuration": 10
     }
   },
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- dashboard.html data/",
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- dashboard.html dashboard-customer-management.html data/ google-apps-script/",
   "github": {
     "silent": true
   },
