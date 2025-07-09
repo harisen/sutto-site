@@ -331,6 +331,21 @@
         
         .hero-text {
             opacity: 0;
+            text-align: center;
+        }
+        
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            opacity: 0;
+        }
+        
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
         }
         
         .hero-title {
@@ -850,6 +865,12 @@
                 max-width: 300px;
             }
             
+            .hero-logo {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 20px;
+            }
+            
             .nav-links {
                 display: none;
             }
@@ -1063,6 +1084,9 @@
         </div>
         <div class="hero-content">
             <div class="hero-text">
+                <div class="hero-logo">
+                    <img src="images/logo_nemuko.png" alt="百実ねむこロゴ">
+                </div>
                 <h1 class="hero-title">百実ねむこ</h1>
                 <p class="hero-subtitle" id="heroSubtitle"></p>
                 <p class="hero-description">

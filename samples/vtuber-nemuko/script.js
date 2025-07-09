@@ -186,7 +186,30 @@ function createLeafParticles(x, y) {
 
 // Hero section animations
 function animateHeroContent() {
-    // Animate hero text
+    // Animate hero logo first
+    gsap.fromTo('.hero-logo', {
+        opacity: 0,
+        scale: 0.5,
+        rotation: -180
+    }, {
+        opacity: 1,
+        scale: 1,
+        rotation: 0,
+        duration: 1.5,
+        ease: 'elastic.out(1, 0.5)'
+    });
+    
+    // Add continuous floating animation to logo
+    gsap.to('.hero-logo', {
+        y: -10,
+        duration: 2.5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
+        delay: 1.5
+    });
+    
+    // Then animate hero text
     gsap.fromTo('.hero-text', {
         opacity: 0,
         y: 50
