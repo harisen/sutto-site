@@ -424,6 +424,51 @@
             max-width: 500px;
             height: auto;
             filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* キャラクター吹き出し */
+        .character-bubble {
+            position: absolute;
+            top: 20%;
+            right: -50px;
+            background: var(--white);
+            padding: 15px 25px;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            white-space: nowrap;
+            opacity: 0;
+            transform: scale(0) translateX(-20px);
+            z-index: 10;
+        }
+        
+        .character-bubble::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 10px solid transparent;
+            border-right-color: var(--white);
+        }
+        
+        .character-bubble.show {
+            animation: bubbleAppear 0.5s ease-out forwards;
+        }
+        
+        @keyframes bubbleAppear {
+            to {
+                opacity: 1;
+                transform: scale(1) translateX(0);
+            }
         }
         
         /* 定時配信セクション */
@@ -944,6 +989,17 @@
                 width: 150px;
                 height: 150px;
                 margin-bottom: 20px;
+            }
+            
+            .character-bubble {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+                right: -30px;
+                left: auto;
+            }
+            
+            .character-bubble::before {
+                border-width: 8px;
             }
             
             .nav-links {

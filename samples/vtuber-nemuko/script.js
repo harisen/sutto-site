@@ -240,14 +240,27 @@ function animateHeroContent() {
         ease: 'back.out(1.7)'
     });
     
-    // Continuous floating animation for main image
-    gsap.to('.hero-image img', {
-        y: -20,
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: 'power1.inOut'
+    // Remove floating animation - character stays still
+    // Add hover interaction
+    const heroImage = document.querySelector('.hero-image img');
+    
+    heroImage.addEventListener('mouseenter', () => {
+        gsap.to(heroImage, {
+            y: -30,
+            duration: 0.3,
+            ease: 'power2.out',
+            onComplete: () => {
+                gsap.to(heroImage, {
+                    y: 0,
+                    duration: 0.3,
+                    ease: 'bounce.out'
+                });
+            }
+        });
     });
+    
+    // Add click interaction with speech bubbles
+    initializeHeroCharacterChat();
     
     // Animate buttons
     gsap.fromTo('.btn', {
@@ -674,6 +687,118 @@ function createAmbientLeaves() {
 
 // Start ambient effects after loading
 setTimeout(createAmbientLeaves, 3000);
+
+// Hero character chat system
+function initializeHeroCharacterChat() {
+    const heroImage = document.querySelector('.hero-image img');
+    const heroImageContainer = document.querySelector('.hero-image');
+    let currentBubble = null;
+    
+    // Food items for random selection (30 types)
+    const foods = [
+        'チョコレート', 'ケーキ', 'プリン', 'アイスクリーム', 'どんぐり',
+        'クッキー', 'ドーナツ', 'パンケーキ', 'マカロン', 'シュークリーム',
+        'たいやき', 'だんご', 'もち', 'せんべい', 'ポテトチップス',
+        'ラーメン', 'カレー', 'すし', 'ピザ', 'ハンバーガー',
+        'おにぎり', 'うどん', 'そば', 'やきとり', 'からあげ',
+        'メロンパン', 'あんぱん', 'カステラ', 'ようかん', 'まんじゅう'
+    ];
+    
+    // Chat messages
+    const messages = [
+        'ぼくの名前はねむこだよ！',
+        '{food}たべたい',
+        'ねむくなってきたぁ…',
+        'ゲームしよ～',
+        '今日も17時から配信だよ！',
+        'どんぐりあつめた？',
+        'モモンガは夜行性なんだ',
+        '原神たのしい！',
+        'みんな元気？',
+        'ふわふわ～'
+    ];
+    
+    heroImage.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        // Remove existing bubble if any
+        if (currentBubble) {
+            currentBubble.remove();
+        }
+        
+        // Create new bubble
+        const bubble = document.createElement('div');
+        bubble.className = 'character-bubble';
+        
+        // Select random message
+        let message = messages[Math.floor(Math.random() * messages.length)];
+        
+        // Replace {food} placeholder with random food
+        if (message.includes('{food}')) {
+            const randomFood = foods[Math.floor(Math.random() * foods.length)];
+            message = message.replace('{food}', randomFood);
+        }
+        
+        bubble.textContent = message;
+        heroImageContainer.appendChild(bubble);
+        
+        // Position bubble randomly (left or right)
+        const isLeft = Math.random() > 0.5;
+        if (isLeft) {
+            bubble.style.right = 'auto';
+            bubble.style.left = '-50px';
+            bubble.style.transform = 'scale(0) translateX(20px)';
+            
+            // Adjust arrow for left side
+            const style = document.createElement('style');
+            style.textContent = `.character-bubble::before { 
+                left: auto; 
+                right: -15px; 
+                border-right-color: transparent; 
+                border-left-color: var(--white); 
+            }`;
+            bubble.appendChild(style);
+        }
+        
+        // Random vertical position
+        bubble.style.top = (Math.random() * 60 + 10) + '%';
+        
+        // Show bubble
+        setTimeout(() => {
+            bubble.classList.add('show');
+        }, 10);
+        
+        currentBubble = bubble;
+        
+        // Jump animation for character
+        gsap.to(heroImage, {
+            y: -40,
+            rotation: Math.random() * 20 - 10,
+            duration: 0.3,
+            ease: 'power2.out',
+            onComplete: () => {
+                gsap.to(heroImage, {
+                    y: 0,
+                    rotation: 0,
+                    duration: 0.4,
+                    ease: 'bounce.out'
+                });
+            }
+        });
+        
+        // Auto hide bubble after 3 seconds
+        setTimeout(() => {
+            if (currentBubble === bubble) {
+                bubble.classList.remove('show');
+                setTimeout(() => {
+                    if (bubble.parentNode) {
+                        bubble.remove();
+                    }
+                }, 500);
+            }
+        }, 3000);
+    });
+}
 
 // Mouse follower (acorn)
 function initializeMouseFollower() {
