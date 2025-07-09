@@ -1,0 +1,79 @@
+# 百実ねむこ ロゴデザイン提案
+
+## パターン1: モモンガシルエット×どんぐりモチーフ
+
+square_logo_pattern1:
+  name: "モモンガ×どんぐりエンブレム"
+  concept: "リアルなモモンガとどんぐりを組み合わせたエンブレム風デザイン"
+  elements:
+    - main_visual: "中央にリアルで愛らしいモモンガ（滑空ポーズ）"
+    - accent: "モモンガが抱えているどんぐり（オレンジ～茶色のグラデーション）"
+    - text_placement: "下部に「ねむこ」を丸みのあるフォントで配置"
+    - background: "円形の背景（秋の葉っぱパターンを薄く）"
+  color_scheme:
+    - primary: "#FF8C00"  # ダークオレンジ
+    - secondary: "#8B4513"  # サドルブラウン
+    - accent: "#FFD700"  # ゴールド
+    - text: "#FFFFFF"  # 白文字
+  style: "フラットデザイン、親しみやすくポップ"
+
+header_logo_pattern1:
+  name: "横並びモモンガロゴ"
+  concept: "モモンガが左側、テキストが右側の横長配置"
+  elements:
+    - left_icon: "滑空するモモンガのアイコン（どんぐりを持っている）"
+    - center_text: "百実ねむこ"（大きめ）
+    - sub_text: "Nemuko Momi"（英字表記、小さめ）
+    - decoration: "テキスト周りに小さなどんぐりや葉っぱのアクセント"
+  layout: "左寄せアイコン＋中央テキスト配置"
+  aspect_ratio: "4:1"
+
+## パターン2: ゲーミング×モモンガフュージョン
+
+square_logo_pattern2:
+  name: "ゲーミングモモンガエンブレム"
+  concept: "ゲーム配信者らしさと本物のモモンガの可愛さを融合"
+  elements:
+    - main_visual: "ゲーミングヘッドセットを付けた本物のモモンガ"
+    - frame: "六角形のゲーミング風フレーム"
+    - effects: "背景にデジタルエフェクト（ピクセル風の紅葉）"
+    - text_placement: "「NEMUKO」を下部にゲーミングフォントで配置"
+  color_scheme:
+    - primary: "#FF6347"  # トマトレッド（明るいオレンジ赤）
+    - secondary: "#2F4F4F"  # ダークスレートグレー
+    - accent: "#00CED1"  # ダークターコイズ（ゲーミング要素）
+    - glow: "#FFA500"  # オレンジの発光エフェクト
+  style: "モダンゲーミング風、光沢感あり"
+
+header_logo_pattern2:
+  name: "ストリーマー風ロゴ"
+  concept: "Twitch配信者らしいスタイリッシュなデザイン"
+  elements:
+    - left_mark: "モモンガマーク（シンプルな線画）"
+    - main_text: "NEMUKO"（太めのゲーミングフォント）
+    - japanese_text: "百実ねむこ"（縦書きアクセント）
+    - status_badge: "LIVE配信中を示す赤い●マーク"
+    - underline: "オレンジグラデーションのアンダーライン"
+  layout: "左アイコン＋中央英字＋右日本語の3要素構成"
+  effects: "テキストに軽いグロー効果"
+  aspect_ratio: "5:1"
+
+## 共通推奨事項
+
+typography:
+  japanese_font: 
+    - "ラノベPOP"
+    - "コーポレート・ロゴ丸"
+    - "源柔ゴシック"
+  english_font:
+    - "Fredoka One"
+    - "Quicksand Bold"
+    - "Rubik Black"
+
+visual_notes:
+  - "本物のモモンガらしいリアルさと愛らしさのバランス"
+  - "特殊な訓練を受けた知的さも表現"
+  - "VTuberらしい華やかさと視認性の高さを重視"
+  - "配信画面に載せても映えるデザイン"
+  - "縮小しても認識できるシンプルさも考慮"
+  - "秋の要素を上品に取り入れる"

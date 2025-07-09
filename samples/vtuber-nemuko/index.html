@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百実ねむこ - 特殊な訓練を受けたモモンガVTuber</title>
+    <meta name="description" content="ドーモ。特殊な訓練を受けたモモンガです。平日17時からTwitchで原神や崩スタをプレイしながら雑談配信中！">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="百実ねむこ - モモンガVTuber">
+    <meta property="og:description" content="特殊な訓練を受けたモモンガVTuber。平日17時から配信中！">
+    <meta property="og:image" content="images/logo_nemuko.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&family=Kiwi+Maru:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-orange: #FF8C00;
+            --secondary-brown: #8B4513;
+            --accent-gold: #FFD700;
+            --bg-cream: #FFF8DC;
+            --text-dark: #3D2817;
+            --autumn-red: #DC143C;
+            --leaf-green: #556B2F;
+            --white: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'M PLUS Rounded 1c', 'Kiwi Maru', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        /* ローディング画面 */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-cream);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            flex-direction: column;
+        }
+        
+        .loading-content {
+            text-align: center;
+        }
+        
+        .loading-character {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 30px;
+        }
+        
+        .loading-text {
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .loading-transition {
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            opacity: 0;
+        }
+        
+        .loading-transition img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* ミニキャラクター */
+        .mini-character {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            z-index: 1000;
+            cursor: pointer;
+            transition: none;
+            pointer-events: none;
+        }
+        
+        .mini-character img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        /* ヘッダー */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 248, 220, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px var(--shadow);
+            z-index: 900;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            max-width: 200px;
+            height: 50px;
+        }
+        
+        .logo img {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-orange);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* ハンバーガーメニュー */
+        .hamburger {
+            display: none;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            cursor: pointer;
+            z-index: 902;
+        }
+        
+        .hamburger span {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger span:nth-child(1) {
+            top: 0;
+        }
+        
+        .hamburger span:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .hamburger span:nth-child(3) {
+            bottom: 0;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+        
+        /* モバイルメニュー */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: var(--bg-cream);
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            z-index: 901;
+            padding: 80px 30px 30px;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .mobile-menu-item {
+            margin-bottom: 30px;
+        }
+        
+        .mobile-menu-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: block;
+            padding: 10px 0;
+            transition: color 0.3s ease;
+        }
+        
+        .mobile-menu-link:hover {
+            color: var(--primary-orange);
+        }
+        
+        /* メニューオーバーレイ */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 900;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* ヒーローセクション */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 80px 20px 40px;
+            overflow: hidden;
+        }
+        
+        .autumn-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            z-index: -2;
+        }
+        
+        .autumn-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            z-index: 1;
+        }
+        
+        .hero-text {
+            opacity: 0;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+        
+        .btn-primary {
+            background: var(--primary-orange);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background: #FF7F00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-orange);
+            border: 2px solid var(--primary-orange);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-orange);
+            color: var(--white);
+        }
+        
+        .hero-image {
+            position: relative;
+            opacity: 0;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+        }
+        
+        /* 定時配信セクション */
+        .schedule-banner {
+            background: linear-gradient(135deg, var(--primary-orange), var(--accent-gold));
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .schedule-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .schedule-title {
+            font-size: 2.5rem;
+            color: var(--white);
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .schedule-time {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        
+        .countdown {
+            font-size: 2rem;
+            color: var(--white);
+            font-weight: 700;
+            margin-top: 20px;
+        }
+        
+        .clock-icon {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
+            width: 100px;
+            height: 100px;
+            opacity: 0.3;
+        }
+        
+        /* プロフィールセクション */
+        .section {
+            padding: 80px 20px;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--primary-orange);
+            margin-bottom: 60px;
+            font-weight: 900;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-image: url('images/autumn-leaves_1.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .section-title::before {
+            left: 20%;
+        }
+        
+        .section-title::after {
+            right: 20%;
+            background-image: url('images/autumn-leaves_2.png');
+        }
+        
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .profile-image {
+            text-align: center;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+        
+        .profile-info {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+        
+        .profile-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+        }
+        
+        .profile-detail {
+            margin-bottom: 20px;
+        }
+        
+        .profile-detail strong {
+            color: var(--secondary-brown);
+            display: inline-block;
+            min-width: 100px;
+        }
+        
+        /* フッター */
+        .footer {
+            background: var(--secondary-brown);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .social-link {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--accent-gold);
+        }
+        
+        /* 葉っぱパーティクル */
+        .leaf-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0.8;
+        }
+        
+        /* マウスフォロワー */
+        .mouse-follower {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            background-image: url('images/acorn-bullet.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+        }
+        
+        .mouse-follower.active {
+            opacity: 0.8;
+        }
+        
+        /* どんぐりコレクション */
+        .hidden-acorn {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-image: url('images/acorn-bullet.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .hidden-acorn:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .hidden-acorn.collected {
+            pointer-events: none;
+        }
+        
+        .collection-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 10001;
+            text-align: center;
+            display: none;
+        }
+        
+        .collection-popup h3 {
+            color: var(--primary-orange);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .collection-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px var(--shadow);
+            z-index: 901;
+            font-weight: 700;
+            color: var(--primary-orange);
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        
+        .collection-counter.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+                padding: 20px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .hero-image img {
+                max-width: 300px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .profile-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .profile-info {
+                padding: 30px 20px;
+            }
+            
+            .mini-character {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .schedule-title {
+                font-size: 1.8rem;
+            }
+            
+            .schedule-time {
+                font-size: 1.2rem;
+            }
+            
+            .countdown {
+                font-size: 1.5rem;
+            }
+            
+            .clock-icon {
+                width: 60px;
+                height: 60px;
+                right: 5%;
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+            
+            .section-title::before {
+                left: 5%;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .section-title::after {
+                right: 5%;
+                width: 40px;
+                height: 40px;
+            }
+            
+            /* どんぐり要素の調整 */
+            .hidden-acorn {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .collection-counter {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+            
+            .mouse-follower {
+                display: none; /* モバイルではマウスフォロワー非表示 */
+            }
+            
+            /* 葉っぱパーティクルを削減 */
+            .leaf-particle {
+                display: none;
+            }
+        }
+        
+        /* タブレット対応 */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-content {
+                gap: 40px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-image img {
+                max-width: 400px;
+            }
+            
+            .container {
+                padding: 0 30px;
+            }
+            
+            .section-title::before {
+                left: 10%;
+            }
+            
+            .section-title::after {
+                right: 10%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ローディング画面 -->
+    <div class="loading-screen" id="loadingScreen" role="status" aria-label="コンテンツを読み込み中">
+        <div class="loading-content">
+            <img src="images/loading.gif" alt="Loading" class="loading-character">
+            <div class="loading-text">読み込み中...</div>
+        </div>
+    </div>
+    
+    <!-- ローディングトランジション -->
+    <div class="loading-transition" id="loadingTransition">
+        <img src="images/loading_2.png" alt="Transition">
+    </div>
+    
+    <!-- ミニキャラクター -->
+    <div class="mini-character" id="miniCharacter" style="left: 50%; top: 50%;" role="img" aria-label="クリックした場所に移動するねむこ">
+        <img src="images/idle.gif" alt="ねむこ" id="characterSprite">
+    </div>
+    
+    <!-- マウスフォロワー -->
+    <div class="mouse-follower" id="mouseFollower"></div>
+    
+    <!-- どんぐりコレクションカウンター -->
+    <div class="collection-counter" id="collectionCounter">
+        どんぐり: <span id="acornCount">0</span>/5
+    </div>
+    
+    <!-- コレクション完了ポップアップ -->
+    <div class="collection-popup" id="collectionPopup">
+        <h3>🎉 おめでとう！ 🎉</h3>
+        <p>全てのどんぐりを集めました！<br>ねむこがとても喜んでいます♪</p>
+        <button class="btn btn-primary" onclick="closeCollectionPopup()" aria-label="ポップアップを閉じる">閉じる</button>
+    </div>
+    
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="images/logo_nemuko.png" alt="百実ねむこ">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#profile" class="nav-link">プロフィール</a></li>
+                    <li><a href="#schedule" class="nav-link">配信情報</a></li>
+                    <li><a href="#content" class="nav-link">コンテンツ</a></li>
+                    <li><a href="#contact" class="nav-link">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger" role="button" aria-label="メニューを開く" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- モバイルメニュー -->
+    <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="モバイルナビゲーション">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <a href="#profile" class="mobile-menu-link">プロフィール</a>
+            </li>
+            <li class="mobile-menu-item">
+                <a href="#schedule" class="mobile-menu-link">配信情報</a>
+            </li>
+            <li class="mobile-menu-item">
+                <a href="#content" class="mobile-menu-link">コンテンツ</a>
+            </li>
+            <li class="mobile-menu-item">
+                <a href="#contact" class="mobile-menu-link">お問い合わせ</a>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- メニューオーバーレイ -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="autumn-bg">
+            <img src="images/autumn-pattern_1.jpg" alt="秋の背景" loading="lazy">
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">百実ねむこ</h1>
+                <p class="hero-subtitle" id="heroSubtitle"></p>
+                <p class="hero-description">
+                    平日17時からTwitchにて定時配信中！<br>
+                    原神メイン、たまに崩壊:スターレイルとか他ゲームをしながら雑談配信をしています。<br>
+                    好きなもの：どんぐり🌰
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://www.twitch.tv/" class="btn btn-primary" target="_blank">
+                        <span>Twitchで見る</span>
+                    </a>
+                    <a href="#profile" class="btn btn-secondary">
+                        <span>詳しく知る</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/main.png" alt="百実ねむこ" loading="lazy">
+            </div>
+        </div>
+    </section>
+    
+    <!-- 定時配信バナー -->
+    <section class="schedule-banner">
+        <img src="images/clock-icon.png" alt="時計" class="clock-icon" loading="lazy">
+        <div class="schedule-content">
+            <h2 class="schedule-title">平日17時から配信中！</h2>
+            <p class="schedule-time">月曜日〜金曜日 17:00 START</p>
+            <div class="countdown" id="countdown">次の配信まで: 計算中...</div>
+        </div>
+    </section>
+    
+    <!-- プロフィールセクション -->
+    <section class="section" id="profile">
+        <div class="container">
+            <h2 class="section-title">プロフィール</h2>
+            <div class="profile-content">
+                <div class="profile-image">
+                    <img src="images/sd_1.png" alt="ねむこSD" loading="lazy">
+                </div>
+                <div class="profile-info">
+                    <h3>特殊な訓練を受けたモモンガです</h3>
+                    <div class="profile-detail">
+                        <strong>名前：</strong>百実ねむこ（もみ ねむこ）
+                    </div>
+                    <div class="profile-detail">
+                        <strong>種族：</strong>モモンガ（特殊な訓練済み）
+                    </div>
+                    <div class="profile-detail">
+                        <strong>好きなもの：</strong>どんぐり🌰
+                    </div>
+                    <div class="profile-detail">
+                        <strong>配信内容：</strong>原神、崩壊:スターレイル、雑談など
+                    </div>
+                    <div class="profile-detail">
+                        <strong>配信時間：</strong>平日17時から定時配信
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.twitch.tv/" class="social-link" target="_blank">Twitch</a>
+                <a href="https://twitter.com/" class="social-link" target="_blank">Twitter</a>
+                <a href="https://www.youtube.com/" class="social-link" target="_blank">YouTube</a>
+            </div>
+            <p>&copy; 2024 百実ねむこ. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
