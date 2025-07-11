@@ -19,6 +19,11 @@
     max-width: 500px;
     margin: 60px auto 0;
   }
+  
+  /* Override inline styles for mobile */
+  .pricing-cards-mobile-responsive {
+    grid-template-columns: 1fr !important;
+  }
 
   .pricing-card.featured {
     transform: none;
@@ -155,6 +160,10 @@
   .btn {
     width: 100%;
     text-align: center;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Pricing */
@@ -165,6 +174,106 @@
   /* Utility */
   .container {
     padding: 0 16px;
+  }
+  
+  /* Campaign Banner Mobile */
+  .campaign-banner {
+    padding: 20px;
+  }
+  
+  .campaign-content h3 {
+    font-size: 2rem;
+  }
+  
+  .campaign-price {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .campaign-original-price {
+    font-size: 2rem;
+  }
+  
+  .campaign-sale-price {
+    font-size: 3.2rem;
+  }
+  
+  /* Hero Badges Mobile */
+  .hero-badges {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .hero-badge {
+    font-size: 1.2rem;
+    padding: 4px 12px;
+  }
+  
+  /* Tech Icons Mobile */
+  .tech-icons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .tech-icon {
+    font-size: 1.4rem;
+  }
+  
+  /* AI Section Mobile */
+  .ai-development {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .ai-development-content,
+  .ai-development-image {
+    width: 100%;
+  }
+  
+  /* Before After Mobile */
+  .before-after-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .before-item,
+  .after-item {
+    width: 100%;
+  }
+  
+  /* Pricing Campaign Price Mobile */
+  .pricing-campaign-price {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .pricing-original-price {
+    font-size: 1.8rem;
+  }
+  
+  .pricing-sale-price {
+    font-size: 2.8rem;
+  }
+  
+  /* Pricing Card Title Mobile */
+  .pricing-card h3 {
+    font-size: 2.2rem !important;
+  }
+  
+  /* Pricing Features Mobile */
+  .pricing-features {
+    font-size: 1.4rem !important;
+  }
+  
+  /* Mobile Font Size Adjustments */
+  .section-title {
+    font-size: 2.4rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.6rem;
   }
 }
 
@@ -183,11 +292,120 @@
     height: 60px;
     font-size: 2.4rem;
   }
+  
+  /* Campaign Banner Small Mobile */
+  .campaign-banner {
+    padding: 15px;
+  }
+  
+  .campaign-content h3 {
+    font-size: 1.8rem;
+  }
+  
+  .campaign-sale-price {
+    font-size: 2.8rem;
+  }
+  
+  /* Pricing Cards Small Mobile */
+  .pricing-card {
+    padding: 24px 16px;
+  }
+  
+  .pricing-card h3 {
+    font-size: 2rem !important;
+  }
+  
+  .pricing-sale-price {
+    font-size: 2.4rem;
+  }
+  
+  /* Tech Icons Small Mobile */
+  .tech-icons {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  /* Hero Badges Small Mobile */
+  .hero-badge {
+    font-size: 1.1rem;
+    padding: 3px 10px;
+  }
+  
+  /* Section Title Small Mobile */
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  /* Button Small Mobile */
+  .btn {
+    font-size: 1.4rem;
+    padding: 12px 20px;
+  }
+  
+  /* Logo Text Small Mobile */
+  .logo span:first-child {
+    font-size: 2.2rem !important;
+  }
+  
+  .logo span:last-child {
+    display: none;
+  }
 }
 
 /* Desktop Menu Toggle (hidden by default) */
 .mobile-menu-btn {
   display: none;
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase tap targets for touch devices */
+  .btn {
+    min-height: 44px;
+  }
+  
+  .mobile-nav-link {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Remove hover effects on touch devices */
+  .portfolio-item:hover {
+    transform: none;
+  }
+  
+  .feature-card:hover {
+    transform: none;
+  }
+}
+
+/* Landscape Mobile */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  .hero {
+    min-height: 350px;
+    height: auto;
+  }
+  
+  .hero-content {
+    padding: 40px 0;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+
+/* iPad Specific */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .pricing-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .tech-icons {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* Print Styles */

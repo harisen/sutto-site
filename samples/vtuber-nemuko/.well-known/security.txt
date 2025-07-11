@@ -1,0 +1,4 @@
+# Security Policy for nemuko.jp
+Contact: mailto:sutto.apps@gmail.com
+Expires: 2026-01-11T00:00:00.000Z
+Preferred-Languages: ja, en

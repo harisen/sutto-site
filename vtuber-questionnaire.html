@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTuberプラン お申し込みフォーム - スッとサイト</title>
+    <meta name="description" content="VTuberプラン制作のお申し込みフォーム。サイト制作に必要な情報をご入力ください。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        /* フォーム専用スタイル */
+        .form-hero {
+            background: linear-gradient(135deg, #9400D3 0%, #FF1493 100%);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .form-box {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+        }
+        
+        .form-section h3 {
+            font-size: 1.5rem;
+            color: #9400D3;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #FFE4E1;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .required {
+            color: #FF1493;
+            margin-left: 5px;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #FFE4E1;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #FF1493;
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-help {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            accent-color: #FF1493;
+        }
+        
+        .material-checklist {
+            background: #FFF0F5;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+        
+        .material-checklist-title {
+            font-weight: bold;
+            color: #9400D3;
+            margin-bottom: 15px;
+        }
+        
+        .price-summary-box {
+            background: linear-gradient(135deg, #FFE4E1 0%, #FFF0F5 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #FF1493;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .price-summary-title {
+            font-size: 1.2rem;
+            color: #9400D3;
+            margin-bottom: 10px;
+        }
+        
+        .price-summary-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FF1493;
+        }
+        
+        .selected-options-list {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+            text-align: left;
+        }
+        
+        .submit-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #FF1493 0%, #9400D3 100%);
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
+        }
+        
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .error-message {
+            color: #FF1493;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .success-message {
+            background: #D4EDDA;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        /* スマホでの改行表示 */
+        .sp-only {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .sp-only {
+                display: inline;
+            }
+            
+            .form-hero h1 {
+                font-size: 2rem;
+                line-height: 1.4;
+            }
+            
+            .form-box {
+                padding: 25px;
+            }
+            
+            .form-section h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W2NSTXJNG"></script>
+    <script src="/js/analytics.js"></script>
+    
+    <!-- フォーム送信処理 -->
+    <script src="/js/vtuber-form-submit.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <span style="font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 2.8rem; font-weight: 900; color: #2563eb;">スッとサイト</span>
+                    <span style="font-size: 1.1rem; font-weight: 400; color: #64748b; margin-top: -4px; letter-spacing: 0.02em;">個人から企業まで最速・低価格でホームページ制作</span>
+                </div>
+            </a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">作品例</a>
+                <a href="deployment-guide.html" class="nav-link">公開の仕方</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">作品例</a>
+            <a href="deployment-guide.html" class="mobile-nav-link">公開の仕方</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+
+    <section class="form-hero">
+        <div class="container">
+            <h1>VTuberプラン<br>お申し込みフォーム</h1>
+            <p style="font-size: 1.2rem; margin-top: 20px;">
+                サイト制作に必要な情報を<br class="sp-only">ご入力ください
+            </p>
+        </div>
+    </section>
+
+    <div class="form-container">
+        <div class="success-message" id="successMessage">
+            お申し込みありがとうございます！<br>
+            内容を確認の上、担当者よりご連絡させていただきます。
+        </div>
+        
+        <div class="form-box">
+            <div class="price-summary-box" id="priceSummary">
+                <div class="price-summary-title">暫定お見積もり金額</div>
+                <div class="price-summary-amount" id="estimatedPrice">¥10,000</div>
+                <div class="selected-options-list" id="selectedOptionsList"></div>
+            </div>
+            
+            <form id="vtuberForm">
+                <div class="form-section">
+                    <h3>基本情報</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            VTuber名<span class="required">*</span>
+                        </label>
+                        <input type="text" name="vtuber_name" class="form-input" required>
+                        <span class="error-message">VTuber名を入力してください</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            お名前（担当者様）<span class="required">*</span>
+                        </label>
+                        <input type="text" name="contact_name" class="form-input" required>
+                        <span class="error-message">お名前を入力してください</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            メールアドレス<span class="required">*</span>
+                        </label>
+                        <input type="email" name="email" class="form-input" required>
+                        <span class="error-message">有効なメールアドレスを入力してください</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            連絡先電話番号
+                        </label>
+                        <input type="tel" name="phone" class="form-input">
+                        <span class="form-help">任意：緊急時の連絡用</span>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>VTuberについて</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            VTuberのコンセプト・世界観<span class="required">*</span>
+                        </label>
+                        <textarea name="concept" class="form-textarea" required placeholder="例：宇宙から来た猫型エイリアンVTuber。地球の文化に興味津々で、ゲーム実況を通じて人間について学んでいる。"></textarea>
+                        <span class="error-message">コンセプトを入力してください</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            主な配信内容・ジャンル<span class="required">*</span>
+                        </label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="content_type" value="ゲーム実況">
+                                <span>ゲーム実況</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="content_type" value="雑談">
+                                <span>雑談</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="content_type" value="歌枠">
+                                <span>歌枠</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="content_type" value="ASMR">
+                                <span>ASMR</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="content_type" value="企画・コラボ">
+                                <span>企画・コラボ</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="content_type" value="その他">
+                                <span>その他</span>
+                            </label>
+                        </div>
+                        <span class="error-message">配信内容を選択してください</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            ターゲット層・ファン層
+                        </label>
+                        <input type="text" name="target_audience" class="form-input" placeholder="例：20代〜30代のゲーム好き、海外ファンも多い">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            配信プラットフォーム<span class="required">*</span>
+                        </label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="platform" value="YouTube">
+                                <span>YouTube</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="platform" value="Twitch">
+                                <span>Twitch</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="platform" value="ニコニコ動画">
+                                <span>ニコニコ動画</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="platform" value="REALITY">
+                                <span>REALITY</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="platform" value="その他">
+                                <span>その他</span>
+                            </label>
+                        </div>
+                        <span class="error-message">配信プラットフォームを選択してください</span>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>SNS・配信リンク情報</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            X（旧Twitter）URL
+                        </label>
+                        <input type="text" name="x_url" class="form-input" placeholder="https://x.com/username">
+                        <span class="form-help">例: https://x.com/vtuber_name</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            YouTube チャンネルURL
+                        </label>
+                        <input type="text" name="youtube_url" class="form-input" placeholder="https://www.youtube.com/@channel">
+                        <span class="form-help">例: https://www.youtube.com/@vtuber_channel</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            Twitch チャンネルURL
+                        </label>
+                        <input type="text" name="twitch_url" class="form-input" placeholder="https://www.twitch.tv/username">
+                        <span class="form-help">例: https://www.twitch.tv/vtuber_name</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            その他のSNS・配信プラットフォーム
+                        </label>
+                        <textarea name="other_links" class="form-textarea" placeholder="Instagram、TikTok、Discord、pixivFANBOX、その他のリンクをご記入ください。
+複数ある場合は改行して記載してください。
+
+例：
+Instagram: https://www.instagram.com/username
+Discord: https://discord.gg/invite_code
+pixivFANBOX: https://username.fanbox.cc/"></textarea>
+                        <span class="form-help">サイトに掲載したいSNSやプラットフォームのURLをすべてご記入ください</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            ハッシュタグ・ファンアート用タグ
+                        </label>
+                        <input type="text" name="hashtags" class="form-input" placeholder="#VTuber名 #ファンアート用タグ など">
+                        <span class="form-help">配信やファンアートで使用するハッシュタグがあればご記入ください</span>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>サイトについて</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            サイトに掲載したいセクション<span class="required">*</span>
+                        </label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="sections" value="プロフィール" checked>
+                                <span>プロフィール</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="sections" value="配信スケジュール" checked>
+                                <span>配信スケジュール</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="sections" value="SNSリンク" checked>
+                                <span>SNSリンク</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="sections" value="ファンアート">
+                                <span>ファンアート</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="sections" value="グッズ情報">
+                                <span>グッズ情報</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="sections" value="お問い合わせ">
+                                <span>お問い合わせ</span>
+                            </label>
+                        </div>
+                        <span class="error-message">セクションを選択してください</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            希望するデザインの雰囲気
+                        </label>
+                        <textarea name="design_preference" class="form-textarea" placeholder="例：ポップでカラフル、宇宙をイメージした幻想的な雰囲気、和風モダン など"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            参考にしたいサイト・デザイン
+                        </label>
+                        <textarea name="reference_sites" class="form-textarea" placeholder="参考サイトのURLや、好きなデザインの特徴などをお書きください"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>提供可能な素材</h3>
+                    
+                    <div class="material-checklist">
+                        <div class="material-checklist-title">✨ ご提供いただける素材をチェックしてください</div>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="materials" value="立ち絵・キャラクターイラスト">
+                                <span>立ち絵・キャラクターイラスト（透過PNG推奨）</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="materials" value="ロゴ画像">
+                                <span>ロゴ画像（正方形・横長版）</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="materials" value="SDキャラクター">
+                                <span>SDキャラクター・ミニキャラ</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="materials" value="背景画像">
+                                <span>背景画像・配信画面</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="materials" value="アイコン・エモート">
+                                <span>アイコン・エモート素材</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="materials" value="プロフィール文章">
+                                <span>プロフィール文章・自己紹介</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="materials" value="ファンネーム・推しマーク">
+                                <span>ファンネーム・推しマーク</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="materials" value="BGM・効果音">
+                                <span>BGM・効果音（使用許諾済みのもの）</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label class="form-label">
+                            素材のダウンロードリンク
+                        </label>
+                        <textarea name="material_links" class="form-textarea" placeholder="ファイル共有サービスのダウンロードリンクをご記入ください。
+複数ある場合は改行して記載してください。
+
+例：
+GigaFile便: https://gigafile.nu/xxxx
+Google Drive: https://drive.google.com/xxxx
+Dropbox: https://www.dropbox.com/xxxx"></textarea>
+                        <span class="form-help">
+                            ※対応サービス：GigaFile便、Google Drive、Dropbox、firestorage など<br>
+                            ※GigaFile便の場合はパスワードも一緒にご記入ください<br>
+                            ※後日メールでお送りいただいても構いません
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>その他</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            希望納期
+                        </label>
+                        <input type="date" name="deadline" class="form-input">
+                        <span class="form-help">特に希望がない場合は空欄で構いません</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            その他ご要望・ご質問
+                        </label>
+                        <textarea name="other_requests" class="form-textarea" placeholder="その他、ご要望やご質問がございましたらお書きください"></textarea>
+                    </div>
+                </div>
+                
+                <div class="submit-section">
+                    <button type="submit" class="btn-submit" id="submitButton">
+                        申し込み内容を送信する
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 スッとサイト. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // URLパラメータから見積もり情報を取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const estimatedTotal = urlParams.get('total') || '10000';
+        const selectedOptions = urlParams.get('options') ? urlParams.get('options').split(',') : [];
+        
+        // 見積もり金額の表示
+        document.getElementById('estimatedPrice').textContent = `¥${parseInt(estimatedTotal).toLocaleString()}`;
+        
+        // 選択されたオプションの表示
+        const optionNames = urlParams.get('optionNames') ? urlParams.get('optionNames').split(',') : [];
+        const yearlyTotal = urlParams.get('yearlyTotal') || '0';
+        
+        const optionsList = document.getElementById('selectedOptionsList');
+        if (optionNames.length > 0 && optionNames[0] !== '') {
+            let optionsText = '選択オプション: ' + optionNames.join('、');
+            if (parseInt(yearlyTotal) > 0) {
+                optionsText += ` (年間費用: ¥${parseInt(yearlyTotal).toLocaleString()})`;
+            }
+            optionsList.innerHTML = optionsText;
+        }
+        
+        // フォームバリデーション
+        const form = document.getElementById('vtuberForm');
+        
+        function validateRequired(input) {
+            if (input.type === 'checkbox') {
+                const checkboxes = form.querySelectorAll(`input[name="${input.name}"]`);
+                const isChecked = Array.from(checkboxes).some(cb => cb.checked);
+                return isChecked;
+            }
+            return input.value.trim() !== '';
+        }
+        
+        function showError(input) {
+            const errorMsg = input.closest('.form-group').querySelector('.error-message');
+            if (errorMsg) {
+                errorMsg.style.display = 'block';
+            }
+        }
+        
+        function hideError(input) {
+            const errorMsg = input.closest('.form-group').querySelector('.error-message');
+            if (errorMsg) {
+                errorMsg.style.display = 'none';
+            }
+        }
+        
+        // フォーム送信処理
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // バリデーション
+            const requiredInputs = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredInputs.forEach(input => {
+                if (!validateRequired(input)) {
+                    showError(input);
+                    isValid = false;
+                } else {
+                    hideError(input);
+                }
+            });
+            
+            if (!isValid) {
+                return;
+            }
+            
+            // フォームデータの収集
+            const formData = new FormData(form);
+            const data = {
+                vtuber_name: formData.get('vtuber_name'),
+                contact_name: formData.get('contact_name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                concept: formData.get('concept'),
+                referral_use: urlParams.get('useReferral') === 'true',
+                referral_name: urlParams.get('referralName'),
+                referral_link: urlParams.get('referralLink'),
+                referral_email: urlParams.get('referralEmail'),
+                content_types: formData.getAll('content_type'),
+                target_audience: formData.get('target_audience'),
+                platforms: formData.getAll('platform'),
+                x_url: formData.get('x_url'),
+                youtube_url: formData.get('youtube_url'),
+                twitch_url: formData.get('twitch_url'),
+                other_links: formData.get('other_links'),
+                hashtags: formData.get('hashtags'),
+                sections: formData.getAll('sections'),
+                design_preference: formData.get('design_preference'),
+                reference_sites: formData.get('reference_sites'),
+                materials: formData.getAll('materials'),
+                material_links: formData.get('material_links'),
+                deadline: formData.get('deadline'),
+                other_requests: formData.get('other_requests'),
+                estimated_price: estimatedTotal,
+                selected_options: optionNames
+            };
+            
+            // 送信ボタンを無効化
+            const submitButton = document.getElementById('submitButton');
+            submitButton.disabled = true;
+            submitButton.textContent = '送信中...';
+            
+            try {
+                // データをセッションストレージに保存
+                sessionStorage.setItem('vtuberFormData', JSON.stringify(data));
+                
+                // 確認画面へ遷移
+                window.location.href = 'vtuber-confirmation.html';
+                
+            } catch (error) {
+                console.error('エラー:', error);
+                alert('エラーが発生しました。もう一度お試しください。');
+                submitButton.disabled = false;
+                submitButton.textContent = '申し込み内容を送信する';
+            }
+        });
+        
+        // メール送信関数
+        async function sendEmail(data) {
+            try {
+                // vtuber-form-submit.js の関数を使用
+                await window.submitVTuberForm(data);
+                return true;
+            } catch (error) {
+                // エラーの場合はメールクライアントを開く
+                window.openMailClient(data);
+                throw error;
+            }
+        }
+        
+        // リアルタイムバリデーション
+        form.addEventListener('input', (e) => {
+            if (e.target.hasAttribute('required')) {
+                if (validateRequired(e.target)) {
+                    hideError(e.target);
+                }
+            }
+        });
+        
+        // モバイルメニュー
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -10,6 +10,11 @@ let characterDirection = 1; // 1 for normal, -1 for flipped
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize language system first
+    if (typeof initializeLanguage === 'function') {
+        initializeLanguage();
+    }
+    
     initializeLoading();
     initializeMiniCharacter();
     initializeAnimations();
@@ -26,37 +31,80 @@ function initializeLoading() {
     const loadingScreen = document.getElementById('loadingScreen');
     const loadingTransition = document.getElementById('loadingTransition');
     
-    // Simulate loading time (minimum 2 seconds)
-    setTimeout(() => {
-        // Phase 2: Show loading_2.png from bottom
-        gsap.set(loadingTransition, {
-            display: 'block',
-            bottom: '-100%',
-            opacity: 1
+    if (!loadingScreen) {
+        console.error('Loading screen not found');
+        isLoading = false;
+        // Try to start animations anyway
+        setTimeout(() => animateHeroContent(), 100);
+        return;
+    }
+    
+    function hideLoadingScreen() {
+        // Wait for critical images to load
+        const criticalImages = [
+            'images/logo_nemuko.png',
+            'images/main.png',
+            'images/autumn-pattern_1.jpg'
+        ];
+        
+        const imagePromises = criticalImages.map(src => {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = resolve;
+                img.onerror = resolve; // Resolve even on error
+                img.src = src;
+            });
         });
         
-        // Phase 3: Slide up rapidly with "swoosh" effect
-        gsap.to(loadingTransition, {
-            bottom: '100%',
-            duration: 0.8,
-            ease: 'power4.in',
-            onComplete: () => {
-                // Phase 4: Fade out loading screen and show content
+        Promise.all(imagePromises).then(() => {
+            isLoading = false;
+            
+            // Use both GSAP and CSS for reliability
+            if (typeof gsap !== 'undefined') {
                 gsap.to(loadingScreen, {
                     opacity: 0,
                     duration: 0.5,
                     onComplete: () => {
                         loadingScreen.style.display = 'none';
-                        loadingTransition.style.display = 'none';
-                        isLoading = false;
-                        
-                        // Start main content animations
+                        if (loadingTransition) {
+                            loadingTransition.style.display = 'none';
+                        }
                         animateHeroContent();
                     }
                 });
+            } else {
+                // Fallback without GSAP
+                loadingScreen.style.transition = 'opacity 0.5s';
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    if (loadingTransition) {
+                        loadingTransition.style.display = 'none';
+                    }
+                    animateHeroContent();
+                }, 500);
             }
         });
-    }, 2000);
+    }
+    
+    // Wait for window load event which ensures all resources are loaded
+    if (document.readyState === 'complete') {
+        // Already loaded
+        setTimeout(hideLoadingScreen, 500);
+    } else {
+        // Wait for window load
+        window.addEventListener('load', () => {
+            setTimeout(hideLoadingScreen, 500);
+        });
+        
+        // Fallback: hide after 3 seconds no matter what
+        setTimeout(() => {
+            if (isLoading) {
+                console.log('Forcing loading screen hide');
+                hideLoadingScreen();
+            }
+        }, 3000);
+    }
 }
 
 // Mini character interactive movement
@@ -91,32 +139,43 @@ function handleCharacterMovement(e) {
     e.preventDefault();
     
     // Get click/touch coordinates
-    const x = e.clientX || (e.touches && e.touches[0].clientX);
-    const y = e.clientY || (e.touches && e.touches[0].clientY);
+    const x = e.clientX || (e.changedTouches && e.changedTouches[0].clientX);
+    const y = e.clientY || (e.changedTouches && e.changedTouches[0].clientY);
     
     // Get current character position
     const charRect = miniCharacter.getBoundingClientRect();
     const charX = charRect.left + charRect.width / 2;
     const charY = charRect.top + charRect.height / 2;
     
-    // Determine horizontal direction first for sprite flipping
-    if (x < charX) {
-        // Moving left - normal orientation for left movement
-        characterDirection = 1;
-        characterSprite.style.transform = 'scaleX(1)';
-    } else {
-        // Moving right - flip the sprite for right movement
-        characterDirection = -1;
-        characterSprite.style.transform = 'scaleX(-1)';
-    }
-    
-    // Determine vertical direction and set appropriate sprite
+    // Determine vertical direction and set appropriate sprite first
     if (y < charY) {
-        // Moving up - use back sprite
+        // Moving up - use back sprite with horizontal flipping
         characterSprite.src = 'images/walk_back.gif';
+        
+        // Apply horizontal flipping for back sprite too
+        if (x < charX) {
+            // Moving left - flip the back sprite
+            characterDirection = -1;
+            characterSprite.style.transform = 'scaleX(-1)';
+        } else {
+            // Moving right - normal orientation for back sprite
+            characterDirection = 1;
+            characterSprite.style.transform = 'scaleX(1)';
+        }
     } else {
-        // Moving down - use front sprite
+        // Moving down - use front sprite with horizontal flipping
         characterSprite.src = 'images/walk_front.gif';
+        
+        // Apply horizontal flipping for front sprite
+        if (x < charX) {
+            // Moving left - normal orientation for left movement
+            characterDirection = 1;
+            characterSprite.style.transform = 'scaleX(1)';
+        } else {
+            // Moving right - flip the sprite for right movement
+            characterDirection = -1;
+            characterSprite.style.transform = 'scaleX(-1)';
+        }
     }
     
     // Calculate distance and duration
@@ -154,7 +213,7 @@ function createLeafParticles(x, y) {
         leaf.style.top = y + 'px';
         
         // Random leaf image
-        const leafImages = ['autumn-leaves_1.png', 'autumn-leaves_2.png', 'ginkgo-leaf.png', 'yellow_leaf.png'];
+        const leafImages = ['autumn-leaves_1.png', 'autumn-leaves_2.png', 'yellow_leaf.png'];
         const randomLeaf = leafImages[Math.floor(Math.random() * leafImages.length)];
         leaf.style.backgroundImage = `url(images/${randomLeaf})`;
         leaf.style.backgroundSize = 'contain';
@@ -186,94 +245,158 @@ function createLeafParticles(x, y) {
 
 // Hero section animations
 function animateHeroContent() {
-    // Animate hero logo first
-    gsap.fromTo('.hero-logo', {
+    // Check if GSAP is loaded
+    if (typeof gsap === 'undefined') {
+        console.error('GSAP not loaded');
+        // Show content without animation
+        const heroLogo = document.querySelector('.hero-logo');
+        const heroText = document.querySelector('.hero-text');
+        const heroImage = document.querySelector('.hero-image');
+        if (heroLogo) heroLogo.style.opacity = '1';
+        if (heroText) heroText.style.opacity = '1';
+        if (heroImage) heroImage.style.opacity = '1';
+        return;
+    }
+    
+    // Create timeline for coordinated animations
+    const tl = gsap.timeline();
+    
+    // First, animate the autumn background
+    tl.fromTo('.autumn-bg', {
         opacity: 0,
-        scale: 0.5,
+        scale: 1.2
+    }, {
+        opacity: 0.3,
+        scale: 1,
+        duration: 1.5,
+        ease: 'power2.out'
+    })
+    
+    // Animate hero text container
+    .fromTo('.hero-text', {
+        opacity: 0
+    }, {
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power2.out'
+    }, '-=1')
+    
+    // Then animate hero logo with a bounce
+    .fromTo('.hero-logo', {
+        opacity: 0,
+        scale: 0.3,
         rotation: -180
     }, {
         opacity: 1,
         scale: 1,
         rotation: 0,
-        duration: 1.5,
+        duration: 1.2,
         ease: 'elastic.out(1, 0.5)'
-    });
+    }, '-=0.8')
     
-    // Add continuous floating animation to logo
-    gsap.to('.hero-logo', {
-        y: -10,
-        duration: 2.5,
-        repeat: -1,
-        yoyo: true,
-        ease: 'power1.inOut',
-        delay: 1.5
-    });
-    
-    // Then animate hero text
-    gsap.fromTo('.hero-text', {
+    // Animate hero text elements
+    .fromTo('.hero-subtitle', {
         opacity: 0,
-        y: 50
-    }, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power3.out'
-    });
-    
-    // Typewriter effect for subtitle
-    gsap.to('#heroSubtitle', {
-        text: 'ドーモ。特殊な訓練を受けたモモンガです。',
-        duration: 2,
-        ease: 'none',
-        delay: 0.5
-    });
-    
-    // Animate hero image with floating effect
-    gsap.fromTo('.hero-image', {
-        opacity: 0,
-        scale: 0.8
-    }, {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        delay: 0.3,
-        ease: 'back.out(1.7)'
-    });
-    
-    // Remove floating animation - character stays still
-    // Add hover interaction
-    const heroImage = document.querySelector('.hero-image img');
-    
-    heroImage.addEventListener('mouseenter', () => {
-        gsap.to(heroImage, {
-            y: -30,
-            duration: 0.3,
-            ease: 'power2.out',
-            onComplete: () => {
-                gsap.to(heroImage, {
-                    y: 0,
-                    duration: 0.3,
-                    ease: 'bounce.out'
-                });
-            }
-        });
-    });
-    
-    // Add click interaction with speech bubbles
-    initializeHeroCharacterChat();
-    
-    // Animate buttons
-    gsap.fromTo('.btn', {
-        opacity: 0,
+        y: 30,
         scale: 0.9
     }, {
         opacity: 1,
+        y: 0,
         scale: 1,
+        duration: 0.8,
+        ease: 'back.out(1.7)'
+    }, '-=0.5')
+    
+    .fromTo('.hero-description', {
+        opacity: 0,
+        y: 20
+    }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power3.out'
+    }, '-=0.3')
+    
+    // Animate hero image with special effect
+    .fromTo('.hero-image', {
+        opacity: 0,
+        scale: 0.5,
+        rotation: -15
+    }, {
+        opacity: 1,
+        scale: 1,
+        rotation: 0,
+        duration: 1,
+        ease: 'back.out(2)'
+    }, '-=0.8')
+    
+    // Animate buttons with stagger
+    .fromTo('.btn', {
+        opacity: 0,
+        scale: 0.8,
+        y: 20
+    }, {
+        opacity: 1,
+        scale: 1,
+        y: 0,
         duration: 0.5,
         stagger: 0.1,
-        delay: 1,
         ease: 'back.out(1.7)'
+    }, '-=0.3');
+    
+    // Add continuous floating animation to logo after timeline completes
+    tl.call(() => {
+        gsap.to('.hero-logo', {
+            y: -10,
+            duration: 2.5,
+            repeat: -1,
+            yoyo: true,
+            ease: 'power1.inOut'
+        });
     });
+    
+    // Typewriter effect for subtitle after animations
+    setTimeout(() => {
+        const subtitle = document.getElementById('heroSubtitle');
+        if (subtitle && window.translations) {
+            const currentLang = localStorage.getItem('nemuko-lang') || 'ja';
+            const isMobile = window.innerWidth <= 768;
+            let subtitleText = window.translations[currentLang]?.hero?.subtitle || 'ドーモ。\n特殊な訓練を受けたモモンガです。';
+            
+            // PC版の場合は改行位置を調整
+            if (!isMobile && currentLang === 'ja') {
+                subtitleText = 'ドーモ。\n特殊な訓練を受けたモモンガです。';
+            }
+            
+            gsap.to(subtitle, {
+                text: subtitleText,
+                duration: 2,
+                ease: 'none'
+            });
+        }
+    }, 1000);
+    
+    // Add hover interaction
+    const heroImage = document.querySelector('.hero-image img');
+    if (heroImage) {
+        heroImage.addEventListener('mouseenter', () => {
+            gsap.to(heroImage, {
+                y: -30,
+                duration: 0.3,
+                ease: 'power2.out',
+                onComplete: () => {
+                    gsap.to(heroImage, {
+                        y: 0,
+                        duration: 0.3,
+                        ease: 'bounce.out'
+                    });
+                }
+            });
+        });
+    }
+    
+    // Add click interaction with speech bubbles
+    initializeHeroCharacterChat();
 }
 
 // Initialize general animations
@@ -495,23 +618,13 @@ function initializeScrollEffects() {
             scrollTrigger: {
                 trigger: title,
                 start: 'top 80%',
-                once: true,
-                onComplete: () => {
-                    // Animate decorative leaves
-                    gsap.to(title.querySelector('::before'), {
-                        opacity: 0.7,
-                        x: -20,
-                        rotation: -15,
-                        duration: 1.5,
-                        ease: 'elastic.out(1, 0.5)'
-                    });
-                    gsap.to(title.querySelector('::after'), {
-                        opacity: 0.7,
-                        x: 20,
-                        rotation: 15,
-                        duration: 1.5,
-                        ease: 'elastic.out(1, 0.5)'
-                    });
+                once: true
+            },
+            onComplete: () => {
+                // プロフィールセクションのタイトルの場合はフォントを適用
+                if (title.closest('#profile')) {
+                    title.style.fontFamily = "'Klee One', cursive";
+                    title.style.fontWeight = '600';
                 }
             }
         });
@@ -575,7 +688,14 @@ function initializeScrollEffects() {
                     rotation: 15,
                     duration: 1.5,
                     delay: 0.3,
-                    ease: 'elastic.out(1, 0.5)'
+                    ease: 'elastic.out(1, 0.5)',
+                    onComplete: () => {
+                        // プロフィールタイトルの場合はフォントを再適用
+                        if (titleElement.id === 'profile' || titleElement.closest('#profile')) {
+                            titleElement.style.fontFamily = "'Klee One', cursive";
+                            titleElement.style.fontWeight = '600';
+                        }
+                    }
                 });
                 
                 // Floating animation
@@ -663,7 +783,7 @@ function createAmbientLeaves() {
             leaf.style.left = Math.random() * window.innerWidth + 'px';
             leaf.style.top = '-50px';
             
-            const leafImages = ['autumn-leaves_1.png', 'autumn-leaves_2.png', 'ginkgo-leaf.png'];
+            const leafImages = ['autumn-leaves_1.png', 'autumn-leaves_2.png', 'yellow_leaf.png'];
             const randomLeaf = leafImages[Math.floor(Math.random() * leafImages.length)];
             leaf.style.backgroundImage = `url(images/${randomLeaf})`;
             leaf.style.backgroundSize = 'contain';
@@ -694,37 +814,69 @@ function initializeHeroCharacterChat() {
     const heroImageContainer = document.querySelector('.hero-image');
     let currentBubble = null;
     
-    // Food items for random selection (30 types)
-    const foods = [
-        'チョコレート', 'ケーキ', 'プリン', 'アイスクリーム', 'どんぐり',
-        'クッキー', 'ドーナツ', 'パンケーキ', 'マカロン', 'シュークリーム',
-        'たいやき', 'だんご', 'もち', 'せんべい', 'ポテトチップス',
-        'ラーメン', 'カレー', 'すし', 'ピザ', 'ハンバーガー',
-        'おにぎり', 'うどん', 'そば', 'やきとり', 'からあげ',
-        'メロンパン', 'あんぱん', 'カステラ', 'ようかん', 'まんじゅう'
-    ];
+    // Get chat translations dynamically based on current language
+    function getChatTranslations() {
+        const currentLang = localStorage.getItem('nemuko-lang') || 'ja';
+        // Always check window.chatTranslations first (set by language-switcher.js)
+        if (window.chatTranslations) {
+            return window.chatTranslations;
+        }
+        // Fallback to translations object
+        if (window.translations && window.translations[currentLang]) {
+            return window.translations[currentLang].chat;
+        }
+        // Final fallback to Japanese
+        return {
+            messages: [
+                'ぼくの名前はねむこだよ！',
+                '{food}たべたい',
+                'ねむくなってきたぁ…',
+                'ゲームしよ～',
+                '今日も17時から配信だよ！',
+                'どんぐりあつめた？',
+                'モモンガは夜行性なんだ',
+                '原神たのしい！',
+                'みんな元気？',
+                'ふわふわ～'
+            ],
+            foods: [
+                'チョコレート', 'ケーキ', 'プリン', 'アイスクリーム', 'どんぐり',
+                'クッキー', 'ドーナツ', 'パンケーキ', 'マカロン', 'シュークリーム',
+                'たいやき', 'だんご', 'もち', 'せんべい', 'ポテトチップス',
+                'ラーメン', 'カレー', 'すし', 'ピザ', 'ハンバーガー',
+                'おにぎり', 'うどん', 'そば', 'やきとり', 'からあげ',
+                'メロンパン', 'あんぱん', 'カステラ', 'ようかん', 'まんじゅう'
+            ]
+        };
+    }
     
-    // Chat messages
-    const messages = [
-        'ぼくの名前はねむこだよ！',
-        '{food}たべたい',
-        'ねむくなってきたぁ…',
-        'ゲームしよ～',
-        '今日も17時から配信だよ！',
-        'どんぐりあつめた？',
-        'モモンガは夜行性なんだ',
-        '原神たのしい！',
-        'みんな元気？',
-        'ふわふわ～'
-    ];
+    // Add appropriate event based on device
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) {
+        heroImage.addEventListener('touchend', handleHeroClick);
+    } else {
+        heroImage.addEventListener('click', handleHeroClick);
+    }
     
-    heroImage.addEventListener('click', (e) => {
+    let lastClickTime = 0;
+    function handleHeroClick(e) {
+        e.preventDefault();
         e.stopPropagation();
+        
+        // Prevent double-click on mobile
+        const now = Date.now();
+        if (now - lastClickTime < 300) return;
+        lastClickTime = now;
         
         // Remove existing bubble if any
         if (currentBubble) {
             currentBubble.remove();
         }
+        
+        // Get current language translations
+        const chatTranslations = getChatTranslations();
+        const messages = chatTranslations.messages;
+        const foods = chatTranslations.foods;
         
         // Create new bubble
         const bubble = document.createElement('div');
@@ -743,8 +895,32 @@ function initializeHeroCharacterChat() {
         heroImageContainer.appendChild(bubble);
         
         // Position bubble randomly (left or right)
+        const isMobile = window.innerWidth <= 768;
         const isLeft = Math.random() > 0.5;
-        if (isLeft) {
+        
+        if (isMobile) {
+            // モバイルでは常に画面内に収まるように調整
+            bubble.style.left = '50%';
+            bubble.style.transform = 'translateX(-50%) scale(0)';
+            bubble.style.right = 'auto';
+            bubble.style.maxWidth = '80%';
+            bubble.style.whiteSpace = 'normal';
+            bubble.style.textAlign = 'center';
+            
+            // 吹き出しの矢印を下向きに
+            const style = document.createElement('style');
+            style.textContent = `.character-bubble::before { 
+                left: 50% !important; 
+                transform: translateX(-50%) !important;
+                top: auto !important; 
+                bottom: -15px !important;
+                border-left-color: transparent !important; 
+                border-right-color: transparent !important;
+                border-top-color: var(--white) !important;
+                border-bottom-color: transparent !important;
+            }`;
+            bubble.appendChild(style);
+        } else if (isLeft) {
             bubble.style.right = 'auto';
             bubble.style.left = '-50px';
             bubble.style.transform = 'scale(0) translateX(20px)';
@@ -761,11 +937,22 @@ function initializeHeroCharacterChat() {
         }
         
         // Random vertical position
-        bubble.style.top = (Math.random() * 60 + 10) + '%';
+        if (isMobile) {
+            // モバイルではキャラクターのすぐ上に配置
+            bubble.style.top = '-40px';
+            bubble.style.position = 'absolute';
+        } else {
+            bubble.style.top = (Math.random() * 60 + 10) + '%';
+        }
         
-        // Show bubble
+        // Show bubble with proper animation
         setTimeout(() => {
-            bubble.classList.add('show');
+            if (isMobile) {
+                bubble.style.transform = 'translateX(-50%) scale(1)';
+                bubble.style.opacity = '1';
+            } else {
+                bubble.classList.add('show');
+            }
         }, 10);
         
         currentBubble = bubble;
@@ -797,16 +984,26 @@ function initializeHeroCharacterChat() {
                 }, 500);
             }
         }, 3000);
-    });
+    }
 }
 
 // Mouse follower (acorn)
 function initializeMouseFollower() {
+    // Check if on mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) return; // Don't show mouse follower on mobile
+    
     const mouseFollower = document.getElementById('mouseFollower');
+    if (!mouseFollower) {
+        console.error('Mouse follower element not found');
+        return;
+    }
+    
     let mouseX = 0;
     let mouseY = 0;
     let followerX = 0;
     let followerY = 0;
+    let animationId = null;
     
     // Track mouse movement
     document.addEventListener('mousemove', (e) => {
@@ -833,9 +1030,10 @@ function initializeMouseFollower() {
         mouseFollower.style.left = followerX + 'px';
         mouseFollower.style.top = followerY + 'px';
         
-        requestAnimationFrame(animateFollower);
+        animationId = requestAnimationFrame(animateFollower);
     }
     
+    // Start animation
     animateFollower();
     
     // Click animation
@@ -852,19 +1050,54 @@ function initializeMouseFollower() {
     });
 }
 
+// Helper function to update acorn counter display
+function updateAcornCounterDisplay(normalCount, goldenCount) {
+    const counter = document.getElementById('collectionCounter');
+    const mobileCounter = document.getElementById('mobileCollectionCounter');
+    const format = window.gameTranslations?.acornCounter || 'どんぐり: {{count}}/{{total}} | ゴールデン: {{golden}}/{{goldenTotal}}';
+    const text = format
+        .replace('{{count}}', normalCount)
+        .replace('{{total}}', '5')
+        .replace('{{golden}}', goldenCount)
+        .replace('{{goldenTotal}}', '10');
+    
+    if (counter) {
+        counter.textContent = text;
+    }
+    if (mobileCounter) {
+        mobileCounter.textContent = text;
+    }
+}
+
 // Acorn collection game
 function initializeAcornCollection() {
-    const sections = ['hero', 'schedule-banner', 'profile'];
+    // モバイルデバイス検出
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
     const acornPositions = [
-        { section: 0, top: '20%', left: '10%' },
-        { section: 0, top: '70%', right: '15%' },
-        { section: 1, top: '50%', left: '5%' },
-        { section: 2, top: '30%', right: '10%' },
-        { section: 2, bottom: '20%', left: '8%' }
+        { selector: '.hero', top: '20%', left: '10%' },
+        { selector: '.hero', top: '70%', right: '15%' },
+        { selector: '.schedule-banner', top: '50%', left: '5%' },
+        { selector: '#profile', top: '30%', right: '10%' },
+        { selector: '#profile', bottom: '20%', left: '8%' }
     ];
     
     // Golden acorn positions - 10 total, more hidden and spread across the page
-    const goldenAcornPositions = [
+    const goldenAcornPositions = isMobile ? [
+        // モバイル用の位置設定（画面内に収まるように調整）
+        { section: 'hero', top: '10%', right: '10%', hidden: true },
+        { section: 'hero', top: '85%', left: '10%', hidden: true },
+        { section: 'schedule-banner', top: '20px', right: '25%', hidden: false },
+        { section: 'profile', top: '80%', left: '20px', hidden: true },
+        { section: 'footer', top: '20px', right: '20%', hidden: true },
+        { section: 'hero', top: '70%', right: '8%', hidden: true },
+        { section: 'profile', top: '50%', right: '10%', hidden: false },
+        { section: 'schedule-banner', top: '70%', left: '15%', hidden: true },
+        { section: 'hero', top: '45%', left: '5%', hidden: true },
+        { section: 'hero', top: '25%', left: '25%', hidden: true }
+    ] : [
+        // PC用の位置設定（元の設定）
         { section: 'hero', top: '5%', right: '5%', hidden: true },
         { section: 'header', bottom: '10px', left: '300px', hidden: true },
         { section: 'schedule-banner', top: '10px', right: '200px', hidden: false },
@@ -874,7 +1107,7 @@ function initializeAcornCollection() {
         { section: 'profile', top: '60%', right: '3%', hidden: false },
         { section: 'schedule-banner', bottom: '20px', left: '100px', hidden: true },
         { section: 'hero', top: '50%', left: '10px', hidden: true },
-        { section: 'footer', bottom: '20px', left: '40%', hidden: true }
+        { section: 'header', top: '15px', right: '400px', hidden: true }
     ];
     
     let collectedCount = 0;
@@ -887,8 +1120,7 @@ function initializeAcornCollection() {
     
     // Create hidden acorns
     acornPositions.forEach((pos, index) => {
-        const section = document.getElementsByClassName('section')[pos.section] || 
-                       document.getElementsByClassName(sections[pos.section])[0];
+        const section = document.querySelector(pos.selector);
         
         if (section) {
             const acorn = document.createElement('div');
@@ -897,13 +1129,26 @@ function initializeAcornCollection() {
             
             // Set position
             Object.keys(pos).forEach(key => {
-                if (key !== 'section') {
+                if (key !== 'selector') {
                     acorn.style[key] = pos[key];
                 }
             });
             
-            // Add click handler
-            acorn.addEventListener('click', collectAcorn);
+            // Add click and touch handlers with better mobile support
+            if (isTouch) {
+                acorn.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    collectAcorn(e);
+                }, { passive: false });
+                // Also add click for hybrid devices
+                acorn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    collectAcorn(e);
+                });
+            } else {
+                acorn.addEventListener('click', collectAcorn);
+            }
             
             // Add to section
             section.style.position = 'relative';
@@ -929,7 +1174,8 @@ function initializeAcornCollection() {
         if (pos.section === 'hero') {
             section = document.querySelector('.hero');
         } else if (pos.section === 'header') {
-            section = document.querySelector('.header');
+            // For header golden acorns, place them in hero section instead
+            section = document.querySelector('.hero');
         } else if (pos.section === 'schedule-banner') {
             section = document.querySelector('.schedule-banner');
         } else if (pos.section === 'profile') {
@@ -943,24 +1189,74 @@ function initializeAcornCollection() {
             goldenAcorn.className = 'golden-acorn';
             goldenAcorn.dataset.index = index;
             
-            // Set position
-            Object.keys(pos).forEach(key => {
-                if (key !== 'section' && key !== 'hidden') {
-                    goldenAcorn.style[key] = pos[key];
+            // Set position - adjust header acorns to be positioned at the top of hero section
+            if (pos.section === 'header' && !isMobile) {
+                // PC版のヘッダー用どんぐりをヒーローセクション上部に配置
+                goldenAcorn.style.top = '120px'; // ヘッダーの高さを考慮
+                if (pos.left === '300px') {
+                    goldenAcorn.style.left = '25%';
+                } else if (pos.right === '400px') {
+                    goldenAcorn.style.right = '30%';
                 }
-            });
-            
-            // Add click handler
-            goldenAcorn.addEventListener('click', collectGoldenAcorn);
-            
-            // Add to section
-            section.style.position = 'relative';
-            section.appendChild(goldenAcorn);
-            
-            // Show some golden acorns from the start
-            if (!pos.hidden) {
-                goldenAcorn.classList.add('revealed');
+            } else if (pos.section === 'header' && isMobile) {
+                // モバイル版は既に処理済み
+                Object.keys(pos).forEach(key => {
+                    if (key !== 'section' && key !== 'hidden') {
+                        goldenAcorn.style[key] = pos[key];
+                    }
+                });
+            } else {
+                Object.keys(pos).forEach(key => {
+                    if (key !== 'section' && key !== 'hidden') {
+                        goldenAcorn.style[key] = pos[key];
+                    }
+                });
             }
+            
+            // Add click and touch handlers with better mobile support
+            if (isTouch) {
+                goldenAcorn.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    collectGoldenAcorn(e);
+                }, { passive: false });
+                // Also add click for hybrid devices
+                goldenAcorn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    collectGoldenAcorn(e);
+                });
+            } else {
+                goldenAcorn.addEventListener('click', collectGoldenAcorn);
+            }
+            
+            // Add to section or body for mobile to avoid overflow issues
+            if (isMobile && pos.section === 'hero') {
+                // モバイルでヒーローセクションのどんぐりはbody直下に配置
+                document.body.appendChild(goldenAcorn);
+                
+                // 位置を調整（固定位置に変更）
+                goldenAcorn.style.position = 'fixed';
+                const heroRect = section.getBoundingClientRect();
+                
+                if (pos.top) {
+                    const topValue = parseFloat(pos.top);
+                    goldenAcorn.style.top = (heroRect.top + (heroRect.height * topValue / 100)) + 'px';
+                }
+                if (pos.left) {
+                    const leftValue = parseFloat(pos.left);
+                    goldenAcorn.style.left = leftValue + '%';
+                }
+                if (pos.right) {
+                    const rightValue = parseFloat(pos.right);
+                    goldenAcorn.style.right = rightValue + '%';
+                }
+            } else {
+                section.style.position = 'relative';
+                section.appendChild(goldenAcorn);
+            }
+            
+            // All golden acorns start hidden until normal acorns are collected
+            // Remove the initial reveal logic
         }
     });
     
@@ -973,9 +1269,15 @@ function initializeAcornCollection() {
         collectedCount++;
         
         // Update counter
-        countSpan.textContent = collectedCount;
+        updateAcornCounterDisplay(collectedCount, goldenCollectedCount);
         if (!counter.classList.contains('show')) {
             counter.classList.add('show');
+        }
+        
+        // Show mobile counter too
+        const mobileCounter = document.getElementById('mobileCollectionCounter');
+        if (mobileCounter && !mobileCounter.classList.contains('show')) {
+            mobileCounter.classList.add('show');
         }
         
         // Collection animation
@@ -995,7 +1297,8 @@ function initializeAcornCollection() {
         
         // Check if all normal acorns collected
         if (collectedCount === totalAcorns && goldenCollectedCount === 0) {
-            showReward('images/reward4.png', 'すべてのどんぐりを集めました！');
+            const message = window.gameTranslations?.rewards?.allNormal || 'すべてのどんぐりを集めました！';
+            showReward('images/reward4.png', message);
             setTimeout(revealGoldenAcorns, 3000);
         }
         
@@ -1006,7 +1309,10 @@ function initializeAcornCollection() {
     }
     
     function createAcornParticles(x, y) {
-        for (let i = 0; i < 10; i++) {
+        // モバイルでは少ないパーティクル
+        const particleCount = isMobile ? 5 : 10;
+        
+        for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.style.position = 'fixed';
             particle.style.width = '10px';
@@ -1024,7 +1330,7 @@ function initializeAcornCollection() {
                 x: (Math.random() - 0.5) * 100,
                 y: (Math.random() - 0.5) * 100,
                 scale: 0,
-                duration: 1,
+                duration: isMobile ? 0.8 : 1,
                 ease: 'power2.out',
                 onComplete: () => particle.remove()
             });
@@ -1040,7 +1346,7 @@ function initializeAcornCollection() {
         goldenCollectedCount++;
         
         // Update counter
-        goldenCountSpan.textContent = goldenCollectedCount;
+        updateAcornCounterDisplay(collectedCount, goldenCollectedCount);
         
         // Collection animation - more spectacular for golden acorns
         gsap.to(goldenAcorn, {
@@ -1059,17 +1365,23 @@ function initializeAcornCollection() {
         
         // Show rewards at milestones
         if (goldenCollectedCount === 1) {
-            showReward('images/reward1.png', '初めてのゴールデンどんぐり！');
+            const message = window.gameTranslations?.rewards?.firstGolden || '初めてのゴールデンどんぐり！';
+            showReward('images/reward1.png', message);
         } else if (goldenCollectedCount === 5) {
-            showReward('images/reward2.png', 'ゴールデンどんぐり5個達成！');
+            const message = window.gameTranslations?.rewards?.halfGolden || 'ゴールデンどんぐり5個達成！';
+            showReward('images/reward2.png', message);
         } else if (goldenCollectedCount === 10) {
-            showReward('images/reward3.png', '完全制覇！すべてのゴールデンどんぐりをゲット！');
+            const message = window.gameTranslations?.rewards?.allGolden || '完全制覇！すべてのゴールデンどんぐりをゲット！';
+            showReward('images/reward3.png', message);
             setTimeout(showCompletionPopup, 3000);
         }
     }
     
     function createGoldenParticles(x, y) {
-        for (let i = 0; i < 20; i++) {
+        // モバイルでは少ないパーティクル
+        const particleCount = isMobile ? 10 : 20;
+        
+        for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.style.position = 'fixed';
             particle.style.width = '15px';
@@ -1089,7 +1401,7 @@ function initializeAcornCollection() {
                 y: (Math.random() - 0.5) * 200,
                 scale: 0,
                 rotation: Math.random() * 360,
-                duration: 1.5,
+                duration: isMobile ? 1.2 : 1.5,
                 ease: 'power2.out',
                 onComplete: () => particle.remove()
             });
@@ -1114,7 +1426,8 @@ function initializeAcornCollection() {
             color: var(--primary-orange);
             font-weight: 700;
         `;
-        message.innerHTML = '✨ ゴールデンどんぐりが現れた！ ✨<br><small>ページのどこかに隠れているよ！</small>';
+        const goldenText = window.gameTranslations?.goldenAcornAppeared || '✨ ゴールデンどんぐりが現れた！ ✨<br><small>ページのどこかに隠れているよ！</small>';
+        message.innerHTML = goldenText;
         document.body.appendChild(message);
         
         gsap.fromTo(message, {
@@ -1160,7 +1473,11 @@ function initializeAcornCollection() {
         
         // Update message for golden acorns
         if (goldenCollectedCount === totalGoldenAcorns) {
-            popup.querySelector('p').innerHTML = '全てのどんぐりとゴールデンどんぐりを集めました！<br>ねむこが特別に喜んでいます♪✨';
+            const message = window.gameTranslations?.goldenCompletionMessage || '全てのどんぐりとゴールデンどんぐりを集めました！<br>ねむこが特別に喜んでいます♪✨';
+            popup.querySelector('p').innerHTML = message;
+        } else {
+            const message = window.gameTranslations?.completionMessage || '全てのどんぐりを集めました！<br>ねむこがとても喜んでいます♪';
+            popup.querySelector('p').innerHTML = message;
         }
         
         gsap.fromTo(popup, {
@@ -1193,26 +1510,37 @@ function initializeAcornCollection() {
 function showReward(imagePath, message) {
     const overlay = document.getElementById('rewardOverlay');
     const image = document.getElementById('rewardImage');
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     image.src = imagePath;
     overlay.classList.add('show');
     
     // Show message
     const messageDiv = document.createElement('div');
+    messageDiv.className = 'reward-message';
+    
+    // モバイル向けのスタイル調整
+    const fontSize = isMobile ? '1.2rem' : '1.5rem';
+    const padding = isMobile ? '15px 25px' : '20px 40px';
+    const top = isMobile ? '5%' : '10%';
+    
     messageDiv.style.cssText = `
         position: fixed;
-        top: 10%;
+        top: ${top};
         left: 50%;
         transform: translateX(-50%);
         background: rgba(255, 255, 255, 0.95);
-        padding: 20px 40px;
+        padding: ${padding};
         border-radius: 30px;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         z-index: 10004;
         text-align: center;
-        font-size: 1.5rem;
+        font-size: ${fontSize};
         color: var(--primary-orange);
         font-weight: 700;
+        width: 90%;
+        max-width: 400px;
+        border: 2px solid var(--primary-orange);
     `;
     messageDiv.textContent = message;
     document.body.appendChild(messageDiv);
@@ -1290,7 +1618,15 @@ function initializeMobileMenu() {
     
     // Event listeners
     hamburger.addEventListener('click', toggleMenu);
+    hamburger.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        toggleMenu();
+    });
     menuOverlay.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        closeMenu();
+    });
     
     // Close menu when clicking on links
     mobileMenuLinks.forEach(link => {

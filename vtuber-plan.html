@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTuberプラン - スッとサイト | VTuber専用サイト制作</title>
+    <meta name="description" content="VTuber様専用のインタラクティブなサイト制作プラン。¥10,000から制作可能。素材をご提供いただければさらにお安く！">
+    <meta name="keywords" content="VTuber,サイト制作,公式サイト,LP制作,バーチャルYouTuber,ホームページ">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/plan-page.css">
+    
+    <style>
+        .vtuber-hero {
+            background: linear-gradient(135deg, #FF1493 0%, #9400D3 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vtuber-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><polygon points="100,10 130,80 200,90 150,140 160,200 100,170 40,200 50,140 0,90 70,80" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            background-size: 100px 100px;
+            animation: twinkle 20s linear infinite;
+        }
+        
+        @keyframes twinkle {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .vtuber-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .vtuber-hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .price-highlight {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cost-saving-section {
+            background: #FFF0F5;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .cost-saving-box {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.1);
+            border: 2px solid #FFB6C1;
+        }
+        
+        .cost-saving-box h2 {
+            color: #FF1493;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cost-saving-box .highlight {
+            font-size: 1.3rem;
+            color: #FF1493;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .material-list {
+            text-align: left;
+            max-width: 600px;
+            margin: 30px auto;
+            background: #FFF8DC;
+            padding: 30px;
+            border-radius: 15px;
+        }
+        
+        .material-list h3 {
+            color: #8B008B;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .material-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .material-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .material-list li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .option-section {
+            background: white;
+            padding: 60px 0;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #9400D3 0%, #FF1493 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn-vtuber {
+            background: white;
+            color: #FF1493;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-vtuber:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .vtuber-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .vtuber-hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .price-highlight {
+                font-size: 1.5rem;
+            }
+            
+            .cost-saving-box h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W2NSTXJNG"></script>
+    <script src="/js/analytics.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">スッとサイト</a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">サンプルサイト</a>
+                <a href="deployment-guide.html" class="nav-link">公開ガイド</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">サンプルサイト</a>
+            <a href="deployment-guide.html" class="mobile-nav-link">公開ガイド</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+
+    <section class="vtuber-hero">
+        <div class="container">
+            <h1>VTuberプラン</h1>
+            <p class="subtitle">あなたの魅力を最大限に引き出す公式サイトを</p>
+            <div class="price-highlight">¥10,000〜 で制作可能！</div>
+        </div>
+    </section>
+
+    <section class="cost-saving-section">
+        <div class="container">
+            <div class="cost-saving-box">
+                <h2>💕 素材をご提供いただければ、さらにお安く！</h2>
+                <p class="highlight">
+                    お客様がご用意いただける素材が多ければ多いほど、<br>
+                    制作費用をお安くすることが可能です！
+                </p>
+                <p>
+                    VTuber活動で既にお持ちの素材を活用させていただくことで、<br>
+                    制作時間の短縮と費用の削減を実現します。
+                </p>
+                
+                <div class="material-list">
+                    <h3>ご提供いただけると嬉しい素材</h3>
+                    <ul>
+                        <li>立ち絵・キャラクターイラスト（透過PNG推奨）</li>
+                        <li>ロゴ画像（正方形・横長版）</li>
+                        <li>SDキャラクター・ミニキャラ</li>
+                        <li>背景画像・配信画面のスクリーンショット</li>
+                        <li>アイコン・エモート素材</li>
+                        <li>プロフィール文章・自己紹介</li>
+                        <li>配信スケジュール情報</li>
+                        <li>SNSリンク・各種URL</li>
+                        <li>ファンネーム・推しマーク</li>
+                        <li>BGM・効果音（使用許諾済みのもの）</li>
+                    </ul>
+                </div>
+                
+                <p style="color: #666; font-size: 0.9rem;">
+                    ※素材が少ない場合でも、簡易的な素材制作オプション（+¥5,000）をご用意しています！
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center" style="color: #FF1493; margin-bottom: 50px;">VTuberプランの特徴</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>インタラクティブ機能</h3>
+                    <p>キャラクターをクリックすると反応！<br>ファンとの距離を縮める仕掛け</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>配信スケジュール表示</h3>
+                    <p>次回配信までのカウントダウン<br>ファンを逃さない仕組み</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌏</div>
+                    <h3>多言語対応可能</h3>
+                    <p>海外ファンにもアプローチ<br>1言語 +¥2,500で追加可能</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>アニメーション演出</h3>
+                    <p>GSAPを使った動きのある演出<br>世界観を表現</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>完全レスポンシブ</h3>
+                    <p>PC・スマホ・タブレット<br>どこでも美しく表示</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>SEO対策込み</h3>
+                    <p>検索で見つけてもらいやすく<br>新規ファン獲得をサポート</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="option-section">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 50px;">オプション一覧</h2>
+            
+            <div class="pricing-table">
+                <table>
+                    <tr>
+                        <th style="width: 40%;">オプション</th>
+                        <th style="width: 20%;">料金</th>
+                        <th style="width: 40%;">内容</th>
+                    </tr>
+                    <tr>
+                        <td><strong>簡易素材制作</strong></td>
+                        <td style="color: #FF1493; font-weight: bold;">+¥5,000</td>
+                        <td>なんちゃってVTuber風ロゴ、装飾素材の簡易制作</td>
+                    </tr>
+                    <tr>
+                        <td><strong>マウス追従カーソル</strong></td>
+                        <td style="color: #FF1493; font-weight: bold;">+¥5,000</td>
+                        <td>動物型マスコットがマウスを追いかける！（リテイクなし）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>多言語対応</strong></td>
+                        <td style="color: #FF1493; font-weight: bold;">+¥2,500/言語</td>
+                        <td>英語、中国語、韓国語、インドネシア語など</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ゲーミフィケーション</strong></td>
+                        <td style="color: #FF1493; font-weight: bold;">+¥8,000</td>
+                        <td>サイト内で遊べるミニゲーム要素（要相談）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ドメイン代行取得・サイト管理</strong></td>
+                        <td style="color: #FF1493; font-weight: bold;">¥10,000/年<br><span style="font-size: 0.9rem;">（税込¥11,000）</span></td>
+                        <td>ドメイン取得代行、サーバー管理、SSL証明書更新、月1回程度の簡易更新作業<br>
+                        <span style="font-size: 0.9rem; color: #666;">※更新のご案内は更新日の1ヶ月前にメールでお送りします</span></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <p class="text-center" style="margin-top: 30px; color: #666;">
+                ※その他のカスタマイズも承ります。お気軽にご相談ください！
+            </p>
+            
+            <div style="max-width: 800px; margin: 40px auto 0; padding: 25px; background: linear-gradient(135deg, #FFE4E1 0%, #FFF0F5 100%); border-radius: 20px; border: 3px solid #FF1493; text-align: center;">
+                <h3 style="color: #FF1493; margin-bottom: 20px; font-size: 1.8rem;">
+                    🎉 お友達紹介キャンペーン実施中！
+                </h3>
+                <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 20px; color: #333;">
+                    <span style="font-weight: bold; color: #9400D3; font-size: 1.3rem;">
+                        VTuberのお友達をご紹介いただくと<br>
+                        初年度のサイト管理費が無料に！
+                    </span>
+                </p>
+                <div style="background: white; border-radius: 15px; padding: 20px; margin: 20px 0;">
+                    <h4 style="color: #FF1493; margin-bottom: 15px;">キャンペーン詳細</h4>
+                    <ul style="list-style: none; padding: 0; text-align: left; max-width: 500px; margin: 0 auto;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #FFE4E1;">
+                            <span style="color: #FF1493; font-weight: bold;">✓</span> ご紹介いただいた方が契約成立で適用
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #FFE4E1;">
+                            <span style="color: #FF1493; font-weight: bold;">✓</span> 初年度のサイト管理費¥10,000（税込¥11,000）が無料
+                        </li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #FFE4E1;">
+                            <span style="color: #FF1493; font-weight: bold;">✓</span> 2年目以降は通常料金¥10,000/年（税込¥11,000）
+                        </li>
+                        <li style="padding: 8px 0;">
+                            <span style="color: #FF1493; font-weight: bold;">✓</span> 紹介人数に制限なし！何名でもご紹介可能
+                        </li>
+                    </ul>
+                </div>
+                <p style="font-size: 0.9rem; color: #888;">
+                    ※キャンペーンは予告なく終了する場合があります
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #F8F8F8;">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 50px;">制作実績</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; max-width: 900px; margin: 0 auto;">
+                <div style="text-align: center;">
+                    <a href="https://nemuko.jp/" target="_blank" rel="noopener" style="text-decoration: none;">
+                        <img src="samples/vtuber-nemuko/images/logo_nemuko.png" alt="百実ねむこ様" style="width: 200px; height: 200px; object-fit: contain; background: white; border-radius: 20px; padding: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                        <h3 style="color: #FF1493;">百実ねむこ様</h3>
+                        <p style="color: #666;">モモンガVTuber<br>どんぐり集めゲーム搭載</p>
+                    </a>
+                </div>
+                
+                <div style="text-align: center;">
+                    <a href="samples/vtuber-astra/index.html" style="text-decoration: none;">
+                        <img src="https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=200&h=200&fit=crop" alt="サンプルサイト" style="width: 200px; height: 200px; object-fit: cover; background: white; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                        <h3 style="color: #9400D3;">如月アストラ（サンプル）</h3>
+                        <p style="color: #666;">宇宙系VTuber<br>神秘的なデザイン</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>あなたの魅力を世界に届けよう！</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 40px;">
+                VTuber活動をもっと楽しく、もっと多くのファンに届けるために<br>
+                一緒に素敵な公式サイトを作りませんか？
+            </p>
+            <a href="contact.html" class="btn-vtuber">まずは無料相談から</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 スッとサイト. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

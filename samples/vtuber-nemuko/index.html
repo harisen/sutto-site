@@ -3,19 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>百実ねむこ - 特殊な訓練を受けたモモンガVTuber</title>
-    <meta name="description" content="ドーモ。特殊な訓練を受けたモモンガです。平日17時からTwitchで原神や崩スタをプレイしながら雑談配信中！">
+    <title>百実ねむこ【公式】- 特殊な訓練を受けたモモンガVTuber | nemuko.jp</title>
+    <meta name="description" content="百実ねむこ（もみみ ねむこ）公式サイト。特殊な訓練を受けたエゾモモンガVTuber。平日17時からTwitchで原神・崩壊スターレイルなどのゲーム実況と雑談配信中！かわいいモモンガの配信を見に来てね♪">
+    <meta name="keywords" content="百実ねむこ,もみみねむこ,Momimi Nemuko,VTuber,バーチャルYouTuber,モモンガ,エゾモモンガ,原神,崩壊スターレイル,ゲーム実況,雑談配信,Twitch,配信者">
+    <meta name="google-site-verification" content="OUQ4QEncfU9XZoMyjQUgrfMUN4-UE5flGFUyrqkYUNs" />
+    <link rel="canonical" href="https://nemuko.jp/">
     
-    <!-- Open Graph -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="百実ねむこ - モモンガVTuber">
-    <meta property="og:description" content="特殊な訓練を受けたモモンガVTuber。平日17時から配信中！">
-    <meta property="og:image" content="images/logo_nemuko.png">
+    <meta property="og:url" content="https://nemuko.jp/">
+    <meta property="og:title" content="百実ねむこ【公式】- 特殊な訓練を受けたモモンガVTuber">
+    <meta property="og:description" content="特殊な訓練を受けたエゾモモンガVTuber。平日17時からTwitchで配信中！原神・崩スタなどのゲーム実況と雑談をお届け♪">
+    <meta property="og:image" content="https://nemuko.jp/images/logo_nemuko.png">
+    <meta property="og:site_name" content="百実ねむこ公式サイト">
+    <meta property="og:locale" content="ja_JP">
+    
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nemuko.jp/">
+    <meta property="twitter:title" content="百実ねむこ【公式】- 特殊な訓練を受けたモモンガVTuber">
+    <meta property="twitter:description" content="特殊な訓練を受けたエゾモモンガVTuber。平日17時からTwitchで配信中！">
+    <meta property="twitter:image" content="https://nemuko.jp/images/logo_nemuko.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/acorn-bullet.png">
+    <link rel="apple-touch-icon" href="images/acorn-bullet.png">
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "百実ねむこ",
+        "alternateName": ["もみみねむこ", "Momimi Nemuko"],
+        "description": "特殊な訓練を受けたエゾモモンガVTuber。平日17時からTwitchで配信中。",
+        "url": "https://nemuko.jp/",
+        "image": "https://nemuko.jp/images/logo_nemuko.png",
+        "sameAs": [
+            "https://www.twitch.tv/nemu_zz",
+            "https://x.com/nemu_zz"
+        ],
+        "jobTitle": "VTuber",
+        "knowsAbout": ["ゲーム実況", "原神", "崩壊スターレイル", "雑談配信"],
+        "makesOffer": {
+            "@type": "Offer",
+            "itemOffered": {
+                "@type": "Service",
+                "name": "ゲーム実況・雑談配信",
+                "description": "平日17時からのTwitch配信"
+            }
+        }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "百実ねむこ公式サイト",
+        "url": "https://nemuko.jp/",
+        "description": "百実ねむこの公式ウェブサイト。配信スケジュール、プロフィール情報などを掲載。",
+        "publisher": {
+            "@type": "Person",
+            "name": "百実ねむこ"
+        },
+        "inLanguage": ["ja", "en", "zh", "ko", "id", "pt"]
+    }
+    </script>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="images/logo_nemuko.png" as="image">
+    <link rel="preload" href="images/main.png" as="image">
+    <link rel="preload" href="images/autumn-pattern_1.jpg" as="image">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;600;700&family=Klee+One:wght@400;600&display=swap" rel="stylesheet">
     
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -86,18 +150,106 @@
         
         .loading-transition {
             position: fixed;
-            bottom: -100%;
+            bottom: -100vh;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             z-index: 9999;
-            opacity: 0;
+            opacity: 1;
+            overflow: hidden;
         }
         
         .loading-transition img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background-color: transparent;
+        }
+        
+        /* ヘッダー */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 248, 220, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* 言語切り替えスイッチ */
+        .language-switcher {
+            display: flex;
+            gap: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 4px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(139, 69, 19, 0.2);
+            margin-left: auto;
+            margin-right: 20px;
+        }
+        
+        .lang-btn {
+            position: relative;
+            background: transparent;
+            border: none;
+            border-radius: 18px;
+            padding: 6px 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--secondary-brown);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: 32px;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.05);
+        }
+        
+        .lang-btn.active {
+            background: var(--primary-orange);
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(255, 140, 0, 0.3);
+        }
+        
+        .lang-text {
+            font-size: 0.75rem;
+            letter-spacing: 0.03em;
+        }
+        
+        /* 言語切り替え時のアニメーション */
+        .lang-transition {
+            animation: langChange 0.4s ease-out;
+        }
+        
+        @keyframes langChange {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
         
         /* ミニキャラクター */
@@ -154,14 +306,16 @@
         
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 40px;
             list-style: none;
+            margin-left: 80px;
         }
         
         .nav-link {
             color: var(--text-dark);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.1rem;
             transition: color 0.3s ease;
             position: relative;
         }
@@ -188,8 +342,8 @@
         /* ハンバーガーメニュー */
         .hamburger {
             display: none;
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 20px;
             position: relative;
             cursor: pointer;
             z-index: 902;
@@ -199,9 +353,9 @@
             position: absolute;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 2px; /* 線を細く */
             background: var(--text-dark);
-            border-radius: 3px;
+            border-radius: 2px;
             transition: all 0.3s ease;
         }
         
@@ -219,7 +373,7 @@
         }
         
         .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
+            transform: rotate(45deg) translate(6px, 6px);
         }
         
         .hamburger.active span:nth-child(2) {
@@ -227,7 +381,7 @@
         }
         
         .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
+            transform: rotate(-45deg) translate(6px, -6px);
         }
         
         /* モバイルメニュー */
@@ -244,6 +398,25 @@
             z-index: 901;
             padding: 80px 30px 30px;
             overflow-y: auto;
+        }
+        
+        /* モバイル用どんぐりカウンター */
+        .mobile-collection-counter {
+            background: var(--white);
+            border: 3px solid var(--primary-orange);
+            border-radius: 25px;
+            padding: 15px 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            box-shadow: 0 5px 20px rgba(255, 140, 0, 0.3);
+            display: none; /* デフォルトで非表示 */
+        }
+        
+        .mobile-collection-counter.show {
+            display: block;
         }
         
         .mobile-menu.active {
@@ -292,6 +465,44 @@
             visibility: visible;
         }
         
+        /* モバイル言語切り替え */
+        .mobile-language-switcher {
+            margin-top: 20px;
+            padding: 15px 0;
+            border-top: 2px solid rgba(139, 69, 19, 0.2);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        
+        .mobile-lang-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 8px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--secondary-brown);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .mobile-lang-btn:hover {
+            background: var(--white);
+            border-color: var(--primary-orange);
+        }
+        
+        .mobile-lang-btn.active {
+            background: var(--primary-orange);
+            color: var(--white);
+            border-color: var(--secondary-brown);
+            box-shadow: 0 2px 8px rgba(255, 140, 0, 0.3);
+        }
+        
         /* ヒーローセクション */
         .hero {
             min-height: 100vh;
@@ -299,8 +510,8 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 80px 20px 40px;
-            overflow: hidden;
+            padding: 100px 20px 40px; /* ヘッダー分の余白を追加 */
+            overflow: hidden; /* 元に戻す */
         }
         
         .autumn-bg {
@@ -309,14 +520,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.3;
+            opacity: 0; /* 初期状態を非表示に */
             z-index: -2;
         }
         
         .autumn-bg img {
-            width: 100%;
-            height: 100%;
+            width: 135%;
+            height: 135%;
             object-fit: cover;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         
         .hero-content {
@@ -325,20 +540,23 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
-            align-items: center;
+            align-items: flex-start;
             z-index: 1;
         }
         
         .hero-text {
-            opacity: 0;
+            opacity: 0; /* 初期状態を非表示に */
             text-align: center;
+            transform: translateY(-80px);
+            padding-top: 30px;
+            width: 100%; /* 幅を明示的に設定 */
         }
         
         .hero-logo {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 30px;
-            opacity: 0;
+            width: 525px;
+            height: 525px;
+            margin: 0 auto 10px;
+            opacity: 0; /* 初期状態を非表示に */
         }
         
         .hero-logo img {
@@ -349,47 +567,71 @@
         }
         
         .hero-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--primary-orange);
-            margin-bottom: 20px;
-            line-height: 1.2;
-            font-family: 'Shippori Mincho', serif;
-            letter-spacing: 0.08em;
+            display: none;
         }
         
         .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            margin-bottom: 30px;
-            font-weight: 500;
+            font-size: 2rem;
+            color: var(--primary-orange);
+            margin-top: -60px;  /* 負のマージンを調整 */
+            margin-bottom: 20px;
+            font-weight: 900;
             letter-spacing: 0.05em;
+            font-family: 'Zen Maru Gothic', sans-serif;
+            opacity: 0; /* 初期状態を非表示に */
+            text-shadow: 
+                3px 3px 0 var(--white),
+                -3px 3px 0 var(--white),
+                3px -3px 0 var(--white),
+                -3px -3px 0 var(--white),
+                3px 0 0 var(--white),
+                -3px 0 0 var(--white),
+                0 3px 0 var(--white),
+                0 -3px 0 var(--white),
+                5px 5px 10px rgba(0, 0, 0, 0.2);
         }
         
         .hero-description {
-            font-size: 1.1rem;
-            margin-bottom: 40px;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
             line-height: 1.8;
+            font-weight: 700;
+            color: var(--secondary-brown);
+            opacity: 0; /* 初期状態を非表示に */
+            text-shadow: 
+                2px 2px 0 var(--white),
+                -2px 2px 0 var(--white),
+                2px -2px 0 var(--white),
+                -2px -2px 0 var(--white),
+                2px 0 0 var(--white),
+                -2px 0 0 var(--white),
+                0 2px 0 var(--white),
+                0 -2px 0 var(--white),
+                3px 3px 8px rgba(0, 0, 0, 0.15);
         }
         
         .hero-buttons {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
         }
         
         .btn {
             padding: 15px 40px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
+            font-weight: 700;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            opacity: 0; /* 初期状態を非表示に */
             box-shadow: 0 4px 15px var(--shadow);
             letter-spacing: 0.08em;
+            font-family: 'Zen Maru Gothic', sans-serif;
         }
         
         .btn-primary {
@@ -416,7 +658,10 @@
         
         .hero-image {
             position: relative;
-            opacity: 0;
+            opacity: 0; /* 初期状態を非表示に */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .hero-image img {
@@ -506,13 +751,13 @@
             font-size: 2.8rem;
             color: var(--primary-orange);
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 30px;
             text-shadow: 3px 3px 0 var(--accent-gold), 
                          4px 4px 8px rgba(0, 0, 0, 0.1);
             font-family: 'Zen Maru Gothic', sans-serif;
             letter-spacing: 0.05em;
             position: relative;
-            display: inline-block;
+            display: block;
         }
         
         .schedule-title::before,
@@ -535,7 +780,7 @@
         .schedule-time {
             font-size: 1.8rem;
             color: var(--secondary-brown);
-            margin-bottom: 30px;
+            margin-bottom: 50px;
             font-weight: 700;
             background: var(--white);
             display: inline-block;
@@ -683,6 +928,17 @@
             letter-spacing: 0.1em;
         }
         
+        #profile .section-title {
+            font-family: 'Klee One', cursive !important;
+            font-weight: 600 !important;
+        }
+        
+        /* より強力な指定で上書き */
+        section#profile h2.section-title {
+            font-family: 'Klee One', cursive !important;
+            font-weight: 600 !important;
+        }
+        
         .section-title::before,
         .section-title::after {
             content: '';
@@ -717,37 +973,151 @@
             text-align: center;
         }
         
-        .profile-image img {
+        .profile-image > img {
             width: 100%;
             max-width: 300px;
+            height: auto;
             border-radius: 20px;
             box-shadow: 0 10px 30px var(--shadow);
+            display: block;
+            margin: 0 auto;
+            /* アスペクト比を維持 */
+            object-fit: contain;
+            background: var(--bg-cream);
+        }
+        
+        .profile-sub-images {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+            align-items: center;
+        }
+        
+        .profile-sub-images img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: transform 0.3s ease;
+            /* アスペクト比を維持して画像を表示 */
+            object-fit: contain;
+            background: var(--bg-cream);
+        }
+        
+        .profile-sub-images img:hover {
+            transform: scale(1.02);
         }
         
         .profile-info {
-            background: var(--white);
+            background: #F5E6D3;
             padding: 40px;
-            border-radius: 20px;
+            border-radius: 15px;
             box-shadow: 0 5px 20px var(--shadow);
+            border: 5px solid #8B6914;
+            position: relative;
+            font-family: 'Klee One', cursive !important;
+        }
+        
+        .profile-info * {
+            font-family: 'Klee One', cursive !important;
+        }
+        
+        .profile-info::before {
+            content: '飼育個体情報';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #8B6914;
+            color: var(--white);
+            padding: 8px 30px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            font-family: 'Klee One', cursive;
         }
         
         .profile-info h3 {
-            font-size: 1.8rem;
-            color: var(--primary-orange);
-            margin-bottom: 20px;
-            font-weight: 600;
-            font-family: 'Shippori Mincho', serif;
-            letter-spacing: 0.05em;
+            font-size: 1.5rem;
+            color: #5D4E37;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
+            background: #FFFAF0;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px dashed #8B6914;
         }
         
         .profile-detail {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            background: #FFFAF0;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-orange);
+            display: flex;
+            align-items: flex-start;
         }
         
         .profile-detail strong {
-            color: var(--secondary-brown);
+            color: #5D4E37;
             display: inline-block;
-            min-width: 100px;
+            min-width: 120px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .profile-detail span {
+            color: #3D2817;
+            font-weight: 500;
+        }
+        
+        /* 飼育情報の特別セクション */
+        .care-info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #FFE4B5;
+            border-radius: 10px;
+            border: 2px solid #DEB887;
+        }
+        
+        .care-info-title {
+            font-weight: 700;
+            color: #8B4513;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .care-info-title::before {
+            content: '⚠️';
+            font-size: 1.2rem;
+        }
+        
+        /* Twitter Timeline Section */
+        .twitter-section {
+            background: var(--bg-cream);
+            padding: 80px 20px;
+        }
+        
+        .twitter-timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--primary-orange);
+            overflow: hidden;
+        }
+        
+        /* Twitter widget responsive */
+        .twitter-timeline {
+            width: 100% !important;
         }
         
         /* フッター */
@@ -818,14 +1188,33 @@
             background-size: contain;
             background-repeat: no-repeat;
             cursor: pointer;
-            opacity: 0.6;
+            opacity: 0.8;
             transition: all 0.3s ease;
-            z-index: 10;
+            z-index: 100;
+            filter: drop-shadow(0 0 8px rgba(139, 69, 19, 0.6));
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            padding: 3px;
+            background-color: rgba(255, 255, 255, 0.9);
+            animation: acornPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes acornPulse {
+            0%, 100% { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 8px rgba(139, 69, 19, 0.6));
+            }
+            50% { 
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 15px rgba(255, 140, 0, 0.8));
+            }
         }
         
         .hidden-acorn:hover {
             opacity: 1;
-            transform: scale(1.1);
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 0 20px rgba(255, 140, 0, 1));
+            border-color: var(--accent-gold);
         }
         
         .hidden-acorn.collected {
@@ -843,13 +1232,15 @@
             cursor: pointer;
             opacity: 0;
             transition: all 0.3s ease;
-            z-index: 15;
+            z-index: 1100; /* ヘッダーより前面に表示 */
             filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
             animation: goldenGlow 2s ease-in-out infinite;
+            pointer-events: none;
         }
         
         .golden-acorn.revealed {
             opacity: 0.8;
+            pointer-events: auto;
         }
         
         .golden-acorn:hover {
@@ -873,33 +1264,52 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: var(--white);
-            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            padding: 40px 30px;
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             z-index: 10001;
             text-align: center;
             display: none;
+            border: 3px solid var(--primary-orange);
         }
         
         .collection-popup h3 {
             color: var(--primary-orange);
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .collection-popup p {
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .collection-popup .btn {
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            padding: 12px 30px;
+            min-height: 44px;
         }
         
         .collection-counter {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--white);
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.95);
             padding: 10px 20px;
             border-radius: 30px;
             box-shadow: 0 5px 20px var(--shadow);
+            border: 2px solid var(--primary-orange);
             z-index: 901;
             font-weight: 700;
             color: var(--primary-orange);
             opacity: 0;
-            transform: translateY(-20px);
+            transform: translateY(20px);
+            transition: all 0.3s ease;
         }
         
         .collection-counter.show {
@@ -915,6 +1325,8 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             display: none;
             justify-content: center;
             align-items: center;
@@ -924,7 +1336,7 @@
         
         .reward-image {
             max-width: 90%;
-            max-height: 90%;
+            max-height: 80vh;
             object-fit: contain;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
@@ -949,15 +1361,44 @@
         
         /* レスポンシブ */
         @media (max-width: 768px) {
+            .header {
+                padding: 5px 0; /* ヘッダーの高さを最小限に */
+            }
+            
+            .header-content {
+                padding: 0 15px;
+                height: 40px; /* 高さを固定 */
+            }
+            
+            .hero {
+                padding: 80px 20px 20px; /* 上部を増やしてロゴを下げる */
+                min-height: 100vh;
+            }
+            
             .logo {
-                max-width: 180px;
-                height: 40px;
+                max-width: 150px;
+                height: 30px; /* ロゴをさらに小さく */
+            }
+            
+            .language-switcher {
+                margin-right: 10px;
+                padding: 3px;
+                gap: 1px;
+            }
+            
+            .lang-btn {
+                padding: 5px 8px;
+                font-size: 0.7rem;
+                min-width: 28px;
             }
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 40px;
-                padding: 20px;
+                gap: 20px;
+                padding: 0; /* パディングを削除し、親要素のパディングを使用 */
+                margin-top: 20px; /* 上部に余白を追加 */
+                margin: 20px auto 0; /* 中央揃え */
+                max-width: 100%;
             }
             
             .hero-title {
@@ -986,9 +1427,19 @@
             }
             
             .hero-logo {
-                width: 150px;
-                height: 150px;
-                margin-bottom: 20px;
+                width: 280px;
+                height: 280px;
+                margin-bottom: 10px; /* 下部マージンを大幅に削減 */
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+                margin-top: -20px; /* モバイルでは負のマージンを小さく */
+                margin-bottom: 10px;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
             }
             
             .character-bubble {
@@ -1010,13 +1461,55 @@
                 display: block;
             }
             
+            /* 言語切り替えのモバイル対応 */
+            .language-switcher {
+                margin-right: 10px;
+                padding: 3px;
+            }
+            
+            .lang-btn {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .lang-text {
+                font-size: 0.75rem;
+            }
+            
+            .lang-icon {
+                font-size: 0.9rem;
+            }
+            
             .profile-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
+                text-align: center; /* モバイルで中央揃え */
             }
             
             .profile-info {
                 padding: 30px 20px;
+                margin: 0 auto; /* 中央揃え */
+                max-width: 100%;
+            }
+            
+            .profile-info::before {
+                font-size: 1rem;
+                padding: 6px 20px;
+                top: -20px;
+            }
+            
+            .profile-detail {
+                padding: 12px 15px;
+                margin-bottom: 15px;
+            }
+            
+            .profile-detail strong {
+                min-width: 80px;
+                font-size: 0.9rem;
+            }
+            
+            .profile-detail span {
+                font-size: 0.85rem;
             }
             
             .mini-character {
@@ -1052,6 +1545,7 @@
             
             .schedule-banner {
                 padding: 40px 20px;
+                text-align: center; /* モバイルで中央揃えを確保 */
             }
             
             .floating-acorn {
@@ -1067,6 +1561,10 @@
             
             .section {
                 padding: 60px 20px;
+            }
+            
+            .container {
+                padding: 0; /* モバイルではコンテナのパディングを削除 */
             }
             
             .section-title {
@@ -1088,28 +1586,122 @@
             
             /* どんぐり要素の調整 */
             .hidden-acorn {
-                width: 35px;
-                height: 35px;
+                width: 45px;
+                height: 45px;
+                /* タッチ領域拡大 */
+                position: absolute !important; /* GSAPの影響を避ける */
+                z-index: 150 !important;
+            }
+            
+            .hidden-acorn::before {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                right: -10px;
+                bottom: -10px;
             }
             
             .golden-acorn {
-                width: 40px;
-                height: 40px;
+                width: 50px;
+                height: 50px;
+                /* タッチ領域拡大 */
+                position: absolute !important;
+                z-index: 1100 !important; /* ヘッダーより前面に表示 */
+            }
+            
+            .golden-acorn::before {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                right: -10px;
+                bottom: -10px;
             }
             
             .collection-counter {
-                font-size: 0.8rem;
-                padding: 8px 12px;
-                right: 10px;
+                display: none; /* モバイルでは非表示 */
+            }
+            
+            /* ポップアップのモバイル最適化 */
+            .collection-popup {
+                width: 85%;
+                padding: 30px 20px;
+                top: 40%; /* 上部に寄せて見やすく */
+            }
+            
+            .collection-popup h3 {
+                font-size: 1.3rem;
+            }
+            
+            .collection-popup p {
+                font-size: 1rem;
+            }
+            
+            .collection-popup .btn {
+                font-size: 1rem;
+                padding: 15px 35px;
+            }
+            
+            /* 報酬画像のモバイル最適化 */
+            .reward-image {
+                max-width: 80%;
+                max-height: 60vh;
             }
             
             .mouse-follower {
                 display: none; /* モバイルではマウスフォロワー非表示 */
             }
             
-            /* 葉っぱパーティクルを削減 */
-            .leaf-particle {
-                display: none;
+        }
+        
+        /* 小画面スマートフォン対応 */
+        @media (max-width: 480px) {
+            .collection-popup {
+                width: 90%;
+                padding: 25px 15px;
+            }
+            
+            .collection-popup h3 {
+                font-size: 1.2rem;
+            }
+            
+            .collection-popup p {
+                font-size: 0.9rem;
+            }
+            
+            .reward-image {
+                max-width: 85%;
+                max-height: 50vh;
+            }
+            
+            .collection-counter {
+                font-size: 0.8rem;
+                padding: 10px 14px;
+            }
+        }
+        
+        /* 横向き画面対応 */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .collection-popup {
+                top: 50%;
+                padding: 20px 30px;
+            }
+            
+            .reward-image {
+                max-height: 70vh;
+            }
+            
+            .collection-counter {
+                bottom: 20px;
+                right: 20px;
+                font-size: 0.8rem;
+            }
+            
+            .hidden-acorn,
+            .golden-acorn {
+                width: 35px;
+                height: 35px;
             }
         }
         
@@ -1139,25 +1731,47 @@
                 right: 10%;
             }
         }
+        
+        /* PC/モバイル表示制御 */
+        .pc-only {
+            display: inline;
+        }
+        
+        .mobile-only {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .pc-only {
+                display: none;
+            }
+            
+            .mobile-only {
+                display: inline;
+            }
+        }
     </style>
+    <!-- Translation Scripts -->
+    <script src="js/translations.js"></script>
+    <script src="js/language-switcher.js"></script>
 </head>
 <body>
     <!-- ローディング画面 -->
     <div class="loading-screen" id="loadingScreen" role="status" aria-label="コンテンツを読み込み中">
         <div class="loading-content">
-            <img src="images/loading.gif" alt="Loading" class="loading-character">
+            <img src="images/loading.gif" alt="百実ねむこ ローディング画面" class="loading-character" onerror="this.style.display='none'">
             <div class="loading-text">読み込み中...</div>
         </div>
     </div>
     
     <!-- ローディングトランジション -->
     <div class="loading-transition" id="loadingTransition">
-        <img src="images/loading_2.png" alt="Transition">
+        <img src="images/loading_2.png" alt="百実ねむこ トランジション">
     </div>
     
     <!-- ミニキャラクター -->
     <div class="mini-character" id="miniCharacter" style="left: 50%; top: 50%;" role="img" aria-label="クリックした場所に移動するねむこ">
-        <img src="images/idle.gif" alt="ねむこ" id="characterSprite">
+        <img src="images/idle.gif" alt="百実ねむこ ミニキャラクター" id="characterSprite">
     </div>
     
     <!-- マウスフォロワー -->
@@ -1184,15 +1798,35 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <img src="images/logo_nemuko_row.png" alt="百実ねむこ">
+                <img src="images/logo_nemuko_row.png" alt="百実ねむこ ロゴ" width="150" height="50">
             </div>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#profile" class="nav-link">プロフィール</a></li>
-                    <li><a href="#schedule" class="nav-link">配信情報</a></li>
-                    <li><a href="#content" class="nav-link">コンテンツ</a></li>
+                    <li><a href="#schedule" class="nav-link" data-translate="nav.schedule">配信情報</a></li>
+                    <li><a href="#profile" class="nav-link" data-translate="nav.profile">プロフィール</a></li>
                 </ul>
             </nav>
+            <!-- 言語切り替えスイッチ -->
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="ja" aria-label="日本語">
+                    <span class="lang-text">日</span>
+                </button>
+                <button class="lang-btn" data-lang="en" aria-label="English">
+                    <span class="lang-text">EN</span>
+                </button>
+                <button class="lang-btn" data-lang="zh" aria-label="简体中文">
+                    <span class="lang-text">中</span>
+                </button>
+                <button class="lang-btn" data-lang="ko" aria-label="한국어">
+                    <span class="lang-text">한</span>
+                </button>
+                <button class="lang-btn" data-lang="id" aria-label="Bahasa Indonesia">
+                    <span class="lang-text">ID</span>
+                </button>
+                <button class="lang-btn" data-lang="pt" aria-label="Português">
+                    <span class="lang-text">PT</span>
+                </button>
+            </div>
             <div class="hamburger" id="hamburger" role="button" aria-label="メニューを開く" aria-expanded="false">
                 <span></span>
                 <span></span>
@@ -1205,15 +1839,37 @@
     <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="モバイルナビゲーション">
         <ul class="mobile-menu-list">
             <li class="mobile-menu-item">
-                <a href="#profile" class="mobile-menu-link">プロフィール</a>
+                <a href="#schedule" class="mobile-menu-link" data-translate="nav.schedule">配信情報</a>
             </li>
             <li class="mobile-menu-item">
-                <a href="#schedule" class="mobile-menu-link">配信情報</a>
-            </li>
-            <li class="mobile-menu-item">
-                <a href="#content" class="mobile-menu-link">コンテンツ</a>
+                <a href="#profile" class="mobile-menu-link" data-translate="nav.profile">プロフィール</a>
             </li>
         </ul>
+        <!-- モバイル用どんぐりカウンター -->
+        <div class="mobile-collection-counter" id="mobileCollectionCounter">
+            どんぐり: <span id="mobileAcornCount">0</span>/5 | ゴールデン: <span id="mobileGoldenCount">0</span>/10
+        </div>
+        <!-- モバイル用言語切り替え -->
+        <div class="mobile-language-switcher">
+            <button class="mobile-lang-btn active" data-lang="ja">
+                <span>日本語</span>
+            </button>
+            <button class="mobile-lang-btn" data-lang="en">
+                <span>English</span>
+            </button>
+            <button class="mobile-lang-btn" data-lang="zh">
+                <span>中文</span>
+            </button>
+            <button class="mobile-lang-btn" data-lang="ko">
+                <span>한국어</span>
+            </button>
+            <button class="mobile-lang-btn" data-lang="id">
+                <span>Indonesia</span>
+            </button>
+            <button class="mobile-lang-btn" data-lang="pt">
+                <span>Português</span>
+            </button>
+        </div>
     </div>
     
     <!-- メニューオーバーレイ -->
@@ -1222,40 +1878,42 @@
     <!-- ヒーローセクション -->
     <section class="hero">
         <div class="autumn-bg">
-            <img src="images/autumn-pattern_1.jpg" alt="秋の背景" loading="lazy">
+            <img src="images/autumn-pattern_1.jpg" alt="秋の紅葉背景パターン" loading="eager" width="1920" height="1080">
         </div>
         <div class="hero-content">
             <div class="hero-text">
                 <div class="hero-logo">
-                    <img src="images/logo_nemuko.png" alt="百実ねむこロゴ">
+                    <img src="images/logo_nemuko.png" alt="百実ねむこ メインロゴ VTuber" loading="eager" width="400" height="400">
                 </div>
-                <h1 class="hero-title">百実ねむこ</h1>
-                <p class="hero-subtitle" id="heroSubtitle"></p>
+                <h1 class="hero-title" data-translate="hero.name">百実ねむこ</h1>
+                <p class="hero-subtitle" id="heroSubtitle" style="white-space: pre-line;"></p>
                 <p class="hero-description">
-                    平日17時からTwitchにて定時配信中！<br>
-                    原神メイン、たまに崩壊:スターレイルとか他ゲームをしながら雑談配信をしています。
+                    <span class="pc-only">平日17時からTwitchにて定時配信中！<br>
+                    原神メイン、たまに崩壊:スターレイル<br class="pc-only">とか他ゲームをしながら雑談配信をしています。</span>
+                    <span class="mobile-only">平日17時からTwitchにて定時配信中！<br>
+                    原神メイン、たまに崩壊:スターレイルとか他ゲームをしながら雑談配信をしています。</span>
                 </p>
-                <div class="hero-buttons">
-                    <a href="https://m.twitch.tv/nemuko_momo/home" class="btn btn-primary" target="_blank">
-                        <span>Twitchで見る</span>
-                    </a>
-                    <a href="#profile" class="btn btn-secondary">
-                        <span>詳しく知る</span>
-                    </a>
-                </div>
             </div>
             <div class="hero-image">
-                <img src="images/main.png" alt="百実ねむこ" loading="lazy">
+                <img src="images/main.png" alt="百実ねむこ メインビジュアル モモンガVTuber" loading="eager" style="max-width: 100%; height: auto;" width="500" height="700">
+                <div class="hero-buttons">
+                    <a href="https://m.twitch.tv/nemuko_momo/home" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        <span data-translate="hero.watchStream">配信を見る</span>
+                    </a>
+                    <a href="https://x.com/momimi_nemuko?s=21" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                        <span data-translate="hero.twitterFollow">Xをフォロー</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
     
     <!-- 定時配信バナー -->
-    <section class="schedule-banner">
+    <section class="schedule-banner" id="schedule">
         <div class="floating-acorn"></div>
         <div class="floating-acorn"></div>
         <div class="floating-acorn"></div>
-        <img src="images/clock-icon.png" alt="時計" class="clock-icon" loading="lazy">
+        <img src="images/clock-icon.png" alt="配信時間アイコン" class="clock-icon" loading="lazy" width="60" height="60">
         <div class="schedule-content">
             <h2 class="schedule-title">平日17時から配信中！</h2>
             <p class="schedule-time">月曜日〜金曜日 17:00 START</p>
@@ -1275,24 +1933,47 @@
     <!-- プロフィールセクション -->
     <section class="section" id="profile">
         <div class="container">
-            <h2 class="section-title">プロフィール</h2>
+            <h2 class="section-title" data-translate="profile.title">飼育展示情報</h2>
             <div class="profile-content">
                 <div class="profile-image">
-                    <img src="images/sd_1.png" alt="ねむこSD" loading="lazy">
+                    <img src="images/sd_1.png" alt="百実ねむこ SDキャラクター" loading="lazy">
+                    <div class="profile-sub-images">
+                        <img src="images/main2.png" alt="ねむこ2" loading="eager">
+                        <img src="images/main3.png" alt="ねむこ3" loading="eager">
+                    </div>
                 </div>
                 <div class="profile-info">
-                    <h3>特殊な訓練を受けたモモンガです</h3>
+                    <h3 data-translate="profile.speciesTitle">エゾモモンガ（特殊個体）</h3>
                     <div class="profile-detail">
-                        <strong>名前：</strong>百実ねむこ（もみ ねむこ）
+                        <strong data-translate="profile.name">愛称：</strong><span data-translate="profile.nameValue">ねむこ</span>
                     </div>
                     <div class="profile-detail">
-                        <strong>種族：</strong>モモンガ（特殊な訓練済み）
+                        <strong data-translate="profile.scientificName">学名：</strong><span data-translate="profile.scientificNameValue">Pteromys volans orii specialus</span>
                     </div>
                     <div class="profile-detail">
-                        <strong>配信内容：</strong>原神、崩壊:スターレイル、雑談など
+                        <strong data-translate="profile.classification">分類：</strong><span data-translate="profile.classificationValue">哺乳綱・齧歯目・リス科・モモンガ亜科</span>
                     </div>
                     <div class="profile-detail">
-                        <strong>配信時間：</strong>平日17時から定時配信
+                        <strong data-translate="profile.habitat">生息地：</strong><span data-translate="profile.habitatValue">主にTwitch配信環境</span>
+                    </div>
+                    <div class="profile-detail">
+                        <strong data-translate="profile.height">体長：</strong><span data-translate="profile.heightValue">約15cm（尻尾含まず）</span>
+                    </div>
+                    <div class="profile-detail">
+                        <strong data-translate="profile.activeTime">活動時間：</strong><span data-translate="profile.activeTimeValue">平日17:00～（夜行性）</span>
+                    </div>
+                    <div class="profile-detail">
+                        <strong data-translate="profile.favoriteFood">主食：</strong><span data-translate="profile.favoriteFoodValue">お菓子・甘いもの全般</span>
+                    </div>
+                    <div class="profile-detail">
+                        <strong data-translate="profile.training">特技：</strong><span data-translate="profile.trainingValue">ゲーム実況・雑談・滑空</span>
+                    </div>
+                    
+                    <div class="care-info">
+                        <div class="care-info-title" data-translate="profile.careTitle">飼育員からのお願い</div>
+                        <p data-translate="profile.cautionText">特殊な訓練により言語を理解し、ゲームをプレイできる珍しい個体です。<br>
+                        配信中はやさしくコメントしてあげてください。<br>
+                        どんぐりの与えすぎにご注意ください。</p>
                     </div>
                 </div>
             </div>
@@ -1304,12 +1985,26 @@
         <div class="footer-content">
             <div class="social-links">
                 <a href="https://m.twitch.tv/nemuko_momo/home" class="social-link" target="_blank">Twitch</a>
-                <a href="https://x.com/nemukogame" class="social-link" target="_blank">Twitter</a>
+                <a href="https://x.com/nemukogame" class="social-link" target="_blank">X</a>
                 <a href="https://www.youtube.com/@nemuko_100/shorts" class="social-link" target="_blank">YouTube</a>
+                <a href="https://note.com/nemukogame" class="social-link" target="_blank">Note</a>
             </div>
         </div>
     </footer>
     
     <script src="script.js"></script>
+    
+    <!-- Emergency loading screen removal -->
+    <script>
+        // Force remove loading screen after 4 seconds as last resort
+        setTimeout(function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen && loadingScreen.style.display !== 'none') {
+                console.warn('Emergency loading screen removal');
+                loadingScreen.style.display = 'none';
+                document.body.style.overflow = 'visible';
+            }
+        }, 4000);
+    </script>
 </body>
 </html>

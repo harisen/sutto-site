@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お申し込み内容確認 - スッとサイト</title>
+    <meta name="description" content="VTuberプラン制作のお申し込み内容確認ページ">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        /* 確認画面専用スタイル */
+        .confirmation-hero {
+            background: linear-gradient(135deg, #9400D3 0%, #FF1493 100%);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        
+        .confirmation-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .confirmation-box {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .confirmation-section {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #FFE4E1;
+        }
+        
+        .confirmation-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: #9400D3;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: #FF1493;
+            margin-right: 12px;
+        }
+        
+        .confirmation-item {
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .item-label {
+            font-weight: bold;
+            color: #666;
+            margin-bottom: 5px;
+            width: 100%;
+        }
+        
+        .item-value {
+            color: #333;
+            padding-left: 20px;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        
+        .price-summary {
+            background: linear-gradient(135deg, #FFE4E1 0%, #FFF0F5 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #FF1493;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .price-label {
+            font-size: 1.2rem;
+            color: #9400D3;
+            margin-bottom: 10px;
+        }
+        
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FF1493;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .btn-confirm {
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #FF1493 0%, #9400D3 100%);
+            color: white;
+        }
+        
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
+        }
+        
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-back {
+            background: white;
+            color: #9400D3;
+            border: 2px solid #9400D3;
+        }
+        
+        .btn-back:hover {
+            background: #FFF0F5;
+        }
+        
+        .warning-box {
+            background: #FFF8DC;
+            border: 1px solid #FFD700;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .warning-box p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .loading-spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 20, 147, 0.3);
+            border-top-color: #FF1493;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .success-message {
+            display: none;
+            background: #D4EDDA;
+            color: #155724;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .error-message {
+            display: none;
+            background: #F8D7DA;
+            color: #721C24;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        /* スマホでの改行表示 */
+        .sp-only {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .sp-only {
+                display: inline;
+            }
+            
+            .confirmation-hero h1 {
+                font-size: 2rem;
+                line-height: 1.4;
+            }
+            
+            .confirmation-box {
+                padding: 25px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-confirm {
+                width: 100%;
+            }
+        }
+    </style>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W2NSTXJNG"></script>
+    <script src="js/analytics.js"></script>
+    
+    <!-- フォーム送信処理 -->
+    <script src="js/vtuber-form-submit.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <span style="font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 2.8rem; font-weight: 900; color: #2563eb;">スッとサイト</span>
+                    <span style="font-size: 1.1rem; font-weight: 400; color: #64748b; margin-top: -4px; letter-spacing: 0.02em;">個人から企業まで最速・低価格でホームページ制作</span>
+                </div>
+            </a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">作品例</a>
+                <a href="deployment-guide.html" class="nav-link">公開の仕方</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">作品例</a>
+            <a href="deployment-guide.html" class="mobile-nav-link">公開の仕方</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+
+    <section class="confirmation-hero">
+        <div class="container">
+            <h1>お申し込み内容の<br class="sp-only">確認</h1>
+            <p style="font-size: 1.2rem; margin-top: 20px;">
+                以下の内容でお申し込みを<br class="sp-only">承ります
+            </p>
+        </div>
+    </section>
+
+    <div class="confirmation-container">
+        <div class="success-message" id="successMessage">
+            <h2 style="margin-bottom: 10px;">✅ お申し込みを受け付けました</h2>
+            <p>内容を確認の上、担当者より2営業日以内にご連絡させていただきます。</p>
+        </div>
+        
+        <div class="error-message" id="errorMessage">
+            <h2 style="margin-bottom: 10px;">❌ 送信に失敗しました</h2>
+            <p>お手数ですが、時間をおいて再度お試しいただくか、<br>
+            直接 sutto.apps@gmail.com までご連絡ください。</p>
+        </div>
+        
+        <div id="confirmationContent">
+            <div class="warning-box">
+                <p>
+                    <strong>ご確認ください</strong><br>
+                    以下の内容に間違いがないかご確認ください。<br>
+                    問題なければ「この内容で申し込む」ボタンを押してください。
+                </p>
+            </div>
+            
+            <div class="price-summary">
+                <div class="price-label">暫定お見積もり金額</div>
+                <div class="price-amount" id="totalPrice">¥0</div>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">
+                    ※詳細なお見積もりは、ご相談内容により変動する場合があります
+                </p>
+            </div>
+            
+            <div class="confirmation-box">
+                <div class="confirmation-section">
+                    <h2 class="section-title">基本情報</h2>
+                    <div id="basicInfo"></div>
+                </div>
+                
+                <div class="confirmation-section">
+                    <h2 class="section-title">見積もり情報</h2>
+                    <div id="estimateInfo"></div>
+                </div>
+                
+                <div class="confirmation-section" id="referralSection" style="display: none;">
+                    <h2 class="section-title">お友達紹介キャンペーン</h2>
+                    <div id="referralInfo"></div>
+                </div>
+                
+                <div class="confirmation-section">
+                    <h2 class="section-title">VTuberについて</h2>
+                    <div id="vtuberInfo"></div>
+                </div>
+                
+                <div class="confirmation-section">
+                    <h2 class="section-title">SNS・配信リンク</h2>
+                    <div id="snsInfo"></div>
+                </div>
+                
+                <div class="confirmation-section">
+                    <h2 class="section-title">サイトについて</h2>
+                    <div id="siteInfo"></div>
+                </div>
+                
+                <div class="confirmation-section">
+                    <h2 class="section-title">提供素材・その他</h2>
+                    <div id="materialInfo"></div>
+                </div>
+            </div>
+            
+            <div class="loading-spinner" id="loadingSpinner"></div>
+            
+            <div class="action-buttons">
+                <button type="button" class="btn-confirm btn-back" onclick="history.back()">
+                    入力内容を修正する
+                </button>
+                <button type="button" class="btn-confirm btn-submit" id="submitButton">
+                    この内容で申し込む
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 スッとサイト. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // データの取得と表示
+        const data = JSON.parse(sessionStorage.getItem('vtuberFormData') || '{}');
+        
+        // 価格表示
+        document.getElementById('totalPrice').textContent = `¥${parseInt(data.estimated_price || 0).toLocaleString()}`;
+        
+        // 基本情報
+        const basicInfo = document.getElementById('basicInfo');
+        basicInfo.innerHTML = `
+            <div class="confirmation-item">
+                <div class="item-label">VTuber名</div>
+                <div class="item-value">${data.vtuber_name || ''}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">お名前（担当者様）</div>
+                <div class="item-value">${data.contact_name || ''}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">メールアドレス</div>
+                <div class="item-value">${data.email || ''}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">電話番号</div>
+                <div class="item-value">${data.phone || '未記入'}</div>
+            </div>
+        `;
+        
+        // 見積もり情報
+        const estimateInfo = document.getElementById('estimateInfo');
+        estimateInfo.innerHTML = `
+            <div class="confirmation-item">
+                <div class="item-label">選択オプション</div>
+                <div class="item-value">${data.selected_options?.join('、') || 'なし'}</div>
+            </div>
+        `;
+        
+        // お友達紹介キャンペーン
+        if (data.referral_use) {
+            document.getElementById('referralSection').style.display = 'block';
+            const referralInfo = document.getElementById('referralInfo');
+            referralInfo.innerHTML = `
+                <div class="confirmation-item">
+                    <div class="item-label">紹介VTuber様</div>
+                    <div class="item-value">${data.referral_name || ''}</div>
+                </div>
+                <div class="confirmation-item">
+                    <div class="item-label">関連リンク</div>
+                    <div class="item-value">${data.referral_link || '未記入'}</div>
+                </div>
+                <div class="confirmation-item">
+                    <div class="item-label">連絡先</div>
+                    <div class="item-value">${data.referral_email || '未記入'}</div>
+                </div>
+            `;
+        }
+        
+        // VTuber情報
+        const vtuberInfo = document.getElementById('vtuberInfo');
+        vtuberInfo.innerHTML = `
+            <div class="confirmation-item">
+                <div class="item-label">コンセプト・世界観</div>
+                <div class="item-value">${data.concept || ''}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">主な配信内容</div>
+                <div class="item-value">${data.content_types?.join('、') || ''}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">ターゲット層</div>
+                <div class="item-value">${data.target_audience || '未記入'}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">配信プラットフォーム</div>
+                <div class="item-value">${data.platforms?.join('、') || ''}</div>
+            </div>
+        `;
+        
+        // SNS情報
+        const snsInfo = document.getElementById('snsInfo');
+        snsInfo.innerHTML = `
+            <div class="confirmation-item">
+                <div class="item-label">X（旧Twitter）</div>
+                <div class="item-value">${data.x_url || '未記入'}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">YouTube</div>
+                <div class="item-value">${data.youtube_url || '未記入'}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">Twitch</div>
+                <div class="item-value">${data.twitch_url || '未記入'}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">その他のリンク</div>
+                <div class="item-value">${data.other_links || '未記入'}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">ハッシュタグ</div>
+                <div class="item-value">${data.hashtags || '未記入'}</div>
+            </div>
+        `;
+        
+        // サイト情報
+        const siteInfo = document.getElementById('siteInfo');
+        siteInfo.innerHTML = `
+            <div class="confirmation-item">
+                <div class="item-label">掲載セクション</div>
+                <div class="item-value">${data.sections?.join('、') || ''}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">デザインの希望</div>
+                <div class="item-value">${data.design_preference || '未記入'}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">参考サイト</div>
+                <div class="item-value">${data.reference_sites || '未記入'}</div>
+            </div>
+        `;
+        
+        // 素材・その他情報
+        const materialInfo = document.getElementById('materialInfo');
+        materialInfo.innerHTML = `
+            <div class="confirmation-item">
+                <div class="item-label">提供可能な素材</div>
+                <div class="item-value">${data.materials?.join('、') || 'なし'}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">素材ダウンロードリンク</div>
+                <div class="item-value">${data.material_links || '未記入'}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">希望納期</div>
+                <div class="item-value">${data.deadline || '特になし'}</div>
+            </div>
+            <div class="confirmation-item">
+                <div class="item-label">その他ご要望</div>
+                <div class="item-value">${data.other_requests || '特になし'}</div>
+            </div>
+        `;
+        
+        // 送信処理
+        document.getElementById('submitButton').addEventListener('click', async function() {
+            this.disabled = true;
+            document.getElementById('loadingSpinner').style.display = 'block';
+            
+            try {
+                // ローカル環境かどうかをチェック
+                const isLocal = window.location.protocol === 'file:';
+                
+                if (!isLocal) {
+                    // 本番環境：Resend APIでメール送信
+                    const response = await fetch('/api/send-vtuber-email', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(result.details || 'メール送信に失敗しました');
+                    }
+                    
+                    // 成功表示
+                    document.getElementById('confirmationContent').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                    
+                    // データをクリア
+                    sessionStorage.removeItem('vtuberFormData');
+                    
+                    // 5秒後にトップページへリダイレクト
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 5000);
+                } else {
+                    // ローカル環境：直接メールクライアントを開く
+                    throw new Error('ローカル環境のため、メールクライアントを使用します');
+                }
+                
+            } catch (error) {
+                console.log('APIエラーのため、メールクライアントにフォールバック:', error.message);
+                
+                // エラー時はメールクライアントを開くフォールバック
+                if (window.openMailClient) {
+                    window.openMailClient(data);
+                    // フォールバック成功メッセージ
+                    document.getElementById('confirmationContent').style.display = 'none';
+                    document.getElementById('successMessage').innerHTML = `
+                        <h2 style="margin-bottom: 10px;">✅ メールクライアントが開きました</h2>
+                        <p>メールクライアントで内容をご確認の上、送信してください。<br>
+                        送信後、このページは自動的にトップページへ戻ります。</p>
+                    `;
+                    document.getElementById('successMessage').style.display = 'block';
+                    sessionStorage.removeItem('vtuberFormData');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 5000);
+                } else {
+                    document.getElementById('loadingSpinner').style.display = 'none';
+                    document.getElementById('errorMessage').style.display = 'block';
+                    this.disabled = false;
+                }
+            }
+        });
+        
+        // モバイルメニュー
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

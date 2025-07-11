@@ -21,7 +21,9 @@
 ├── js/                     # JavaScript
 ├── images/                 # 画像素材
 ├── samples/                # サンプルサイト
+│   └── vtuber-nemuko/      # VTuberサイトサンプル
 ├── docs/                   # ドキュメント
+│   └── VTUBER_SITE_GUIDE.md # VTuberサイト制作ガイド
 ├── dashboard-customer-management.html  # 顧客管理（ローカル専用）
 └── google-apps-script/     # Google Apps Script（別途設定）
 ```
