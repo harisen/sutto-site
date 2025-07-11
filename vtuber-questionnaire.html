@@ -321,6 +321,51 @@
                 </div>
                 
                 <div class="form-section">
+                    <h3>お友達紹介キャンペーン</h3>
+                    
+                    <div style="background: #FFF0F5; padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+                        <p style="font-weight: bold; color: #9400D3; margin-bottom: 10px;">
+                            🎉 他のVTuber様をご紹介いただくと、初年度のサイト維持管理費（¥11,000）が無料になります！
+                        </p>
+                        
+                        <label class="checkbox-item" style="margin-bottom: 15px;">
+                            <input type="checkbox" id="useReferralCampaign" name="use_referral_campaign">
+                            <span style="font-weight: bold;">お友達紹介キャンペーンを利用する</span>
+                        </label>
+                        
+                        <div id="referralFields" style="display: none;">
+                            <div class="form-group">
+                                <label class="form-label">
+                                    紹介するVTuber様のお名前 <span class="required">*</span>
+                                </label>
+                                <input type="text" name="referral_vtuber_name" class="form-input" placeholder="例：如月アストラ">
+                                <span class="error-message">紹介するVTuber様のお名前を入力してください</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">
+                                    紹介するVTuber様のSNSまたは配信URL <span class="required">*</span>
+                                </label>
+                                <input type="text" name="referral_vtuber_link" class="form-input" placeholder="例：https://x.com/kisaragi_astra">
+                                <span class="error-message">URLを入力してください</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">
+                                    紹介するVTuber様のご連絡先（メールアドレス） <span class="required">*</span>
+                                </label>
+                                <input type="email" name="referral_vtuber_email" class="form-input" placeholder="例：astra@example.com">
+                                <span class="error-message">有効なメールアドレスを入力してください</span>
+                            </div>
+                            
+                            <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">
+                                ※ ご紹介いただいたVTuber様がサービスをご利用された場合、紹介者様の初年度維持管理費が無料となります。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
                     <h3>VTuberについて</h3>
                     
                     <div class="form-group">
@@ -645,6 +690,22 @@ Dropbox: https://www.dropbox.com/xxxx"></textarea>
             }
         }
         
+        // お友達紹介キャンペーンのチェックボックス処理
+        const referralCheckbox = document.getElementById('useReferralCampaign');
+        const referralFields = document.getElementById('referralFields');
+        
+        referralCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                referralFields.style.display = 'block';
+            } else {
+                referralFields.style.display = 'none';
+                // フィールドをクリア
+                document.querySelector('input[name="referral_vtuber_name"]').value = '';
+                document.querySelector('input[name="referral_vtuber_link"]').value = '';
+                document.querySelector('input[name="referral_vtuber_email"]').value = '';
+            }
+        });
+        
         // フォーム送信処理
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -662,6 +723,34 @@ Dropbox: https://www.dropbox.com/xxxx"></textarea>
                 }
             });
             
+            // お友達紹介キャンペーンのバリデーション
+            if (referralCheckbox.checked) {
+                const referralName = document.querySelector('input[name="referral_vtuber_name"]');
+                const referralLink = document.querySelector('input[name="referral_vtuber_link"]');
+                const referralEmail = document.querySelector('input[name="referral_vtuber_email"]');
+                
+                if (!referralName.value.trim()) {
+                    showError(referralName);
+                    isValid = false;
+                } else {
+                    hideError(referralName);
+                }
+                
+                if (!referralLink.value.trim()) {
+                    showError(referralLink);
+                    isValid = false;
+                } else {
+                    hideError(referralLink);
+                }
+                
+                if (!referralEmail.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(referralEmail.value)) {
+                    showError(referralEmail);
+                    isValid = false;
+                } else {
+                    hideError(referralEmail);
+                }
+            }
+            
             if (!isValid) {
                 return;
             }
@@ -674,10 +763,10 @@ Dropbox: https://www.dropbox.com/xxxx"></textarea>
                 email: formData.get('email'),
                 phone: formData.get('phone'),
                 concept: formData.get('concept'),
-                referral_use: urlParams.get('useReferral') === 'true',
-                referral_name: urlParams.get('referralName'),
-                referral_link: urlParams.get('referralLink'),
-                referral_email: urlParams.get('referralEmail'),
+                referral_use: referralCheckbox.checked,
+                referral_name: referralCheckbox.checked ? formData.get('referral_vtuber_name') : '',
+                referral_link: referralCheckbox.checked ? formData.get('referral_vtuber_link') : '',
+                referral_email: referralCheckbox.checked ? formData.get('referral_vtuber_email') : '',
                 content_types: formData.getAll('content_type'),
                 target_audience: formData.get('target_audience'),
                 platforms: formData.getAll('platform'),

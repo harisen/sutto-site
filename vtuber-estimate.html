@@ -528,45 +528,13 @@
             </p>
             
             <!-- お友達紹介キャンペーン -->
-            <div class="referral-campaign">
+            <div class="referral-campaign-info">
                 <h3 class="campaign-title">🎉 お友達紹介キャンペーン</h3>
                 <p class="campaign-description">
                     他のVTuber様をご紹介いただくと、<br>
-                    <strong>初年度のサイト維持管理費（¥11,000）が無料</strong>になります！
+                    <strong>初年度のサイト維持管理費（¥11,000）が無料</strong>になります！<br>
+                    <span style="font-size: 0.9rem; color: #666;">※ 詳細は申し込みフォームにてご確認ください</span>
                 </p>
-                
-                <label class="campaign-checkbox">
-                    <input type="checkbox" id="useReferral" class="referral-checkbox">
-                    <span>お友達紹介キャンペーンを利用する</span>
-                </label>
-                
-                <div id="referralForm" class="referral-form" style="display: none;">
-                    <div class="form-group">
-                        <label class="form-label">
-                            紹介するVTuber様のお名前 <span class="required">*</span>
-                        </label>
-                        <input type="text" id="referralName" class="form-input" placeholder="例：如月アストラ">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">
-                            紹介するVTuber様のSNSまたは配信URL <span class="required">*</span>
-                        </label>
-                        <input type="text" id="referralLink" class="form-input" placeholder="例：https://x.com/kisaragi_astra">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">
-                            紹介するVTuber様のご連絡先（メールアドレス） <span class="required">*</span>
-                        </label>
-                        <input type="email" id="referralEmail" class="form-input" placeholder="例：astra@example.com">
-                    </div>
-                    
-                    <p class="referral-note">
-                        ※ ご紹介いただいたVTuber様がサービスをご利用された場合、<br>
-                        紹介者様の初年度維持管理費が無料となります。
-                    </p>
-                </div>
             </div>
             
             <div class="action-buttons">
@@ -646,14 +614,43 @@
                 yearlyFeeInfo.style.display = 'none';
             }
             
-            // 消費税計算
+            // ドメイン代行取得・サイト管理費用が選択されているかチェック
+            const domainCheckbox = document.getElementById('domain-management');
+            let yearlyFeeIncluded = false;
+            let yearlyFee = 0;
+            
+            if (domainCheckbox && domainCheckbox.checked) {
+                yearlyFeeIncluded = true;
+                yearlyFee = parseInt(domainCheckbox.dataset.price);
+            }
+            
+            // 消費税計算（初回制作費のみ）
             const tax = Math.floor(subtotal * taxRate);
-            const total = subtotal + tax;
+            const productionTotal = subtotal + tax;
+            
+            // 年額費用の税込計算
+            const yearlyTax = Math.floor(yearlyFee * taxRate);
+            const yearlyTotalWithTax = yearlyFee + yearlyTax;
+            
+            // 総合計（初回制作費 + 年額費用）
+            const grandTotal = productionTotal + yearlyTotalWithTax;
             
             // 金額の表示
             subtotalAmountDiv.textContent = `¥${subtotal.toLocaleString()}`;
             taxAmountDiv.textContent = `¥${tax.toLocaleString()}`;
-            totalAmountDiv.textContent = `¥${total.toLocaleString()}`;
+            
+            // 総合計の表示を更新
+            if (yearlyFeeIncluded) {
+                totalAmountDiv.innerHTML = `
+                    <div style="font-size: 0.9rem; margin-bottom: 5px;">
+                        制作費: ¥${productionTotal.toLocaleString()} + 
+                        年額費用: ¥${yearlyTotalWithTax.toLocaleString()}
+                    </div>
+                    <div>¥${grandTotal.toLocaleString()}</div>
+                `;
+            } else {
+                totalAmountDiv.textContent = `¥${productionTotal.toLocaleString()}`;
+            }
             
             // URLパラメータとして選択内容を保存
             const selectedIds = [];
@@ -668,25 +665,11 @@
             const params = new URLSearchParams({
                 subtotal: subtotal,
                 tax: tax,
-                total: total,
+                total: yearlyFeeIncluded ? grandTotal : productionTotal,
                 yearlyTotal: yearlyTotal,
                 options: selectedIds.join(','),
                 optionNames: selectedNames.join(',')
             });
-            
-            // お友達紹介キャンペーンの情報を追加
-            const useReferral = document.getElementById('useReferral').checked;
-            params.append('useReferral', useReferral);
-            
-            if (useReferral) {
-                const referralName = document.getElementById('referralName').value;
-                const referralLink = document.getElementById('referralLink').value;
-                const referralEmail = document.getElementById('referralEmail').value;
-                
-                params.append('referralName', referralName);
-                params.append('referralLink', referralLink);
-                params.append('referralEmail', referralEmail);
-            }
             
             proceedButton.href = `vtuber-questionnaire.html?${params.toString()}`;
         }
@@ -698,49 +681,6 @@
         
         // 初期計算
         calculateTotal();
-        
-        // お友達紹介キャンペーンのフォーム表示切替
-        const referralCheckbox = document.getElementById('useReferral');
-        const referralForm = document.getElementById('referralForm');
-        
-        if (referralCheckbox && referralForm) {
-            referralCheckbox.addEventListener('change', function() {
-                if (this.checked) {
-                    referralForm.style.display = 'block';
-                } else {
-                    referralForm.style.display = 'none';
-                    // フォームをクリア
-                    document.getElementById('referralName').value = '';
-                    document.getElementById('referralLink').value = '';
-                    document.getElementById('referralEmail').value = '';
-                }
-            });
-        } else {
-            console.error('紹介キャンペーンの要素が見つかりません');
-        }
-        
-        // 申し込みボタンのバリデーション
-        proceedButton.addEventListener('click', function(e) {
-            if (referralCheckbox && referralCheckbox.checked) {
-                const referralName = document.getElementById('referralName').value.trim();
-                const referralLink = document.getElementById('referralLink').value.trim();
-                const referralEmail = document.getElementById('referralEmail').value.trim();
-                
-                if (!referralName || !referralLink || !referralEmail) {
-                    e.preventDefault();
-                    alert('お友達紹介キャンペーンを利用する場合は、すべての項目を入力してください。');
-                    return false;
-                }
-                
-                // メールアドレスの簡単なバリデーション
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(referralEmail)) {
-                    e.preventDefault();
-                    alert('有効なメールアドレスを入力してください。');
-                    return false;
-                }
-            }
-        });
         
         // モバイルメニュー
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
