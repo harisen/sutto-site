@@ -172,7 +172,7 @@ module.exports = async function handler(req, res) {
     // Resendでメール送信
     const emailData = await resend.emails.send({
       from: 'スッとサイト <noreply@resend.dev>',
-      to: ['sutto.apps@gmail.com'],
+      to: 'sutto.apps@gmail.com',
       replyTo: data.email,
       subject: `【VTuberプラン申し込み】${data.vtuber_name}様`,
       html: emailHtml,
@@ -206,7 +206,7 @@ module.exports = async function handler(req, res) {
 
       await resend.emails.send({
         from: 'スッとサイト <noreply@resend.dev>',
-        to: [data.email],
+        to: data.email,
         subject: '【スッとサイト】VTuberプランお申し込みありがとうございます',
         html: autoReplyHtml,
       });
@@ -217,8 +217,7 @@ module.exports = async function handler(req, res) {
     console.error('Email error:', error);
     res.status(500).json({ 
       error: 'メール送信に失敗しました', 
-      details: error.message,
-      stack: error.stack 
+      details: error.message
     });
   }
 };
