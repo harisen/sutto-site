@@ -657,11 +657,33 @@ Dropbox: https://www.dropbox.com/xxxx"></textarea>
         
         const optionsList = document.getElementById('selectedOptionsList');
         if (optionNames.length > 0 && optionNames[0] !== '') {
-            let optionsText = '選択オプション: ' + optionNames.join('、');
+            // 基本料金を表示
+            let htmlContent = '<div style="margin-bottom: 15px; font-size: 1.1rem; color: #666;">基本制作費: ¥10,000</div>';
+            
+            // 選択されたオプションをリスト形式で表示
+            htmlContent += '<div style="font-size: 1.1rem; color: #666; margin-bottom: 10px;">選択オプション:</div>';
+            htmlContent += '<ul style="list-style: none; padding: 0; margin: 0;">';
+            
+            optionNames.forEach(optionName => {
+                if (optionName) {
+                    htmlContent += `<li style="padding: 8px 0; color: #FF1493; font-weight: 600;">✓ ${optionName}</li>`;
+                }
+            });
+            
+            htmlContent += '</ul>';
+            
+            // 年間費用がある場合は別途表示
             if (parseInt(yearlyTotal) > 0) {
-                optionsText += ` (年間費用: ¥${parseInt(yearlyTotal).toLocaleString()})`;
+                htmlContent += `<div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #FFB6C1; font-size: 1rem; color: #9400D3;">
+                    <strong>年間維持管理費: ¥${parseInt(yearlyTotal).toLocaleString()}/年</strong>
+                    <span style="font-size: 0.9rem; color: #666; display: block; margin-top: 5px;">※初回制作費とは別途</span>
+                </div>`;
             }
-            optionsList.innerHTML = optionsText;
+            
+            optionsList.innerHTML = htmlContent;
+        } else {
+            // オプションが選択されていない場合
+            optionsList.innerHTML = '<div style="font-size: 1.1rem; color: #666;">基本プランのみ（追加オプションなし）</div>';
         }
         
         // フォームバリデーション

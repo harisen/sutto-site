@@ -390,12 +390,38 @@
         
         // 見積もり情報
         const estimateInfo = document.getElementById('estimateInfo');
-        estimateInfo.innerHTML = `
+        let estimateHTML = `
             <div class="confirmation-item">
-                <div class="item-label">選択オプション</div>
-                <div class="item-value">${data.selected_options?.join('、') || 'なし'}</div>
+                <div class="item-label">基本制作費</div>
+                <div class="item-value">¥10,000</div>
             </div>
         `;
+        
+        if (data.selected_options && data.selected_options.length > 0 && data.selected_options[0] !== '') {
+            estimateHTML += `
+                <div class="confirmation-item">
+                    <div class="item-label">選択オプション</div>
+                    <div class="item-value">
+            `;
+            data.selected_options.forEach(option => {
+                if (option) {
+                    estimateHTML += `<div style="padding: 4px 0;">✓ ${option}</div>`;
+                }
+            });
+            estimateHTML += `
+                    </div>
+                </div>
+            `;
+        } else {
+            estimateHTML += `
+                <div class="confirmation-item">
+                    <div class="item-label">選択オプション</div>
+                    <div class="item-value">なし（基本プランのみ）</div>
+                </div>
+            `;
+        }
+        
+        estimateInfo.innerHTML = estimateHTML;
         
         // お友達紹介キャンペーン
         if (data.referral_use) {

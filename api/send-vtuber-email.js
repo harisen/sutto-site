@@ -66,12 +66,20 @@ module.exports = async function handler(req, res) {
       <h3>見積もり情報</h3>
       <table style="border-collapse: collapse; width: 100%;">
         <tr>
-          <td style="border: 1px solid #ddd; padding: 8px; background-color: #f4f4f4;"><strong>暫定見積もり金額</strong></td>
-          <td style="border: 1px solid #ddd; padding: 8px;">¥${parseInt(data.estimated_price || 0).toLocaleString()}</td>
+          <td style="border: 1px solid #ddd; padding: 8px; background-color: #f4f4f4;"><strong>基本制作費</strong></td>
+          <td style="border: 1px solid #ddd; padding: 8px;">¥10,000</td>
         </tr>
         <tr>
           <td style="border: 1px solid #ddd; padding: 8px; background-color: #f4f4f4;"><strong>選択オプション</strong></td>
-          <td style="border: 1px solid #ddd; padding: 8px;">${data.selected_options?.join('、') || 'なし'}</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">
+            ${data.selected_options && data.selected_options.length > 0 && data.selected_options[0] !== '' 
+              ? data.selected_options.map(option => `✓ ${option}`).join('<br>') 
+              : 'なし（基本プランのみ）'}
+          </td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px; background-color: #f4f4f4;"><strong>暫定見積もり金額（税込）</strong></td>
+          <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold; color: #FF1493;">¥${parseInt(data.estimated_price || 0).toLocaleString()}</td>
         </tr>
       </table>
 
@@ -198,8 +206,14 @@ module.exports = async function handler(req, res) {
         
         <div style="background-color: #f4f4f4; padding: 20px; border-radius: 5px; margin: 20px 0;">
           <p><strong>VTuber名:</strong> ${data.vtuber_name}</p>
-          <p><strong>暫定お見積もり金額:</strong> ¥${parseInt(data.estimated_price || 0).toLocaleString()}</p>
-          <p><strong>選択オプション:</strong> ${data.selected_options?.join('、') || 'なし'}</p>
+          <p><strong>基本制作費:</strong> ¥10,000</p>
+          <p><strong>選択オプション:</strong></p>
+          <div style="margin-left: 20px;">
+            ${data.selected_options && data.selected_options.length > 0 && data.selected_options[0] !== '' 
+              ? data.selected_options.map(option => `<p>✓ ${option}</p>`).join('') 
+              : '<p>なし（基本プランのみ）</p>'}
+          </div>
+          <p style="margin-top: 10px; font-size: 1.1em;"><strong>暫定お見積もり金額（税込）:</strong> ¥${parseInt(data.estimated_price || 0).toLocaleString()}</p>
         </div>
         
         <p>内容を確認の上、担当者より2営業日以内にご連絡させていただきます。</p>
