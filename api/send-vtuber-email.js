@@ -171,7 +171,7 @@ module.exports = async function handler(req, res) {
 
     // Resendでメール送信
     const emailData = await resend.emails.send({
-      from: 'スッとサイト <noreply@sutto-site.jp>',
+      from: 'スッとサイト <noreply@resend.dev>',
       to: ['sutto.apps@gmail.com'],
       replyTo: data.email,
       subject: `【VTuberプラン申し込み】${data.vtuber_name}様`,
@@ -205,7 +205,7 @@ module.exports = async function handler(req, res) {
       `;
 
       await resend.emails.send({
-        from: 'スッとサイト <noreply@sutto-site.jp>',
+        from: 'スッとサイト <noreply@resend.dev>',
         to: [data.email],
         subject: '【スッとサイト】VTuberプランお申し込みありがとうございます',
         html: autoReplyHtml,
