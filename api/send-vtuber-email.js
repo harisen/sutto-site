@@ -19,6 +19,15 @@ module.exports = async function handler(req, res) {
     return;
   }
 
+  // GETリクエストの場合はステータスを返す
+  if (req.method === 'GET') {
+    return res.status(200).json({ 
+      status: 'VTuber Email API is running',
+      apiKeyExists: !!process.env.RESEND_API_KEY,
+      timestamp: new Date().toISOString()
+    });
+  }
+
   // POSTリクエストのみ受け付ける
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
