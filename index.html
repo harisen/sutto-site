@@ -39,6 +39,20 @@
     <link rel="stylesheet" href="css/modern-design.css">
     <link rel="stylesheet" href="css/campaign.css">
     
+    <style>
+        /* キャンペーンセクションのレスポンシブ対応 */
+        @media (max-width: 768px) {
+            .campaign-content {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            .campaign-right {
+                margin-top: 20px;
+            }
+        }
+    </style>
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W2NSTXJNG"></script>
     <script src="/js/analytics.js"></script>
@@ -160,32 +174,50 @@
 
     <!-- Campaign Banner -->
     <section class="campaign-banner">
-        <div class="campaign-content">
-            <span class="campaign-badge">初回限定キャンペーン</span>
-            <h2 class="campaign-title">今なら全プラン30%OFF！</h2>
-            <p class="campaign-subtitle">プロ品質のホームページが特別価格で</p>
-            <p class="campaign-deadline">2025年7月31日まで</p>
-            <div class="campaign-prices">
-                <div class="campaign-price-item">
-                    <div class="campaign-plan-name">スタンダードプラン</div>
-                    <div class="campaign-price-wrapper">
-                        <span class="campaign-original-price">¥20,000</span>
-                        <span class="campaign-arrow">→</span>
-                        <span class="campaign-sale-price">¥14,000</span>
+        <div class="campaign-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto;">
+            <!-- 左側：既存のキャンペーン -->
+            <div class="campaign-left">
+                <span class="campaign-badge">初回限定キャンペーン</span>
+                <h2 class="campaign-title">今なら全プラン30%OFF！</h2>
+                <p class="campaign-subtitle">プロ品質のホームページが特別価格で</p>
+                <p class="campaign-deadline">2025年7月31日まで</p>
+                <div class="campaign-prices">
+                    <div class="campaign-price-item">
+                        <div class="campaign-plan-name">スタンダードプラン</div>
+                        <div class="campaign-price-wrapper">
+                            <span class="campaign-original-price">¥20,000</span>
+                            <span class="campaign-arrow">→</span>
+                            <span class="campaign-sale-price">¥14,000</span>
+                        </div>
+                        <div style="font-size: 1.4rem; color: #666; margin-top: 5px;">（税別）</div>
                     </div>
-                    <div style="font-size: 1.4rem; color: #666; margin-top: 5px;">（税別）</div>
-                </div>
-                <div class="campaign-price-item">
-                    <div class="campaign-plan-name">リッチプラン</div>
-                    <div class="campaign-price-wrapper">
-                        <span class="campaign-original-price">¥50,000</span>
-                        <span class="campaign-arrow">→</span>
-                        <span class="campaign-sale-price">¥35,000</span>
+                    <div class="campaign-price-item">
+                        <div class="campaign-plan-name">リッチプラン</div>
+                        <div class="campaign-price-wrapper">
+                            <span class="campaign-original-price">¥50,000</span>
+                            <span class="campaign-arrow">→</span>
+                            <span class="campaign-sale-price">¥35,000</span>
+                        </div>
+                        <div style="font-size: 1.4rem; color: #666; margin-top: 5px;">（税別）</div>
                     </div>
-                    <div style="font-size: 1.4rem; color: #666; margin-top: 5px;">（税別）</div>
                 </div>
+                <a href="contact.html" class="campaign-cta">今すぐ申し込む</a>
             </div>
-            <a href="contact.html" class="campaign-cta">今すぐ申し込む</a>
+            
+            <!-- 右側：VTuber応援キャンペーン -->
+            <div class="campaign-right" style="position: relative; background: linear-gradient(135deg, rgba(255,20,147,0.1) 0%, rgba(148,0,211,0.1) 100%); border-radius: 20px; padding: 30px; border: 2px solid transparent; background-image: linear-gradient(white, white), linear-gradient(135deg, #FF1493 0%, #9400D3 100%); background-origin: border-box; background-clip: padding-box, border-box;">
+                <span class="campaign-badge" style="background: linear-gradient(135deg, #FF1493 0%, #9400D3 100%);">VTuber応援キャンペーン</span>
+                <h2 class="campaign-title" style="background: linear-gradient(135deg, #FF1493 0%, #9400D3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">VTuber専用プラン登場！</h2>
+                <p class="campaign-subtitle" style="color: #666;">VTuberの活動を全力サポート</p>
+                <div style="text-align: center; margin: 30px 0;">
+                    <div style="font-size: 3.5rem; font-weight: 900; color: #FF1493; margin-bottom: 10px;">¥10,000〜</div>
+                    <div style="font-size: 1.4rem; color: #666;">（税別）</div>
+                </div>
+                <p style="font-size: 1.6rem; color: #9400D3; font-weight: bold; text-align: center; margin: 20px 0;">
+                    お友達紹介で<br>初年度維持費無料！
+                </p>
+                <a href="vtuber-plan-simple.html" class="campaign-cta" style="background: linear-gradient(135deg, #FF1493 0%, #9400D3 100%);">詳細は特設ページへ</a>
+            </div>
         </div>
     </section>
 
