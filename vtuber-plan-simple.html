@@ -589,6 +589,178 @@
             margin-bottom: 40px;
         }
         
+        /* デザイン例セクション */
+        .design-examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+        
+        .design-example {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .example-badge {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .example-badge.cyber {
+            background: linear-gradient(135deg, #00FFFF 0%, #FF00FF 100%);
+        }
+        
+        .example-badge.natural {
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFA07A 100%);
+        }
+        
+        .example-title {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            color: #333;
+        }
+        
+        .permission-note {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #666;
+            display: block;
+            margin-top: 5px;
+        }
+        
+        .example-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .example-image {
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .example-preview {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .cyber-theme {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            border: 2px solid #00FFFF;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+        
+        .cyber-elements {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+        }
+        
+        .cyber-text {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #00FFFF;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            animation: glitch 2s infinite;
+            letter-spacing: 3px;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-2px); }
+            40% { transform: translateX(2px); }
+        }
+        
+        .natural-theme {
+            background: linear-gradient(135deg, #FFF5EE 0%, #FFE4E1 100%);
+            border: 2px solid #FFB6C1;
+            position: relative;
+        }
+        
+        .natural-elements {
+            display: flex;
+            gap: 30px;
+            position: relative;
+        }
+        
+        .flower {
+            font-size: 3rem;
+            animation: sway 3s ease-in-out infinite;
+        }
+        
+        .flower:nth-child(2) {
+            animation-delay: 1s;
+        }
+        
+        .flower:nth-child(3) {
+            animation-delay: 2s;
+        }
+        
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg) translateY(0); }
+            50% { transform: rotate(5deg) translateY(-10px); }
+        }
+        
+        .example-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .example-features li {
+            padding: 15px 20px;
+            background: #F8F8F8;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #666;
+            display: flex;
+            align-items: center;
+        }
+        
+        .example-features li::before {
+            content: '✓';
+            color: var(--vtuber-pink);
+            font-weight: 900;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .design-note {
+            text-align: center;
+            margin-top: 50px;
+            padding: 40px;
+            background: linear-gradient(135deg, #FFF0F5 0%, #F8F0FF 100%);
+            border-radius: 30px;
+            border: 2px dashed var(--vtuber-pink);
+        }
+        
+        .design-note p {
+            font-size: 1.6rem;
+            color: #666;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+        
         /* レスポンシブ */
         @media (max-width: 768px) {
             .vtuber-hero {
@@ -641,6 +813,22 @@
                 height: 20px;
                 background: #E5E7EB;
             }
+            
+            .design-examples-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .design-example {
+                padding: 30px 20px;
+            }
+            
+            .example-title {
+                font-size: 1.5rem;
+            }
+            
+            .permission-note {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -688,6 +876,65 @@
             <div class="hero-buttons">
                 <a href="vtuber-estimate.html" class="btn-hero btn-primary">見積もりシミュレーション</a>
                 <a href="#features" class="btn-hero btn-secondary">詳細を見る</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- デザイン例セクション -->
+    <section id="design-examples" class="section">
+        <div class="container">
+            <h2 class="section-title">あらゆる世界観に対応</h2>
+            <p class="section-subtitle">サイバーでクールな雰囲気から、自然でおっとりした世界観まで<br>VTuber様の個性に合わせたデザインを実現します</p>
+            
+            <div class="design-examples-grid">
+                <div class="design-example">
+                    <div class="example-badge cyber">サイバー × クール</div>
+                    <h3 class="example-title">如月アストラ様の例<span class="permission-note">（架空のVTuber・サンプルページ）</span></h3>
+                    <div class="example-content">
+                        <div class="example-image cyber-theme">
+                            <div class="example-preview">
+                                <div class="cyber-elements">
+                                    <span class="cyber-text">CYBER</span>
+                                    <span class="cyber-text">FUTURE</span>
+                                    <span class="cyber-text">DIGITAL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="example-features">
+                            <li>ネオンカラーのアクセント</li>
+                            <li>グリッチエフェクト</li>
+                            <li>未来的なUI/UX</li>
+                            <li>ダークモード対応</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="design-example">
+                    <div class="example-badge natural">ナチュラル × やわらか</div>
+                    <h3 class="example-title">百実ねむこ様の例<span class="permission-note">（掲載許可いただきました）</span></h3>
+                    <div class="example-content">
+                        <div class="example-image natural-theme">
+                            <div class="example-preview">
+                                <div class="natural-elements">
+                                    <span class="flower">🌸</span>
+                                    <span class="flower">🌼</span>
+                                    <span class="flower">🌷</span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="example-features">
+                            <li>パステルカラー</li>
+                            <li>やさしいアニメーション</li>
+                            <li>手書き風フォント</li>
+                            <li>癒し系デザイン</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="design-note">
+                <p>この他にも、和風、ファンタジー、ホラー、ポップなど<br>
+                どんな世界観でもお任せください！</p>
             </div>
         </div>
     </section>
