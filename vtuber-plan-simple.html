@@ -690,6 +690,34 @@
             border-radius: 20px;
             overflow: hidden;
             position: relative;
+            cursor: pointer;
+        }
+        
+        .example-image a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .example-image a::after {
+            content: '🔗 サイトを見る';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .example-image:hover a::after {
+            transform: translateY(0);
         }
         
         .example-preview {
@@ -950,7 +978,9 @@
                     <h3 class="example-title">如月アストラ様の例<span class="permission-note">（架空のVTuber・サンプルページ）</span></h3>
                     <div class="example-content">
                         <div class="example-image cyber-theme">
-                            <img src="images/Kisaragi_thumbnail.png" alt="如月アストラ様サイトイメージ" style="width: 100%; height: 100%; object-fit: cover;">
+                            <a href="https://www.sutto-site.jp/samples/vtuber/index.html" target="_blank" rel="noopener noreferrer">
+                                <img src="images/Kisaragi_thumbnail.png" alt="如月アストラ様サイトイメージ" style="width: 100%; height: 100%; object-fit: cover;">
+                            </a>
                         </div>
                         <ul class="example-features">
                             <li>ネオンカラーのアクセント</li>
@@ -966,7 +996,9 @@
                     <h3 class="example-title">百実ねむこ様の例<span class="permission-note">（掲載許可いただきました）</span></h3>
                     <div class="example-content">
                         <div class="example-image natural-theme">
-                            <img src="images/Momi-nemuko.png" alt="百実ねむこ様サイトイメージ" style="width: 100%; height: 100%; object-fit: cover;">
+                            <a href="https://nemuko.jp/" target="_blank" rel="noopener noreferrer">
+                                <img src="images/Momi-nemuko.png" alt="百実ねむこ様サイトイメージ" style="width: 100%; height: 100%; object-fit: cover;">
+                            </a>
                         </div>
                         <ul class="example-features">
                             <li>パステルカラー</li>
