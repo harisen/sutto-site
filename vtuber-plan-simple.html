@@ -27,7 +27,8 @@
         body {
             font-family: 'M PLUS Rounded 1c', sans-serif;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.8;
+            font-size: 18px;
         }
         
         /* ヒーローセクション */
@@ -68,36 +69,65 @@
         
         .hero-badge {
             display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 24px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
+            background: rgba(255,255,255,0.3);
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
             backdrop-filter: blur(10px);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
         
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 4.5rem;
             font-weight: 900;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            letter-spacing: 2px;
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
+            font-size: 1.6rem;
+            margin-bottom: 50px;
             opacity: 0.95;
+            font-weight: 500;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 0.95; }
         }
         
         .hero-price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 30px;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
         
         .hero-price small {
-            font-size: 1rem;
-            opacity: 0.8;
+            font-size: 1.4rem;
+            opacity: 0.9;
+            font-weight: 500;
         }
         
         .hero-buttons {
@@ -108,13 +138,33 @@
         }
         
         .btn-hero {
-            padding: 16px 40px;
-            font-size: 1.1rem;
+            padding: 20px 50px;
+            font-size: 1.3rem;
             font-weight: 700;
             border-radius: 50px;
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-hero:hover::before {
+            width: 300px;
+            height: 300px;
         }
         
         .btn-primary {
@@ -159,18 +209,34 @@
         }
         
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            font-weight: 900;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: var(--vtuber-purple);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--vtuber-pink) 0%, var(--vtuber-purple) 100%);
+            border-radius: 2px;
         }
         
         .section-subtitle {
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             color: #666;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
+            font-weight: 500;
         }
         
         /* 特徴セクション */
@@ -183,33 +249,69 @@
         
         .feature-card {
             background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
+            padding: 50px 40px;
+            border-radius: 30px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,20,147,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+            transform: rotate(45deg) translateY(-20%);
         }
         
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(148,0,211,0.15);
         }
         
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 4rem;
+            margin-bottom: 25px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+        
+        .feature-card:nth-child(2) .feature-icon {
+            animation-delay: 0.5s;
+        }
+        
+        .feature-card:nth-child(3) .feature-icon {
+            animation-delay: 1s;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         
         .feature-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
             color: var(--vtuber-purple);
         }
         
         .feature-desc {
             color: #666;
             line-height: 1.8;
+            font-size: 1.1rem;
         }
         
         /* 価格テーブル */
@@ -230,15 +332,17 @@
         }
         
         .price-amount {
-            font-size: 3rem;
+            font-size: 4rem;
             font-weight: 900;
             color: var(--vtuber-pink);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(148,0,211,0.1);
         }
         
         .price-amount small {
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             color: #666;
+            font-weight: 600;
         }
         
         .price-note {
@@ -252,51 +356,86 @@
         }
         
         .price-features li {
-            padding: 15px 0;
+            padding: 20px 0;
             border-bottom: 1px solid #F0F0F0;
             display: flex;
             align-items: center;
+            font-size: 1.2rem;
+            font-weight: 500;
         }
         
         .price-features li::before {
             content: '✓';
             color: #10B981;
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-right: 15px;
+            font-weight: 900;
+            font-size: 1.6rem;
+            margin-right: 20px;
+            background: rgba(16, 185, 129, 0.1);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
         }
         
         /* キャンペーンバナー */
         .campaign-banner {
             background: linear-gradient(135deg, var(--vtuber-pink) 0%, var(--vtuber-purple) 100%);
             color: white;
-            padding: 40px;
-            border-radius: 20px;
+            padding: 60px 50px;
+            border-radius: 30px;
             text-align: center;
-            margin: 40px 0;
+            margin: 60px 0;
             position: relative;
             overflow: hidden;
+            transform: rotate(-1deg);
+            box-shadow: 0 10px 40px rgba(148,0,211,0.3);
         }
         
         .campaign-banner::before {
             content: '🎉';
             position: absolute;
-            font-size: 100px;
-            opacity: 0.1;
-            top: -20px;
-            right: -20px;
+            font-size: 150px;
+            opacity: 0.15;
+            top: -30px;
+            right: -30px;
             transform: rotate(-15deg);
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .campaign-banner::after {
+            content: '✨';
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.15;
+            bottom: -20px;
+            left: -20px;
+            transform: rotate(15deg);
+            animation: float 4s ease-in-out infinite reverse;
         }
         
         .campaign-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 15px;
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            transform: rotate(1deg);
         }
         
         .campaign-desc {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+            transform: rotate(1deg);
+        }
+        
+        .campaign-desc strong {
+            font-size: 1.7rem;
+            display: block;
+            margin-top: 10px;
+            animation: pulse 2s ease-in-out infinite;
         }
         
         .campaign-note {
@@ -314,35 +453,40 @@
         
         .option-card {
             background: white;
-            border: 2px solid #E5E7EB;
-            border-radius: 15px;
-            padding: 25px;
+            border: 3px solid transparent;
+            background-image: linear-gradient(white, white), 
+                              linear-gradient(45deg, var(--vtuber-pink), var(--vtuber-purple));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            border-radius: 20px;
+            padding: 35px;
             transition: all 0.3s ease;
+            position: relative;
         }
         
         .option-card:hover {
-            border-color: var(--vtuber-pink);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-8px) rotate(1deg);
+            box-shadow: 0 10px 30px rgba(148,0,211,0.2);
         }
         
         .option-name {
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-weight: 900;
+            margin-bottom: 15px;
             color: #333;
+            font-size: 1.3rem;
         }
         
         .option-price {
             color: var(--vtuber-pink);
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
         }
         
         .option-desc {
             color: #666;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
         
         /* ステップセクション */
@@ -362,26 +506,47 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 60px;
-            height: 60px;
-            background: var(--vtuber-pink);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--vtuber-pink) 0%, var(--vtuber-purple) 100%);
             color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 900;
             border-radius: 50%;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(148,0,211,0.3);
+            position: relative;
+        }
+        
+        .step-number::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid var(--vtuber-pink);
+            top: -6px;
+            left: -6px;
+            animation: rotate 10s linear infinite;
+            opacity: 0.3;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         .step-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin-bottom: 15px;
             color: #333;
         }
         
         .step-desc {
             color: #666;
-            font-size: 0.95rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
         }
         
         /* CTA セクション */
@@ -580,7 +745,7 @@
                     VTuberのお友達をご紹介いただくと<br>
                     <strong>初年度のサイト維持管理費（¥11,000）が無料！</strong>
                 </p>
-                <p class="campaign-note">
+                <p class="campaign-note" style="font-size: 1.1rem; opacity: 0.95; font-weight: 500;">
                     ※ 詳細は申し込みフォームでご確認ください
                 </p>
             </div>
