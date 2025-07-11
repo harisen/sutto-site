@@ -527,6 +527,48 @@
                 ※ 年間保守管理費¥10,000/年（税込¥11,000）は初回制作費とは別途となります。
             </p>
             
+            <!-- お友達紹介キャンペーン -->
+            <div class="referral-campaign">
+                <h3 class="campaign-title">🎉 お友達紹介キャンペーン</h3>
+                <p class="campaign-description">
+                    他のVTuber様をご紹介いただくと、<br>
+                    <strong>初年度のサイト維持管理費（¥11,000）が無料</strong>になります！
+                </p>
+                
+                <label class="campaign-checkbox">
+                    <input type="checkbox" id="useReferral" class="referral-checkbox">
+                    <span>お友達紹介キャンペーンを利用する</span>
+                </label>
+                
+                <div id="referralForm" class="referral-form" style="display: none;">
+                    <div class="form-group">
+                        <label class="form-label">
+                            紹介するVTuber様のお名前 <span class="required">*</span>
+                        </label>
+                        <input type="text" id="referralName" class="form-input" placeholder="例：如月アストラ">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            紹介するVTuber様のSNSまたは配信URL <span class="required">*</span>
+                        </label>
+                        <input type="text" id="referralLink" class="form-input" placeholder="例：https://x.com/kisaragi_astra">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            紹介するVTuber様のご連絡先（メールアドレス） <span class="required">*</span>
+                        </label>
+                        <input type="email" id="referralEmail" class="form-input" placeholder="例：astra@example.com">
+                    </div>
+                    
+                    <p class="referral-note">
+                        ※ ご紹介いただいたVTuber様がサービスをご利用された場合、<br>
+                        紹介者様の初年度維持管理費が無料となります。
+                    </p>
+                </div>
+            </div>
+            
             <div class="action-buttons">
                 <a href="vtuber-questionnaire.html" class="btn-estimate btn-primary" id="proceedButton">
                     申し込みへ進む
@@ -632,6 +674,20 @@
                 optionNames: selectedNames.join(',')
             });
             
+            // お友達紹介キャンペーンの情報を追加
+            const useReferral = document.getElementById('useReferral').checked;
+            params.append('useReferral', useReferral);
+            
+            if (useReferral) {
+                const referralName = document.getElementById('referralName').value;
+                const referralLink = document.getElementById('referralLink').value;
+                const referralEmail = document.getElementById('referralEmail').value;
+                
+                params.append('referralName', referralName);
+                params.append('referralLink', referralLink);
+                params.append('referralEmail', referralEmail);
+            }
+            
             proceedButton.href = `vtuber-questionnaire.html?${params.toString()}`;
         }
         
@@ -644,7 +700,7 @@
         calculateTotal();
         
         // お友達紹介キャンペーンのフォーム表示切替
-        const referralCheckbox = document.getElementById('referral-campaign');
+        const referralCheckbox = document.getElementById('useReferral');
         const referralForm = document.getElementById('referralForm');
         
         if (referralCheckbox && referralForm) {
@@ -654,55 +710,37 @@
                 } else {
                     referralForm.style.display = 'none';
                     // フォームをクリア
-                    document.getElementById('referral-vtuber-name').value = '';
-                    document.getElementById('referral-vtuber-link').value = '';
-                    document.getElementById('referral-vtuber-email').value = '';
+                    document.getElementById('referralName').value = '';
+                    document.getElementById('referralLink').value = '';
+                    document.getElementById('referralEmail').value = '';
                 }
             });
         } else {
             console.error('紹介キャンペーンの要素が見つかりません');
         }
         
-        // URLパラメータに紹介情報を追加する関数を更新
-        function updateProceedButton() {
-            const referralData = {};
-            if (referralCheckbox.checked) {
-                // 必須項目のチェック
-                const vtuberName = document.getElementById('referral-vtuber-name').value.trim();
-                const vtuberLink = document.getElementById('referral-vtuber-link').value.trim();
-                const vtuberEmail = document.getElementById('referral-vtuber-email').value.trim();
+        // 申し込みボタンのバリデーション
+        proceedButton.addEventListener('click', function(e) {
+            if (referralCheckbox && referralCheckbox.checked) {
+                const referralName = document.getElementById('referralName').value.trim();
+                const referralLink = document.getElementById('referralLink').value.trim();
+                const referralEmail = document.getElementById('referralEmail').value.trim();
                 
-                if (!vtuberName || !vtuberLink || !vtuberEmail) {
+                if (!referralName || !referralLink || !referralEmail) {
+                    e.preventDefault();
                     alert('お友達紹介キャンペーンを利用する場合は、すべての項目を入力してください。');
-                    referralCheckbox.checked = false;
-                    referralForm.style.display = 'none';
-                    return;
+                    return false;
                 }
                 
-                referralData.useReferral = 'true';
-                referralData.referralName = vtuberName;
-                referralData.referralLink = vtuberLink;
-                referralData.referralEmail = vtuberEmail;
+                // メールアドレスの簡単なバリデーション
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(referralEmail)) {
+                    e.preventDefault();
+                    alert('有効なメールアドレスを入力してください。');
+                    return false;
+                }
             }
-            
-            // 既存のパラメータに紹介情報を追加
-            const currentHref = proceedButton.href;
-            const url = new URL(currentHref, window.location.origin);
-            
-            // 紹介情報をパラメータに追加
-            Object.keys(referralData).forEach(key => {
-                url.searchParams.set(key, referralData[key]);
-            });
-            
-            proceedButton.href = url.toString();
-        }
-        
-        // フォーム入力時にURLを更新
-        ['referral-vtuber-name', 'referral-vtuber-link', 'referral-vtuber-email'].forEach(id => {
-            document.getElementById(id).addEventListener('input', updateProceedButton);
         });
-        
-        referralCheckbox.addEventListener('change', updateProceedButton);
         
         // モバイルメニュー
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
