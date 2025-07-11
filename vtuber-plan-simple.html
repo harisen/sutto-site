@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTuberプラン - スッとサイト | VTuber専用サイト制作</title>
+    <meta name="description" content="VTuber様専用のシンプルでスタイリッシュなサイト制作プラン。¥10,000から制作可能。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        /* VTuberプラン専用スタイル */
+        :root {
+            --vtuber-pink: #FF1493;
+            --vtuber-purple: #9400D3;
+            --vtuber-light-pink: #FFF0F5;
+            --vtuber-light-purple: #F8F0FF;
+        }
+        
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* ヒーローセクション */
+        .vtuber-hero {
+            background: linear-gradient(135deg, var(--vtuber-purple) 0%, var(--vtuber-pink) 100%);
+            color: white;
+            padding: 140px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: var(--header-height, 80px);
+        }
+        
+        .vtuber-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: drift 20s linear infinite;
+        }
+        
+        @keyframes drift {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, 50px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .hero-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        
+        .hero-price small {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-hero {
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--vtuber-purple);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--vtuber-purple);
+        }
+        
+        /* セクション共通 */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-light {
+            background: #FAFAFA;
+        }
+        
+        .section-accent {
+            background: var(--vtuber-light-purple);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--vtuber-purple);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 50px;
+        }
+        
+        /* 特徴セクション */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--vtuber-purple);
+        }
+        
+        .feature-desc {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* 価格テーブル */
+        .price-table {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .price-header {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #F0F0F0;
+            margin-bottom: 30px;
+        }
+        
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--vtuber-pink);
+            margin-bottom: 10px;
+        }
+        
+        .price-amount small {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .price-note {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .price-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .price-features li {
+            padding: 15px 0;
+            border-bottom: 1px solid #F0F0F0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .price-features li::before {
+            content: '✓';
+            color: #10B981;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+        
+        /* キャンペーンバナー */
+        .campaign-banner {
+            background: linear-gradient(135deg, var(--vtuber-pink) 0%, var(--vtuber-purple) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .campaign-banner::before {
+            content: '🎉';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            top: -20px;
+            right: -20px;
+            transform: rotate(-15deg);
+        }
+        
+        .campaign-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .campaign-desc {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+        
+        .campaign-note {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* オプション一覧 */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .option-card {
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .option-card:hover {
+            border-color: var(--vtuber-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .option-name {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .option-price {
+            color: var(--vtuber-pink);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .option-desc {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* ステップセクション */
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .step-card {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--vtuber-pink);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .step-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* CTA セクション */
+        .cta-section {
+            background: var(--vtuber-light-pink);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--vtuber-purple);
+            margin-bottom: 20px;
+        }
+        
+        .cta-desc {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .vtuber-hero {
+                padding: 120px 0 60px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-price {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .price-table {
+                padding: 30px 20px;
+            }
+            
+            .campaign-banner {
+                padding: 30px 20px;
+            }
+            
+            .campaign-title {
+                font-size: 1.5rem;
+            }
+            
+            .step-card:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                bottom: -20px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 2px;
+                height: 20px;
+                background: #E5E7EB;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <span style="font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 2.8rem; font-weight: 900; color: #2563eb;">スッとサイト</span>
+                    <span style="font-size: 1.1rem; font-weight: 400; color: #64748b; margin-top: -4px; letter-spacing: 0.02em;">個人から企業まで最速・低価格でホームページ制作</span>
+                </div>
+            </a>
+            <nav class="nav">
+                <a href="service.html" class="nav-link">サービス</a>
+                <a href="pricing.html" class="nav-link">料金</a>
+                <a href="portfolio.html" class="nav-link">作品例</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-list">
+            <a href="service.html" class="mobile-nav-link">サービス</a>
+            <a href="pricing.html" class="mobile-nav-link">料金</a>
+            <a href="portfolio.html" class="mobile-nav-link">作品例</a>
+            <a href="contact.html" class="mobile-nav-link">お問い合わせ</a>
+        </div>
+    </nav>
+
+    <!-- ヒーローセクション -->
+    <section class="vtuber-hero">
+        <div class="hero-content">
+            <div class="hero-badge">✨ VTuber様専用プラン</div>
+            <h1 class="hero-title">VTuberプラン</h1>
+            <p class="hero-subtitle">
+                プロフィール、配信情報、ファンアートなど<br>
+                VTuber活動に必要な機能を全て搭載
+            </p>
+            <div class="hero-price">
+                ¥10,000〜
+                <small>（税込¥11,000〜）</small>
+            </div>
+            <div class="hero-buttons">
+                <a href="vtuber-estimate.html" class="btn-hero btn-primary">見積もりシミュレーション</a>
+                <a href="#features" class="btn-hero btn-secondary">詳細を見る</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特徴セクション -->
+    <section id="features" class="section section-light">
+        <div class="container">
+            <h2 class="section-title">VTuberプランの特徴</h2>
+            <p class="section-subtitle">VTuber様の活動を最大限にサポートする機能が満載</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">オリジナルデザイン</h3>
+                    <p class="feature-desc">
+                        VTuberの個性を活かした<br>
+                        世界に一つだけのデザイン
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">スマホ完全対応</h3>
+                    <p class="feature-desc">
+                        どんなデバイスでも<br>
+                        美しく表示される設計
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">高速表示</h3>
+                    <p class="feature-desc">
+                        最新技術で実現する<br>
+                        ストレスフリーな閲覧体験
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 価格セクション -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">料金プラン</h2>
+            <p class="section-subtitle">シンプルで分かりやすい料金体系</p>
+            
+            <div class="price-table">
+                <div class="price-header">
+                    <div class="price-amount">
+                        ¥10,000
+                        <small>（税込¥11,000）</small>
+                    </div>
+                    <p class="price-note">基本制作費</p>
+                </div>
+                
+                <ul class="price-features">
+                    <li>プロフィールページ</li>
+                    <li>配信スケジュール</li>
+                    <li>SNSリンク集</li>
+                    <li>ファンアートギャラリー</li>
+                    <li>お問い合わせフォーム</li>
+                    <li>レスポンシブ対応</li>
+                    <li>SEO基本設定</li>
+                    <li>納品データ一式</li>
+                </ul>
+                
+                <div style="text-align: center;">
+                    <a href="vtuber-estimate.html" class="btn-hero btn-primary">
+                        今すぐ見積もりを確認
+                    </a>
+                </div>
+            </div>
+            
+            <!-- キャンペーンバナー -->
+            <div class="campaign-banner">
+                <h3 class="campaign-title">🎉 お友達紹介キャンペーン実施中！</h3>
+                <p class="campaign-desc">
+                    VTuberのお友達をご紹介いただくと<br>
+                    <strong>初年度のサイト維持管理費（¥11,000）が無料！</strong>
+                </p>
+                <p class="campaign-note">
+                    ※ 詳細は申し込みフォームでご確認ください
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- オプションセクション -->
+    <section class="section section-accent">
+        <div class="container">
+            <h2 class="section-title">追加オプション</h2>
+            <p class="section-subtitle">必要に応じてカスタマイズ可能</p>
+            
+            <div class="options-grid">
+                <div class="option-card">
+                    <div class="option-name">🎮 ミニゲーム</div>
+                    <div class="option-price">+¥3,000〜</div>
+                    <p class="option-desc">
+                        ファンが楽しめる簡単なブラウザゲーム
+                    </p>
+                </div>
+                
+                <div class="option-card">
+                    <div class="option-name">🌐 多言語対応</div>
+                    <div class="option-price">+¥2,500/言語</div>
+                    <p class="option-desc">
+                        英語、中国語など海外ファン向け対応
+                    </p>
+                </div>
+                
+                <div class="option-card">
+                    <div class="option-name">🛍️ グッズ販売</div>
+                    <div class="option-price">+¥5,000</div>
+                    <p class="option-desc">
+                        オリジナルグッズの販売ページ
+                    </p>
+                </div>
+                
+                <div class="option-card">
+                    <div class="option-name">👥 メンバーシップ</div>
+                    <div class="option-price">+¥8,000</div>
+                    <p class="option-desc">
+                        限定コンテンツ配信機能
+                    </p>
+                </div>
+                
+                <div class="option-card">
+                    <div class="option-name">📊 アナリティクス</div>
+                    <div class="option-price">+¥3,000</div>
+                    <p class="option-desc">
+                        詳細なアクセス解析機能
+                    </p>
+                </div>
+                
+                <div class="option-card">
+                    <div class="option-name">🔧 年間保守</div>
+                    <div class="option-price">¥10,000/年</div>
+                    <p class="option-desc">
+                        ドメイン管理・月1回の更新作業込み
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 制作の流れ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">制作の流れ</h2>
+            <p class="section-subtitle">お申し込みから納品まで最短3日</p>
+            
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">お見積もり</h3>
+                    <p class="step-desc">
+                        オンラインで簡単に<br>
+                        料金シミュレーション
+                    </p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">お申し込み</h3>
+                    <p class="step-desc">
+                        必要事項を入力して<br>
+                        申し込み完了
+                    </p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">制作開始</h3>
+                    <p class="step-desc">
+                        素材をお預かりして<br>
+                        制作スタート
+                    </p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">納品</h3>
+                    <p class="step-desc">
+                        完成したサイトを<br>
+                        データでお渡し
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTAセクション -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">今すぐVTuber専用サイトを作ろう！</h2>
+            <p class="cta-desc">
+                見積もりは無料！まずは料金をチェック
+            </p>
+            <div class="hero-buttons">
+                <a href="vtuber-estimate.html" class="btn-hero btn-primary">
+                    見積もりシミュレーション
+                </a>
+                <a href="contact.html" class="btn-hero btn-secondary">
+                    お問い合わせ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>スッとサイト</h4>
+                    <p>VTuber様の活動を全力サポート</p>
+                </div>
+                <div class="footer-section">
+                    <h4>サービス</h4>
+                    <div class="footer-links">
+                        <a href="service.html" class="footer-link">サービス詳細</a>
+                        <a href="pricing.html" class="footer-link">料金プラン</a>
+                        <a href="portfolio.html" class="footer-link">制作実績</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 スッとサイト. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
