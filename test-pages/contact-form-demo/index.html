@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせフォームテスト | スッとサイト</title>
+    <meta name="description" content="Googleフォーム埋め込みのテストページです。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* リセットCSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* CSS変数 */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #FFD700;
+            --text-color: #333333;
+            --text-light: #666666;
+            --bg-light: #F9FAFB;
+            --white: #FFFFFF;
+            --max-width: 1200px;
+        }
+        
+        /* 基本スタイル */
+        body {
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+        
+        /* コンテナ */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ヘッダー */
+        .header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        
+        .logo {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-link:hover {
+            background-color: var(--bg-light);
+        }
+        
+        /* メインコンテンツ */
+        .main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+        
+        /* ヒーローセクション */
+        .hero {
+            background: linear-gradient(135deg, #EBF4FF 0%, #F0F9FF 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.6rem;
+            margin-bottom: 16px;
+            color: var(--text-color);
+        }
+        
+        .hero p {
+            font-size: 1.8rem;
+            color: var(--text-light);
+        }
+        
+        /* フォームセクション */
+        .form-section {
+            padding: 80px 0;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .form-intro h2 {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+        }
+        
+        .form-intro p {
+            font-size: 1.6rem;
+            color: var(--text-light);
+        }
+        
+        /* Googleフォーム埋め込みエリア */
+        .google-form-container {
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .form-placeholder {
+            background-color: var(--bg-light);
+            border: 2px dashed var(--primary-color);
+            border-radius: 8px;
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--text-light);
+        }
+        
+        .form-placeholder h3 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: var(--primary-color);
+        }
+        
+        /* 埋め込みフォームのレスポンシブ対応 */
+        .google-form-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%; /* アスペクト比を調整 */
+        }
+        
+        .google-form-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* 説明セクション */
+        .instructions {
+            background-color: #FFF9E6;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin: 40px 0;
+            border-radius: 8px;
+        }
+        
+        .instructions h3 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: #D4A574;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        
+        /* フッター */
+        .footer {
+            background-color: var(--text-color);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.6rem;
+            }
+            
+            .form-intro h2 {
+                font-size: 2.4rem;
+            }
+            
+            .google-form-container {
+                padding: 20px;
+            }
+            
+            .google-form-wrapper {
+                padding-bottom: 150%; /* モバイルでは縦長に */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .form-section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="../../index.html" class="logo">スッとサイト</a>
+            <nav>
+                <a href="#instructions" class="nav-link">埋め込み方法</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main">
+        <!-- ヒーローセクション -->
+        <section class="hero">
+            <div class="container">
+                <h1>お問い合わせフォームテスト</h1>
+                <p>Googleフォーム埋め込みのデモページです</p>
+            </div>
+        </section>
+
+        <!-- フォームセクション -->
+        <section class="form-section">
+            <div class="container">
+                <div class="form-container">
+                    <div class="form-intro">
+                        <h2>お問い合わせはこちらから</h2>
+                        <p>下記フォームに必要事項をご記入の上、送信してください。</p>
+                    </div>
+
+                    <!-- Googleフォーム埋め込みエリア -->
+                    <div class="google-form-container">
+                        <div class="form-placeholder">
+                            <h3>Googleフォームがここに表示されます</h3>
+                            <p>以下の手順でGoogleフォームを埋め込んでください：</p>
+                        </div>
+                        
+                        <!-- 実際のフォーム埋め込み用コメント -->
+                        <!-- 
+                        <div class="google-form-wrapper">
+                            <iframe src="YOUR_GOOGLE_FORM_URL" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+                        </div>
+                        -->
+                    </div>
+
+                    <!-- 埋め込み手順の説明 -->
+                    <div class="instructions" id="instructions">
+                        <h3>📝 Googleフォームの埋め込み方法</h3>
+                        <ol>
+                            <li><strong>Googleフォームを作成</strong><br>
+                                Google Forms（<a href="https://forms.google.com" target="_blank">forms.google.com</a>）にアクセスして新しいフォームを作成します。
+                            </li>
+                            <li><strong>必要な項目を追加</strong><br>
+                                お名前、メールアドレス、お問い合わせ内容などの必要な項目を追加します。
+                            </li>
+                            <li><strong>送信ボタンをクリック</strong><br>
+                                フォーム作成画面の右上にある「送信」ボタンをクリックします。
+                            </li>
+                            <li><strong>埋め込みコードを取得</strong><br>
+                                送信方法で「&lt;&gt;」（埋め込み）タブを選択し、HTMLコードをコピーします。
+                            </li>
+                            <li><strong>このファイルに貼り付け</strong><br>
+                                上記のコメントアウトされた部分にコードを貼り付けて、コメントを解除します。
+                            </li>
+                        </ol>
+                        
+                        <h3 style="margin-top: 24px;">⚙️ カスタマイズのポイント</h3>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>サイズ調整</strong>：iframeのwidth/heightを調整するか、レスポンシブ対応のCSSを使用</li>
+                            <li><strong>デザイン統一</strong>：Googleフォームの設定でテーマカラーを変更</li>
+                            <li><strong>確認メッセージ</strong>：フォーム送信後のメッセージをカスタマイズ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 スッとサイト - テストページ</p>
+        </div>
+    </footer>
+</body>
+</html>
